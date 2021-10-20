@@ -59,7 +59,7 @@ namespace QuanLyThuVien
             this.Email,
             this.ngayDK,
             this.soThe});
-            this.FormDocGia.Location = new System.Drawing.Point(38, 83);
+            this.FormDocGia.Location = new System.Drawing.Point(22, 67);
             this.FormDocGia.Name = "FormDocGia";
             this.FormDocGia.RowHeadersWidth = 51;
             this.FormDocGia.RowTemplate.Height = 24;
