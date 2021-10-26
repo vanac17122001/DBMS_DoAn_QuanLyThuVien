@@ -16,8 +16,10 @@ namespace QuanLyThuVien
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            // Application.Run(new Form1());
-            Application.Run(new DocGia());
+            
+            //Application.Run(new formDocGia());
+            Application.Run(new form_ThuThu());
+            //Application.Run(new formDangNhap());
         }
     }
 }

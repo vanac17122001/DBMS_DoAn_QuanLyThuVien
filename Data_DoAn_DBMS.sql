@@ -4,96 +4,106 @@ go
 use Database_DBMS
 go
 create table NhanVien (
-	idNhanVien int ,
-	Ho nvarchar (10) not null,
-	Ten nvarchar (20) not null,
+	idNhanVien int IDENTITY(100,1) ,
+	ho nvarchar (20) not null,
+	ten nvarchar (50) not null,
 	ngaySinh date not null,
-	gioiTinh nvarchar (10) not null,
+	gioiTinh nvarchar (5) not null,
 	CMND varchar (20) not null,
-	diaChi nvarchar (30),
+	diaChi nvarchar (100),
 	soDT varchar (15),
-	Email varchar (30),
+	email varchar (50),
 	ngayBatDau date,
+	anhNV image null,
 	CONSTRAINT pk_nhanvien PRIMARY KEY ( idNhanVien)
 );
+go
 create table TacGia (
-	idTacGia int,
-	butDanh nvarchar (20),
+	idTacGia int IDENTITY(200,1),
+	butDanh nvarchar (50),
 	CONSTRAINT pk_TacGia PRIMARY KEY (idTacGia)
 );
-
+go
 create table TheThuVien (
-	soThe int,
+	soThe int IDENTITY(300,1),
 	ngayLap date not null,
 	hanSuDung date,
 	CONSTRAINT pk_thethuvien PRIMARY KEY (soThe)
 );
+go
 create table TaiKhoan (
 	id int,
-	userName varchar (20) not null,
+	userName varchar (50) not null,
 	pass varchar (20) not null,
-	Loai bit not null,
+	loai bit not null,
 	CONSTRAINT pk_taikhoan PRIMARY KEY (id)
 );
+go
 create table TheLoaiSach(
-	idTheLoai int,
-	Ten nvarchar (20) not null,
+	idTheLoai int IDENTITY(500,1),
+	tenTheLoai nvarchar (50) not null,
 	CONSTRAINT pk_theloaisach PRIMARY KEY (idTheLoai)
 );
+go
 create table NhaXuatBan (
-	idNXB int,
-	Ten nvarchar (20) not null,
-	SoDT varchar (15),
-	diaChi nvarchar (30) not null,
-	Email varchar (30),
-	Website varchar (40),
+	idNXB int IDENTITY(600,1),
+	ten nvarchar (50) not null,
+	soDT varchar (15),
+	diaChi nvarchar (50) not null,
+	email varchar (50),
+	website varchar (100),
 	CONSTRAINT pk_nhaxuatban PRIMARY KEY (idNXB)
 );
+go
 create table DocGia (
-	idDocGia int,
-	Ho nvarchar (10) not null,
-	Ten nvarchar (10) not null,
+	idDocGia int IDENTITY(700,1),
+	ho nvarchar (20) not null,
+	ten nvarchar (50) not null,
 	ngaySinh date not null,
-	gioiTinh nvarchar (10) not null,
+	gioiTinh nvarchar (5) not null,
 	CMND varchar (20) not null,
-	diaChi nvarchar (30),
+	diaChi nvarchar (50),
 	soDT varchar (15),
-	Email varchar (30),
+	email varchar (50),
 	ngayDK date not null,
 	soThe int ,
+	anhDG image null, 
 	CONSTRAINT pk_docgia PRIMARY KEY (idDocGia),
-	CONSTRAINT fk_sothe FOREIGN KEY (soThe) REFERENCES TheThuVien(sothe)
+	CONSTRAINT fk_sothe FOREIGN KEY (soThe) REFERENCES TheThuVien(soThe)
 	ON DELETE CASCADE
 	ON UPDATE CASCADE
 );
+go
 create table DauSach (
-	idDauSach int,
-	tenSach nvarchar (20) not null,
+	idDauSach int IDENTITY(800,1),
+	tenSach nvarchar (100) not null,
 	idNXB int,
 	namXB date,
 	idTheLoai int ,
-	Gia int,
+	gia int,
 	soLuongMuon int,
 	soLuong int,
 	idTacGia int,
+	anhDS image null,
+	viTri nvarchar(50),
 	CONSTRAINT pk_dausach PRIMARY KEY (idDauSach),
 	CONSTRAINT fk_idnxb FOREIGN KEY (idNXB) REFERENCES NhaXuatBan (idNXB),
 	CONSTRAINT fk_idthelaoi FOREIGN KEY (idTheLoai) REFERENCES TheLoaiSach (idTheLoai),
 	CONSTRAINT fk_idtacgia FOREIGN KEY (idTacGia) REFERENCES TacGia (idTacGia)
 	ON UPDATE CASCADE
 );
+go
 create table Sach (
-	idSach int,
+	idSach int IDENTITY(900,1),
 	idDauSach int,
 	trangThai nvarchar (20),
 	CONSTRAINT pk_sach PRIMARY KEY (idSach),
 	CONSTRAINT fk_iddausach FOREIGN KEY (idDauSach) REFERENCES DauSach (idDauSach)
 	ON DELETE CASCADE
 ); 
-
-
+go
 create table MuonSach (
-	idMuon int,
+	idMuon int IDENTITY(1000,1),
 	idSach int,
 	soThe int,
 	idNhanVien int ,
@@ -105,8 +115,9 @@ create table MuonSach (
 	ON DELETE CASCADE
 	ON UPDATE CASCADE
 );
+go
 create table TraSach(
-	idTraSach int,
+	idTraSach int IDENTITY(2000,1),
 	idMuon int,
 	ngayTra date not null,
 	idNhanVien int,
@@ -116,101 +127,131 @@ create table TraSach(
 	ON DELETE CASCADE
 	ON UPDATE CASCADE
 );
-
+go
+create table PhieuPhat (
+	idPhieuPhat int IDENTITY(3000,1),
+	idMuon int,
+	idTraSach int, 
+	soNgayQuaHan int,
+	ngayLapPhieu date,
+	idNhanVien int,
+	soTienPhat int,
+	CONSTRAINT pk_PhieuPhat PRIMARY KEY (idPhieuPhat),
+	CONSTRAINT fk_idMuon FOREIGN KEY (idMuon) REFERENCES MuonSach (idMuon),
+	CONSTRAINT fk_idTraSach FOREIGN KEY (idTraSach) REFERENCES TraSach (idTraSach),
+	CONSTRAINT fk_NhanVienLapPhieuPhat FOREIGN KEY (idNhanVien) REFERENCES NhanVien (idNhanVien)
+);
+go
 -- Thêm dữ liệu 
 use Database_DBMS
 go
 insert into NhanVien values
-(001,N'Trần',N'Văn Duy','2001-1-1',N'Nam','215530901',N'Hoài Nhơn - Bình Định','0814233577','tranvanduy@gmail.com','2021-1-1'),
-(002,N'Trần',N'Văn Hào','2001-2-1',N'Nam','215530701',N'Hoài Nhơn - Bình Phước','0814233555','caovanhao@gmail.com','2021-2-1'),
-(003,N'Trần',N'Trường','2001-3-1',N'Nam','215530801',N'Tây Sơn - Bình Định','0765233577','trancongtruong@gmail.com','2021-1-15'),
-(004,N'Cao',N'Anh Văn','2001-1-5',N'Nam','215530221',N'Tây Sơn - Bình Định','0814563577','caoanhvan@gmail.com','2021-6-1'),
-(005,N'Lê',N'Phương Nam','2001-10-1',N'Nam','215531221',N'Biên Hòa - Đồng Nai','0814238767','lephuongnam@gmail.com','2021-1-7'),
-(006,N'Nguyễn',N'Ngọc Hân','2001-12-22',N'Nữ','215530156',N'Thủ Đức - TP.HCM','0925233577','nguyenngochan@gmail.com','2021-11-1');
+(N'Trần',N'Văn Duy','2001-1-1',N'Nam','215530901',N'Hoài Nhơn - Bình Định','0814233577','tranvanduy@gmail.com','2021-1-1',null),
+(N'Trần',N'Văn Hào','2001-2-1',N'Nam','215530701',N'Hoài Nhơn - Bình Phước','0814233555','caovanhao@gmail.com','2021-2-1',null),
+(N'Trần',N'Trường','2001-3-1',N'Nam','215530801',N'Tây Sơn - Bình Định','0765233577','trancongtruong@gmail.com','2021-1-15',null),
+(N'Cao',N'Anh Văn','2001-1-5',N'Nam','215530221',N'Tây Sơn - Bình Định','0814563577','caoanhvan@gmail.com','2021-6-1',null),
+(N'Lê',N'Phương Nam','2001-10-1',N'Nam','215531221',N'Biên Hòa - Đồng Nai','0814238767','lephuongnam@gmail.com','2021-1-7',null),
+(N'Nguyễn',N'Ngọc Hân','2001-12-22',N'Nữ','215530156',N'Thủ Đức - TP.HCM','0925233577','nguyenngochan@gmail.com','2021-11-1',null);
 go
 insert into TacGia values
-(0001,N'Nam Cao'),
-(0002,N'Nam Thành'),
-(0003,N'Xuân Diệu'),
-(0004,N'Hồ Xuân Hương'),
-(0005,N'Huy Cận'),
-(0006,N'Tản Đà');
+(N'Nam Cao'),
+(N'Nam Thành'),
+(N'Xuân Diệu'),
+(N'Hồ Xuân Hương'),
+(N'Huy Cận'),
+(N'Tản Đà');
 go
 insert into TheThuVien values
-(1,'2021-10-1','2022-10-1'),
-(2,'2021-11-1','2022-11-1'),
-(3,'2021-12-1','2022-12-1'),
-(4,'2021-10-15','2022-10-15'),
-(5,'2021-10-12','2022-10-12'),
-(6,'2021-6-22','2022-6-22');
+('2021-10-1','2022-10-1'),
+('2021-11-1','2022-11-1'),
+('2021-12-1','2022-12-1'),
+('2021-10-15','2022-10-15'),
+('2021-10-12','2022-10-12'),
+('2021-6-22','2022-6-22');
 go
 insert into TaiKhoan values
-(1,'user','1',0),
-(2,'emoloyee','1',1);
+(700,'user','1',0),
+(100,'emoloyee','1',1);
 go 
 insert into TheLoaiSach values
-(111,N'Giáo khoa'),
-(112,N'Hướng dẫn'),
-(113,N'Bài tập'),
-(114,N'Khoa học'),
-(115,N'Văn học');
+(N'Giáo khoa'),
+(N'Hướng dẫn'),
+(N'Bài tập'),
+(N'Khoa học'),
+(N'Văn học');
 go
 insert into NhaXuatBan values
-(1111,N'NXB Kim Đồng','0913672405',N'Ba Đình-Hà Nội','nxbkimdong@gmail.com','www.nxbkimdong.vn'),
-(1112,N'NXB Giáo dục','0913222415',N'Ba Đình-Hà Nội','nxbkimdong@gmail.com','www.nxbkimdong.vn'),
-(1113,N'NXB Tuổi trẻ','0873672419',N'Q1-TP.HCM','nxbkimdong@gmail.com','www.nxbkimdong.vn'),
-(1114,N'NXB ĐHQG','0913876405',N'Thủ Đức-TP.HCM','nxbkimdong@gmail.com','www.nxbkimdong.vn'),
-(1115,N'NXB TPHCM','09136724222',N'Q1-TP.HCM','nxbkimdong@gmail.com','www.nxbkimdong.vn');
+(N'NXB Kim Đồng','0913672405',N'Ba Đình-Hà Nội','nxbkimdong@gmail.com','www.nxbkimdong.vn'),
+(N'NXB Giáo dục','0913222415',N'Ba Đình-Hà Nội','nxbkimdong@gmail.com','www.nxbkimdong.vn'),
+(N'NXB Tuổi trẻ','0873672419',N'Q1-TP.HCM','nxbkimdong@gmail.com','www.nxbkimdong.vn'),
+(N'NXB ĐHQG','0913876405',N'Thủ Đức-TP.HCM','nxbkimdong@gmail.com','www.nxbkimdong.vn'),
+(N'NXB TPHCM','09136724222',N'Q1-TP.HCM','nxbkimdong@gmail.com','www.nxbkimdong.vn');
 go
 insert into DocGia values
-(101,N'Trần',N'Ngọc Chiến','1999-2-1',N'Nam','223550924',N'Linh Trung-Thủ Đức','0987122947','ngochien@gmail.com','2019-1-1',1),
-(102,N'Trần',N'Ngọc Như','1998-1-3',N'Nữ','223340087',N'Linh Xuân-Thủ Đức','0987122941','ngocnhu@gmail.com','2019-1-1',2),
-(103,N'Nguyễn',N'Văn Toàn','1999-4-1',N'Nam','223340123',N'Kha Vạn Cân-Thủ Đức','0987122981','vantoang@gmail.com','2019-3-1',3),
-(104,N'Trần',N'Quốc Quân','2001-5-1',N'Nam','223340345',N'Dĩ An-Bình Dương','0987155541','quocquann@gmail.com','2019-11-1',4),
-(105,N'Cao',N'Hông Hoa','2002-11-1',N'Nữ','223340678',N'Hiệp Bình Chánh-Thủ Đức','0987122149','honghoa@gmail.com','2019-1-20',5),
-(106,N'Lưu',N'Quốc Dũng','2002-10-1',N'Nam','223342134',N'Hoàng Diệu 2-Thủ Đức','0996522941','quocdung@gmail.com','2019-5-6',6);
+(N'Trần',N'Ngọc Chiến','1999-2-1',N'Nam','223550924',N'Linh Trung-Thủ Đức','0987122947','ngochien@gmail.com','2019-1-1',300,null),
+(N'Trần',N'Ngọc Như','1998-1-3',N'Nữ','223340087',N'Linh Xuân-Thủ Đức','0987122941','ngocnhu@gmail.com','2019-1-1',301,null),
+(N'Nguyễn',N'Văn Toàn','1999-4-1',N'Nam','223340123',N'Kha Vạn Cân-Thủ Đức','0987122981','vantoang@gmail.com','2019-3-1',302,null),
+(N'Trần',N'Quốc Quân','2001-5-1',N'Nam','223340345',N'Dĩ An-Bình Dương','0987155541','quocquann@gmail.com','2019-11-1',303,null),
+(N'Cao',N'Hông Hoa','2002-11-1',N'Nữ','223340678',N'Hiệp Bình Chánh-Thủ Đức','0987122149','honghoa@gmail.com','2019-1-20',304,null),
+(N'Lưu',N'Quốc Dũng','2002-10-1',N'Nam','223342134',N'Hoàng Diệu 2-Thủ Đức','0996522941','quocdung@gmail.com','2019-5-6',305,null);
 go
 insert into DauSach values
-(12345,N'Kỹ thuật lập trình',1111,'2005-1-1',111,50000,30,100,0001),
-(12346,N'Kỹ thuật điện',1112,'2005-2-1',111,50000,20,100,0002),
-(12347,N'Kỹ thuật cơ khí',1113,'2005-3-1',111,50000,10,100,0003),
-(12348,N'Lão Hạc',1114,'2015-1-19',115,70000,5,100,0004),
-(12349,N'Tắt đèn',1114,'2015-10-1',115,70000,22,100,0005),
-(12350,N'Bài tập lập trình',1114,'2015-10-1',113,25000,70,110,0005),
-(12351,N'Bài tập vật lý 1',1111,'2012-1-11',113,25000,80,100,0006),
-(12352,N'Khoa học vũ trụ',1112,'2016-1-12',114,100000,31,90,0001),
-(12353,N'Thế giới động vật',1112,'2011-1-13',114,100000,2,50,0003);
+(N'Kỹ thuật lập trình',600,'2005-1-1',500,50000,30,100,200,null,N'Kệ 1'),
+(N'Kỹ thuật điện',601,'2005-2-1',500,50000,20,100,201,null,N'Kệ 2'),
+(N'Kỹ thuật cơ khí',602,'2005-3-1',500,50000,10,100,202,null,N'Kệ 1'),
+(N'Lão Hạc',603,'2015-1-19',501,70000,5,100,203,null,N'Kệ 1'),
+(N'Tắt đèn',604,'2015-10-1',502,70000,22,100,204,null,N'Kệ 2'),
+(N'Bài tập lập trình',600,'2015-10-1',503,25000,70,110,205,null,N'Kệ 1'),
+(N'Bài tập vật lý 1',601,'2012-1-11',504,25000,80,100,200,null,N'Kệ 3'),
+(N'Khoa học vũ trụ',602,'2016-1-12',504,100000,31,90,201,null,N'Kệ 3'),
+(N'Thế giới động vật',603,'2011-1-13',502,100000,2,50,202,null,N'Kệ 3');
 go
 insert into Sach values
-(99001,12345,N'Đã mượn'),
-(99002,12345,N'Chưa mượn'),
-(99003,12345,N'Đã mượn'),
-(99004,12345,N'Chưa mượn'),
-(99005,12345,N'Đã mượn'),
-(99006,12346,N'Chưa mượn'),
-(99007,12346,N'Chưa mượn'),
-(99008,12346,N'Đã mượn'),
-(99009,12347,N'Chưa mượn'),
-(99010,12347,N'Đã mượn'),
-(99011,12348,N'Đã mượn'),
-(99012,12348,N'Đã mượn');
+(800,N'Đã mượn'),
+(800,N'Chưa mượn'),
+(800,N'Đã mượn'),
+(801,N'Chưa mượn'),
+(801,N'Đã mượn'),
+(801,N'Chưa mượn'),
+(802,N'Chưa mượn'),
+(802,N'Đã mượn'),
+(802,N'Chưa mượn'),
+(803,N'Đã mượn'),
+(803,N'Đã mượn'),
+(803,N'Đã mượn'),
+(804,N'Đã mượn'),
+(804,N'Chưa mượn'),
+(804,N'Đã mượn'),
+(805,N'Chưa mượn'),
+(805,N'Đã mượn'),
+(805,N'Chưa mượn'),
+(806,N'Chưa mượn'),
+(806,N'Đã mượn'),
+(806,N'Chưa mượn'),
+(807,N'Đã mượn'),
+(807,N'Đã mượn'),
+(807,N'Đã mượn'),
+(808,N'Đã mượn'),
+(808,N'Đã mượn'),
+(808,N'Chưa mượn'),
+(808,N'Đã mượn');
 go
 insert into MuonSach values
-(01,99001,1,001,'2020-2-1'),
-(02,99012,1,001,'2020-3-13'),
-(03,99003,2,001,'2020-4-13'),
-(04,99011,3,001,'2020-5-11'),
-(05,99005,2,002,'2020-11-12'),
-(06,99010,2,002,'2020-3-19'),
-(07,99008,3,002,'2020-6-5');
+(900,300,100,'2020-2-1'),
+(902,300,100,'2020-3-13'),
+(904,301,101,'2020-4-13'),
+(907,301,101,'2020-5-11'),
+(909,302,102,'2020-11-12'),
+(910,303,102,'2020-3-19'),
+(911,303,102,'2020-6-5');
 go
 insert into TraSach values
-(221,01,'2021-1-1',005),
-(222,03,'2020-11-29',004),
-(223,05,'2020-12-1',004),
-(224,06,'2020-12-5',004),
-(225,07,'2021-1-5',001);
-
+(1000,'2021-1-1',100),
+(1001,'2021-11-29',101),
+(1002,'2021-12-1',100),
+(1003,'2021-12-5',101),
+(1004,'2021-1-5',102);
+go
 -- Trigger 
 use Database_DBMS
 go
@@ -294,18 +335,14 @@ USE Database_DBMS
 go
 -- Tạo view xem thông tin của sách
 CREATE VIEW InforOfBook as
-select DauSach.tenSach as 'Tên sách', TacGia.butDanh as 'Tác giả', TheLoaiSach.Ten as 'Thể loại', 
-	   NhaXuatBan.Ten as 'NXB', DauSach.Gia as 'Giá', DauSach.soLuong as'Số lượng'
+select DauSach.tenSach as 'Tên sách', TacGia.butDanh as 'Tác giả', TheLoaiSach.tenTheLoai as 'Thể loại', 
+	   NhaXuatBan.ten as 'NXB', DauSach.gia as 'Giá', DauSach.soLuong as'Số lượng'
 from DauSach,TacGia,NhaXuatBan,TheLoaiSach
 where DauSach.idNXB=NhaXuatBan.idNXB and
 	  DauSach.idTacGia=TacGia.idTacGia and
 	  DauSach.idTheLoai = TheLoaiSach.idTheLoai
 go
--- Tạo view tìm kiếm sách
-create view SearchBook as
-select DauSach.tenSach as 'Tên sách', DauSach.Gia as 'Giá', DauSach.soLuongMuon as'Số lượng sách đã được mượn'
-from DauSach
-go
+
 -- Tạo view báo cáo tình trạng mượn trả sách
 create view Report as
 select MuonSach.soThe, MuonSach.ngayMuon, TraSach.ngayTra
