@@ -1,4 +1,6 @@
 ﻿--Tạo bảng
+drop database Database_DBMS
+go
 create database Database_DBMS
 go
 use Database_DBMS
@@ -35,7 +37,7 @@ create table TaiKhoan (
 	id int,
 	userName varchar (50) not null,
 	pass varchar (20) not null,
-	loai bit not null,
+	loai varchar(20) not null,
 	CONSTRAINT pk_taikhoan PRIMARY KEY (id)
 );
 go
@@ -170,8 +172,8 @@ insert into TheThuVien values
 ('2021-6-22','2022-6-22');
 go
 insert into TaiKhoan values
-(700,'user','1',0),
-(100,'emoloyee','1',1);
+(700,'user','1','nhanvien'),
+(100,'emoloyee','1','docgia');
 go 
 insert into TheLoaiSach values
 (N'Giáo khoa'),
@@ -335,16 +337,18 @@ USE Database_DBMS
 -- Tạo view xem thông tin của sách
 go
 create view InforOfBook as
-select DauSach.tenSach as 'Tên sách', TacGia.butDanh as 'Tác giả', TheLoaiSach.Ten as 'Thể loại', 
-	   NhaXuatBan.Ten as 'NXB', DauSach.Gia as 'Giá', DauSach.soLuong as'Số lượng'
+select DauSach.tenSach as 'Tên sách', TacGia.butDanh as 'Tác giả', TheLoaiSach.tenTheLoai as 'Thể loại', 
+	   NhaXuatBan.Ten as 'NXB', DauSach.gia as 'Giá', DauSach.soLuong as'Số lượng'
 from DauSach,TacGia,NhaXuatBan,TheLoaiSach
 where DauSach.idNXB=NhaXuatBan.idNXB and
 	  DauSach.idTacGia=TacGia.idTacGia and
 	  DauSach.idTheLoai = TheLoaiSach.idTheLoai
+go
 -- Tạo view tìm kiếm sách( bỏ)
 create view SearchBook as
 select DauSach.tenSach as 'Tên sách', DauSach.Gia as 'Giá', DauSach.soLuongMuon as'Số lượng sách đã được mượn'
 from DauSach
+go
 -- Tạo view báo cáo tình trạng mượn trả sách( có đổi cái view này)
 create view Report as
 select MuonSach.soThe, DocGia.Ho, DocGia.Ten,MuonSach.ngayMuon, TraSach.ngayTra
@@ -353,13 +357,15 @@ where MuonSach.soThe=TheThuVien.soThe and
 	  TheThuVien.soThe=DocGia.soThe and
 	  MuonSach.idMuon = TraSach.idMuon and
 	  MuonSach.idNhanVien = NhanVien.idNhanVien
+go
 -- Tạo view xem thông tin độc giả
 create view InforOfUser as
-select Ho,Ten, ngaySinh, gioiTinh, CMND, diaChi,soDT,Email,soThe,ngayDK
-from DocGia  
+select ho,ten, ngaySinh, gioiTinh, CMND, diaChi,soDT,email,soThe,ngayDK
+from DocGia
+go
 -- Tạo view xem thông tin nhân viên
 create view InforOfEmp as
-select Ho,Ten,ngaySinh,gioiTinh,CMND,diaChi,soDT,Email,ngayBatDau
+select ho,ten,ngaySinh,gioiTinh,CMND,diaChi,soDT,email,ngayBatDau
 from NhanVien
 go
 
@@ -376,7 +382,7 @@ go
 create function fu_timTenDocGia(@ten nvarchar(10))
 returns table
 as
-	return select * from dbo.InforOfUser where (select concat( dbo.InforOfUser.Ho,' ',dbo.InforOfUser.Ten)) like '%'+@ten+'%'
+	return select * from dbo.InforOfUser where (select concat( dbo.InforOfUser.ho,' ',dbo.InforOfUser.ten)) like '%'+@ten+'%'
 go
 
 
