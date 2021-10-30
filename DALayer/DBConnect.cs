@@ -8,15 +8,15 @@ using System.Data;
 
 namespace DALayer
 {
-    public class DAL
+    public class DBConnect
     {
-        string ConnStr = "Data Source=(local)\\ANHVAN;Initial Catalog=Database_DBMS;Integrated Security=True";
+        string ConnStr = "Data Source=localhost;Initial Catalog=Database_DBMS;Integrated Security=True";
 
         public SqlConnection conn = null;
         public SqlCommand comm = null;
         public SqlDataAdapter da = null;
 
-        public DAL()
+        public DBConnect()
         {
             conn = new SqlConnection(ConnStr);
             comm = conn.CreateCommand();
@@ -28,6 +28,11 @@ namespace DALayer
             conn.Open();
             comm.CommandText = strSQL;
             comm.CommandType = ct;
+            if (p != null)
+            {
+                foreach (SqlParameter x in p)
+                    comm.Parameters.Add(x);
+            }
             da = new SqlDataAdapter(comm);
             DataSet ds = new DataSet();
             da.Fill(ds);

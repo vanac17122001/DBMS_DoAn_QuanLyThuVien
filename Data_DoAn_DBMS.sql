@@ -332,23 +332,58 @@ go
 
 --View
 USE Database_DBMS
-go
 -- Tạo view xem thông tin của sách
-CREATE VIEW InforOfBook as
-select DauSach.tenSach as 'Tên sách', TacGia.butDanh as 'Tác giả', TheLoaiSach.tenTheLoai as 'Thể loại', 
-	   NhaXuatBan.ten as 'NXB', DauSach.gia as 'Giá', DauSach.soLuong as'Số lượng'
+go
+create view InforOfBook as
+select DauSach.tenSach as 'Tên sách', TacGia.butDanh as 'Tác giả', TheLoaiSach.Ten as 'Thể loại', 
+	   NhaXuatBan.Ten as 'NXB', DauSach.Gia as 'Giá', DauSach.soLuong as'Số lượng'
 from DauSach,TacGia,NhaXuatBan,TheLoaiSach
 where DauSach.idNXB=NhaXuatBan.idNXB and
 	  DauSach.idTacGia=TacGia.idTacGia and
 	  DauSach.idTheLoai = TheLoaiSach.idTheLoai
-go
-
--- Tạo view báo cáo tình trạng mượn trả sách
+-- Tạo view tìm kiếm sách( bỏ)
+create view SearchBook as
+select DauSach.tenSach as 'Tên sách', DauSach.Gia as 'Giá', DauSach.soLuongMuon as'Số lượng sách đã được mượn'
+from DauSach
+-- Tạo view báo cáo tình trạng mượn trả sách( có đổi cái view này)
 create view Report as
-select MuonSach.soThe, MuonSach.ngayMuon, TraSach.ngayTra
-from MuonSach, TraSach,TheThuVien, NhanVien
+select MuonSach.soThe, DocGia.Ho, DocGia.Ten,MuonSach.ngayMuon, TraSach.ngayTra
+from MuonSach, TraSach,TheThuVien, NhanVien, DocGia
 where MuonSach.soThe=TheThuVien.soThe and
+	  TheThuVien.soThe=DocGia.soThe and
 	  MuonSach.idMuon = TraSach.idMuon and
 	  MuonSach.idNhanVien = NhanVien.idNhanVien
+-- Tạo view xem thông tin độc giả
+create view InforOfUser as
+select Ho,Ten, ngaySinh, gioiTinh, CMND, diaChi,soDT,Email,soThe,ngayDK
+from DocGia  
+-- Tạo view xem thông tin nhân viên
+create view InforOfEmp as
+select Ho,Ten,ngaySinh,gioiTinh,CMND,diaChi,soDT,Email,ngayBatDau
+from NhanVien
 go
 
+-- function
+-- funtion tìm gần đúng theo tên sách
+create function fu_timSach(@ten nvarchar(20))
+returns table
+as
+	return select * from dbo.InforOfBook where dbo.InforOfBook.[Tên sách] like '%'+@ten+'%'
+go
+
+-- function tìm gần đúng theo tên độc giả
+go
+create function fu_timTenDocGia(@ten nvarchar(10))
+returns table
+as
+	return select * from dbo.InforOfUser where (select concat( dbo.InforOfUser.Ho,' ',dbo.InforOfUser.Ten)) like '%'+@ten+'%'
+go
+
+
+-- function tìm chính xác theo thẻ độc giả
+go
+create function fu_timTheDocGia(@id int)
+returns table
+as
+	return select * from dbo.InforOfUser where dbo.InforOfUser.soThe = @id
+go

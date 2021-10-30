@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FE2DC7C1-5A9B-4162-ABA8-9027F51B01CB}</ProjectGuid>
+    <ProjectGuid>{DBC2DA32-69CA-47B1-B51A-280AD11CC2AE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DALayer</RootNamespace>
-    <AssemblyName>DALayer</AssemblyName>
+    <RootNamespace>DTO</RootNamespace>
+    <AssemblyName>DTO</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,17 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL_DangNhap.cs" />
-    <Compile Include="DAL_DauSach.cs" />
-    <Compile Include="DBConnect.cs" />
-    <Compile Include="DAL_DocGia.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="DTO_DocGia.cs" />
+    <Compile Include="DTO_Sach.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DTO\DTO.csproj">
-      <Project>{dbc2da32-69ca-47b1-b51a-280ad11cc2ae}</Project>
-      <Name>DTO</Name>
-    </ProjectReference>
+    <Compile Include="user.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -106,9 +106,9 @@
       <Project>{d495a6f4-81a0-43b4-a2f7-e638b992e698}</Project>
       <Name>BLLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DALayer\DALayer.csproj">
-      <Project>{fe2dc7c1-5a9b-4162-aba8-9027f51b01cb}</Project>
-      <Name>DALayer</Name>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{dbc2da32-69ca-47b1-b51a-280ad11cc2ae}</Project>
+      <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

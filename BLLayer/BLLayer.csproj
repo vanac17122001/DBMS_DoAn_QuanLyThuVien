@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL.cs" />
+    <Compile Include="BLL_DangNhap.cs" />
+    <Compile Include="BLL_DauSach.cs" />
+    <Compile Include="BLL_DocGia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +51,13 @@
       <Project>{fe2dc7c1-5a9b-4162-aba8-9027f51b01cb}</Project>
       <Name>DALayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{dbc2da32-69ca-47b1-b51a-280ad11cc2ae}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

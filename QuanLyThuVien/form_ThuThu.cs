@@ -7,15 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DTO;
+using BLLayer;
+
 
 namespace QuanLyThuVien
 {
     public partial class form_ThuThu : Form
     {
+        BLL_DocGia docgia = new BLL_DocGia();
+        BLL_DauSach dausach = new BLL_DauSach();
+        DataSet ds = new DataSet();
         public form_ThuThu()
         {
             InitializeComponent();
             btnQuanLySach_Click(null, null);
+        }
+        public void loadDocGia()
+        {
+            ds = docgia.getDocGia();
+            dagDanhSachDocGia.DataSource = ds.Tables[0];
+        }
+        public void loadDauSach()
+        {
+            ds = dausach.getDauSach();
+            dagDanhSachDauSach.DataSource = ds.Tables[0];
         }
 
         private void btnThongTinThuThu_Click(object sender, EventArgs e)
@@ -48,7 +64,13 @@ namespace QuanLyThuVien
             tcThongKeBaoCao.Visible = false;
             tcQuanLyDocGia.Size = new Size(965, 661);
             tcQuanLyDocGia.Location= new System.Drawing.Point(252, 38);
+            loadDocGia();
             tcQuanLyDocGia.Visible = true;
+
+
+
+            //lấy thông tin độc giả
+
         }
 
         private void btnQuanLySach_Click(object sender, EventArgs e)
@@ -59,6 +81,7 @@ namespace QuanLyThuVien
             tcQuanLyDocGia.Visible = false;
             tcThongTinSach.Size = new Size(965, 661);
             tcThongTinSach.Location= new System.Drawing.Point(252, 38);
+            loadDauSach();
             tcThongTinSach.Visible = true;
         }
 
@@ -77,6 +100,32 @@ namespace QuanLyThuVien
         {
             Form formChiTietDocGia = new formChiTietDocGia();
             formChiTietDocGia.ShowDialog();
+        }
+
+        private void btnTimKiemDocGia_Click(object sender, EventArgs e)
+        {
+            if(rabTimKiemDocGiaTheoTen.Checked == true) 
+            { 
+                string ten = txtTiemKiemDocGia.Text.ToString();
+                ds = docgia.timDocGia(ten);
+                dagDanhSachDocGia.DataSource = ds.Tables[0];
+            }
+            else if (rabTimKiemDocGiaTheoSoThe.Checked == true)
+            {
+                int sothe = int.Parse(txtTiemKiemDocGia.Text);
+                ds = docgia.timDocGiaTheoSoThe(sothe);
+                dagDanhSachDocGia.DataSource = ds.Tables[0];
+            }
+        }
+
+        private void btnTimKiemDauSach_Click(object sender, EventArgs e)
+        {
+            if(rabTimKiemTenDauSach.Checked == true)
+            {
+                string ten = txtTimKiemDauSach.Text.ToString();
+                ds = dausach.timDauSach(ten);
+                dagDanhSachDauSach.DataSource = ds.Tables[0];
+            }
         }
     }
 }
