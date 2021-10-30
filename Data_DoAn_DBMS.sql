@@ -387,3 +387,11 @@ returns table
 as
 	return select * from dbo.InforOfUser where dbo.InforOfUser.soThe = @id
 go
+-- function đăng nhập
+go
+create function fun_dangnhap(@user nvarchar(50), @pass int)
+returns table
+as
+ return select loai from dbo.TaiKhoan where userName = @user and pass = @pass
+go
+
