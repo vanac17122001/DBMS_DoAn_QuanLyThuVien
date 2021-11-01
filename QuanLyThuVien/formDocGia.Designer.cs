@@ -136,11 +136,11 @@ namespace QuanLyThuVien
             this.tabPage1.Controls.Add(this.lbDanhSachDauSach);
             this.tabPage1.Controls.Add(this.dagDanhSachDauSach);
             this.tabPage1.ForeColor = System.Drawing.Color.MediumBlue;
-            this.tabPage1.Location = new System.Drawing.Point(4, 31);
+            this.tabPage1.Location = new System.Drawing.Point(4, 32);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(1235, 638);
+            this.tabPage1.Size = new System.Drawing.Size(1235, 637);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tìm kiếm sách";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -309,7 +309,7 @@ namespace QuanLyThuVien
             this.rabTimKiemTacGiaDauSach.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rabTimKiemTacGiaDauSach.Location = new System.Drawing.Point(144, 66);
             this.rabTimKiemTacGiaDauSach.Name = "rabTimKiemTacGiaDauSach";
-            this.rabTimKiemTacGiaDauSach.Size = new System.Drawing.Size(90, 27);
+            this.rabTimKiemTacGiaDauSach.Size = new System.Drawing.Size(93, 27);
             this.rabTimKiemTacGiaDauSach.TabIndex = 7;
             this.rabTimKiemTacGiaDauSach.TabStop = true;
             this.rabTimKiemTacGiaDauSach.Text = "Tác giả";
@@ -351,7 +351,7 @@ namespace QuanLyThuVien
             this.rabTimKiemTenDauSach.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rabTimKiemTenDauSach.Location = new System.Drawing.Point(144, 28);
             this.rabTimKiemTenDauSach.Name = "rabTimKiemTenDauSach";
-            this.rabTimKiemTenDauSach.Size = new System.Drawing.Size(137, 27);
+            this.rabTimKiemTenDauSach.Size = new System.Drawing.Size(140, 27);
             this.rabTimKiemTenDauSach.TabIndex = 5;
             this.rabTimKiemTenDauSach.TabStop = true;
             this.rabTimKiemTenDauSach.Text = "Tên đầu sách";
@@ -383,11 +383,11 @@ namespace QuanLyThuVien
             this.tabPage2.Controls.Add(this.label56);
             this.tabPage2.Controls.Add(this.dataGridView3);
             this.tabPage2.ForeColor = System.Drawing.Color.Blue;
-            this.tabPage2.Location = new System.Drawing.Point(4, 31);
+            this.tabPage2.Location = new System.Drawing.Point(4, 32);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(1235, 638);
+            this.tabPage2.Size = new System.Drawing.Size(1235, 637);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Sách đã mượn";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -640,11 +640,11 @@ namespace QuanLyThuVien
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panel1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 31);
+            this.tabPage3.Location = new System.Drawing.Point(4, 32);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage3.Size = new System.Drawing.Size(1235, 638);
+            this.tabPage3.Size = new System.Drawing.Size(1235, 637);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Thông tin người dùng";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -824,10 +824,10 @@ namespace QuanLyThuVien
             // 
             // formDocGia
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1278, 712);
+            this.ClientSize = new System.Drawing.Size(1427, 712);
             this.Controls.Add(this.tcDocGia);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

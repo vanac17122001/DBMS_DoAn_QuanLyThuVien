@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DALayer;
-using DALayer;
 using System.Data;
 
 namespace BLLayer
@@ -20,6 +19,10 @@ namespace BLLayer
         public DataSet timDauSach(string ten)
         {
             return sach.timDauSach(ten);
+        }
+        public DataSet timDauSachTheoTenTG(String tentg)
+        {
+            return sach.timDauSachTheoTenTG(tentg);
         }
     }
 }

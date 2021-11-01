@@ -25,6 +25,7 @@ namespace DALayer
         {
             if (conn.State == ConnectionState.Open)
                 conn.Close();
+            comm.Parameters.Clear();
             conn.Open();
             comm.CommandText = strSQL;
             comm.CommandType = ct;

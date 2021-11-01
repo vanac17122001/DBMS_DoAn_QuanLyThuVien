@@ -31,5 +31,20 @@ namespace DALayer
             return db.ExecuteQueryDataset("select * from fu_timTheDocGia(@sothe);",
             CommandType.Text, new SqlParameter("@sothe", sothe));
         }
+        public bool ThemDocGia(ref string err,DTO_DocGia DTO)
+        {
+            return db.MyExecuteNonQuery("sp_ThemDocGia", CommandType.StoredProcedure, ref err,
+                new SqlParameter { ParameterName = "@ho", Value = DTO.Ho},
+                new SqlParameter { ParameterName = "@ten", Value = DTO.Ten },
+                new SqlParameter { ParameterName = "@ngaySinh", Value = DTO.Ngaysinh},
+                new SqlParameter { ParameterName = "@gioiTinh", Value = DTO.Gioitinh},
+                new SqlParameter { ParameterName = "@CMND", Value = DTO.CMND },
+                new SqlParameter { ParameterName = "@diaChi", Value = DTO.Diachi },
+                new SqlParameter { ParameterName = "@soDT", Value = DTO.Sdt },
+                new SqlParameter { ParameterName = "@email", Value = DTO.Email},
+                new SqlParameter { ParameterName = "@ngayDK", Value = DTO.Ngaydk },
+                new SqlParameter { ParameterName = "@anhDG", Value = DTO.AnhDG }
+                );
+        }
     }
 }

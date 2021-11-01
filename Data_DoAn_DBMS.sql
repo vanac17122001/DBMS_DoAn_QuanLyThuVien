@@ -336,9 +336,12 @@ go
 USE Database_DBMS
 -- Tạo view xem thông tin của sách
 go
+drop view InforOfBook
+go
 create view InforOfBook as
-select DauSach.tenSach as 'Tên sách', TacGia.butDanh as 'Tác giả', TheLoaiSach.tenTheLoai as 'Thể loại', 
-	   NhaXuatBan.Ten as 'NXB', DauSach.gia as 'Giá', DauSach.soLuong as'Số lượng'
+select DauSach.tenSach as 'Tên sách', TacGia.butDanh as 'Tác giả',
+	   NhaXuatBan.Ten as 'NXB',DauSach.soLuong as'Số lượng', DauSach.soLuongMuon as 'Số lượng mượn',
+	   DauSach.namXB as 'Năm xuất bản', DauSach.anhDS as 'Ảnh bìa'
 from DauSach,TacGia,NhaXuatBan,TheLoaiSach
 where DauSach.idNXB=NhaXuatBan.idNXB and
 	  DauSach.idTacGia=TacGia.idTacGia and
@@ -370,14 +373,21 @@ from NhanVien
 go
 
 -- function
--- funtion tìm gần đúng theo tên sách
+-- function tìm đầu sách gần đúng theo tên sách
 create function fu_timSach(@ten nvarchar(20))
 returns table
 as
 	return select * from dbo.InforOfBook where dbo.InforOfBook.[Tên sách] like '%'+@ten+'%'
 go
 
--- function tìm gần đúng theo tên độc giả
+-- function  tìm kiếm đầu sách gần đúng theo tên tác giả
+create function fu_timSachTheoTenTG(@tentg nvarchar(20))
+returns table
+as
+	return select * from dbo.InforOfBook where dbo.InforOfBook.[Tác giả] like '%'+@tentg+'%'
+go
+
+-- function tìm độc giả gần đúng theo tên độc giả
 go
 create function fu_timTenDocGia(@ten nvarchar(10))
 returns table
@@ -386,14 +396,14 @@ as
 go
 
 
--- function tìm chính xác theo thẻ độc giả
+-- function tìm độc giả chính xác theo thẻ độc giả
 go
 create function fu_timTheDocGia(@id int)
 returns table
 as
 	return select * from dbo.InforOfUser where dbo.InforOfUser.soThe = @id
 go
--- function đăng nhập
+-- function kiểm tra đăng nhập
 go
 create function fun_dangnhap(@user nvarchar(50), @pass int)
 returns table

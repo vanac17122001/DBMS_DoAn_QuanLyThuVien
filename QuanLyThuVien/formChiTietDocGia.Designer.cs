@@ -32,39 +32,37 @@ namespace QuanLyThuVien
             System.Windows.Forms.Label label24;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formChiTietDocGia));
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSuaDocGia = new System.Windows.Forms.Button();
+            this.btnXoaDG = new System.Windows.Forms.Button();
+            this.btnLuuDocGia = new System.Windows.Forms.Button();
+            this.txtSoThe = new System.Windows.Forms.TextBox();
+            this.txtNgayDK = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtSDT = new System.Windows.Forms.TextBox();
+            this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.picAnhDG = new System.Windows.Forms.PictureBox();
+            this.txtCMND = new System.Windows.Forms.TextBox();
+            this.txtGioiTinh = new System.Windows.Forms.TextBox();
+            this.txtNgaySinh = new System.Windows.Forms.TextBox();
+            this.txtTenDG = new System.Windows.Forms.TextBox();
+            this.txtHoDG = new System.Windows.Forms.TextBox();
+            this.txtIdDG = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             label24 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAnhDG)).BeginInit();
             this.SuspendLayout();
             // 
             // label24
@@ -80,25 +78,23 @@ namespace QuanLyThuVien
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.panel1);
-            this.groupBox4.Controls.Add(this.textBox6);
-            this.groupBox4.Controls.Add(this.textBox5);
-            this.groupBox4.Controls.Add(this.textBox4);
-            this.groupBox4.Controls.Add(this.textBox3);
-            this.groupBox4.Controls.Add(this.textBox2);
-            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.txtSoThe);
+            this.groupBox4.Controls.Add(this.txtNgayDK);
+            this.groupBox4.Controls.Add(this.txtEmail);
+            this.groupBox4.Controls.Add(this.txtSDT);
+            this.groupBox4.Controls.Add(this.txtDiaChi);
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Controls.Add(this.pictureBox2);
-            this.groupBox4.Controls.Add(this.textBox8);
-            this.groupBox4.Controls.Add(this.textBox9);
-            this.groupBox4.Controls.Add(this.textBox10);
-            this.groupBox4.Controls.Add(this.textBox11);
-            this.groupBox4.Controls.Add(this.textBox12);
-            this.groupBox4.Controls.Add(this.textBox13);
+            this.groupBox4.Controls.Add(this.picAnhDG);
+            this.groupBox4.Controls.Add(this.txtCMND);
+            this.groupBox4.Controls.Add(this.txtGioiTinh);
+            this.groupBox4.Controls.Add(this.txtNgaySinh);
+            this.groupBox4.Controls.Add(this.txtTenDG);
+            this.groupBox4.Controls.Add(this.txtHoDG);
+            this.groupBox4.Controls.Add(this.txtIdDG);
             this.groupBox4.Controls.Add(this.label18);
             this.groupBox4.Controls.Add(this.label19);
             this.groupBox4.Controls.Add(this.label20);
@@ -115,47 +111,87 @@ namespace QuanLyThuVien
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Chi Tiết Độc Giả";
             // 
-            // textBox6
+            // panel1
             // 
-            this.textBox6.Location = new System.Drawing.Point(622, 263);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(295, 30);
-            this.textBox6.TabIndex = 27;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnSuaDocGia);
+            this.panel1.Controls.Add(this.btnXoaDG);
+            this.panel1.Controls.Add(this.btnLuuDocGia);
+            this.panel1.Location = new System.Drawing.Point(462, 340);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(455, 99);
+            this.panel1.TabIndex = 28;
             // 
-            // textBox5
+            // btnSuaDocGia
             // 
-            this.textBox5.Location = new System.Drawing.Point(622, 216);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(295, 30);
-            this.textBox5.TabIndex = 26;
+            this.btnSuaDocGia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnSuaDocGia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuaDocGia.ForeColor = System.Drawing.Color.White;
+            this.btnSuaDocGia.Location = new System.Drawing.Point(3, 31);
+            this.btnSuaDocGia.Name = "btnSuaDocGia";
+            this.btnSuaDocGia.Size = new System.Drawing.Size(110, 41);
+            this.btnSuaDocGia.TabIndex = 12;
+            this.btnSuaDocGia.Text = "Sửa";
+            this.btnSuaDocGia.UseVisualStyleBackColor = false;
             // 
-            // textBox4
+            // btnXoaDG
             // 
-            this.textBox4.Location = new System.Drawing.Point(622, 167);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(295, 30);
-            this.textBox4.TabIndex = 25;
+            this.btnXoaDG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnXoaDG.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoaDG.ForeColor = System.Drawing.Color.White;
+            this.btnXoaDG.Location = new System.Drawing.Point(169, 31);
+            this.btnXoaDG.Name = "btnXoaDG";
+            this.btnXoaDG.Size = new System.Drawing.Size(110, 41);
+            this.btnXoaDG.TabIndex = 13;
+            this.btnXoaDG.Text = "Xóa";
+            this.btnXoaDG.UseVisualStyleBackColor = false;
             // 
-            // textBox3
+            // btnLuuDocGia
             // 
-            this.textBox3.Location = new System.Drawing.Point(622, 126);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(295, 30);
-            this.textBox3.TabIndex = 24;
+            this.btnLuuDocGia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnLuuDocGia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLuuDocGia.ForeColor = System.Drawing.Color.White;
+            this.btnLuuDocGia.Location = new System.Drawing.Point(342, 31);
+            this.btnLuuDocGia.Name = "btnLuuDocGia";
+            this.btnLuuDocGia.Size = new System.Drawing.Size(110, 41);
+            this.btnLuuDocGia.TabIndex = 14;
+            this.btnLuuDocGia.Text = "Lưu";
+            this.btnLuuDocGia.UseVisualStyleBackColor = false;
             // 
-            // textBox2
+            // txtSoThe
             // 
-            this.textBox2.Location = new System.Drawing.Point(622, 82);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(295, 30);
-            this.textBox2.TabIndex = 23;
+            this.txtSoThe.Location = new System.Drawing.Point(622, 216);
+            this.txtSoThe.Name = "txtSoThe";
+            this.txtSoThe.Size = new System.Drawing.Size(295, 30);
+            this.txtSoThe.TabIndex = 26;
             // 
-            // textBox1
+            // txtNgayDK
             // 
-            this.textBox1.Location = new System.Drawing.Point(622, 39);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(295, 30);
-            this.textBox1.TabIndex = 22;
+            this.txtNgayDK.Location = new System.Drawing.Point(622, 167);
+            this.txtNgayDK.Name = "txtNgayDK";
+            this.txtNgayDK.Size = new System.Drawing.Size(295, 30);
+            this.txtNgayDK.TabIndex = 25;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(622, 126);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(295, 30);
+            this.txtEmail.TabIndex = 24;
+            // 
+            // txtSDT
+            // 
+            this.txtSDT.Location = new System.Drawing.Point(622, 82);
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.Size = new System.Drawing.Size(295, 30);
+            this.txtSDT.TabIndex = 23;
+            // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.Location = new System.Drawing.Point(622, 39);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Size = new System.Drawing.Size(295, 30);
+            this.txtDiaChi.TabIndex = 22;
             // 
             // label6
             // 
@@ -207,102 +243,57 @@ namespace QuanLyThuVien
             this.label2.TabIndex = 17;
             this.label2.Text = "Số thẻ :";
             // 
-            // label1
+            // picAnhDG
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(458, 270);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 23);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Số sách đã mượn :";
+            this.picAnhDG.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picAnhDG.Location = new System.Drawing.Point(158, 179);
+            this.picAnhDG.Name = "picAnhDG";
+            this.picAnhDG.Size = new System.Drawing.Size(191, 114);
+            this.picAnhDG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picAnhDG.TabIndex = 15;
+            this.picAnhDG.TabStop = false;
             // 
-            // pictureBox2
+            // txtCMND
             // 
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(158, 179);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(191, 114);
-            this.pictureBox2.TabIndex = 15;
-            this.pictureBox2.TabStop = false;
+            this.txtCMND.Location = new System.Drawing.Point(119, 409);
+            this.txtCMND.Name = "txtCMND";
+            this.txtCMND.Size = new System.Drawing.Size(295, 30);
+            this.txtCMND.TabIndex = 11;
             // 
-            // button5
+            // txtGioiTinh
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.button5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(342, 31);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(110, 41);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "Lưu";
-            this.button5.UseVisualStyleBackColor = false;
+            this.txtGioiTinh.Location = new System.Drawing.Point(119, 364);
+            this.txtGioiTinh.Name = "txtGioiTinh";
+            this.txtGioiTinh.Size = new System.Drawing.Size(295, 30);
+            this.txtGioiTinh.TabIndex = 11;
             // 
-            // button6
+            // txtNgaySinh
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.button6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(169, 31);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(110, 41);
-            this.button6.TabIndex = 13;
-            this.button6.Text = "Xóa";
-            this.button6.UseVisualStyleBackColor = false;
+            this.txtNgaySinh.Location = new System.Drawing.Point(119, 318);
+            this.txtNgaySinh.Name = "txtNgaySinh";
+            this.txtNgaySinh.Size = new System.Drawing.Size(295, 30);
+            this.txtNgaySinh.TabIndex = 11;
             // 
-            // button7
+            // txtTenDG
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.button7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(3, 31);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(110, 41);
-            this.button7.TabIndex = 12;
-            this.button7.Text = "Sửa";
-            this.button7.UseVisualStyleBackColor = false;
+            this.txtTenDG.Location = new System.Drawing.Point(119, 126);
+            this.txtTenDG.Name = "txtTenDG";
+            this.txtTenDG.Size = new System.Drawing.Size(295, 30);
+            this.txtTenDG.TabIndex = 11;
             // 
-            // textBox8
+            // txtHoDG
             // 
-            this.textBox8.Location = new System.Drawing.Point(119, 409);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(295, 30);
-            this.textBox8.TabIndex = 11;
+            this.txtHoDG.Location = new System.Drawing.Point(119, 82);
+            this.txtHoDG.Name = "txtHoDG";
+            this.txtHoDG.Size = new System.Drawing.Size(295, 30);
+            this.txtHoDG.TabIndex = 11;
             // 
-            // textBox9
+            // txtIdDG
             // 
-            this.textBox9.Location = new System.Drawing.Point(119, 364);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(295, 30);
-            this.textBox9.TabIndex = 11;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(119, 318);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(295, 30);
-            this.textBox10.TabIndex = 11;
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(119, 126);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(295, 30);
-            this.textBox11.TabIndex = 11;
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(119, 82);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(295, 30);
-            this.textBox12.TabIndex = 11;
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(119, 39);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(295, 30);
-            this.textBox13.TabIndex = 11;
+            this.txtIdDG.Location = new System.Drawing.Point(119, 39);
+            this.txtIdDG.Name = "txtIdDG";
+            this.txtIdDG.Size = new System.Drawing.Size(295, 30);
+            this.txtIdDG.TabIndex = 11;
             // 
             // label18
             // 
@@ -364,17 +355,6 @@ namespace QuanLyThuVien
             this.label23.TabIndex = 5;
             this.label23.Text = "Họ :";
             // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Location = new System.Drawing.Point(462, 340);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(455, 99);
-            this.panel1.TabIndex = 28;
-            // 
             // formChiTietDocGia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -384,10 +364,11 @@ namespace QuanLyThuVien
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formChiTietDocGia";
             this.Text = "Chi Tiết Độc Giả";
+            this.Load += new System.EventHandler(this.formChiTietDocGia_Load);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picAnhDG)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -395,34 +376,32 @@ namespace QuanLyThuVien
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.PictureBox picAnhDG;
+        private System.Windows.Forms.Button btnLuuDocGia;
+        private System.Windows.Forms.Button btnXoaDG;
+        private System.Windows.Forms.Button btnSuaDocGia;
+        private System.Windows.Forms.TextBox txtCMND;
+        private System.Windows.Forms.TextBox txtGioiTinh;
+        private System.Windows.Forms.TextBox txtNgaySinh;
+        private System.Windows.Forms.TextBox txtTenDG;
+        private System.Windows.Forms.TextBox txtHoDG;
+        private System.Windows.Forms.TextBox txtIdDG;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSoThe;
+        private System.Windows.Forms.TextBox txtNgayDK;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtSDT;
+        private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
     }
 }

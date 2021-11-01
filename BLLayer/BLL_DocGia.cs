@@ -27,5 +27,9 @@ namespace BLLayer
         {
             return dg.timDocGiaTheoSoThe(sothe);
         }
+        public bool themDocGia(ref string err,DTO_DocGia DTO)
+        {
+            return dg.ThemDocGia(ref err, DTO);
+        }
     }
 }

@@ -19,12 +19,17 @@ namespace DALayer
         }
         public DataSet getDauSach()
         {
-            return db.ExecuteQueryDataset("select * from DauSach;", CommandType.Text, null);
+            return db.ExecuteQueryDataset("select * from InforOfBook", CommandType.Text, null);
         }
         public DataSet timDauSach(string ten)
         {
             return db.ExecuteQueryDataset("select * from fu_timSach(@ten);",
             CommandType.Text, new SqlParameter("@ten", ten));
+        }
+        public DataSet timDauSachTheoTenTG(string tentg)
+        {
+            return db.ExecuteQueryDataset("select * from [dbo].fu_timSachTheoTenTG(@tentg);",
+            CommandType.Text, new SqlParameter("@tentg", tentg));
         }
     }
 }
