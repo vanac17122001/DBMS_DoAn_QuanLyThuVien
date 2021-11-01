@@ -38,6 +38,7 @@ namespace QuanLyThuVien
             this.btnQuanLySach = new System.Windows.Forms.Button();
             this.tcThongTinSach = new System.Windows.Forms.TabControl();
             this.tbThongTinSach = new System.Windows.Forms.TabPage();
+            this.picRefeshDauSach = new System.Windows.Forms.PictureBox();
             this.grbChiTietDauSach = new System.Windows.Forms.GroupBox();
             this.pibDauSach = new System.Windows.Forms.PictureBox();
             this.btnLuuDauSach = new System.Windows.Forms.Button();
@@ -246,10 +247,10 @@ namespace QuanLyThuVien
             this.textBox28 = new System.Windows.Forms.TextBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.picRefeshDauSach = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.tcThongTinSach.SuspendLayout();
             this.tbThongTinSach.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picRefeshDauSach)).BeginInit();
             this.grbChiTietDauSach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pibDauSach)).BeginInit();
             this.grbTimKiemDauSachTheoTen.SuspendLayout();
@@ -288,7 +289,6 @@ namespace QuanLyThuVien
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRefeshDauSach)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -368,10 +368,10 @@ namespace QuanLyThuVien
             this.tcThongTinSach.Controls.Add(this.tbThongTinSach);
             this.tcThongTinSach.Controls.Add(this.tpThemSach);
             this.tcThongTinSach.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tcThongTinSach.Location = new System.Drawing.Point(222, 21);
+            this.tcThongTinSach.Location = new System.Drawing.Point(1237, 40);
             this.tcThongTinSach.Name = "tcThongTinSach";
             this.tcThongTinSach.SelectedIndex = 0;
-            this.tcThongTinSach.Size = new System.Drawing.Size(980, 616);
+            this.tcThongTinSach.Size = new System.Drawing.Size(196, 98);
             this.tcThongTinSach.TabIndex = 1;
             // 
             // tbThongTinSach
@@ -386,10 +386,21 @@ namespace QuanLyThuVien
             this.tbThongTinSach.Location = new System.Drawing.Point(4, 32);
             this.tbThongTinSach.Name = "tbThongTinSach";
             this.tbThongTinSach.Padding = new System.Windows.Forms.Padding(3);
-            this.tbThongTinSach.Size = new System.Drawing.Size(972, 580);
+            this.tbThongTinSach.Size = new System.Drawing.Size(188, 62);
             this.tbThongTinSach.TabIndex = 0;
             this.tbThongTinSach.Text = "Thông Tin Sách";
             this.tbThongTinSach.UseVisualStyleBackColor = true;
+            // 
+            // picRefeshDauSach
+            // 
+            this.picRefeshDauSach.Image = ((System.Drawing.Image)(resources.GetObject("picRefeshDauSach.Image")));
+            this.picRefeshDauSach.Location = new System.Drawing.Point(899, 31);
+            this.picRefeshDauSach.Name = "picRefeshDauSach";
+            this.picRefeshDauSach.Size = new System.Drawing.Size(50, 48);
+            this.picRefeshDauSach.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picRefeshDauSach.TabIndex = 17;
+            this.picRefeshDauSach.TabStop = false;
+            this.picRefeshDauSach.Click += new System.EventHandler(this.picRefeshDauSach_Click);
             // 
             // grbChiTietDauSach
             // 
@@ -670,7 +681,7 @@ namespace QuanLyThuVien
             this.tpThemSach.Location = new System.Drawing.Point(4, 32);
             this.tpThemSach.Name = "tpThemSach";
             this.tpThemSach.Padding = new System.Windows.Forms.Padding(3);
-            this.tpThemSach.Size = new System.Drawing.Size(248, 86);
+            this.tpThemSach.Size = new System.Drawing.Size(972, 580);
             this.tpThemSach.TabIndex = 1;
             this.tpThemSach.Text = "Thêm Sách Mới";
             this.tpThemSach.UseVisualStyleBackColor = true;
@@ -877,10 +888,10 @@ namespace QuanLyThuVien
             this.tcQuanLyDocGia.Controls.Add(this.tabPage1);
             this.tcQuanLyDocGia.Controls.Add(this.tabPage2);
             this.tcQuanLyDocGia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tcQuanLyDocGia.Location = new System.Drawing.Point(1237, 187);
+            this.tcQuanLyDocGia.Location = new System.Drawing.Point(222, 17);
             this.tcQuanLyDocGia.Name = "tcQuanLyDocGia";
             this.tcQuanLyDocGia.SelectedIndex = 0;
-            this.tcQuanLyDocGia.Size = new System.Drawing.Size(231, 134);
+            this.tcQuanLyDocGia.Size = new System.Drawing.Size(980, 640);
             this.tcQuanLyDocGia.TabIndex = 0;
             // 
             // tabPage1
@@ -893,7 +904,7 @@ namespace QuanLyThuVien
             this.tabPage1.Location = new System.Drawing.Point(4, 32);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(223, 98);
+            this.tabPage1.Size = new System.Drawing.Size(972, 604);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Thông tin độc giả";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1137,7 +1148,7 @@ namespace QuanLyThuVien
             this.tabPage2.Location = new System.Drawing.Point(4, 32);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(972, 538);
+            this.tabPage2.Size = new System.Drawing.Size(972, 604);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Thêm độc giả";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -2490,17 +2501,6 @@ namespace QuanLyThuVien
             this.pictureBox5.TabIndex = 27;
             this.pictureBox5.TabStop = false;
             // 
-            // picRefeshDauSach
-            // 
-            this.picRefeshDauSach.Image = ((System.Drawing.Image)(resources.GetObject("picRefeshDauSach.Image")));
-            this.picRefeshDauSach.Location = new System.Drawing.Point(899, 31);
-            this.picRefeshDauSach.Name = "picRefeshDauSach";
-            this.picRefeshDauSach.Size = new System.Drawing.Size(50, 48);
-            this.picRefeshDauSach.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picRefeshDauSach.TabIndex = 17;
-            this.picRefeshDauSach.TabStop = false;
-            this.picRefeshDauSach.Click += new System.EventHandler(this.picRefeshDauSach_Click);
-            // 
             // form_ThuThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2524,6 +2524,7 @@ namespace QuanLyThuVien
             this.tcThongTinSach.ResumeLayout(false);
             this.tbThongTinSach.ResumeLayout(false);
             this.tbThongTinSach.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picRefeshDauSach)).EndInit();
             this.grbChiTietDauSach.ResumeLayout(false);
             this.grbChiTietDauSach.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pibDauSach)).EndInit();
@@ -2578,7 +2579,6 @@ namespace QuanLyThuVien
             this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRefeshDauSach)).EndInit();
             this.ResumeLayout(false);
 
         }

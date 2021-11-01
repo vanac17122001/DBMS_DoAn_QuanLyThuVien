@@ -8,11 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DTO;
-
+using BLLayer;
 namespace QuanLyThuVien
 {
     public partial class formChiTietDocGia : Form
     {
+        BLL_DocGia BLL_DocGia = new BLL_DocGia();
         public formChiTietDocGia()
         {
             InitializeComponent();
@@ -60,13 +61,97 @@ namespace QuanLyThuVien
             if (!(docgia.AnhDG==null))
             {
                 picAnhDG.Image = form_ThuThu.ConvertByteArrayToImage(docgia.AnhDG);
-            }    
+            }
+
+            this.txtHoDG.Enabled = false;
+            this.txtTenDG.Enabled = false;
+            this.txtGioiTinh.Enabled = false;
+            this.txtEmail.Enabled = false;
+            this.txtDiaChi.Enabled = false;
+            this.txtCMND.Enabled = false;
+            this.txtNgayDK.Enabled = false;
+            this.txtSDT.Enabled = false;
+            this.txtNgaySinh.Enabled = false;
+            this.btnLuuDocGia.Enabled = false;
             this.ShowDialog();
         }
 
         private void formChiTietDocGia_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSuaDocGia_Click(object sender, EventArgs e)
+        {
+            this.txtHoDG.Enabled = true;
+            this.txtTenDG.Enabled = true;
+            this.txtGioiTinh.Enabled = true;
+            this.txtEmail.Enabled = true;
+            this.txtDiaChi.Enabled = true;
+            this.txtCMND.Enabled = true;
+            this.txtNgayDK.Enabled = true;
+            this.txtSDT.Enabled = true;
+            this.txtNgaySinh.Enabled = true;
+            this.btnLuuDocGia.Enabled = true;
+
+            this.btnXoaDG.Enabled = false;
+        }
+
+        private void btnLuuDocGia_Click(object sender, EventArgs e)
+        {
+            form_ThuThu form_ThuThu = new form_ThuThu();
+            
+
+            string idDocGia = txtIdDG.Text;
+            int _idDocGia = int.Parse(idDocGia);
+            string ho = txtHoDG.Text;
+            string ten = txtTenDG.Text;
+
+            string ngaysinh = txtNgaySinh.Text;
+            DateTime _ngaysinh = Convert.ToDateTime(ngaysinh);
+
+            string gioitinh = txtGioiTinh.Text;
+            string cmnd = txtCMND.Text;
+            string diachi = txtDiaChi.Text;
+            string sdt = txtSDT.Text;
+            string email = txtEmail.Text;
+
+            string ngaydk = txtNgaySinh.Text;
+            DateTime _ngaydk = Convert.ToDateTime(ngaydk);
+
+            string sothe = txtSoThe.Text;
+            int _sothe = int.Parse(sothe);
+
+            byte[] anhdg = form_ThuThu.ConvertImageToBytes(picAnhDG.Image);
+
+            DTO_DocGia DTO = new DTO_DocGia(_idDocGia, ho, ten, _ngaysinh, gioitinh, cmnd,
+            diachi, sdt, email, _ngaydk, _sothe, anhdg);
+            //DTO_DocGia docgia = new DTO_DocGia();
+            //DTO.(ho, ten, _ngaysinh, gioitinh, cmnd, diachi, sdt, email, _ngaydk, anhdg);
+            string err = "Lỗi khi thêm !";
+            if (BLL_DocGia.suaDocGia(ref err, DTO))
+            {
+                MessageBox.Show("Sửa Độc Giả Thành Công!!!");
+            }
+            else
+            {
+                MessageBox.Show("Sửa không Thành Công\n Lỗi Dữ Liệu Nhập!!!");
+            }
+
+            this.btnXoaDG.Enabled = true;
+            this.btnLuuDocGia.Enabled = false;
+        }
+
+        private void btnChonHinhDG_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "Image files(*.jpg;*.jpeg;)|*.jpg;*.jpge", Multiselect = false })
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    // Hien thi hinh anh toi picture
+                    picAnhDG.Image = Image.FromFile(ofd.FileName);
+                }
+            }
         }
     }
 }

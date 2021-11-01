@@ -59,6 +59,7 @@ namespace QuanLyThuVien
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
+            this.btnChonHinhDG = new System.Windows.Forms.Button();
             label24 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -77,6 +78,7 @@ namespace QuanLyThuVien
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnChonHinhDG);
             this.groupBox4.Controls.Add(this.panel1);
             this.groupBox4.Controls.Add(this.txtSoThe);
             this.groupBox4.Controls.Add(this.txtNgayDK);
@@ -133,6 +135,7 @@ namespace QuanLyThuVien
             this.btnSuaDocGia.TabIndex = 12;
             this.btnSuaDocGia.Text = "Sửa";
             this.btnSuaDocGia.UseVisualStyleBackColor = false;
+            this.btnSuaDocGia.Click += new System.EventHandler(this.btnSuaDocGia_Click);
             // 
             // btnXoaDG
             // 
@@ -157,11 +160,13 @@ namespace QuanLyThuVien
             this.btnLuuDocGia.TabIndex = 14;
             this.btnLuuDocGia.Text = "Lưu";
             this.btnLuuDocGia.UseVisualStyleBackColor = false;
+            this.btnLuuDocGia.Click += new System.EventHandler(this.btnLuuDocGia_Click);
             // 
             // txtSoThe
             // 
             this.txtSoThe.Location = new System.Drawing.Point(622, 216);
             this.txtSoThe.Name = "txtSoThe";
+            this.txtSoThe.ReadOnly = true;
             this.txtSoThe.Size = new System.Drawing.Size(295, 30);
             this.txtSoThe.TabIndex = 26;
             // 
@@ -246,7 +251,7 @@ namespace QuanLyThuVien
             // picAnhDG
             // 
             this.picAnhDG.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picAnhDG.Location = new System.Drawing.Point(158, 179);
+            this.picAnhDG.Location = new System.Drawing.Point(135, 186);
             this.picAnhDG.Name = "picAnhDG";
             this.picAnhDG.Size = new System.Drawing.Size(191, 114);
             this.picAnhDG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -292,6 +297,7 @@ namespace QuanLyThuVien
             // 
             this.txtIdDG.Location = new System.Drawing.Point(119, 39);
             this.txtIdDG.Name = "txtIdDG";
+            this.txtIdDG.ReadOnly = true;
             this.txtIdDG.Size = new System.Drawing.Size(295, 30);
             this.txtIdDG.TabIndex = 11;
             // 
@@ -355,6 +361,19 @@ namespace QuanLyThuVien
             this.label23.TabIndex = 5;
             this.label23.Text = "Họ :";
             // 
+            // btnChonHinhDG
+            // 
+            this.btnChonHinhDG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnChonHinhDG.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChonHinhDG.ForeColor = System.Drawing.Color.White;
+            this.btnChonHinhDG.Location = new System.Drawing.Point(332, 220);
+            this.btnChonHinhDG.Name = "btnChonHinhDG";
+            this.btnChonHinhDG.Size = new System.Drawing.Size(110, 41);
+            this.btnChonHinhDG.TabIndex = 29;
+            this.btnChonHinhDG.Text = "Chọn hình";
+            this.btnChonHinhDG.UseVisualStyleBackColor = false;
+            this.btnChonHinhDG.Click += new System.EventHandler(this.btnChonHinhDG_Click);
+            // 
             // formChiTietDocGia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -403,5 +422,6 @@ namespace QuanLyThuVien
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnChonHinhDG;
     }
 }

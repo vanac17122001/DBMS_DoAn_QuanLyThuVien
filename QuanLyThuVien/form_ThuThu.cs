@@ -206,7 +206,7 @@ namespace QuanLyThuVien
         //Them doc gia
 
             //Chuyen Image sang Bytes
-        byte[] ConvertImageToBytes(Image img)
+        public byte[] ConvertImageToBytes(Image img)
         {
             using (MemoryStream ms = new MemoryStream())
             {
@@ -270,11 +270,11 @@ namespace QuanLyThuVien
                 docgia=DTO.DTO_ThemDocGia(ho, ten, _ngaysinh, gioitinh, cmnd, diachi, sdt, email, _ngaydk, anhdg);
                 if (bLL_DocGia.themDocGia(ref err, docgia))
                 {
-                    MessageBox.Show("Đăng ký Độc Giả Thành Công!!!");
+                    MessageBox.Show("Đăng ký Độc Giả Thành Công!!!" + err);
                 }
                 else
                 {
-                    MessageBox.Show("Đăng Ký không Thành Công\n Lỗi Dữ Liệu Nhập!!!");
+                    MessageBox.Show("Đăng Ký không Thành Công\n Lỗi Dữ Liệu Nhập!!!" + err);
                 }
             }
             catch (SqlException ex)
