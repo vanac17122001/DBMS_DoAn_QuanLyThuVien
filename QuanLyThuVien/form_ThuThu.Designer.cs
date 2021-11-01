@@ -258,6 +258,7 @@ namespace QuanLyThuVien
             this.txtMuonTra_IdDocGiaDocGia = new System.Windows.Forms.TextBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.picRefeshDauSach = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.tcThongTinSach.SuspendLayout();
             this.tbThongTinSach.SuspendLayout();
@@ -300,6 +301,7 @@ namespace QuanLyThuVien
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRefeshDauSach)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -692,7 +694,7 @@ namespace QuanLyThuVien
             this.tpThemSach.Location = new System.Drawing.Point(4, 32);
             this.tpThemSach.Name = "tpThemSach";
             this.tpThemSach.Padding = new System.Windows.Forms.Padding(3);
-            this.tpThemSach.Size = new System.Drawing.Size(197, 103);
+            this.tpThemSach.Size = new System.Drawing.Size(248, 86);
             this.tpThemSach.TabIndex = 1;
             this.tpThemSach.Text = "Thêm Sách Mới";
             this.tpThemSach.UseVisualStyleBackColor = true;
@@ -899,10 +901,10 @@ namespace QuanLyThuVien
             this.tcQuanLyDocGia.Controls.Add(this.tabPage1);
             this.tcQuanLyDocGia.Controls.Add(this.tabPage2);
             this.tcQuanLyDocGia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tcQuanLyDocGia.Location = new System.Drawing.Point(236, 35);
+            this.tcQuanLyDocGia.Location = new System.Drawing.Point(1237, 187);
             this.tcQuanLyDocGia.Name = "tcQuanLyDocGia";
             this.tcQuanLyDocGia.SelectedIndex = 0;
-            this.tcQuanLyDocGia.Size = new System.Drawing.Size(956, 665);
+            this.tcQuanLyDocGia.Size = new System.Drawing.Size(231, 134);
             this.tcQuanLyDocGia.TabIndex = 0;
             // 
             // tabPage1
@@ -915,7 +917,7 @@ namespace QuanLyThuVien
             this.tabPage1.Location = new System.Drawing.Point(4, 32);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(948, 629);
+            this.tabPage1.Size = new System.Drawing.Size(223, 98);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Thông tin độc giả";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1159,7 +1161,7 @@ namespace QuanLyThuVien
             this.tabPage2.Location = new System.Drawing.Point(4, 32);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(972, 604);
+            this.tabPage2.Size = new System.Drawing.Size(972, 538);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Thêm độc giả";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1699,7 +1701,7 @@ namespace QuanLyThuVien
             this.tcQuanLyMuonTra.Controls.Add(this.tabPage6);
             this.tcQuanLyMuonTra.Controls.Add(this.tabPage7);
             this.tcQuanLyMuonTra.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tcQuanLyMuonTra.Location = new System.Drawing.Point(222, 12);
+            this.tcQuanLyMuonTra.Location = new System.Drawing.Point(1233, 426);
             this.tcQuanLyMuonTra.Name = "tcQuanLyMuonTra";
             this.tcQuanLyMuonTra.SelectedIndex = 0;
             this.tcQuanLyMuonTra.Size = new System.Drawing.Size(1003, 635);
@@ -1710,11 +1712,11 @@ namespace QuanLyThuVien
             this.tabPage5.Controls.Add(this.groupBox3);
             this.tabPage5.Controls.Add(this.groupBox6);
             this.tabPage5.Controls.Add(this.label47);
-            this.tabPage5.Controls.Add(this.dgvMuonSach);
-            this.tabPage5.Location = new System.Drawing.Point(4, 31);
+            this.tabPage5.Controls.Add(this.dataGridView1);
+            this.tabPage5.Location = new System.Drawing.Point(4, 32);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(995, 600);
+            this.tabPage5.Size = new System.Drawing.Size(196, 61);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "Thẻ Mượn Sách";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -2039,11 +2041,11 @@ namespace QuanLyThuVien
             this.tabPage6.Controls.Add(this.groupBox7);
             this.tabPage6.Controls.Add(this.groupBox8);
             this.tabPage6.Controls.Add(this.label54);
-            this.tabPage6.Controls.Add(this.dgvMuonTra_TraSach);
-            this.tabPage6.Location = new System.Drawing.Point(4, 31);
+            this.tabPage6.Controls.Add(this.dataGridView2);
+            this.tabPage6.Location = new System.Drawing.Point(4, 32);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(995, 600);
+            this.tabPage6.Size = new System.Drawing.Size(196, 61);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "Thẻ Trả Sách";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -2314,7 +2316,7 @@ namespace QuanLyThuVien
             this.tabPage7.Location = new System.Drawing.Point(4, 32);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(192, 0);
+            this.tabPage7.Size = new System.Drawing.Size(196, 61);
             this.tabPage7.TabIndex = 2;
             this.tabPage7.Text = "Độc Giả Mượn Sách";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -2669,6 +2671,17 @@ namespace QuanLyThuVien
             this.pictureBox5.TabIndex = 27;
             this.pictureBox5.TabStop = false;
             // 
+            // picRefeshDauSach
+            // 
+            this.picRefeshDauSach.Image = ((System.Drawing.Image)(resources.GetObject("picRefeshDauSach.Image")));
+            this.picRefeshDauSach.Location = new System.Drawing.Point(899, 31);
+            this.picRefeshDauSach.Name = "picRefeshDauSach";
+            this.picRefeshDauSach.Size = new System.Drawing.Size(50, 48);
+            this.picRefeshDauSach.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picRefeshDauSach.TabIndex = 17;
+            this.picRefeshDauSach.TabStop = false;
+            this.picRefeshDauSach.Click += new System.EventHandler(this.picRefeshDauSach_Click);
+            // 
             // form_ThuThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2747,6 +2760,7 @@ namespace QuanLyThuVien
             this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRefeshDauSach)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2981,5 +2995,7 @@ namespace QuanLyThuVien
         private System.Windows.Forms.DataGridViewTextBoxColumn IDNhanVienTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn colum;
         private System.Windows.Forms.Button btnMuonTra_HuyDocGia;
+        private System.Windows.Forms.PictureBox picRefeshDocGia;
+        private System.Windows.Forms.PictureBox picRefeshDauSach;
     }
 }

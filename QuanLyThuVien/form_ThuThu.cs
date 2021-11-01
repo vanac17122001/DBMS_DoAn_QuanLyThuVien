@@ -680,6 +680,15 @@ namespace QuanLyThuVien
             txtThuThu_SDTNhanVien.Enabled = false;
             txtThuThu_EmailNhanVien.Enabled = false;
             txtThuThu_NgayLamNhanVien.Enabled = false;
+
+        private void picRefeshDocGia_Click(object sender, EventArgs e)
+        {
+            loadDocGia();
+        }
+
+        private void picRefeshDauSach_Click(object sender, EventArgs e)
+        {
+            loadDauSach();
         }
     }
 }
