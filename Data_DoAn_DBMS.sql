@@ -347,12 +347,8 @@ where DauSach.idNXB=NhaXuatBan.idNXB and
 	  DauSach.idTacGia=TacGia.idTacGia and
 	  DauSach.idTheLoai = TheLoaiSach.idTheLoai
 go
--- Tạo view tìm kiếm sách( bỏ)
-create view SearchBook as
-select DauSach.tenSach as 'Tên sách', DauSach.Gia as 'Giá', DauSach.soLuongMuon as'Số lượng sách đã được mượn'
-from DauSach
-go
--- Tạo view báo cáo tình trạng mượn trả sách( có đổi cái view này)
+
+-- Tạo view báo cáo tình trạng mượn trả sách
 create view Report as
 select MuonSach.soThe, DocGia.Ho, DocGia.Ten,MuonSach.ngayMuon, TraSach.ngayTra
 from MuonSach, TraSach,TheThuVien, NhanVien, DocGia
@@ -389,10 +385,10 @@ go
 
 -- function tìm độc giả gần đúng theo tên độc giả
 go
-create function fu_timTenDocGia(@ten nvarchar(10))
+alter function fu_timTenDocGia(@tentg nvarchar(10))
 returns table
 as
-	return select * from dbo.InforOfUser where (select concat( dbo.InforOfUser.ho,' ',dbo.InforOfUser.ten)) like '%'+@ten+'%'
+	return select * from dbo.InforOfBook where dbo.InforOfBook.[Tác giả] like '%'+@tentg+'%'
 go
 
 

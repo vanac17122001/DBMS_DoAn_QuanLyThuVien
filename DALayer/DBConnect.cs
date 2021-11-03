@@ -10,7 +10,7 @@ namespace DALayer
 {
     public class DBConnect
     {
-        string ConnStr = "Data Source=(local)\\ANHVAN;Initial Catalog=Database_DBMS;Integrated Security=True";
+        string ConnStr = "Data Source=(local);Initial Catalog=Database_DBMS;Integrated Security=True";
 
         public SqlConnection conn = null;
         public SqlCommand comm = null;
