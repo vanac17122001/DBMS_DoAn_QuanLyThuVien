@@ -32,6 +32,7 @@ namespace QuanLyThuVien
             System.Windows.Forms.Label label24;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formChiTietDocGia));
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnChonHinhDG = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSuaDocGia = new System.Windows.Forms.Button();
             this.btnXoaDG = new System.Windows.Forms.Button();
@@ -59,7 +60,6 @@ namespace QuanLyThuVien
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.btnChonHinhDG = new System.Windows.Forms.Button();
             label24 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -113,6 +113,19 @@ namespace QuanLyThuVien
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Chi Tiết Độc Giả";
             // 
+            // btnChonHinhDG
+            // 
+            this.btnChonHinhDG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnChonHinhDG.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChonHinhDG.ForeColor = System.Drawing.Color.White;
+            this.btnChonHinhDG.Location = new System.Drawing.Point(332, 220);
+            this.btnChonHinhDG.Name = "btnChonHinhDG";
+            this.btnChonHinhDG.Size = new System.Drawing.Size(110, 41);
+            this.btnChonHinhDG.TabIndex = 29;
+            this.btnChonHinhDG.Text = "Chọn hình";
+            this.btnChonHinhDG.UseVisualStyleBackColor = false;
+            this.btnChonHinhDG.Click += new System.EventHandler(this.btnChonHinhDG_Click);
+            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -148,6 +161,7 @@ namespace QuanLyThuVien
             this.btnXoaDG.TabIndex = 13;
             this.btnXoaDG.Text = "Xóa";
             this.btnXoaDG.UseVisualStyleBackColor = false;
+            this.btnXoaDG.Click += new System.EventHandler(this.btnXoaDG_Click);
             // 
             // btnLuuDocGia
             // 
@@ -360,19 +374,6 @@ namespace QuanLyThuVien
             this.label23.Size = new System.Drawing.Size(47, 23);
             this.label23.TabIndex = 5;
             this.label23.Text = "Họ :";
-            // 
-            // btnChonHinhDG
-            // 
-            this.btnChonHinhDG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnChonHinhDG.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChonHinhDG.ForeColor = System.Drawing.Color.White;
-            this.btnChonHinhDG.Location = new System.Drawing.Point(332, 220);
-            this.btnChonHinhDG.Name = "btnChonHinhDG";
-            this.btnChonHinhDG.Size = new System.Drawing.Size(110, 41);
-            this.btnChonHinhDG.TabIndex = 29;
-            this.btnChonHinhDG.Text = "Chọn hình";
-            this.btnChonHinhDG.UseVisualStyleBackColor = false;
-            this.btnChonHinhDG.Click += new System.EventHandler(this.btnChonHinhDG_Click);
             // 
             // formChiTietDocGia
             // 

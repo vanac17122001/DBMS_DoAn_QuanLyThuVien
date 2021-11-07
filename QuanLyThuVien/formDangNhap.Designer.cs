@@ -34,15 +34,15 @@ namespace QuanLyThuVien
             this.txtUSER = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lbCopyright = new System.Windows.Forms.Label();
-            this.lbPassword = new System.Windows.Forms.Label();
             this.btnDangNhap = new System.Windows.Forms.Button();
-            this.lbUserName = new System.Windows.Forms.Label();
             this.lbTittle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lbPassword = new System.Windows.Forms.Label();
+            this.lbUserName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -58,6 +58,7 @@ namespace QuanLyThuVien
             this.txtPASS.Name = "txtPASS";
             this.txtPASS.Size = new System.Drawing.Size(241, 30);
             this.txtPASS.TabIndex = 33;
+            this.txtPASS.UseSystemPasswordChar = true;
             // 
             // txtUSER
             // 
@@ -89,22 +90,6 @@ namespace QuanLyThuVien
             this.lbCopyright.TabIndex = 29;
             this.lbCopyright.Text = "CopyRight 2021 ©";
             // 
-            // lbPassword
-            // 
-            this.lbPassword.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.lbPassword.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbPassword.Location = new System.Drawing.Point(40, 175);
-            this.lbPassword.Margin = new System.Windows.Forms.Padding(0);
-            this.lbPassword.Name = "lbPassword";
-            this.lbPassword.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lbPassword.Size = new System.Drawing.Size(229, 65);
-            this.lbPassword.TabIndex = 28;
-            this.lbPassword.Text = "Mật Khẩu :";
-            this.lbPassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lbPassword.UseCompatibleTextRendering = true;
-            // 
             // btnDangNhap
             // 
             this.btnDangNhap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(86)))), ((int)(((byte)(94)))));
@@ -124,22 +109,6 @@ namespace QuanLyThuVien
             this.btnDangNhap.UseVisualStyleBackColor = false;
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
-            // lbUserName
-            // 
-            this.lbUserName.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.lbUserName.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbUserName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbUserName.Location = new System.Drawing.Point(40, 109);
-            this.lbUserName.Margin = new System.Windows.Forms.Padding(0);
-            this.lbUserName.Name = "lbUserName";
-            this.lbUserName.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lbUserName.Size = new System.Drawing.Size(229, 66);
-            this.lbUserName.TabIndex = 24;
-            this.lbUserName.Text = "Tên Đăng Nhập :";
-            this.lbUserName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lbUserName.UseCompatibleTextRendering = true;
-            // 
             // lbTittle
             // 
             this.lbTittle.AutoSize = true;
@@ -157,10 +126,10 @@ namespace QuanLyThuVien
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.lbUserName);
+            this.panel1.Controls.Add(this.lbPassword);
             this.panel1.Controls.Add(this.txtPASS);
             this.panel1.Controls.Add(this.txtUSER);
             this.panel1.Controls.Add(this.btnDangNhap);
-            this.panel1.Controls.Add(this.lbPassword);
             this.panel1.Location = new System.Drawing.Point(204, 158);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(818, 347);
@@ -211,6 +180,40 @@ namespace QuanLyThuVien
             this.panel3.Size = new System.Drawing.Size(1240, 78);
             this.panel3.TabIndex = 36;
             // 
+            // lbPassword
+            // 
+            this.lbPassword.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lbPassword.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbPassword.Image = ((System.Drawing.Image)(resources.GetObject("lbPassword.Image")));
+            this.lbPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbPassword.Location = new System.Drawing.Point(56, 175);
+            this.lbPassword.Margin = new System.Windows.Forms.Padding(0);
+            this.lbPassword.Name = "lbPassword";
+            this.lbPassword.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lbPassword.Size = new System.Drawing.Size(229, 65);
+            this.lbPassword.TabIndex = 34;
+            this.lbPassword.Text = "Mật Khẩu :";
+            this.lbPassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbPassword.UseCompatibleTextRendering = true;
+            // 
+            // lbUserName
+            // 
+            this.lbUserName.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lbUserName.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbUserName.Image = ((System.Drawing.Image)(resources.GetObject("lbUserName.Image")));
+            this.lbUserName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbUserName.Location = new System.Drawing.Point(55, 109);
+            this.lbUserName.Margin = new System.Windows.Forms.Padding(0);
+            this.lbUserName.Name = "lbUserName";
+            this.lbUserName.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lbUserName.Size = new System.Drawing.Size(229, 66);
+            this.lbUserName.TabIndex = 35;
+            this.lbUserName.Text = "Tên Đăng Nhập :";
+            this.lbUserName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbUserName.UseCompatibleTextRendering = true;
+            // 
             // formDangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -223,6 +226,7 @@ namespace QuanLyThuVien
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formDangNhap";
             this.Text = "Đăng nhập";
+            this.Load += new System.EventHandler(this.formDangNhap_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -240,14 +244,14 @@ namespace QuanLyThuVien
         private System.Windows.Forms.TextBox txtUSER;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbCopyright;
-        private System.Windows.Forms.Label lbPassword;
         private System.Windows.Forms.Button btnDangNhap;
-        private System.Windows.Forms.Label lbUserName;
         private System.Windows.Forms.Label lbTittle;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label lbUserName;
+        private System.Windows.Forms.Label lbPassword;
     }
 }

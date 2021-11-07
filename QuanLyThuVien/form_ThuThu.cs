@@ -150,7 +150,7 @@ namespace QuanLyThuVien
         private void btnTimKiemDauSach_Click(object sender, EventArgs e)
         {
             string ten = txtTimKiemDauSach.Text.ToString();
-            if (ten==null)
+            if (ten=="")
             {
                 MessageBox.Show("Vui lòng nhập thông tin tìm kiếm !");
                 return;

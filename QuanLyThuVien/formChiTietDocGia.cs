@@ -153,5 +153,21 @@ namespace QuanLyThuVien
                 }
             }
         }
+
+        private void btnXoaDG_Click(object sender, EventArgs e)
+        {
+            string idDocGia = this.txtIdDG.Text;
+
+            string err = "Lỗi khi thêm !";
+            if (BLL_DocGia.xoaDocGia(ref err, idDocGia))
+            {
+                MessageBox.Show("Xóa Độc Giả Thành Công!!!");
+            }
+            else
+            {
+                MessageBox.Show("Xóa không Thành Công\n Lỗi Dữ Liệu!!!");
+            }
+            this.Close();
+        }
     }
 }

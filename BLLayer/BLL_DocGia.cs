@@ -35,5 +35,13 @@ namespace BLLayer
         {
             return dg.SuaDocGia(ref err, DTO);
         }
+        public bool xoaDocGia (ref string err, string idDocGia)
+        {
+            return dg.XoaDocGia(ref err, idDocGia);
+        }
+        public DataSet timDocGiaTheoUsernamePass (ref string err, string username, string pass)
+        {
+            return dg.TimDocGiaTheoUsernamePass(ref err, username, pass);
+        }
     }
 }

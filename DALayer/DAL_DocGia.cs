@@ -63,5 +63,15 @@ namespace DALayer
                 new SqlParameter { ParameterName = "@anhDG", Value = DTO.AnhDG }
                 );
         }
+        public bool XoaDocGia(ref string err, string idDocGia)
+        {
+            return db.MyExecuteNonQuery("sp_XoaDocGia", CommandType.StoredProcedure, ref err,
+                new SqlParameter { ParameterName = "@idDocGia", Value = idDocGia });
+        }
+        public DataSet TimDocGiaTheoUsernamePass(ref string err, string username, string pass)
+        {
+            return db.ExecuteQueryDataset("select * from fu_ThongTinDocGiaDangNhap(@username,@pass);",
+                CommandType.Text, new SqlParameter("@username", username), new SqlParameter("@pass", pass));
+        }
     }
 }

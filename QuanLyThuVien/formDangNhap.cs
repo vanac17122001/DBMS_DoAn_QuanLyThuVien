@@ -31,7 +31,7 @@ namespace QuanLyThuVien
 
             if (kt == "docgia")
             {
-                Form formDocGia = new formDocGia();
+                Form formDocGia = new formDocGia(name,pass);
                 this.Hide();
                 formDocGia.ShowDialog();
                 this.Close();
@@ -54,6 +54,11 @@ namespace QuanLyThuVien
            
             // Form formThuThu = new form_ThuThu();
             // formThuThu.ShowDialog();
+        }
+
+        private void formDangNhap_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
