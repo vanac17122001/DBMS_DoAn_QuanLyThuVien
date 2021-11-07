@@ -142,133 +142,10 @@ create table PhieuPhat(
 	CONSTRAINT fk_NhanVienLapPhieuPhat FOREIGN KEY (idNhanVien) REFERENCES NhanVien (idNhanVien)
 );
 go
--- Thêm dữ liệu 
-use Database_DBMS
-go
-insert into NhanVien values
-(N'Trần',N'Văn Duy','2001-1-1',N'Nam','215530901',N'Hoài Nhơn - Bình Định','0814233577','tranvanduy@gmail.com','2021-1-1',null),
-(N'Trần',N'Văn Hào','2001-2-1',N'Nam','215530701',N'Hoài Nhơn - Bình Phước','0814233555','caovanhao@gmail.com','2021-2-1',null),
-(N'Trần',N'Trường','2001-3-1',N'Nam','215530801',N'Tây Sơn - Bình Định','0765233577','trancongtruong@gmail.com','2021-1-15',null),
-(N'Cao',N'Anh Văn','2001-1-5',N'Nam','215530221',N'Tây Sơn - Bình Định','0814563577','caoanhvan@gmail.com','2021-6-1',null),
-(N'Lê',N'Phương Nam','2001-10-1',N'Nam','215531221',N'Biên Hòa - Đồng Nai','0814238767','lephuongnam@gmail.com','2021-1-7',null),
-(N'Nguyễn',N'Ngọc Hân','2001-12-22',N'Nữ','215530156',N'Thủ Đức - TP.HCM','0925233577','nguyenngochan@gmail.com','2021-11-1',null);
-
-go
-insert into TacGia values
-(N'Nam Cao'),
-(N'Nam Thành'),
-(N'Xuân Diệu'),
-(N'Hồ Xuân Hương'),
-(N'Huy Cận'),
-(N'Tản Đà');
-go
-insert into TheThuVien values
-('2021-10-1','2022-10-1')
-insert into TheThuVien values
-('2021-11-1','2022-11-1')
-insert into TheThuVien values
-('2021-12-1','2022-12-1')
-insert into TheThuVien values
-('2021-10-15','2022-10-15')
-insert into TheThuVien values
-('2021-10-12','2022-10-12')
-insert into TheThuVien values
-('2021-6-22','2022-6-22')
-
-go 
-insert into TheLoaiSach values
-(N'Giáo khoa'),
-(N'Hướng dẫn'),
-(N'Bài tập'),
-(N'Khoa học'),
-(N'Văn học');
-go
-insert into NhaXuatBan values
-(N'NXB Kim Đồng','0913672405',N'Ba Đình-Hà Nội','nxbkimdong@gmail.com','www.nxbkimdong.vn'),
-(N'NXB Giáo dục','0913222415',N'Ba Đình-Hà Nội','nxbkimdong@gmail.com','www.nxbkimdong.vn'),
-(N'NXB Tuổi trẻ','0873672419',N'Q1-TP.HCM','nxbkimdong@gmail.com','www.nxbkimdong.vn'),
-(N'NXB ĐHQG','0913876405',N'Thủ Đức-TP.HCM','nxbkimdong@gmail.com','www.nxbkimdong.vn'),
-(N'NXB TPHCM','09136724222',N'Q1-TP.HCM','nxbkimdong@gmail.com','www.nxbkimdong.vn');
-go
-insert into DocGia values
-(N'Trần',N'Ngọc Chiến','1999-2-1',N'Nam','223550924',N'Linh Trung-Thủ Đức','0987122947','ngochien@gmail.com','2019-1-1',306,null),
-(N'Trần',N'Ngọc Như','1998-1-3',N'Nữ','223340087',N'Linh Xuân-Thủ Đức','0987122941','ngocnhu@gmail.com','2019-1-1',307,null),
-(N'Nguyễn',N'Văn Toàn','1999-4-1',N'Nam','223340123',N'Kha Vạn Cân-Thủ Đức','0987122981','vantoang@gmail.com','2019-3-1',308,null),
-(N'Trần',N'Quốc Quân','2001-5-1',N'Nam','223340345',N'Dĩ An-Bình Dương','0987155541','quocquann@gmail.com','2019-11-1',309,null),
-(N'Cao',N'Hông Hoa','2002-11-1',N'Nữ','223340678',N'Hiệp Bình Chánh-Thủ Đức','0987122149','honghoa@gmail.com','2019-1-20',310,null),
-(N'Lưu',N'Quốc Dũng','2002-10-1',N'Nam','223342134',N'Hoàng Diệu 2-Thủ Đức','0996522941','quocdung@gmail.com','2019-5-6',311,null);
-go
-insert into DauSach values
-(N'Kỹ thuật lập trình',600,'2005-1-1',500,50000,30,100,200,null,N'Kệ 1'),
-(N'Kỹ thuật điện',601,'2005-2-1',500,50000,20,100,201,null,N'Kệ 2'),
-(N'Kỹ thuật cơ khí',602,'2005-3-1',500,50000,10,100,202,null,N'Kệ 1'),
-(N'Lão Hạc',603,'2015-1-19',501,70000,5,100,203,null,N'Kệ 1'),
-(N'Tắt đèn',604,'2015-10-1',502,70000,22,100,204,null,N'Kệ 2'),
-(N'Bài tập lập trình',600,'2015-10-1',503,25000,70,110,205,null,N'Kệ 1'),
-(N'Bài tập vật lý 1',601,'2012-1-11',504,25000,80,100,200,null,N'Kệ 3'),
-(N'Khoa học vũ trụ',602,'2016-1-12',504,100000,31,90,201,null,N'Kệ 3'),
-(N'Thế giới động vật',603,'2011-1-13',502,100000,2,50,202,null,N'Kệ 3');
-go
-insert into Sach values
-(800,N'Đã mượn'),
-(800,N'Chưa mượn'),
-(800,N'Đã mượn'),
-(801,N'Chưa mượn'),
-(801,N'Đã mượn'),
-(801,N'Chưa mượn'),
-(802,N'Chưa mượn'),
-(802,N'Đã mượn'),
-(802,N'Chưa mượn'),
-(803,N'Đã mượn'),
-(803,N'Đã mượn'),
-(803,N'Đã mượn'),
-(804,N'Đã mượn'),
-(804,N'Chưa mượn'),
-(804,N'Đã mượn'),
-(805,N'Chưa mượn'),
-(805,N'Đã mượn'),
-(805,N'Chưa mượn'),
-(806,N'Chưa mượn'),
-(806,N'Đã mượn'),
-(806,N'Chưa mượn'),
-(807,N'Đã mượn'),
-(807,N'Đã mượn'),
-(807,N'Đã mượn'),
-(808,N'Đã mượn'),
-(808,N'Đã mượn'),
-(808,N'Chưa mượn'),
-(808,N'Đã mượn');
-go
-insert into MuonSach values
-(900,306,100,'2020-2-1','2020-04-01')
-insert into MuonSach values
-(902,306,101,'2020-3-13','2020-05-13')
-insert into MuonSach values
-(904,306,100,'2020-4-13','2020-05-13')
-insert into MuonSach values
-(907,307,101,'2020-5-11','2020-8-15')
-insert into MuonSach values
-(909,308,102,'2020-11-12','2020-12-20')
-insert into MuonSach values
-(910,309,102,'2020-3-19','2020-07-19')
-insert into MuonSach values
-(911,310,103,'2020-6-5','2020-07-15')
-
-go
-insert into TraSach values
-(1008,'2021-1-1',100)
-insert into TraSach values
-(1009,'2021-11-29',101)
-insert into TraSach values
-(1010,'2021-12-1',100)
-insert into TraSach values
-(1011,'2021-12-5',101)
-insert into TraSach values
-(1012,'2021-1-5',102)
-go
 -- Trigger 
 use Database_DBMS
 
+-- Chưa hoàn thiện nên chưa chạy
 -- tạo trigger tự insert vào bảng phiếu phạt
 create trigger trig_InsertPhieuPhat on PhieuPhat
 after insert
@@ -293,17 +170,6 @@ begin
 	set soTienPhat = 5000*(select Tre from (select datediff(day,hanTra,ngayTra) as Tre,  MuonSach.idMuon from  MuonSach,TraSach 
 		where MuonSach.idMuon=TraSach.idMuon) as a, inserted where a.idMuon = inserted.idMuon )
 	where PhieuPhat.idMuon = (select idmuon from inserted)
-end
-
---trigg tự động thêm vào bảng phiếu phạt khi nhập vào bảng trả sách
-go
-create trigger trig_InserttoPhieuPhat on TraSach
-after insert 
-as 
-begin
-	insert into PhieuPhat(idMuon, idNhanVien)
-		(select TraSach.idMuon, TraSach.idNhanVien from TraSach, inserted
-			where TraSach.idMuon = inserted.idMuon)
 end
 go
 
@@ -377,7 +243,6 @@ as
 	end
 go
 
-go
 --tạo triiger tự tạo tài khoản cho nhân viên
 create trigger trig_InsertTaiKhoanNhanVien on NhanVien
 	after insert
@@ -387,7 +252,8 @@ create trigger trig_InsertTaiKhoanNhanVien on NhanVien
 			select idNhanVien,email,soDT, 'nhanvien' from inserted
 	end
 go
---tạo trigger tự tạo tài khoản cho đọc giả
+
+--tạo trigger tự tạo tài khoản cho độc giả
 create trigger trig_InsertTaiKhoanDocGia on DocGia
 	after insert
 	as
