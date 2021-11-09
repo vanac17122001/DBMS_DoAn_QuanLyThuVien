@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class DTO_DocGia
+    public class DTO_DocGia
     {
         private int _idDocGia;
         private string _ho;

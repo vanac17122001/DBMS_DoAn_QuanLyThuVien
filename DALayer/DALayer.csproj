@@ -43,6 +43,10 @@
   <ItemGroup>
     <Compile Include="DAL_DangNhap.cs" />
     <Compile Include="DAL_DauSach.cs" />
+    <Compile Include="DAL_DocGiaMuonSach.cs" />
+    <Compile Include="DAL_MuonSach.cs" />
+    <Compile Include="DAL_NhanVien.cs" />
+    <Compile Include="DAL_TraSach.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="DAL_DocGia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

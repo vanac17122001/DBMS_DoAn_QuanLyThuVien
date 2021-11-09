@@ -43,7 +43,11 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="DTO_DocGia.cs" />
+    <Compile Include="DTO_DocGiaMuonSach.cs" />
+    <Compile Include="DTO_MuonSach.cs" />
+    <Compile Include="DTO_NhanVien.cs" />
     <Compile Include="DTO_Sach.cs" />
+    <Compile Include="DTO_TraSach.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="user.cs" />
   </ItemGroup>

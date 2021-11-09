@@ -44,6 +44,10 @@
     <Compile Include="BLL_DangNhap.cs" />
     <Compile Include="BLL_DauSach.cs" />
     <Compile Include="BLL_DocGia.cs" />
+    <Compile Include="BLL_DocGiaMuonSach.cs" />
+    <Compile Include="BLL_MuonSach.cs" />
+    <Compile Include="BLL_NhanVien.cs" />
+    <Compile Include="BLL_TraSach.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -110,6 +110,7 @@ create table MuonSach (
 	soThe int,
 	idNhanVien int ,
 	ngayMuon date not null,
+	hanTra date,
 	CONSTRAINT pk_muonsach PRIMARY KEY (idMuon),
 	CONSTRAINT fk_idsach FOREIGN KEY (idSach) REFERENCES Sach (idSach),
 	CONSTRAINT fk_sothe_muonsach FOREIGN KEY (soThe) REFERENCES TheThuVien (soThe),
@@ -117,6 +118,7 @@ create table MuonSach (
 	ON DELETE CASCADE
 	ON UPDATE CASCADE
 );
+
 go
 create table TraSach(
 	idTraSach int IDENTITY(2000,1),
@@ -130,17 +132,18 @@ create table TraSach(
 	ON UPDATE CASCADE
 );
 go
-create table PhieuPhat (
+create table PhieuPhat(
 	idPhieuPhat int IDENTITY(3000,1),
 	idMuon int,
-	idTraSach int, 
+	idTraSach int,
 	soNgayQuaHan int,
 	ngayLapPhieu date,
 	idNhanVien int,
 	soTienPhat int,
 	CONSTRAINT pk_PhieuPhat PRIMARY KEY (idPhieuPhat),
 	CONSTRAINT fk_idMuon FOREIGN KEY (idMuon) REFERENCES MuonSach (idMuon),
-	CONSTRAINT fk_idTraSach FOREIGN KEY (idTraSach) REFERENCES TraSach (idTraSach),
+	CONSTRAINT fk_idTraSach FOREIGN KEY (idTraSach) REFERENCES TraSach (idTraSach)
+		on delete  cascade  on update  cascade,
 	CONSTRAINT fk_NhanVienLapPhieuPhat FOREIGN KEY (idNhanVien) REFERENCES NhanVien (idNhanVien)
 );
 go
@@ -154,6 +157,7 @@ insert into NhanVien values
 (N'Cao',N'Anh Văn','2001-1-5',N'Nam','215530221',N'Tây Sơn - Bình Định','0814563577','caoanhvan@gmail.com','2021-6-1',null),
 (N'Lê',N'Phương Nam','2001-10-1',N'Nam','215531221',N'Biên Hòa - Đồng Nai','0814238767','lephuongnam@gmail.com','2021-1-7',null),
 (N'Nguyễn',N'Ngọc Hân','2001-12-22',N'Nữ','215530156',N'Thủ Đức - TP.HCM','0925233577','nguyenngochan@gmail.com','2021-11-1',null);
+
 go
 insert into TacGia values
 (N'Nam Cao'),
@@ -164,16 +168,18 @@ insert into TacGia values
 (N'Tản Đà');
 go
 insert into TheThuVien values
-('2021-10-1','2022-10-1'),
-('2021-11-1','2022-11-1'),
-('2021-12-1','2022-12-1'),
-('2021-10-15','2022-10-15'),
-('2021-10-12','2022-10-12'),
-('2021-6-22','2022-6-22');
-go
-insert into TaiKhoan values
-(700,'user','1','nhanvien'),
-(100,'emoloyee','1','docgia');
+('2021-10-1','2022-10-1')
+insert into TheThuVien values
+('2021-11-1','2022-11-1')
+insert into TheThuVien values
+('2021-12-1','2022-12-1')
+insert into TheThuVien values
+('2021-10-15','2022-10-15')
+insert into TheThuVien values
+('2021-10-12','2022-10-12')
+insert into TheThuVien values
+('2021-6-22','2022-6-22')
+
 go 
 insert into TheLoaiSach values
 (N'Giáo khoa'),
@@ -190,12 +196,12 @@ insert into NhaXuatBan values
 (N'NXB TPHCM','09136724222',N'Q1-TP.HCM','nxbkimdong@gmail.com','www.nxbkimdong.vn');
 go
 insert into DocGia values
-(N'Trần',N'Ngọc Chiến','1999-2-1',N'Nam','223550924',N'Linh Trung-Thủ Đức','0987122947','ngochien@gmail.com','2019-1-1',300,null),
-(N'Trần',N'Ngọc Như','1998-1-3',N'Nữ','223340087',N'Linh Xuân-Thủ Đức','0987122941','ngocnhu@gmail.com','2019-1-1',301,null),
-(N'Nguyễn',N'Văn Toàn','1999-4-1',N'Nam','223340123',N'Kha Vạn Cân-Thủ Đức','0987122981','vantoang@gmail.com','2019-3-1',302,null),
-(N'Trần',N'Quốc Quân','2001-5-1',N'Nam','223340345',N'Dĩ An-Bình Dương','0987155541','quocquann@gmail.com','2019-11-1',303,null),
-(N'Cao',N'Hông Hoa','2002-11-1',N'Nữ','223340678',N'Hiệp Bình Chánh-Thủ Đức','0987122149','honghoa@gmail.com','2019-1-20',304,null),
-(N'Lưu',N'Quốc Dũng','2002-10-1',N'Nam','223342134',N'Hoàng Diệu 2-Thủ Đức','0996522941','quocdung@gmail.com','2019-5-6',305,null);
+(N'Trần',N'Ngọc Chiến','1999-2-1',N'Nam','223550924',N'Linh Trung-Thủ Đức','0987122947','ngochien@gmail.com','2019-1-1',306,null),
+(N'Trần',N'Ngọc Như','1998-1-3',N'Nữ','223340087',N'Linh Xuân-Thủ Đức','0987122941','ngocnhu@gmail.com','2019-1-1',307,null),
+(N'Nguyễn',N'Văn Toàn','1999-4-1',N'Nam','223340123',N'Kha Vạn Cân-Thủ Đức','0987122981','vantoang@gmail.com','2019-3-1',308,null),
+(N'Trần',N'Quốc Quân','2001-5-1',N'Nam','223340345',N'Dĩ An-Bình Dương','0987155541','quocquann@gmail.com','2019-11-1',309,null),
+(N'Cao',N'Hông Hoa','2002-11-1',N'Nữ','223340678',N'Hiệp Bình Chánh-Thủ Đức','0987122149','honghoa@gmail.com','2019-1-20',310,null),
+(N'Lưu',N'Quốc Dũng','2002-10-1',N'Nam','223342134',N'Hoàng Diệu 2-Thủ Đức','0996522941','quocdung@gmail.com','2019-5-6',311,null);
 go
 insert into DauSach values
 (N'Kỹ thuật lập trình',600,'2005-1-1',500,50000,30,100,200,null,N'Kệ 1'),
@@ -239,23 +245,71 @@ insert into Sach values
 (808,N'Đã mượn');
 go
 insert into MuonSach values
-(900,300,100,'2020-2-1'),
-(902,300,100,'2020-3-13'),
-(904,301,101,'2020-4-13'),
-(907,301,101,'2020-5-11'),
-(909,302,102,'2020-11-12'),
-(910,303,102,'2020-3-19'),
-(911,303,102,'2020-6-5');
+(900,306,100,'2020-2-1','2020-04-01')
+insert into MuonSach values
+(902,306,101,'2020-3-13','2020-05-13')
+insert into MuonSach values
+(904,306,100,'2020-4-13','2020-05-13')
+insert into MuonSach values
+(907,307,101,'2020-5-11','2020-8-15')
+insert into MuonSach values
+(909,308,102,'2020-11-12','2020-12-20')
+insert into MuonSach values
+(910,309,102,'2020-3-19','2020-07-19')
+insert into MuonSach values
+(911,310,103,'2020-6-5','2020-07-15')
+
 go
 insert into TraSach values
-(1000,'2021-1-1',100),
-(1001,'2021-11-29',101),
-(1002,'2021-12-1',100),
-(1003,'2021-12-5',101),
-(1004,'2021-1-5',102);
+(1008,'2021-1-1',100)
+insert into TraSach values
+(1009,'2021-11-29',101)
+insert into TraSach values
+(1010,'2021-12-1',100)
+insert into TraSach values
+(1011,'2021-12-5',101)
+insert into TraSach values
+(1012,'2021-1-5',102)
 go
 -- Trigger 
 use Database_DBMS
+
+-- tạo trigger tự insert vào bảng phiếu phạt
+create trigger trig_InsertPhieuPhat on PhieuPhat
+after insert
+as 
+begin
+	update PhieuPhat
+	set idTraSach = (select TraSach.idTraSach 
+		from TraSach, inserted where TraSach.idMuon = inserted.idMuon)
+	where PhieuPhat.idMuon = (select idmuon from inserted)
+
+	update PhieuPhat
+	set soNgayQuaHan = (select a.Tre from (select datediff(day,hanTra,ngayTra) as Tre, MuonSach.idMuon from  MuonSach,TraSach 
+		where MuonSach.idMuon=TraSach.idMuon )as a, inserted where a.idMuon = inserted.idMuon)
+	where PhieuPhat.idMuon = (select idmuon from inserted)
+
+	update PhieuPhat
+	set ngayLapPhieu = (select TraSach.ngayTra 
+		from TraSach,inserted where TraSach.idMuon = inserted.idMuon)
+	where PhieuPhat.idMuon = (select idmuon from inserted)
+
+	update PhieuPhat
+	set soTienPhat = 5000*(select Tre from (select datediff(day,hanTra,ngayTra) as Tre,  MuonSach.idMuon from  MuonSach,TraSach 
+		where MuonSach.idMuon=TraSach.idMuon) as a, inserted where a.idMuon = inserted.idMuon )
+	where PhieuPhat.idMuon = (select idmuon from inserted)
+end
+
+--trigg tự động thêm vào bảng phiếu phạt khi nhập vào bảng trả sách
+go
+create trigger trig_InserttoPhieuPhat on TraSach
+after insert 
+as 
+begin
+	insert into PhieuPhat(idMuon, idNhanVien)
+		(select TraSach.idMuon, TraSach.idNhanVien from TraSach, inserted
+			where TraSach.idMuon = inserted.idMuon)
+end
 go
 
 --tạo triiger cập nhật lại số lượng sách khi sách được mượn--
@@ -330,6 +384,26 @@ as
 	end
 go
 
+go
+--tạo triiger tự tạo tài khoản cho nhân viên
+create trigger trig_InsertTaiKhoanNhanVien on NhanVien
+	after insert
+	as
+	begin
+		insert into TaiKhoan (id, userName, pass, loai)
+			select idNhanVien,email,soDT, 'nhanvien' from inserted
+	end
+go
+--tạo trigger tự tạo tài khoản cho đọc giả
+create trigger trig_InsertTaiKhoanDocGia on DocGia
+	after insert
+	as
+	begin
+		insert into TaiKhoan (id, userName, pass, loai)
+			select idDocGia,email,soDT, 'docgia' from inserted
+	end
+go
+
 --Tạo thẻ thư viện và tài khoản cho độc giả mới được tạo--
 
 --View
@@ -368,6 +442,20 @@ create view InforOfEmp as
 select ho,ten,ngaySinh,gioiTinh,CMND,diaChi,soDT,email,ngayBatDau
 from NhanVien
 go
+-- tạo view độc giả mượn sách
+create view view_DocGiaMuonSach
+as
+select idDocGia, CONCAT(ho,' ',ten) as hoTen,idmuonmuon,idSach, idNhanVienMuon, ngayMuon, idTraSach, ngayTra, idNhanVienTra  from (
+	select MuonSach.idMuon as idmuonmuon, TraSach.idMuon as idmuontra, soThe, idSach, MuonSach.idNhanVien as idNhanVienMuon
+			, TraSach.idNhanVien as idNhanVienTra, ngayMuon, idTraSach, ngayTra from MuonSach left join TraSach
+		on MuonSach.idMuon = TraSach.idMuon) as A, DocGia
+			where DocGia.soThe = a.soThe
+go
+-- tạo view thông tin nhân viên
+create view view_thongTinNhanVien
+as
+	select * from NhanVien inner join TaiKhoan on TaiKhoan.id = nhanvien.idNhanVien
+go
 
 -- function
 -- funtion tìm gần đúng theo tên sách
@@ -385,7 +473,6 @@ as
 	return select * from dbo.InforOfUser where (select concat( dbo.InforOfUser.ho,' ',dbo.InforOfUser.ten)) like '%'+@ten+'%'
 go
 
-
 -- function tìm chính xác theo thẻ độc giả
 go
 create function fu_timTheDocGia(@id int)
@@ -400,4 +487,27 @@ returns table
 as
  return select loai from dbo.TaiKhoan where userName = @user and pass = @pass
 go
+-- proceduce
+-- proc thêm mượn sách
+create procedure proc_themMuonSach (@idSach int, @soThe int , @idNhanVien int)
+as
+begin
+	declare @ngayMuon date =  getdate()
+	declare @hanTra date = dateadd(month,4,@ngayMuon)
+	insert into MuonSach values (@idSach, @soThe, @idNhanVien, @ngayMuon, @hanTra)
+end
+go
+-- proc thêm trả sách
+create procedure proc_themTraSach (@idMuon int , @idNhanVien int)
+as
+begin
+	declare @ngayTra date =  getdate()
+	insert into TraSach values (@idMuon, @ngayTra, @idNhanVien)
+end
+go
+-- tesst
+select * from MuonSach
+select * from TraSach
+select * from PhieuPhat
 
+exec  proc_themTraSach 1008,100
