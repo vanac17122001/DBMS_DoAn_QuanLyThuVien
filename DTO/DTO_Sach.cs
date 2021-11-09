@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class DTO_Sach
+    public class DTO_Sach
     {
     }
 }

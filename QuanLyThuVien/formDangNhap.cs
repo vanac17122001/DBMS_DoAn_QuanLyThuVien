@@ -40,7 +40,7 @@ namespace QuanLyThuVien
             { 
                 if (kt == "nhanvien")
                 {
-                    Form formThuThu = new form_ThuThu();
+                    Form formThuThu = new form_ThuThu(name,pass);
                     this.Hide();
                     formThuThu.ShowDialog();
                     this.Close();
