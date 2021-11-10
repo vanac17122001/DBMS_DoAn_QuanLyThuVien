@@ -126,25 +126,25 @@ create table TraSach(
 	ngayTra date not null,
 	idNhanVien int,
 	CONSTRAINT pk_ PRIMARY KEY (idTraSach),
-	CONSTRAINT fk_muon FOREIGN KEY (idMuon) REFERENCES MuonSach (idMuon),
+	CONSTRAINT fk_muon FOREIGN KEY (idMuon) REFERENCES MuonSach (idMuon)
+		on delete cascade on update cascade,
 	CONSTRAINT fk_nhavien_trasach FOREIGN KEY (idNhanVien) REFERENCES NhanVien (idNhanVien)
-	ON DELETE CASCADE
-	ON UPDATE CASCADE
+	ON DELETE no action
+	ON UPDATE no action
 );
 go
 create table PhieuPhat(
 	idPhieuPhat int IDENTITY(3000,1),
-	idMuon int,
 	idTraSach int,
 	soNgayQuaHan int,
 	ngayLapPhieu date,
 	idNhanVien int,
 	soTienPhat int,
 	CONSTRAINT pk_PhieuPhat PRIMARY KEY (idPhieuPhat),
-	CONSTRAINT fk_idMuon FOREIGN KEY (idMuon) REFERENCES MuonSach (idMuon),
 	CONSTRAINT fk_idTraSach FOREIGN KEY (idTraSach) REFERENCES TraSach (idTraSach)
 		on delete  cascade  on update  cascade,
 	CONSTRAINT fk_NhanVienLapPhieuPhat FOREIGN KEY (idNhanVien) REFERENCES NhanVien (idNhanVien)
+		on delete no action on update no action
 );
 go
 -- Thêm dữ liệu 
@@ -280,24 +280,19 @@ after insert
 as 
 begin
 	update PhieuPhat
-	set idTraSach = (select TraSach.idTraSach 
-		from TraSach, inserted where TraSach.idMuon = inserted.idMuon)
-	where PhieuPhat.idMuon = (select idmuon from inserted)
-
-	update PhieuPhat
-	set soNgayQuaHan = (select a.Tre from (select datediff(day,hanTra,ngayTra) as Tre, MuonSach.idMuon from  MuonSach,TraSach 
-		where MuonSach.idMuon=TraSach.idMuon )as a, inserted where a.idMuon = inserted.idMuon)
-	where PhieuPhat.idMuon = (select idmuon from inserted)
+	set soNgayQuaHan = (select a.Tre from (select datediff(day,hanTra,ngayTra) as Tre, TraSach.idTraSach from  MuonSach,TraSach 
+		where MuonSach.idMuon=TraSach.idMuon )as a, inserted where a.idTraSach = inserted.idTraSach)
+	where PhieuPhat.idTraSach = (select idTraSach from inserted)
 
 	update PhieuPhat
 	set ngayLapPhieu = (select TraSach.ngayTra 
-		from TraSach,inserted where TraSach.idMuon = inserted.idMuon)
-	where PhieuPhat.idMuon = (select idmuon from inserted)
+		from TraSach,inserted where TraSach.idTraSach = inserted.idTraSach)
+	where PhieuPhat.idTraSach = (select idTraSach from inserted)
 
 	update PhieuPhat
-	set soTienPhat = 5000*(select Tre from (select datediff(day,hanTra,ngayTra) as Tre,  MuonSach.idMuon from  MuonSach,TraSach 
-		where MuonSach.idMuon=TraSach.idMuon) as a, inserted where a.idMuon = inserted.idMuon )
-	where PhieuPhat.idMuon = (select idmuon from inserted)
+	set soTienPhat = 5000*(select Tre from (select datediff(day,hanTra,ngayTra) as Tre,  TraSach.idTraSach from  MuonSach,TraSach 
+		where MuonSach.idMuon=TraSach.idMuon) as a, inserted where a.idTraSach = inserted.idTraSach )
+	where PhieuPhat.idTraSach = (select idTraSach from inserted)
 end
 
 --trigg tự động thêm vào bảng phiếu phạt khi nhập vào bảng trả sách
@@ -306,10 +301,10 @@ create trigger trig_InserttoPhieuPhat on TraSach
 after insert 
 as 
 begin
-	insert into PhieuPhat(idMuon, idNhanVien)
-		(select TraSach.idMuon, TraSach.idNhanVien from TraSach, inserted
-			where TraSach.idMuon = inserted.idMuon)
+	insert into PhieuPhat(idTraSach, idNhanVien)
+		(select inserted.idTraSach, inserted.idNhanVien from inserted)
 end
+
 go
 
 --tạo triiger cập nhật lại số lượng sách khi sách được mượn--
@@ -509,5 +504,7 @@ go
 select * from MuonSach
 select * from TraSach
 select * from PhieuPhat
+select * from taikhoan
 
 exec  proc_themTraSach 1008,100
+delete from TraSach where idMuon = 1008
