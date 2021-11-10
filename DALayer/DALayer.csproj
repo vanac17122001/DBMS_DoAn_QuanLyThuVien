@@ -46,6 +46,8 @@
     <Compile Include="DAL_DocGiaMuonSach.cs" />
     <Compile Include="DAL_MuonSach.cs" />
     <Compile Include="DAL_NhanVien.cs" />
+    <Compile Include="DAL_ThongKeDocGia.cs" />
+    <Compile Include="DAL_ThongKeSach.cs" />
     <Compile Include="DAL_TraSach.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="DAL_DocGia.cs" />

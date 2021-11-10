@@ -23,6 +23,9 @@ namespace QuanLyThuVien
         BLL_DocGiaMuonSach dgmuon = new BLL_DocGiaMuonSach();
         BLL_NhanVien nv = new BLL_NhanVien();
         DataSet ds = new DataSet();
+        BLL_ThongKeDocGia thongkedocgia = new BLL_ThongKeDocGia();
+        BLL_ThongKeSach thongkesach = new BLL_ThongKeSach();
+
         string f = "";
 
         private string username;
@@ -885,6 +888,177 @@ namespace QuanLyThuVien
                 }
                 loadDauSach();
             } 
+        }
+       
+        public void loadThongKeDocGia()
+        {
+            ds = thongkedocgia.getallDocGia();
+            dagthongKeDocGia.DataSource = ds.Tables[0];
+
+        }
+        public void loadDocGiaTraTre()
+        {
+            ds = thongkedocgia.getDocGiaTraTre();
+            dagthongKeDocGia.DataSource = ds.Tables[0];
+        }
+
+        public void loadDocGiaMuonSach1()
+        {
+            ds = thongkedocgia.getDocGiaMuonSach1();
+            dagthongKeDocGia.DataSource = ds.Tables[0];
+
+        }
+        public void tienphat()
+        {
+            ds = thongkedocgia.getTongphat();
+            this.txtTienPhat.Text = ds.Tables[0].Rows[0][0].ToString();
+        }
+        public void maxPhat()
+        {
+            ds = thongkedocgia.getmaxPhat();
+            this.txtmaxphat.Text = ds.Tables[0].Rows[0][0].ToString();
+        }
+        public void loadDanhSachPhatTien()
+        {
+            ds = thongkedocgia.getDanhSachPhat();
+            dagDanhSachPhatTien.DataSource = ds.Tables[0];
+
+        }
+        public void loadSachDaMuon()
+        {
+            ds = thongkesach.getSachDaDuocMuon();
+            dagThongKeSachDaMuon.DataSource = ds.Tables[0];
+
+        }
+        public void loadSachChuaMuon()
+        {
+            ds = thongkesach.getSachChuaDuocMuon();
+            dagThongKeSachChuaMuon.DataSource = ds.Tables[0];
+        }
+        public void sachMuonNhieuNhat()
+        {
+            ds = thongkesach.getSachMuonNhieuNhat();
+            this.txtSachMuonNhieuNhat.Text = ds.Tables[0].Rows[0][0].ToString();
+        }
+
+        private void btnThongKe_Click(object sender, EventArgs e)
+        {
+            if (tuychon.Text == "Tất cả độc giả")
+            {
+                loadThongKeDocGia();
+
+            }
+            else if (tuychon.Text == "Độc giả mượn sách")
+            {
+                loadDocGiaMuonSach();
+
+            }
+            else if (tuychon.Text == "Độc giả trả trễ")
+            {
+                loadDocGiaTraTre();
+
+            }
+        }
+
+        private void dagthongKeDocGia_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int r = dagthongKeDocGia.CurrentCell.RowIndex;
+            string idDocGia = dagthongKeDocGia.Rows[r].Cells[0].Value.ToString();
+            string Ho = dagthongKeDocGia.Rows[r].Cells[1].Value.ToString();
+            string Ten = dagthongKeDocGia.Rows[r].Cells[2].Value.ToString();
+            string ngaySinh = dagthongKeDocGia.Rows[r].Cells[3].Value.ToString();
+            string gioiTinh = dagthongKeDocGia.Rows[r].Cells[4].Value.ToString();
+            string CMND = dagthongKeDocGia.Rows[r].Cells[5].Value.ToString();
+            string diaChi = dagthongKeDocGia.Rows[r].Cells[6].Value.ToString();
+            string SDT = dagthongKeDocGia.Rows[r].Cells[7].Value.ToString();
+            string email = dagthongKeDocGia.Rows[r].Cells[8].Value.ToString();
+            string soThe = dagthongKeDocGia.Rows[r].Cells[10].Value.ToString();
+            string ngayLap = dagthongKeDocGia.Rows[r].Cells[9].Value.ToString();
+            txtID.Text = idDocGia;
+            txtHo.Text = Ho;
+            txtTen.Text = Ten;
+            txtNgaySinh.Text = ngaySinh;
+            txtGioiTinh.Text = gioiTinh;
+            txtDiaChi.Text = diaChi;
+            txtEmail.Text = email;
+            txtSDT.Text = SDT;
+            txtNgayLap.Text = ngayLap;
+            txtSoThe.Text = soThe;
+            txtCMND.Text = CMND;
+        }
+
+        private void dagDanhSachPhatTien_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int r = dagDanhSachPhatTien.CurrentCell.RowIndex;
+            string id = dagDanhSachPhatTien.Rows[r].Cells[0].Value.ToString();
+            string Ho = dagDanhSachPhatTien.Rows[r].Cells[1].Value.ToString();
+            string Ten = dagDanhSachPhatTien.Rows[r].Cells[2].Value.ToString();
+            string ngaysinh = dagDanhSachPhatTien.Rows[r].Cells[3].Value.ToString();
+            string gioiTinh = dagDanhSachPhatTien.Rows[r].Cells[4].Value.ToString();
+            string CMND = dagDanhSachPhatTien.Rows[r].Cells[5].Value.ToString();
+            string soThe = dagDanhSachPhatTien.Rows[r].Cells[6].Value.ToString();
+            string soNgayTre = dagDanhSachPhatTien.Rows[r].Cells[7].Value.ToString();
+            string soTienPhat = dagDanhSachPhatTien.Rows[r].Cells[8].Value.ToString();
+
+            txtIDtp.Text = id;
+            txtHotp.Text = Ho;
+            txtTentp.Text = Ten;
+            txtNgaysinhtp.Text = ngaysinh;
+            txtGioiTinhtp.Text = gioiTinh;
+            txtCMNDtp.Text = CMND;
+            txtSoThetp.Text = soThe;
+            txttienPhattp.Text = soTienPhat;
+            txtSoNgayTretp.Text = soNgayTre;
+        }
+
+        private void dagThongKeSachChuaMuon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int r = dagThongKeSachChuaMuon.CurrentCell.RowIndex;
+            string idSach = dagThongKeSachChuaMuon.Rows[r].Cells[0].Value.ToString();
+            string idDauSach = dagThongKeSachChuaMuon.Rows[r].Cells[2].Value.ToString();
+            string tenSach = dagThongKeSachChuaMuon.Rows[r].Cells[1].Value.ToString();
+            string tenTheLoai = dagThongKeSachChuaMuon.Rows[r].Cells[3].Value.ToString();
+            string Gia = dagThongKeSachChuaMuon.Rows[r].Cells[4].Value.ToString();
+            string viTri = dagThongKeSachChuaMuon.Rows[r].Cells[5].Value.ToString();
+            txtIDDauSachsach.Text = idDauSach;
+            txtIDSachsach.Text = idSach;
+            txtTenSachsach.Text = tenSach;
+            txtTenTheLoaisach.Text = tenTheLoai;
+            txtGiasach.Text = Gia;
+            txtViTrisach.Text = viTri;
+        }
+
+        private void dagThongKeSachDaMuon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int r = dagThongKeSachDaMuon.CurrentCell.RowIndex;
+            string idSach = dagThongKeSachDaMuon.Rows[r].Cells[0].Value.ToString();
+            string idDauSach = dagThongKeSachDaMuon.Rows[r].Cells[2].Value.ToString();
+            string tenSach = dagThongKeSachDaMuon.Rows[r].Cells[1].Value.ToString();
+            string tenTheLoai = dagThongKeSachDaMuon.Rows[r].Cells[3].Value.ToString();
+            string Gia = dagThongKeSachDaMuon.Rows[r].Cells[4].Value.ToString();
+            string viTri = dagThongKeSachDaMuon.Rows[r].Cells[5].Value.ToString();
+            txtIDDauSachsach.Text = idDauSach;
+            txtIDSachsach.Text = idSach;
+            txtTenSachsach.Text = tenSach;
+            txtTenTheLoaisach.Text = tenTheLoai;
+            txtGiasach.Text = Gia;
+            txtViTrisach.Text = viTri;
+        }
+
+        private void tcThongKeBaoCao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tcThongKeBaoCao.SelectedIndex == 2)
+            {
+                tienphat();
+                maxPhat();
+                loadDanhSachPhatTien();
+            }
+            if (tcThongKeBaoCao.SelectedIndex == 1)
+            {
+                loadSachDaMuon();
+                loadSachChuaMuon();
+                sachMuonNhieuNhat();
+            }
         }
     }
 }
