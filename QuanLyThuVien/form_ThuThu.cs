@@ -52,17 +52,26 @@ namespace QuanLyThuVien
         {
             ds = dausach.getDauSach();
             dagDanhSachDauSach.DataSource = ds.Tables[0];
+
+            this.txtTenDauSach.Enabled = false;
+            this.txtTenTacGia.Enabled = false;
+            this.txtNhaXuatBan.Enabled = false;
+            this.txtNamXuatBan.Enabled = false;
+            this.txtSoLuongDauSach.Enabled = false;
+            this.txtSoLuongSachDaMuon.Enabled = false;
+            this.txtViTriDauSach.Enabled = false;
+            this.btnLuuDauSach.Enabled = false;
         }
 
         public void loadMuonSach()
         {
             ds = muon.getMuonSach();
-            dgvMuonSach.DataSource = ds.Tables[0];
+            dvgDocGiaMuonSach.DataSource= ds.Tables[0];
         }
         public void loadTrasach()
         {
             ds = tra.getTraSach();
-            dgvMuonTra_TraSach.DataSource = ds.Tables[0];
+            dvgDocGiaTraSach.DataSource = ds.Tables[0];
         }
         public void loadDocGiaMuonSach()
         {
@@ -90,7 +99,7 @@ namespace QuanLyThuVien
             tcQuanLyMuonTra.Visible = false;
             gbThongTinThuThu.Size = new Size(965, 661);
             gbThongTinThuThu.Visible = true;
-            gbThongTinThuThu.Location= new System.Drawing.Point(252, 38);
+            gbThongTinThuThu.Location = new System.Drawing.Point(252, 38);
             loadNhanVien(this.username, this.pass);
 
             txtThuThu_IdNhanVien.Enabled = false;
@@ -112,7 +121,7 @@ namespace QuanLyThuVien
             gbThongTinThuThu.Visible = false;
             tcThongKeBaoCao.Size = new Size(965, 661);
             tcThongKeBaoCao.Visible = true;
-            tcThongKeBaoCao.Location= new System.Drawing.Point(252, 38);
+            tcThongKeBaoCao.Location = new System.Drawing.Point(252, 38);
         }
 
         private void btnQuanLyDocGia_Click(object sender, EventArgs e)
@@ -122,7 +131,7 @@ namespace QuanLyThuVien
             tcThongTinSach.Visible = false;
             tcThongKeBaoCao.Visible = false;
             tcQuanLyDocGia.Size = new Size(965, 661);
-            tcQuanLyDocGia.Location= new System.Drawing.Point(252, 38);
+            tcQuanLyDocGia.Location = new System.Drawing.Point(252, 38);
             loadDocGia();
             tcQuanLyDocGia.Visible = true;
 
@@ -135,7 +144,7 @@ namespace QuanLyThuVien
             tcThongKeBaoCao.Visible = false;
             tcQuanLyDocGia.Visible = false;
             tcThongTinSach.Size = new Size(965, 661);
-            tcThongTinSach.Location= new System.Drawing.Point(252, 38);
+            tcThongTinSach.Location = new System.Drawing.Point(252, 38);
             loadDauSach();
             tcThongTinSach.Visible = true;
         }
@@ -146,7 +155,7 @@ namespace QuanLyThuVien
             tcThongKeBaoCao.Visible = false;
             tcThongTinSach.Visible = false;
             gbThongTinThuThu.Visible = false;
-            tcQuanLyMuonTra.Size= new Size(965, 661);
+            tcQuanLyMuonTra.Size = new Size(965, 661);
             tcQuanLyMuonTra.Location = new System.Drawing.Point(252, 38);
             tcQuanLyMuonTra.Visible = true;
             loadMuonSach();
@@ -169,32 +178,32 @@ namespace QuanLyThuVien
         {
             int r = dagDanhSachDocGia.CurrentCell.RowIndex;
 
-            string id= dagDanhSachDocGia.Rows[r].Cells[0].Value.ToString();
+            string id = dagDanhSachDocGia.Rows[r].Cells[0].Value.ToString();
             int _id = int.Parse(id);
-            string ho=dagDanhSachDocGia.Rows[r].Cells[1].Value.ToString();
-            string ten=dagDanhSachDocGia.Rows[r].Cells[2].Value.ToString();
+            string ho = dagDanhSachDocGia.Rows[r].Cells[1].Value.ToString();
+            string ten = dagDanhSachDocGia.Rows[r].Cells[2].Value.ToString();
 
             Byte[] _anhDg = null;
             if (!(dagDanhSachDocGia.Rows[r].Cells[11].Value == DBNull.Value))
             {
                 _anhDg = (Byte[])dagDanhSachDocGia.Rows[r].Cells[11].Value;
             }
-            string ngaysinh =dagDanhSachDocGia.Rows[r].Cells[3].Value.ToString();
+            string ngaysinh = dagDanhSachDocGia.Rows[r].Cells[3].Value.ToString();
 
             DateTime _ngaysinh = Convert.ToDateTime(ngaysinh);
 
-            string gioitinh=dagDanhSachDocGia.Rows[r].Cells[4].Value.ToString();
-            string cmnd=dagDanhSachDocGia.Rows[r].Cells[5].Value.ToString();
-            string diachi=dagDanhSachDocGia.Rows[r].Cells[6].Value.ToString();
-            string sdt=dagDanhSachDocGia.Rows[r].Cells[7].Value.ToString();
-            string email=dagDanhSachDocGia.Rows[r].Cells[8].Value.ToString();
+            string gioitinh = dagDanhSachDocGia.Rows[r].Cells[4].Value.ToString();
+            string cmnd = dagDanhSachDocGia.Rows[r].Cells[5].Value.ToString();
+            string diachi = dagDanhSachDocGia.Rows[r].Cells[6].Value.ToString();
+            string sdt = dagDanhSachDocGia.Rows[r].Cells[7].Value.ToString();
+            string email = dagDanhSachDocGia.Rows[r].Cells[8].Value.ToString();
 
-            string sothe=dagDanhSachDocGia.Rows[r].Cells[10].Value.ToString();
-            int _sothe= int.Parse(sothe);
+            string sothe = dagDanhSachDocGia.Rows[r].Cells[10].Value.ToString();
+            int _sothe = int.Parse(sothe);
 
-            string ngaydk=dagDanhSachDocGia.Rows[r].Cells[9].Value.ToString();
+            string ngaydk = dagDanhSachDocGia.Rows[r].Cells[9].Value.ToString();
             DateTime _ngaydk = Convert.ToDateTime(ngaydk);
-            DTO_DocGia docgia = new DTO_DocGia(_id,ho,ten,_ngaysinh,gioitinh,cmnd,diachi,sdt,email,_ngaydk,_sothe, _anhDg);
+            DTO_DocGia docgia = new DTO_DocGia(_id, ho, ten, _ngaysinh, gioitinh, cmnd, diachi, sdt, email, _ngaydk, _sothe, _anhDg);
 
             formChiTietDocGia formChiTietDocGia = new formChiTietDocGia();
             formChiTietDocGia.loadThongTinChiTietDG(docgia);
@@ -205,8 +214,8 @@ namespace QuanLyThuVien
 
         private void btnTimKiemDocGia_Click(object sender, EventArgs e)
         {
-            if(rabTimKiemDocGiaTheoTen.Checked == true) 
-            { 
+            if (rabTimKiemDocGiaTheoTen.Checked == true)
+            {
                 string ten = txtTiemKiemDocGia.Text.ToString();
                 ds = docgia.timDocGia(ten);
                 dagDanhSachDocGia.DataSource = ds.Tables[0];
@@ -222,7 +231,7 @@ namespace QuanLyThuVien
         private void btnTimKiemDauSach_Click(object sender, EventArgs e)
         {
             string ten = txtTimKiemDauSach.Text.ToString();
-            if (ten=="")
+            if (ten == "")
             {
                 MessageBox.Show("Vui lòng nhập thông tin tìm kiếm !");
                 return;
@@ -232,7 +241,8 @@ namespace QuanLyThuVien
                 string tensach = txtTimKiemDauSach.Text.ToString();
                 ds = dausach.timDauSach(tensach);
                 dagDanhSachDauSach.DataSource = ds.Tables[0];
-            } else
+            }
+            else
             {
 
                 if (rabTimKiemDauSachTheoTG.Checked == true)
@@ -253,16 +263,17 @@ namespace QuanLyThuVien
         {
             int r = dagDanhSachDauSach.CurrentCell.RowIndex;
 
-            string tensach = dagDanhSachDauSach.Rows[r].Cells[0].Value.ToString();
-            string tentg = dagDanhSachDauSach.Rows[r].Cells[1].Value.ToString();
-            string nxb = dagDanhSachDauSach.Rows[r].Cells[2].Value.ToString(); ;
-            string soluongsach= dagDanhSachDauSach.Rows[r].Cells[3].Value.ToString();
-            string soluongsachmuon= dagDanhSachDauSach.Rows[r].Cells[4].Value.ToString();
-            string namsb = dagDanhSachDauSach.Rows[r].Cells[5].Value.ToString();
+            string tensach = dagDanhSachDauSach.Rows[r].Cells[1].Value.ToString();
+            string tentg = dagDanhSachDauSach.Rows[r].Cells[2].Value.ToString();
+            string nxb = dagDanhSachDauSach.Rows[r].Cells[3].Value.ToString(); ;
+            string soluongsach = dagDanhSachDauSach.Rows[r].Cells[4].Value.ToString();
+            string soluongsachmuon = dagDanhSachDauSach.Rows[r].Cells[5].Value.ToString();
+            string namsb = dagDanhSachDauSach.Rows[r].Cells[6].Value.ToString();
+            string vitri= dagDanhSachDauSach.Rows[r].Cells[7].Value.ToString();
 
-            if (!(dagDanhSachDauSach.Rows[r].Cells[6].Value== DBNull.Value))
+            if (!(dagDanhSachDauSach.Rows[r].Cells[8].Value == DBNull.Value))
             {
-                byte[] anhBiaSach = (byte[])dagDanhSachDauSach.Rows[r].Cells[6].Value;
+                byte[] anhBiaSach = (byte[])dagDanhSachDauSach.Rows[r].Cells[8].Value;
                 Image _anhBiaSach = ConvertByteArrayToImage(anhBiaSach);
                 pibDauSach.Image = _anhBiaSach;
             }
@@ -274,10 +285,12 @@ namespace QuanLyThuVien
             this.txtNamXuatBan.Text = namsb;
             this.txtSoLuongDauSach.Text = soluongsach;
             this.txtSoLuongSachDaMuon.Text = soluongsachmuon;
+            this.txtViTriDauSach.Text = vitri;
+
         }
         //Them doc gia
 
-            //Chuyen Image sang Bytes
+        //Chuyen Image sang Bytes
         public byte[] ConvertImageToBytes(Image img)
         {
             using (MemoryStream ms = new MemoryStream())
@@ -286,10 +299,10 @@ namespace QuanLyThuVien
                 return ms.ToArray();
             }
         }
-            // Chuyen kieu byte sang Image
+        // Chuyen kieu byte sang Image
         public Image ConvertByteArrayToImage(byte[] data)
         {
-            using (MemoryStream ms=new MemoryStream(data))
+            using (MemoryStream ms = new MemoryStream(data))
             {
                 return Image.FromStream(ms);
             }
@@ -323,7 +336,7 @@ namespace QuanLyThuVien
                     MessageBox.Show("Vui lòng nhập thông tin giới tính chỉ bao gồm Nam hoặc Nữ !");
                     return;
                 }
-                if (ho==""|| ten=="" || ngaysinh=="" ||cmnd=="" ||diachi==""||email==""||ngaydk=="")
+                if (ho == "" || ten == "" || ngaysinh == "" || cmnd == "" || diachi == "" || email == "" || ngaydk == "")
                 {
                     MessageBox.Show("Vui lòng nhập đủ thông tin !");
                     return;
@@ -333,13 +346,13 @@ namespace QuanLyThuVien
                     MessageBox.Show("Vui lòng nhập đúng số điện thoại !");
                     return;
                 }
-                DateTime _ngaysinh= Convert.ToDateTime(ngaysinh);
+                DateTime _ngaysinh = Convert.ToDateTime(ngaysinh);
                 DateTime _ngaydk = Convert.ToDateTime(ngaydk);
                 //DateTime _ngaysinh = Convert.ToDateTime(ngaysinh);
 
                 DTO_DocGia DTO = new DTO_DocGia();
                 DTO_DocGia docgia = new DTO_DocGia();
-                docgia=DTO.DTO_ThemDocGia(ho, ten, _ngaysinh, gioitinh, cmnd, diachi, sdt, email, _ngaydk, anhdg);
+                docgia = DTO.DTO_ThemDocGia(ho, ten, _ngaysinh, gioitinh, cmnd, diachi, sdt, email, _ngaydk, anhdg);
                 if (bLL_DocGia.themDocGia(ref err, docgia))
                 {
                     MessageBox.Show("Đăng ký Độc Giả Thành Công!!!" + err);
@@ -372,7 +385,7 @@ namespace QuanLyThuVien
 
         private void btnChonHinhDG_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog ofd= new OpenFileDialog() {Filter="Image files(*.jpg;*.jpeg;)|*.jpg;*.jpge", Multiselect = false })
+            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "Image files(*.jpg;*.jpeg;)|*.jpg;*.jpge", Multiselect = false })
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
@@ -434,8 +447,10 @@ namespace QuanLyThuVien
 
         private void btnMuonTra_LuuMuonSach_Click(object sender, EventArgs e)
         {
-            try {
-                if(f == "them") {
+            try
+            {
+                if (f == "them")
+                {
                     int thedocgia = Convert.ToInt32(txtMuonTra_TheDocGia.Text);
                     int idsach = Convert.ToInt32(txtMuonTra_IdSachMuonSach.Text);
                     int idnhanvien = Convert.ToInt32(txtMuonTra_IdNhanVien.Text);
@@ -461,7 +476,7 @@ namespace QuanLyThuVien
                 MessageBox.Show("Lỗi không thực hiện được");
             }
             loadMuonSach();
-            
+
         }
 
         private void btnMuonTra_SuaMuonSach_Click(object sender, EventArgs e)
@@ -480,7 +495,8 @@ namespace QuanLyThuVien
         private void btnMuonTra_XoaMuonSach_Click(object sender, EventArgs e)
         {
             int idmuon = Convert.ToInt32(txtMuonTra_IdMuonSach.Text);
-            try { 
+            try
+            {
                 muon.xoaMuonSach("", idmuon);
                 MessageBox.Show("Xóa thành công");
             }
@@ -495,9 +511,9 @@ namespace QuanLyThuVien
         {
             int id = Convert.ToInt32(txtMuonTra_TimMuonSach.Text);
             ds = muon.timMuonSach(id);
-            dgvMuonSach.DataSource = ds.Tables[0];
+            dvgDocGiaMuonSach.DataSource = ds.Tables[0];
         }
- //Sử lý phần thông tin mượn trả, trả sách
+        //Sử lý phần thông tin mượn trả, trả sách
 
         private void btnMuonTra_ThemTraSach_Click(object sender, EventArgs e)
         {
@@ -551,7 +567,7 @@ namespace QuanLyThuVien
                     int idmuon = Convert.ToInt32(txtMuonTra_IdMuonTraSach.Text);
                     int idnhanvien = Convert.ToInt32(txtMuonTra_IdNhanVienTraSach.Text);
                     DTO_TraSach dtotrasach = new DTO_TraSach(idmuon, idnhanvien);
-                    if( tra.themTraSach("", dtotrasach))
+                    if (tra.themTraSach("", dtotrasach))
                         MessageBox.Show("Thêm thành công");
                     else MessageBox.Show("Lỗi câu lệnh truy vấn");
                 }
@@ -561,7 +577,7 @@ namespace QuanLyThuVien
                     int idtra = Convert.ToInt32(txtMuonTra_IdTraTraSach.Text);
                     int idnhanvien = Convert.ToInt32(txtMuonTra_IdNhanVienTraSach.Text);
                     DateTime ngaytra = Convert.ToDateTime(txtMuonTra_NgayTraTraSach.Text);
-                    DTO_TraSach dtotrasach = new DTO_TraSach(idtra,idmuon, ngaytra,idnhanvien);
+                    DTO_TraSach dtotrasach = new DTO_TraSach(idtra, idmuon, ngaytra, idnhanvien);
                     if (tra.suaTraSach("", dtotrasach))
                         MessageBox.Show("Sửa thành công");
                     else MessageBox.Show("Lỗi truy vấn");
@@ -579,9 +595,9 @@ namespace QuanLyThuVien
             int idtra = Convert.ToInt32(txtMuonTra_IdMuonTraSach.Text);
             try
             {
-               if( tra.xoaTraSach("", idtra))
+                if (tra.xoaTraSach("", idtra))
                     MessageBox.Show("Xóa thành công");
-               else MessageBox.Show("Lỗi truy vấn");
+                else MessageBox.Show("Lỗi truy vấn");
             }
             catch
             {
@@ -594,7 +610,7 @@ namespace QuanLyThuVien
         {
             int id = Convert.ToInt32(txtMuonTra_TimTraSach.Text);
             ds = tra.timTraSach(id);
-            dgvMuonTra_TraSach.DataSource = ds.Tables[0];
+            dvgDocGiaTraSach.DataSource = ds.Tables[0];
         }
 
         // Xử lý phần đôc giả mượn sách của quản lý mượn trả
@@ -681,14 +697,194 @@ namespace QuanLyThuVien
             txtThuThu_EmailNhanVien.Enabled = false;
             txtThuThu_NgayLamNhanVien.Enabled = false;
 
-        private void picRefeshDocGia_Click(object sender, EventArgs e)
-        {
-            loadDocGia();
+            /*private void picRefeshDocGia_Click(object sender, EventArgs e)
+            {
+                loadDocGia();
+            }
+
+            private void picRefeshDauSach_Click(object sender, EventArgs e)
+            {
+                loadDauSach();
+            }*/
         }
 
-        private void picRefeshDauSach_Click(object sender, EventArgs e)
+        private void dvgDocGiaMuonSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            loadDauSach();
+            int r = dvgDocGiaMuonSach.CurrentCell.RowIndex;
+            // Chuyển thông tin lên panel 
+            this.txtMuonTra_IdMuonSach.Text = dvgDocGiaMuonSach.Rows[r].Cells[0].Value.ToString();
+            this.txtMuonTra_IdSachMuonSach.Text = dvgDocGiaMuonSach.Rows[r].Cells[1].Value.ToString();
+            this.txtMuonTra_TheDocGia.Text = dvgDocGiaMuonSach.Rows[r].Cells[2].Value.ToString();
+            this.txtMuonTra_IdNhanVien.Text = dvgDocGiaMuonSach.Rows[r].Cells[3].Value.ToString();
+            this.txtMuonTra_NgayMuon.Text = dvgDocGiaMuonSach.Rows[r].Cells[4].Value.ToString();
+            this.txtMuonTra_HanTra.Text = dvgDocGiaMuonSach.Rows[r].Cells[5].Value.ToString();
+        }
+
+
+        private void dvgDocGiaTraSach_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int r = dvgDocGiaTraSach.CurrentCell.RowIndex;
+            // Chuyển thông tin lên panel 
+            this.txtMuonTra_IdTraTraSach.Text = dvgDocGiaTraSach.Rows[r].Cells[0].Value.ToString();
+            this.txtMuonTra_IdMuonTraSach.Text = dvgDocGiaTraSach.Rows[r].Cells[1].Value.ToString();
+            this.txtMuonTra_NgayTraTraSach.Text = dvgDocGiaTraSach.Rows[r].Cells[2].Value.ToString();
+            this.txtMuonTra_IdNhanVienTraSach.Text = dvgDocGiaTraSach.Rows[r].Cells[3].Value.ToString();
+        }
+
+        private void btnThemSach_ChonHinh_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "Image files(*.jpg;*.jpeg;)|*.jpg;*.jpge", Multiselect = false })
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    // Hien thi hinh anh toi picture
+                    picThemAnhBia.Image = Image.FromFile(ofd.FileName);
+                }
+            }
+        }
+
+        private void btnThemSach_Click(object sender, EventArgs e)
+        {
+            string err = "Lỗi khi thêm !";
+            BLL_DauSach bLL_DauSach = new BLL_DauSach();
+            try
+            {
+                string tensach = this.txtThemTenSach.Text;
+                string butdanh = this.txtThemTenTacGia.Text;
+                string tennxb = this.txtThemTenNhaXuatBan.Text;
+                string namxb = this.txtThemNamXuatBan.Text;
+                string theloai = this.txtThemTheLoai.Text;
+                string gia = this.txtThemGia.Text;
+                string soluong = this.txtThemSoLuongSach.Text;
+                string vitri = this.txtThemViTri.Text;
+
+                byte[] anhDauSach = ConvertImageToBytes(picThemAnhBia.Image);
+
+                if (tensach == "" || butdanh == "" || tennxb == "" || namxb == "" || theloai == "" || gia == "" || soluong == "" || vitri=="")
+                {
+                    MessageBox.Show("Vui lòng nhập đủ thông tin !");
+                    return;
+                }
+                if (CheckNumber(gia) == false||CheckNumber(soluong)==false)
+                {
+                    MessageBox.Show("Vui lòng nhập đúng định dạng số!");
+                    return;
+                }
+                int _gia = Convert.ToInt32(gia);
+                int _soluong = Convert.ToInt32(soluong);
+
+                DateTime _namxb = Convert.ToDateTime(namxb);
+
+                DTO_Sach dTO_Sach = new DTO_Sach(tensach, butdanh, tennxb, _namxb, theloai, _gia, _soluong, vitri, anhDauSach);
+
+                if (bLL_DauSach.themDauSach(ref err, dTO_Sach))
+                {
+                    MessageBox.Show("Thêm đầu sách thành công!!!");
+                }
+                else
+                {
+                    MessageBox.Show("Thêm đầu sách không Thành Công\n Lỗi Dữ Liệu Nhập!!!" + err);
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Lỗi");
+                throw ex;
+            }
+
+        }
+
+        private void btnSuaDauSach_Click_1(object sender, EventArgs e)
+        {
+            this.btnXoaDauSach.Enabled = false;
+            this.btnSuaDauSach.Enabled = false;
+
+            this.txtSoLuongSachDaMuon.Enabled = false;
+            this.txtNamXuatBan.Enabled = false;
+            this.txtNhaXuatBan.Enabled = false;
+            this.txtThemTenNhaXuatBan.Enabled = false;
+
+            this.txtTenDauSach.Enabled = true;
+            this.txtSoLuongDauSach.Enabled = true;
+            this.txtViTriDauSach.Enabled = true;
+        }
+
+        private void btnLuuDauSach_Click(object sender, EventArgs e)
+        {
+            string err = "Lỗi khi sửa !";
+            BLL_DauSach bLL_DauSach = new BLL_DauSach();
+            try
+            {
+                int r = dagDanhSachDauSach.CurrentCell.RowIndex;
+
+                string idDauSach = dagDanhSachDauSach.Rows[r].Cells[0].Value.ToString();
+                
+                string tenDauSach = this.txtTenDauSach.Text;
+                string vitri = this.txtViTriDauSach.Text;
+                string soLuongDauSach = this.txtSoLuongDauSach.Text;
+                
+
+                if (tenDauSach == "" || vitri == "" || soLuongDauSach == "")
+                {
+                    MessageBox.Show("Vui lòng nhập đủ thông tin !");
+                    return;
+                }
+                if (CheckNumber(soLuongDauSach)==false)
+                {
+                    MessageBox.Show("Vui lòng nhập đúng số lượng sách !");
+                    return;
+                }
+                int _idDauSach = Convert.ToInt32(idDauSach);
+                int _soLuongDauSach = Convert.ToInt32(soLuongDauSach);
+
+                if (bLL_DauSach.suaDauSach(ref err,_idDauSach, tenDauSach, vitri, _soLuongDauSach))
+                {
+                    MessageBox.Show("Sửa đầu sách thành công!!!");
+                }
+                else
+                {
+                    MessageBox.Show("Sửa đầu sách không Thành Công\n Lỗi Dữ Liệu Nhập!!!" + err);
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Lỗi");
+                throw ex;
+            }
+        }
+
+        private void btnXoaDauSach_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa", "Xóa đầu sách", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                int r = dagDanhSachDauSach.CurrentCell.RowIndex;
+
+                string idDauSach = dagDanhSachDauSach.Rows[r].Cells[0].Value.ToString();
+                int _idDauSach = Convert.ToInt32(idDauSach);
+
+                string err = "Lỗi khi xóa !";
+                BLL_DauSach bLL_DauSach = new BLL_DauSach();
+                try
+                {
+                    if (bLL_DauSach.xoaDauSach(ref err, _idDauSach))
+                    {
+                        MessageBox.Show("Xóa đầu sách thành công!!!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa đầu sách không Thành Công\n Lỗi Dữ Liệu Nhập!!!" + err);
+                    }
+
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Lỗi");
+                    throw ex;
+                }
+                loadDauSach();
+            } 
         }
     }
 }
