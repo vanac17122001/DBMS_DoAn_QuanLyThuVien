@@ -1,6 +1,4 @@
 ﻿--Tạo bảng
-drop database Database_DBMS
-go
 create database Database_DBMS
 go
 use Database_DBMS
@@ -51,7 +49,7 @@ create table NhaXuatBan (
 	idNXB int IDENTITY(600,1),
 	ten nvarchar (50) not null,
 	soDT varchar (15),
-	diaChi nvarchar (50) not null,
+	diaChi nvarchar (50),
 	email varchar (50),
 	website varchar (100),
 	CONSTRAINT pk_nhaxuatban PRIMARY KEY (idNXB)
@@ -109,70 +107,76 @@ create table MuonSach (
 	ngayMuon date not null,
 	hanTra date,
 	CONSTRAINT pk_muonsach PRIMARY KEY (idMuon),
-	CONSTRAINT fk_idsach FOREIGN KEY (idSach) REFERENCES Sach (idSach),
+	CONSTRAINT fk_idsach FOREIGN KEY (idSach) REFERENCES Sach (idSach)
+	ON DELETE SET NULL,
 	CONSTRAINT fk_sothe_muonsach FOREIGN KEY (soThe) REFERENCES TheThuVien (soThe),
 	CONSTRAINT fk_nhavien FOREIGN KEY (idNhanVien) REFERENCES NhanVien (idNhanVien)
 	ON DELETE SET NULL
 );
-
 go
+
 create table TraSach(
 	idTraSach int IDENTITY(2000,1),
 	idMuon int,
 	ngayTra date not null,
 	idNhanVien int,
 	CONSTRAINT pk_ PRIMARY KEY (idTraSach),
-	CONSTRAINT fk_muon FOREIGN KEY (idMuon) REFERENCES MuonSach (idMuon),
+	CONSTRAINT fk_muon FOREIGN KEY (idMuon) REFERENCES MuonSach (idMuon)
+		on delete cascade on update cascade,
 	CONSTRAINT fk_nhavien_trasach FOREIGN KEY (idNhanVien) REFERENCES NhanVien (idNhanVien)
-	ON DELETE SET NULL
+	ON DELETE no action
+	ON UPDATE no action
 );
 go
 create table PhieuPhat(
 	idPhieuPhat int IDENTITY(3000,1),
-	idMuon int,
 	idTraSach int,
 	soNgayQuaHan int,
 	ngayLapPhieu date,
 	idNhanVien int,
 	soTienPhat int,
 	CONSTRAINT pk_PhieuPhat PRIMARY KEY (idPhieuPhat),
-	CONSTRAINT fk_idMuon FOREIGN KEY (idMuon) REFERENCES MuonSach (idMuon),
 	CONSTRAINT fk_idTraSach FOREIGN KEY (idTraSach) REFERENCES TraSach (idTraSach)
 		on delete  cascade  on update  cascade,
 	CONSTRAINT fk_NhanVienLapPhieuPhat FOREIGN KEY (idNhanVien) REFERENCES NhanVien (idNhanVien)
+		on delete no action on update no action
 );
 go
 -- Trigger 
 use Database_DBMS
-
--- Chưa hoàn thiện nên chưa chạy
+go
 -- tạo trigger tự insert vào bảng phiếu phạt
 create trigger trig_InsertPhieuPhat on PhieuPhat
 after insert
 as 
 begin
 	update PhieuPhat
-	set idTraSach = (select TraSach.idTraSach 
-		from TraSach, inserted where TraSach.idMuon = inserted.idMuon)
-	where PhieuPhat.idMuon = (select idmuon from inserted)
-
-	update PhieuPhat
-	set soNgayQuaHan = (select a.Tre from (select datediff(day,hanTra,ngayTra) as Tre, MuonSach.idMuon from  MuonSach,TraSach 
-		where MuonSach.idMuon=TraSach.idMuon )as a, inserted where a.idMuon = inserted.idMuon)
-	where PhieuPhat.idMuon = (select idmuon from inserted)
+	set soNgayQuaHan = (select a.Tre from (select datediff(day,hanTra,ngayTra) as Tre, TraSach.idTraSach from  MuonSach,TraSach 
+		where MuonSach.idMuon=TraSach.idMuon )as a, inserted where a.idTraSach = inserted.idTraSach)
+	where PhieuPhat.idTraSach = (select idTraSach from inserted)
 
 	update PhieuPhat
 	set ngayLapPhieu = (select TraSach.ngayTra 
-		from TraSach,inserted where TraSach.idMuon = inserted.idMuon)
-	where PhieuPhat.idMuon = (select idmuon from inserted)
+		from TraSach,inserted where TraSach.idTraSach = inserted.idTraSach)
+	where PhieuPhat.idTraSach = (select idTraSach from inserted)
 
 	update PhieuPhat
-	set soTienPhat = 5000*(select Tre from (select datediff(day,hanTra,ngayTra) as Tre,  MuonSach.idMuon from  MuonSach,TraSach 
-		where MuonSach.idMuon=TraSach.idMuon) as a, inserted where a.idMuon = inserted.idMuon )
-	where PhieuPhat.idMuon = (select idmuon from inserted)
+	set soTienPhat = 5000*(select Tre from (select datediff(day,hanTra,ngayTra) as Tre,  TraSach.idTraSach from  MuonSach,TraSach 
+		where MuonSach.idMuon=TraSach.idMuon) as a, inserted where a.idTraSach = inserted.idTraSach )
+	where PhieuPhat.idTraSach = (select idTraSach from inserted)
 end
-go
 
+--trigg tự động thêm vào bảng phiếu phạt khi nhập vào bảng trả sách
+go
+create trigger trig_InserttoPhieuPhat on TraSach
+after insert 
+as 
+begin
+	insert into PhieuPhat(idTraSach, idNhanVien)
+		(select inserted.idTraSach, inserted.idNhanVien from inserted)
+end
+
+go
 --tạo triiger cập nhật lại số lượng sách khi sách được mượn--
 
 create trigger trig_InsertMuonSach on MuonSach 
@@ -227,6 +231,8 @@ as
 			end
 	end
 go
+
+
 
 --Kiểm tra hạn dùng của thẻ thư viện phải lớn hơn ngày lập--
 create trigger trig_CheckDateTheThuVien on TheThuVien
@@ -326,6 +332,74 @@ exec sp_ThemDocGia N'Cao',N'Hông Hoa','2002-11-1',N'Nữ','223340678',N'Hiệp 
 go
 exec sp_ThemDocGia N'Lưu',N'Quốc Dũng','2002-10-1',N'Nam','223342134',N'Hoàng Diệu 2-Thủ Đức','0996522941','quocdung@gmail.com',null
 go
+-- Thêm đầu sách
+create procedure sp_Insert_Sach
+@tenSach nvarchar(100),
+@butDanh nvarchar(50),
+@tenNXB nvarchar(50),
+@namXB date,
+@theLoai nvarchar(50),
+@gia int,
+@soLuong int,
+@vitri nvarchar (50),
+@anhDS image
+as
+begin
+	begin tran
+	declare @idNXB int
+	declare @idTheLoai int
+	declare @idTacGia int
+	declare @idDauSach int
+	if(@butDanh not in(select butDanh from TacGia))
+	begin
+		insert into TacGia(butDanh) values(@butDanh)
+		select @idTacGia=idTacGia from TacGia where TacGia.butDanh = @butDanh
+	end
+	else
+	begin
+		select @idTacGia=idTacGia from TacGia where TacGia.butDanh = @butDanh
+	end
+
+	if(@tenNXB not in(select ten from NhaXuatBan))
+	begin
+		insert into NhaXuatBan(ten) values(@tenNXB)
+		select @idNXB=idNXB from NhaXuatBan where NhaXuatBan.ten = @tenNXB
+	end
+	else
+	begin
+		select @idNXB=idNXB from NhaXuatBan where NhaXuatBan.ten = @tenNXB
+	end
+
+	if(@theLoai not in(select tenTheLoai from TheLoaiSach))
+	begin
+		insert into TheLoaiSach(tenTheLoai) values(@theLoai)
+		select @idTheLoai=idTheLoai from TheLoaiSach where TheLoaiSach.tenTheLoai = @theLoai
+	end
+	else
+	begin
+		select @idTheLoai=idTheLoai from TheLoaiSach where TheLoaiSach.tenTheLoai = @theLoai
+	end
+	
+	insert into DauSach(tenSach,idNXB,namXB,idTheLoai,gia,soLuong,idTacGia,anhDS,soLuongMuon,viTri) 
+				values(@tenSach,@idNXB,@namXB,@idTheLoai,@gia,@soLuong,@idTacGia, @anhDS,0,@vitri)
+	set @idDauSach= (select MAX (DauSach.idDauSach) from DauSach)
+
+	WHILE @soLuong >0
+	BEGIN
+	 insert into Sach (idDauSach,trangThai) values (@idDauSach,N'Chưa mượn')
+	 SET @soLuong = @soLuong -1 ;
+	END;
+	if (@@ERROR <>0)
+	begin
+		-- 16 : muc do nghiem trong loi do nguoi dung nhap du lieu
+		-- 1 : trang thai -> do ltv tu dat de nhan biet loi
+		raiserror('Error',16,1)
+		rollback
+		return 
+	end
+	commit tran
+end
+go
 insert into DauSach values
 (N'Kỹ thuật lập trình',600,'2005-1-1',500,50000,30,100,200,null,N'Kệ 1'),
 (N'Kỹ thuật điện',601,'2005-2-1',500,50000,20,100,201,null,N'Kệ 2'),
@@ -367,6 +441,7 @@ insert into Sach values
 (808,N'Chưa mượn'),
 (808,N'Chưa mượn');
 go
+
 insert into MuonSach values 
 (900,300,100,'2020-2-1','2020-04-01')
 go
@@ -391,7 +466,27 @@ go
 insert into MuonSach values
 (911,303,102,'2020-6-5','2020-07-15')
 go
+
+-- proc thêm mượn sách
+create procedure proc_themMuonSach (@idSach int, @soThe int , @idNhanVien int)
+as
+begin
+	declare @ngayMuon date =  getdate()
+	declare @hanTra date = dateadd(month,4,@ngayMuon)
+	insert into MuonSach values (@idSach, @soThe, @idNhanVien, @ngayMuon, @hanTra)
+end
+
+go
 -- Thêm trả sách
+-- proc thêm trả sách
+create procedure proc_themTraSach (@idMuon int , @idNhanVien int)
+as
+begin
+	declare @ngayTra date =  getdate()
+	insert into TraSach values (@idMuon, @ngayTra, @idNhanVien)
+end
+go
+
 insert into TraSach values
 (1000,'2021-1-1',100)
 go
@@ -408,13 +503,13 @@ insert into TraSach values
 (1004,'2021-1-5',102)
 go
 
-
 --View
 USE Database_DBMS
 go
 -- Tạo view xem thông tin của sách
 create view InforOfBook as
-select DauSach.tenSach as 'Tên sách', TacGia.butDanh as 'Tác giả',
+select DauSach.idDauSach as 'ID sách',
+		DauSach.tenSach as 'Tên sách', TacGia.butDanh as 'Tác giả',
 	   NhaXuatBan.Ten as 'NXB',DauSach.soLuong as'Số lượng', DauSach.soLuongMuon as 'Số lượng mượn',
 	   DauSach.namXB as 'Năm xuất bản', DauSach.viTri as 'Vị trí', DauSach.anhDS as 'Ảnh bìa'
 from DauSach,TacGia,NhaXuatBan,TheLoaiSach
@@ -422,11 +517,7 @@ where DauSach.idNXB=NhaXuatBan.idNXB and
 	  DauSach.idTacGia=TacGia.idTacGia and
 	  DauSach.idTheLoai = TheLoaiSach.idTheLoai
 go
--- Tạo view tìm kiếm sách( bỏ)
-create view SearchBook as
-select DauSach.tenSach as 'Tên sách', DauSach.Gia as 'Giá', DauSach.soLuongMuon as'Số lượng sách đã được mượn'
-from DauSach
-go
+
 -- Tạo view báo cáo tình trạng mượn trả sách( có đổi cái view này)
 create view Report as
 select MuonSach.soThe, DocGia.Ho, DocGia.Ten,MuonSach.ngayMuon, TraSach.ngayTra
@@ -446,6 +537,7 @@ create view InforOfEmp as
 select ho,ten,ngaySinh,gioiTinh,CMND,diaChi,soDT,email,ngayBatDau
 from NhanVien
 go
+
 -- tạo view độc giả mượn sách
 create view view_DocGiaMuonSach
 as
@@ -455,6 +547,7 @@ select idDocGia, CONCAT(ho,' ',ten) as hoTen,idmuonmuon,idSach, idNhanVienMuon, 
 		on MuonSach.idMuon = TraSach.idMuon) as A, DocGia
 			where DocGia.soThe = a.soThe
 go
+
 -- tạo view thông tin nhân viên
 create view view_thongTinNhanVien
 as
@@ -493,34 +586,11 @@ as
 	return select * from dbo.InforOfUser where dbo.InforOfUser.soThe = @id
 go
 -- function kiểm tra đăng nhập
-go
 create function fun_dangnhap(@user nvarchar(50), @pass int)
 returns table
 as
  return select loai from dbo.TaiKhoan where userName = @user and pass = @pass
 go
--- proceduce
--- proc thêm mượn sách
-create procedure proc_themMuonSach (@idSach int, @soThe int , @idNhanVien int)
-as
-begin
-	declare @ngayMuon date =  getdate()
-	declare @hanTra date = dateadd(month,4,@ngayMuon)
-	insert into MuonSach values (@idSach, @soThe, @idNhanVien, @ngayMuon, @hanTra)
-end
-go
--- proc thêm trả sách
-create procedure proc_themTraSach (@idMuon int , @idNhanVien int)
-as
-begin
-	declare @ngayTra date =  getdate()
-	insert into TraSach values (@idMuon, @ngayTra, @idNhanVien)
-end
-go
--- tesst
-select * from MuonSach
-select * from TraSach
-select * from PhieuPhat
 
 -- Sửa thông tin độc giả
 
@@ -556,7 +626,7 @@ create procedure sp_XoaDocGia (@idDocGia int) as
 begin 
 	delete from TaiKhoan where TaiKhoan.id=@idDocGia
 end
-
+go
 -- Xem thông tin độc giả khi đăng nhập 
 
 CREATE FUNCTION fu_ThongTinDocGiaDangNhap (@username varchar(50), @pass varchar(20))
@@ -565,17 +635,48 @@ return select ho, ten, ngaySinh, cmnd, diaChi,soDT, email, ngayDK, soThe,anhDG
 		from DocGia inner join TaiKhoan on DocGia.idDocGia=TaiKhoan.id
 		where TaiKhoan.userName=@username and TaiKhoan.pass=@pass
 go
--- Xem thông tin các sách mà độc giả đã mượn
-CREATE FUNCTION fu_ThongTinMuonSachCuaDocGia (@username varchar(50), @pass varchar(20))
-returns table as
-return select idMuon, Sach.idSach, ngayMuon,hanTra,tenSach  from 
-	TaiKhoan inner join DocGia on TaiKhoan.id=DocGia.idDocGia
-	inner join MuonSach on DocGia.soThe=MuonSach.soThe
-	inner join Sach on Sach.idSach=MuonSach.idSach
-	inner join DauSach on Sach.idDauSach=DauSach.idDauSach
-	where TaiKhoan.userName=@username and TaiKhoan.pass=@pass
+
+-- Tạo PROC update ten, gia, soLuong
+create procedure sp_UpdateBook
+@idDauSach int,
+@tenSach nvarchar(100),
+@vitri nvarchar(50),
+@soLuong int
+as
+begin
+	update DauSach set DauSach.tenSach = @tenSach, DauSach.viTri = @vitri, DauSach.soLuong = @soLuong 
+		where DauSach.idDauSach = @idDauSach
+end
+go
+-- Thêm số lượng sách trong bảng sách tương ứng khi cập nhật lại (chỉ tính tăng số lượng) số lượng sách trong đầu sách 
+create trigger trig_UpdateDauSach on DauSach
+after update
+as
+	begin 
+		declare @soluongmoi as int 
+		declare @soluongcu as int
+		declare @idDauSach as int
+		declare @n as int
+		
+		select @idDauSach=inserted.idDauSach from inserted
+
+		select @soluongmoi=inserted.soLuong from inserted
+		select @soluongcu=deleted.soLuong from deleted
+		set @n=@soluongmoi-@soluongcu
+		if (@n>0)
+		begin 
+		 while @n>0
+		 begin 
+			insert into Sach (idDauSach,trangThai) values (@idDauSach,N'Chưa mượn')
+			set @n=@n-1
+		 end
+		end
+	end
 go
 
-
-
-	
+-- Xóa đầu sách
+create procedure sp_XoDauSach @idDauSach int as
+begin 
+	delete from DauSach where DauSach.idDauSach=@idDauSach
+end
+go
