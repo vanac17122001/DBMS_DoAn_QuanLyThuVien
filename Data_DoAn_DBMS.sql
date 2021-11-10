@@ -172,10 +172,14 @@ create trigger trig_InserttoPhieuPhat on TraSach
 after insert 
 as 
 begin
+declare @x date = (select hanTra from MuonSach,inserted,TraSach where MuonSach.idMuon=TraSach.idMuon and TraSach.idMuon=inserted.idMuon)
+declare @y date =( select TraSach.ngayTra from TraSach,inserted where TraSach.ngayTra=inserted.ngayTra )
+	if ((select datediff(day,@x,@y)) >0)
+	begin
 	insert into PhieuPhat(idTraSach, idNhanVien)
 		(select inserted.idTraSach, inserted.idNhanVien from inserted)
+	end
 end
-
 go
 --tạo triiger cập nhật lại số lượng sách khi sách được mượn--
 
@@ -679,4 +683,69 @@ create procedure sp_XoDauSach @idDauSach int as
 begin 
 	delete from DauSach where DauSach.idDauSach=@idDauSach
 end
+go
+-- tìm ra bảng các độc giả trả sách trể hạn
+ create function fun_docgiatrasachtre()
+ returns table
+ as
+
+	 return select idDocGia,ho,ten,ngaySinh,gioiTinh,CMND,diaChi,soDT,email,ngayDK,DocGia.soThe
+	from DocGia,(select datediff(day,hanTra,ngayTra) as Tre,soThe from  MuonSach,TraSach 
+		where MuonSach.idMuon=TraSach.idMuon ) as A
+			where DocGia.soThe=A.soThe and Tre>0
+go
+---
+-- tạo một thủ tục tính tổng số tiền phạt
+create proc proc_tongphat
+as
+ select sum(soTienPhat) as TongPhat from  PhieuPhat;
+
+
+ -- tạo function danh sach phạt độc giả
+ go
+ create function fun_danhsachphattien ()
+ returns table
+ as
+  return select idDocGia,ho,ten,ngaySinh,gioiTinh,CMND, DocGia.soThe,soNgayQuaHan,soTienPhat 
+	from DocGia,PhieuPhat,MuonSach ,TraSach
+		where DocGia.soThe=MuonSach.soThe and MuonSach.idMuon=TraSach.idMuon and TraSach.idTraSach=PhieuPhat.idTraSach
+
+-- tạo một function tìm ra đọc giả bợ tiền nhiều nhất.
+go
+create function fun_phatđg()
+returns table
+as
+ return select idDocGia,sum(soTienPhat) as tongNo from fun_danhsachphattien() 
+	group by idDocGia
+go
+create proc proc_maxphat
+as
+	select max(tongNo)from  fun_phatđg()
+go
+		
+	
+
+
+
+-- tạo function hiển thị danh sách các quyển sách dã được mượn.
+create function fun_sachdaduocmuon()
+returns table
+as 
+	return select idSach,tenSach,DauSach.idDauSach,tenTheLoai,gia,viTri from Sach,DauSach,TheLoaiSach where Sach.idDauSach=DauSach.idDauSach and TheLoaiSach.idTheLoai=DauSach.idTheLoai and trangThai=N'Đã mượn'
+	go
+--tạo function hiển thị danh sách các quyển sách dã được mượn.
+create function fun_sachchuaduocmuon()
+returns table
+as
+	return select idSach,tenSach,DauSach.idDauSach,tenTheLoai,gia,viTri from Sach,DauSach,TheLoaiSach where Sach.idDauSach=DauSach.idDauSach and TheLoaiSach.idTheLoai=DauSach.idTheLoai and trangThai=N'Chưa mượn'
+go
+
+create function fun_sacmuonnhieunhat()
+returns table
+as 
+	return select  tenSach, count(DauSach.idDauSach) as soLuong from DauSach,Sach where DauSach.idDauSach= Sach.idDauSach and trangThai=N'Đã mượn' group by tenSach
+go
+create proc proc_sachmuonnhiunhat
+as 
+	select max(tenSach) as a from fun_sacmuonnhieunhat()
 go
