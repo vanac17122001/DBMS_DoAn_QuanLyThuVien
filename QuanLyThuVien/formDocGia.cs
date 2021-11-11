@@ -86,13 +86,13 @@ namespace QuanLyThuVien
         {
             int r = dagDanhSachDauSach.CurrentCell.RowIndex;
 
-            string tensach = dagDanhSachDauSach.Rows[r].Cells[0].Value.ToString();
-            string tentg = dagDanhSachDauSach.Rows[r].Cells[1].Value.ToString();
-            string nxb = dagDanhSachDauSach.Rows[r].Cells[2].Value.ToString(); ;
-            string soluongsach = dagDanhSachDauSach.Rows[r].Cells[3].Value.ToString();
-            string soluongsachmuon = dagDanhSachDauSach.Rows[r].Cells[4].Value.ToString();
-            string namsb = dagDanhSachDauSach.Rows[r].Cells[5].Value.ToString();
-            string vitri = dagDanhSachDauSach.Rows[r].Cells[6].Value.ToString();
+            string tensach = dagDanhSachDauSach.Rows[r].Cells[1].Value.ToString();
+            string tentg = dagDanhSachDauSach.Rows[r].Cells[2].Value.ToString();
+            string nxb = dagDanhSachDauSach.Rows[r].Cells[3].Value.ToString(); ;
+            string soluongsach = dagDanhSachDauSach.Rows[r].Cells[4].Value.ToString();
+            string soluongsachmuon = dagDanhSachDauSach.Rows[r].Cells[5].Value.ToString();
+            string namsb = dagDanhSachDauSach.Rows[r].Cells[6].Value.ToString();
+            string vitri = dagDanhSachDauSach.Rows[r].Cells[7].Value.ToString();
 
             this.txtTenDauSach.Text = tensach;
             this.txtTenTacGia.Text = tentg;
@@ -104,9 +104,9 @@ namespace QuanLyThuVien
 
             form_ThuThu form_ThuThu = new form_ThuThu();
 
-            if (!(dagDanhSachDauSach.Rows[r].Cells[7].Value == DBNull.Value))
+            if (!(dagDanhSachDauSach.Rows[r].Cells[8].Value == DBNull.Value))
             {
-                byte[] anhBiaSach = (byte[])dagDanhSachDauSach.Rows[r].Cells[7].Value;
+                byte[] anhBiaSach = (byte[])dagDanhSachDauSach.Rows[r].Cells[8].Value;
                 Image _anhBiaSach = form_ThuThu.ConvertByteArrayToImage(anhBiaSach);
                 pibDauSach.Image = _anhBiaSach;
             }

@@ -723,10 +723,6 @@ as
 	select max(tongNo)from  fun_phatđg()
 go
 		
-	
-
-
-
 -- tạo function hiển thị danh sách các quyển sách dã được mượn.
 create function fun_sachdaduocmuon()
 returns table
@@ -748,4 +744,15 @@ go
 create proc proc_sachmuonnhiunhat
 as 
 	select max(tenSach) as a from fun_sacmuonnhieunhat()
+go
+
+-- Xem thông tin các sách mà độc giả đã mượn
+CREATE FUNCTION fu_ThongTinMuonSachCuaDocGia (@username varchar(50), @pass varchar(20))
+returns table as
+return select idMuon, Sach.idSach, ngayMuon,hanTra,tenSach  from 
+	TaiKhoan inner join DocGia on TaiKhoan.id=DocGia.idDocGia
+	inner join MuonSach on DocGia.soThe=MuonSach.soThe
+	inner join Sach on Sach.idSach=MuonSach.idSach
+	inner join DauSach on Sach.idDauSach=DauSach.idDauSach
+	where TaiKhoan.userName=@username and TaiKhoan.pass=@pass
 go
