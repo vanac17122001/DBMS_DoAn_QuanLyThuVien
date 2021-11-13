@@ -11,7 +11,13 @@ namespace BLLayer
 {
     public class BLL_NhanVien
     {
-        DAL_NhanVien nv = new DAL_NhanVien();
+        DAL_NhanVien nv;
+
+        public BLL_NhanVien(string username, string pass)
+        {
+            nv = new DAL_NhanVien(username, pass);
+        }
+
         public DataSet getNhanVien(string username, string pass)
         {
             return nv.getNhanVien(username,pass);

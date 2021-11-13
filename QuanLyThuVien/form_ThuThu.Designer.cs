@@ -120,7 +120,6 @@ namespace QuanLyThuVien
             this.btnChonHinhDG = new System.Windows.Forms.Button();
             this.label39 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
-            this.txtNgayDangKyDG = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
             this.txtEmailDG = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
@@ -134,7 +133,6 @@ namespace QuanLyThuVien
             this.txtNgaySinhDG = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.txtGioiTinhDG = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
             this.txtCMNDDG = new System.Windows.Forms.TextBox();
             this.picAnhDG = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -614,10 +612,10 @@ namespace QuanLyThuVien
             this.tbThongTinSach.Controls.Add(this.dagDanhSachDauSach);
             this.tbThongTinSach.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbThongTinSach.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.tbThongTinSach.Location = new System.Drawing.Point(4, 32);
+            this.tbThongTinSach.Location = new System.Drawing.Point(4, 31);
             this.tbThongTinSach.Name = "tbThongTinSach";
             this.tbThongTinSach.Padding = new System.Windows.Forms.Padding(3);
-            this.tbThongTinSach.Size = new System.Drawing.Size(197, 53);
+            this.tbThongTinSach.Size = new System.Drawing.Size(197, 54);
             this.tbThongTinSach.TabIndex = 0;
             this.tbThongTinSach.Text = "Thông Tin Sách";
             this.tbThongTinSach.UseVisualStyleBackColor = true;
@@ -654,7 +652,7 @@ namespace QuanLyThuVien
             // 
             this.txtViTriDauSach.Location = new System.Drawing.Point(162, 288);
             this.txtViTriDauSach.Name = "txtViTriDauSach";
-            this.txtViTriDauSach.Size = new System.Drawing.Size(354, 34);
+            this.txtViTriDauSach.Size = new System.Drawing.Size(354, 33);
             this.txtViTriDauSach.TabIndex = 17;
             // 
             // label64
@@ -719,42 +717,42 @@ namespace QuanLyThuVien
             // 
             this.txtSoLuongSachDaMuon.Location = new System.Drawing.Point(162, 245);
             this.txtSoLuongSachDaMuon.Name = "txtSoLuongSachDaMuon";
-            this.txtSoLuongSachDaMuon.Size = new System.Drawing.Size(354, 34);
+            this.txtSoLuongSachDaMuon.Size = new System.Drawing.Size(354, 33);
             this.txtSoLuongSachDaMuon.TabIndex = 11;
             // 
             // txtSoLuongDauSach
             // 
             this.txtSoLuongDauSach.Location = new System.Drawing.Point(162, 205);
             this.txtSoLuongDauSach.Name = "txtSoLuongDauSach";
-            this.txtSoLuongDauSach.Size = new System.Drawing.Size(354, 34);
+            this.txtSoLuongDauSach.Size = new System.Drawing.Size(354, 33);
             this.txtSoLuongDauSach.TabIndex = 11;
             // 
             // txtNamXuatBan
             // 
             this.txtNamXuatBan.Location = new System.Drawing.Point(162, 161);
             this.txtNamXuatBan.Name = "txtNamXuatBan";
-            this.txtNamXuatBan.Size = new System.Drawing.Size(354, 34);
+            this.txtNamXuatBan.Size = new System.Drawing.Size(354, 33);
             this.txtNamXuatBan.TabIndex = 11;
             // 
             // txtNhaXuatBan
             // 
             this.txtNhaXuatBan.Location = new System.Drawing.Point(162, 119);
             this.txtNhaXuatBan.Name = "txtNhaXuatBan";
-            this.txtNhaXuatBan.Size = new System.Drawing.Size(354, 34);
+            this.txtNhaXuatBan.Size = new System.Drawing.Size(354, 33);
             this.txtNhaXuatBan.TabIndex = 11;
             // 
             // txtTenTacGia
             // 
             this.txtTenTacGia.Location = new System.Drawing.Point(162, 75);
             this.txtTenTacGia.Name = "txtTenTacGia";
-            this.txtTenTacGia.Size = new System.Drawing.Size(354, 34);
+            this.txtTenTacGia.Size = new System.Drawing.Size(354, 33);
             this.txtTenTacGia.TabIndex = 11;
             // 
             // txtTenDauSach
             // 
             this.txtTenDauSach.Location = new System.Drawing.Point(162, 35);
             this.txtTenDauSach.Name = "txtTenDauSach";
-            this.txtTenDauSach.Size = new System.Drawing.Size(354, 34);
+            this.txtTenDauSach.Size = new System.Drawing.Size(354, 33);
             this.txtTenDauSach.TabIndex = 11;
             // 
             // label8
@@ -847,7 +845,7 @@ namespace QuanLyThuVien
             this.rabTimKiemDauSachTheoTG.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rabTimKiemDauSachTheoTG.Location = new System.Drawing.Point(144, 66);
             this.rabTimKiemDauSachTheoTG.Name = "rabTimKiemDauSachTheoTG";
-            this.rabTimKiemDauSachTheoTG.Size = new System.Drawing.Size(99, 27);
+            this.rabTimKiemDauSachTheoTG.Size = new System.Drawing.Size(96, 27);
             this.rabTimKiemDauSachTheoTG.TabIndex = 7;
             this.rabTimKiemDauSachTheoTG.TabStop = true;
             this.rabTimKiemDauSachTheoTG.Text = "Tác Giả";
@@ -880,7 +878,7 @@ namespace QuanLyThuVien
             // 
             this.txtTimKiemDauSach.Location = new System.Drawing.Point(290, 25);
             this.txtTimKiemDauSach.Name = "txtTimKiemDauSach";
-            this.txtTimKiemDauSach.Size = new System.Drawing.Size(199, 34);
+            this.txtTimKiemDauSach.Size = new System.Drawing.Size(199, 33);
             this.txtTimKiemDauSach.TabIndex = 2;
             // 
             // rabTimKiemTenDauSach
@@ -889,7 +887,7 @@ namespace QuanLyThuVien
             this.rabTimKiemTenDauSach.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rabTimKiemTenDauSach.Location = new System.Drawing.Point(144, 28);
             this.rabTimKiemTenDauSach.Name = "rabTimKiemTenDauSach";
-            this.rabTimKiemTenDauSach.Size = new System.Drawing.Size(140, 27);
+            this.rabTimKiemTenDauSach.Size = new System.Drawing.Size(137, 27);
             this.rabTimKiemTenDauSach.TabIndex = 5;
             this.rabTimKiemTenDauSach.TabStop = true;
             this.rabTimKiemTenDauSach.Text = "Tên đầu sách";
@@ -900,7 +898,7 @@ namespace QuanLyThuVien
             this.lbDanhSachDauSach.AutoSize = true;
             this.lbDanhSachDauSach.Location = new System.Drawing.Point(6, 20);
             this.lbDanhSachDauSach.Name = "lbDanhSachDauSach";
-            this.lbDanhSachDauSach.Size = new System.Drawing.Size(213, 26);
+            this.lbDanhSachDauSach.Size = new System.Drawing.Size(213, 25);
             this.lbDanhSachDauSach.TabIndex = 1;
             this.lbDanhSachDauSach.Text = "Danh sách đầu sách";
             // 
@@ -920,10 +918,10 @@ namespace QuanLyThuVien
             this.tpThemSach.Controls.Add(this.groupBox2);
             this.tpThemSach.Controls.Add(this.panel3);
             this.tpThemSach.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tpThemSach.Location = new System.Drawing.Point(4, 32);
+            this.tpThemSach.Location = new System.Drawing.Point(4, 31);
             this.tpThemSach.Name = "tpThemSach";
             this.tpThemSach.Padding = new System.Windows.Forms.Padding(3);
-            this.tpThemSach.Size = new System.Drawing.Size(197, 53);
+            this.tpThemSach.Size = new System.Drawing.Size(197, 54);
             this.tpThemSach.TabIndex = 1;
             this.tpThemSach.Text = "Thêm Sách Mới";
             this.tpThemSach.UseVisualStyleBackColor = true;
@@ -1152,10 +1150,10 @@ namespace QuanLyThuVien
             this.tcQuanLyDocGia.Controls.Add(this.tabPage1);
             this.tcQuanLyDocGia.Controls.Add(this.tabPage2);
             this.tcQuanLyDocGia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tcQuanLyDocGia.Location = new System.Drawing.Point(1245, 191);
+            this.tcQuanLyDocGia.Location = new System.Drawing.Point(222, 12);
             this.tcQuanLyDocGia.Name = "tcQuanLyDocGia";
             this.tcQuanLyDocGia.SelectedIndex = 0;
-            this.tcQuanLyDocGia.Size = new System.Drawing.Size(218, 108);
+            this.tcQuanLyDocGia.Size = new System.Drawing.Size(1007, 653);
             this.tcQuanLyDocGia.TabIndex = 0;
             // 
             // tabPage1
@@ -1165,10 +1163,10 @@ namespace QuanLyThuVien
             this.tabPage1.Controls.Add(this.groupBox5);
             this.tabPage1.Controls.Add(this.label26);
             this.tabPage1.Controls.Add(this.dagDanhSachDocGia);
-            this.tabPage1.Location = new System.Drawing.Point(4, 32);
+            this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(210, 72);
+            this.tabPage1.Size = new System.Drawing.Size(999, 529);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Thông tin độc giả";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1216,7 +1214,7 @@ namespace QuanLyThuVien
             this.rabTimKiemDocGiaTheoSoThe.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rabTimKiemDocGiaTheoSoThe.Location = new System.Drawing.Point(144, 66);
             this.rabTimKiemDocGiaTheoSoThe.Name = "rabTimKiemDocGiaTheoSoThe";
-            this.rabTimKiemDocGiaTheoSoThe.Size = new System.Drawing.Size(84, 27);
+            this.rabTimKiemDocGiaTheoSoThe.Size = new System.Drawing.Size(81, 27);
             this.rabTimKiemDocGiaTheoSoThe.TabIndex = 7;
             this.rabTimKiemDocGiaTheoSoThe.TabStop = true;
             this.rabTimKiemDocGiaTheoSoThe.Text = "Số thẻ";
@@ -1258,7 +1256,7 @@ namespace QuanLyThuVien
             this.rabTimKiemDocGiaTheoTen.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rabTimKiemDocGiaTheoTen.Location = new System.Drawing.Point(144, 28);
             this.rabTimKiemDocGiaTheoTen.Name = "rabTimKiemDocGiaTheoTen";
-            this.rabTimKiemDocGiaTheoTen.Size = new System.Drawing.Size(127, 27);
+            this.rabTimKiemDocGiaTheoTen.Size = new System.Drawing.Size(124, 27);
             this.rabTimKiemDocGiaTheoTen.TabIndex = 5;
             this.rabTimKiemDocGiaTheoTen.TabStop = true;
             this.rabTimKiemDocGiaTheoTen.Text = "Tên độc giả";
@@ -1409,10 +1407,10 @@ namespace QuanLyThuVien
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 32);
+            this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(210, 72);
+            this.tabPage2.Size = new System.Drawing.Size(999, 618);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Thêm độc giả";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1437,7 +1435,6 @@ namespace QuanLyThuVien
             this.panel5.Controls.Add(this.btnChonHinhDG);
             this.panel5.Controls.Add(this.label39);
             this.panel5.Controls.Add(this.label38);
-            this.panel5.Controls.Add(this.txtNgayDangKyDG);
             this.panel5.Controls.Add(this.label37);
             this.panel5.Controls.Add(this.txtEmailDG);
             this.panel5.Controls.Add(this.label36);
@@ -1451,7 +1448,6 @@ namespace QuanLyThuVien
             this.panel5.Controls.Add(this.txtNgaySinhDG);
             this.panel5.Controls.Add(this.label31);
             this.panel5.Controls.Add(this.txtGioiTinhDG);
-            this.panel5.Controls.Add(this.label32);
             this.panel5.Controls.Add(this.txtCMNDDG);
             this.panel5.Controls.Add(this.picAnhDG);
             this.panel5.Location = new System.Drawing.Point(6, 34);
@@ -1501,13 +1497,6 @@ namespace QuanLyThuVien
             this.label38.Size = new System.Drawing.Size(104, 23);
             this.label38.TabIndex = 7;
             this.label38.Text = "Ngày sinh :";
-            // 
-            // txtNgayDangKyDG
-            // 
-            this.txtNgayDangKyDG.Location = new System.Drawing.Point(593, 300);
-            this.txtNgayDangKyDG.Name = "txtNgayDangKyDG";
-            this.txtNgayDangKyDG.Size = new System.Drawing.Size(295, 30);
-            this.txtNgayDangKyDG.TabIndex = 25;
             // 
             // label37
             // 
@@ -1618,16 +1607,6 @@ namespace QuanLyThuVien
             this.txtGioiTinhDG.Size = new System.Drawing.Size(295, 30);
             this.txtGioiTinhDG.TabIndex = 11;
             // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(442, 300);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(137, 23);
-            this.label32.TabIndex = 18;
-            this.label32.Text = "Ngày đăng ký :";
-            // 
             // txtCMNDDG
             // 
             this.txtCMNDDG.Location = new System.Drawing.Point(137, 263);
@@ -1659,7 +1638,7 @@ namespace QuanLyThuVien
             this.btnThemDocGia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnThemDocGia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemDocGia.ForeColor = System.Drawing.Color.White;
-            this.btnThemDocGia.Location = new System.Drawing.Point(29, 23);
+            this.btnThemDocGia.Location = new System.Drawing.Point(36, 6);
             this.btnThemDocGia.Name = "btnThemDocGia";
             this.btnThemDocGia.Size = new System.Drawing.Size(110, 41);
             this.btnThemDocGia.TabIndex = 14;
@@ -1933,10 +1912,10 @@ namespace QuanLyThuVien
             this.tabPage5.Controls.Add(this.groupBox3);
             this.tabPage5.Controls.Add(this.groupBox6);
             this.tabPage5.Controls.Add(this.label47);
-            this.tabPage5.Location = new System.Drawing.Point(4, 32);
+            this.tabPage5.Location = new System.Drawing.Point(4, 31);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(461, 14);
+            this.tabPage5.Size = new System.Drawing.Size(461, 15);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "Thẻ Mượn Sách";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -2262,10 +2241,10 @@ namespace QuanLyThuVien
             this.tabPage6.Controls.Add(this.groupBox7);
             this.tabPage6.Controls.Add(this.groupBox8);
             this.tabPage6.Controls.Add(this.label54);
-            this.tabPage6.Location = new System.Drawing.Point(4, 32);
+            this.tabPage6.Location = new System.Drawing.Point(4, 31);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(461, 14);
+            this.tabPage6.Size = new System.Drawing.Size(461, 15);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "Thẻ Trả Sách";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -2533,10 +2512,10 @@ namespace QuanLyThuVien
             this.tabPage7.Controls.Add(this.label56);
             this.tabPage7.Controls.Add(this.dgvMuonTra_DocGiaMuonSachDocGia);
             this.tabPage7.Controls.Add(this.groupBox9);
-            this.tabPage7.Location = new System.Drawing.Point(4, 32);
+            this.tabPage7.Location = new System.Drawing.Point(4, 31);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(461, 14);
+            this.tabPage7.Size = new System.Drawing.Size(461, 15);
             this.tabPage7.TabIndex = 2;
             this.tabPage7.Text = "Độc Giả Mượn Sách";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -3021,10 +3000,10 @@ namespace QuanLyThuVien
             this.tcThongKeBaoCao.Controls.Add(this.tabPage8);
             this.tcThongKeBaoCao.Controls.Add(this.tabPage4);
             this.tcThongKeBaoCao.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tcThongKeBaoCao.Location = new System.Drawing.Point(201, 6);
+            this.tcThongKeBaoCao.Location = new System.Drawing.Point(1249, 371);
             this.tcThongKeBaoCao.Name = "tcThongKeBaoCao";
             this.tcThongKeBaoCao.SelectedIndex = 0;
-            this.tcThongKeBaoCao.Size = new System.Drawing.Size(976, 692);
+            this.tcThongKeBaoCao.Size = new System.Drawing.Size(228, 56);
             this.tcThongKeBaoCao.TabIndex = 28;
             this.tcThongKeBaoCao.SelectedIndexChanged += new System.EventHandler(this.tcThongKeBaoCao_SelectedIndexChanged);
             // 
@@ -3034,10 +3013,10 @@ namespace QuanLyThuVien
             this.tabPage3.Controls.Add(this.groupBox11);
             this.tabPage3.Controls.Add(this.label76);
             this.tabPage3.Controls.Add(this.dagthongKeDocGia);
-            this.tabPage3.Location = new System.Drawing.Point(4, 32);
+            this.tabPage3.Location = new System.Drawing.Point(4, 31);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(968, 656);
+            this.tabPage3.Size = new System.Drawing.Size(220, 21);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Thống kê ĐG";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -3529,7 +3508,7 @@ namespace QuanLyThuVien
             this.tuychon.Location = new System.Drawing.Point(168, 23);
             this.tuychon.Margin = new System.Windows.Forms.Padding(4);
             this.tuychon.Name = "tuychon";
-            this.tuychon.Size = new System.Drawing.Size(271, 31);
+            this.tuychon.Size = new System.Drawing.Size(271, 30);
             this.tuychon.TabIndex = 40;
             // 
             // btnThongKe
@@ -3550,7 +3529,7 @@ namespace QuanLyThuVien
             this.label76.Location = new System.Drawing.Point(262, 3);
             this.label76.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(336, 29);
+            this.label76.Size = new System.Drawing.Size(321, 28);
             this.label76.TabIndex = 38;
             this.label76.Text = "BÁO CÁO THỐNG KÊ ĐỘC GIẢ";
             // 
@@ -3685,10 +3664,10 @@ namespace QuanLyThuVien
             this.tabPage8.Controls.Add(this.button17);
             this.tabPage8.Controls.Add(this.label77);
             this.tabPage8.Controls.Add(this.dagDanhSachPhatTien);
-            this.tabPage8.Location = new System.Drawing.Point(4, 32);
+            this.tabPage8.Location = new System.Drawing.Point(4, 31);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(968, 656);
+            this.tabPage8.Size = new System.Drawing.Size(968, 657);
             this.tabPage8.TabIndex = 2;
             this.tabPage8.Text = "Thống Kê Tiền Phạt";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -3932,7 +3911,7 @@ namespace QuanLyThuVien
             this.label77.Location = new System.Drawing.Point(271, 30);
             this.label77.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(358, 29);
+            this.label77.Size = new System.Drawing.Size(343, 28);
             this.label77.TabIndex = 40;
             this.label77.Text = "BÁO CÁO THỐNG KÊ TIỀN PHẠT";
             // 
@@ -4037,10 +4016,10 @@ namespace QuanLyThuVien
             this.tabPage4.Controls.Add(this.label97);
             this.tabPage4.Controls.Add(this.groupBox13);
             this.tabPage4.Controls.Add(this.groupBox12);
-            this.tabPage4.Location = new System.Drawing.Point(4, 32);
+            this.tabPage4.Location = new System.Drawing.Point(4, 31);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(968, 656);
+            this.tabPage4.Size = new System.Drawing.Size(968, 657);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Thống Kê Sách";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -4196,7 +4175,7 @@ namespace QuanLyThuVien
             this.label97.Location = new System.Drawing.Point(316, 45);
             this.label97.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label97.Name = "label97";
-            this.label97.Size = new System.Drawing.Size(291, 29);
+            this.label97.Size = new System.Drawing.Size(279, 28);
             this.label97.TabIndex = 42;
             this.label97.Text = "BÁO CÁO THỐNG KÊ Sách";
             // 
@@ -5041,14 +5020,12 @@ namespace QuanLyThuVien
         private System.Windows.Forms.Button btnChonHinhDG;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnThemDocGia;
-        private System.Windows.Forms.TextBox txtNgayDangKyDG;
         private System.Windows.Forms.TextBox txtEmailDG;
         private System.Windows.Forms.TextBox txtSDTDG;
         private System.Windows.Forms.TextBox txtDiaChiDG;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label32;
         private System.Windows.Forms.PictureBox picAnhDG;
         private System.Windows.Forms.TextBox txtCMNDDG;
         private System.Windows.Forms.TextBox txtGioiTinhDG;

@@ -11,7 +11,13 @@ namespace BLLayer
 {
     public class BLL_ThongKeSach
     {
-        DAL_ThongKeSach dg = new DAL_ThongKeSach();
+        DAL_ThongKeSach dg;
+
+        public BLL_ThongKeSach(string username, string pass)
+        {
+            dg = new DAL_ThongKeSach(username, pass);
+        }
+
         public DataSet getSachDaDuocMuon()
         {
             return dg.getSachDaDuocMuon();

@@ -11,9 +11,9 @@ namespace DALayer
     public class DAL_ThongKeSach
     {
         DBConnect db;
-        public DAL_ThongKeSach()
+        public DAL_ThongKeSach(string username, string pass)
         {
-            db = new DBConnect();
+            db = new DBConnect(username, pass);
         }
         public DataSet getSachDaDuocMuon()
         {

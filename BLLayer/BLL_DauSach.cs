@@ -11,7 +11,12 @@ namespace BLLayer
 {
     public class BLL_DauSach
     {
-        DAL_DauSach sach = new DAL_DauSach();
+        DAL_DauSach sach;
+
+        public BLL_DauSach(string username, string pass)
+        {
+            sach = new DAL_DauSach(username, pass);
+        }
 
         public DataSet getDauSach()
         {

@@ -12,7 +12,13 @@ namespace BLLayer
 {
     public class BLL_MuonSach
     {
-        DAL_MuonSach muonsach = new DAL_MuonSach();
+        DAL_MuonSach muonsach;
+
+        public BLL_MuonSach(string username, string pass)
+        {
+            muonsach = new DAL_MuonSach(username, pass);
+        }
+
         public DataSet getMuonSach()
         {
             return muonsach.getMuonSach();

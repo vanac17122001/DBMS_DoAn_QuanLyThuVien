@@ -13,7 +13,12 @@ namespace BLLayer
 {
     public class BLL_DocGia
     {
-        DAL_DocGia dg = new DAL_DocGia();
+        DAL_DocGia dg;
+
+        public BLL_DocGia(string username, string pass)
+        {
+            dg = new DAL_DocGia(username, pass);
+        }
 
         public DataSet getDocGia()
         {

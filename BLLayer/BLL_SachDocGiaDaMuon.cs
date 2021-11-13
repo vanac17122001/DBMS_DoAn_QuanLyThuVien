@@ -11,11 +11,16 @@ namespace BLLayer
 {
     public class BLL_SachDocGiaDaMuon
     {
-        DAL_SachDocDaMuon DAL_SachDocDaMuon = new DAL_SachDocDaMuon();
+        DAL_SachDocDaMuon dg;
+
+        public BLL_SachDocGiaDaMuon(string username, string pass)
+        {
+            dg = new DAL_SachDocDaMuon(username, pass);
+        }
 
         public DataSet getThingTinSachDaMuon (string username, string pass)
         {
-            return DAL_SachDocDaMuon.getThongTinSachDaMuon(username, pass);
+            return dg.getThongTinSachDaMuon(username, pass);
         }
     }
 }

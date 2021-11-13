@@ -11,9 +11,9 @@ namespace DALayer
     {
         DBConnect db;
 
-        public DAL_ThongKeDocGia()
+        public DAL_ThongKeDocGia(string usernme, string pass)
         {
-            db = new DBConnect();
+            db = new DBConnect(usernme,pass);
         }
         public DataSet getallDocGia()
         {

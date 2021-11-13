@@ -11,7 +11,11 @@ namespace DALayer
 {
     public class DAL_NhanVien
     {
-        DBConnect conn = new DBConnect();
+        DBConnect conn;
+        public DAL_NhanVien(string username, string pass)
+        {
+            conn = new DBConnect(username, pass);
+        }
         public DataSet getNhanVien(string username, string pass)
         {
             SqlParameter[] par =

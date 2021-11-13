@@ -11,9 +11,9 @@ namespace DALayer
     public class DAL_SachDocDaMuon
     {
         DBConnect db;
-        public DAL_SachDocDaMuon()
+        public DAL_SachDocDaMuon(string username,string pass)
         {
-            db = new DBConnect();
+            db = new DBConnect(username, pass);
         }
         public DataSet getThongTinSachDaMuon (string username, string pass)
         {

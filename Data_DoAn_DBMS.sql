@@ -259,7 +259,7 @@ create trigger trig_InsertTaiKhoanNhanVien on NhanVien
 	as
 	begin
 		insert into TaiKhoan (id, userName, pass, loai)
-			select idNhanVien,email,soDT, 'nhanvien' from inserted
+			select idNhanVien,soDT,soDT, 'nhanvien' from inserted
 	end
 go
 
@@ -269,7 +269,7 @@ create trigger trig_InsertTaiKhoanDocGia on DocGia
 	as
 	begin
 		insert into TaiKhoan (id, userName, pass, loai)
-			select idDocGia,email,soDT, 'docgia' from inserted
+			select idDocGia,soDT,soDT, 'docgia' from inserted
 	end
 go
 -- Thêm độc giả và tự động tạo thẻ thư viện
@@ -710,7 +710,7 @@ as
 	from DocGia,PhieuPhat,MuonSach ,TraSach
 		where DocGia.soThe=MuonSach.soThe and MuonSach.idMuon=TraSach.idMuon and TraSach.idTraSach=PhieuPhat.idTraSach
 
--- tạo một function tìm ra đọc giả bợ tiền nhiều nhất.
+-- tạo một function tìm ra đọc giả nợ tiền nhiều nhất.
 go
 create function fun_phatđg()
 returns table
@@ -755,4 +755,64 @@ return select idMuon, Sach.idSach, ngayMuon,hanTra,tenSach  from
 	inner join Sach on Sach.idSach=MuonSach.idSach
 	inner join DauSach on Sach.idDauSach=DauSach.idDauSach
 	where TaiKhoan.userName=@username and TaiKhoan.pass=@pass
+go
+
+-- Tạo trigger tạo login, user, phân quyền cho độc giả 
+create trigger trig_phanQuyenChoDocGia on DocGia
+after insert
+as
+begin
+	declare @username varchar(15)
+	set @username=(select soDT from inserted)
+	--Tạo login
+	DECLARE @t nvarchar(4000)
+	SET @t = N'CREATE LOGIN ' + QUOTENAME(@username) + ' WITH PASSWORD = ' + QUOTENAME(@username, '''')
+	EXEC(@t)
+	SET @t = N'CREATE USER ' + QUOTENAME(@username) + ' FOR LOGIN ' + QUOTENAME(@username)
+	EXEC(@t)
+	SET @t = N'Grant select on ' + 'TaiKhoan ' + ' to ' + QUOTENAME(@username)
+	EXEC(@t)
+	SET @t = N'Grant select on ' + 'DocGia ' + ' to ' + QUOTENAME(@username)
+	EXEC(@t)
+	SET @t = N'Grant select on ' + 'MuonSach ' + ' to ' + QUOTENAME(@username)
+	EXEC(@t)
+	SET @t = N'Grant select on ' + 'DauSach ' + ' to ' + QUOTENAME(@username)
+	EXEC(@t)
+	SET @t = N'Grant select on ' + 'fu_timSach ' + ' to ' + QUOTENAME(@username)
+	EXEC(@t)
+	SET @t = N'Grant select on ' + 'fu_timSachTheoTenTG ' + ' to ' + QUOTENAME(@username)
+	EXEC(@t)
+	SET @t = N'Grant select on ' + 'fu_ThongTinDocGiaDangNhap ' + ' to ' + QUOTENAME(@username)
+	EXEC(@t)
+	SET @t = N'Grant select on ' + 'fu_ThongTinMuonSachCuaDocGia ' + ' to ' + QUOTENAME(@username)
+	EXEC(@t)
+	SET @t = N'Grant select on ' + 'fun_dangnhap ' + ' to ' + QUOTENAME(@username)
+	EXEC(@t)
+	SET @t = N'Grant select on ' + 'InforOfBook ' + ' to ' + QUOTENAME(@username)
+	EXEC(@t)
+end
+go
+
+-- Tạo trigger tạo login, user, phân quyền cho nhân viên
+create trigger trig_phanQuyenChoNhanVien on NhanVien
+after insert
+as
+begin
+	declare @username varchar(15)
+	set @username=(select soDT from inserted)
+	--Tạo login
+	DECLARE @t nvarchar(4000)
+	SET @t = N'CREATE LOGIN ' + QUOTENAME(@username) + ' WITH PASSWORD = ' + QUOTENAME(@username, '''')
+	EXEC(@t)
+	SET @t = N'CREATE USER ' + QUOTENAME(@username) + ' FOR LOGIN ' + QUOTENAME(@username)
+	EXEC(@t)
+	SET @t = N'ALTER SERVER ROLE [sysadmin] ADD MEMBER' + QUOTENAME(@username)
+	EXEC(@t)
+end
+go
+-- Tạo function tìm những độc giả đã mượn sách
+create function fun_docgiamuonsach()
+returns table
+as
+return select idDocGia,ho,ten,ngaySinh,gioiTinh,CMND,diaChi,soDT,email,ngayDK,DocGia.soThe from DocGia,MuonSach where DocGia.soThe=MuonSach.soThe
 go

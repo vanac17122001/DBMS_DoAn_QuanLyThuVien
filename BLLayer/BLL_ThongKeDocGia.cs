@@ -7,13 +7,17 @@ using DALayer;
 using System.Data;
 using System.Data.SqlClient;
 using DTO;
-using DALayer;
+
 namespace BLLayer
 {
     public class BLL_ThongKeDocGia
     {
-        DAL_ThongKeDocGia dg = new DAL_ThongKeDocGia();
+        DAL_ThongKeDocGia dg;
 
+        public BLL_ThongKeDocGia(string username, string pass)
+        {
+            dg = new DAL_ThongKeDocGia(username, pass);
+        }
         public DataSet getallDocGia()
         {
             return dg.getallDocGia();

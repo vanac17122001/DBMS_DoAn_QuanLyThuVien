@@ -11,7 +11,12 @@ namespace DALayer
 {
    public class DAL_TraSach
     {
-        DBConnect conn = new DBConnect();
+        DBConnect conn;
+
+        public DAL_TraSach(string username, string pass)
+        {
+            conn = new DBConnect(username, pass);
+        }
 
         public DataSet getTraSach()
         {

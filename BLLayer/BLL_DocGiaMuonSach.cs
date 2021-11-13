@@ -10,7 +10,11 @@ namespace BLLayer
 {
     public class BLL_DocGiaMuonSach
     {
-        DAL_DocGiaMuonSach dg = new DAL_DocGiaMuonSach();
+        DAL_DocGiaMuonSach dg;
+        public BLL_DocGiaMuonSach(string username, string pass)
+        {
+            dg = new DAL_DocGiaMuonSach(username, pass);
+        }
 
         public DataSet getDocGiaMuonSach()
         {

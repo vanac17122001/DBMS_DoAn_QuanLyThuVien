@@ -13,19 +13,24 @@ namespace QuanLyThuVien
 {
     public partial class formDocGia : Form
     {
-        BLL_DauSach dausach = new BLL_DauSach();
-        BLL_DocGia BLL_DocGia = new BLL_DocGia();
-        BLL_SachDocGiaDaMuon BLL_SachDocGiaDaMuon = new BLL_SachDocGiaDaMuon();
+        BLL_DauSach dausach;
+        BLL_DocGia BLL_DocGia;
+        BLL_SachDocGiaDaMuon BLL_SachDocGiaDaMuon;
         DataSet ds = new DataSet();
         public string _username;
         public string _pass;
 
         public formDocGia(string username, string password)
         {
-            InitializeComponent();
-            formDocGia_Load(null, null);
             _username = username;
             _pass = password;
+
+            dausach = new BLL_DauSach(_username, _pass);
+            BLL_DocGia = new BLL_DocGia(_username, _pass);
+            BLL_SachDocGiaDaMuon = new BLL_SachDocGiaDaMuon(_username, _pass);
+
+            InitializeComponent();
+            formDocGia_Load(null, null);
         }
         public formDocGia()
         {
@@ -154,7 +159,7 @@ namespace QuanLyThuVien
                  {
                      picAnhDG.Image = form_ThuThu.ConvertByteArrayToImage(docgia.AnhDG);
                  }*/
-                form_ThuThu form_ThuThu = new form_ThuThu();
+                form_ThuThu form_ThuThu = new form_ThuThu(this._username, this._pass);
                 Byte[] _anhDg = null;
                 if (!(thongtindocgia.Tables[0].Rows[0][9] == DBNull.Value))
                 {

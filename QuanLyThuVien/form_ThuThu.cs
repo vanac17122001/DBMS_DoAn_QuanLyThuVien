@@ -16,15 +16,15 @@ namespace QuanLyThuVien
 {
     public partial class form_ThuThu : Form
     {
-        BLL_DocGia docgia = new BLL_DocGia();
-        BLL_DauSach dausach = new BLL_DauSach();
-        BLL_MuonSach muon = new BLL_MuonSach();
-        BLL_TraSach tra = new BLL_TraSach();
-        BLL_DocGiaMuonSach dgmuon = new BLL_DocGiaMuonSach();
-        BLL_NhanVien nv = new BLL_NhanVien();
+        BLL_DocGia docgia;
+        BLL_DauSach dausach;
+        BLL_MuonSach muon;
+        BLL_TraSach tra;
+        BLL_DocGiaMuonSach dgmuon;
+        BLL_NhanVien nv;
         DataSet ds = new DataSet();
-        BLL_ThongKeDocGia thongkedocgia = new BLL_ThongKeDocGia();
-        BLL_ThongKeSach thongkesach = new BLL_ThongKeSach();
+        BLL_ThongKeDocGia thongkedocgia;
+        BLL_ThongKeSach thongkesach;
 
         string f = "";
 
@@ -34,17 +34,28 @@ namespace QuanLyThuVien
         public string Username { get => username; set => username = value; }
         public string Pass { get => pass; set => pass = value; }
 
+        public form_ThuThu(string username, string pass)
+        {
+            this.username = username;
+            this.pass = pass;
+
+            docgia = new BLL_DocGia(this.username, this.pass);
+            dausach = new BLL_DauSach(this.username, this.pass);
+            muon = new BLL_MuonSach(this.username, this.pass);
+            tra = new BLL_TraSach(this.username, this.pass);
+            dgmuon = new BLL_DocGiaMuonSach(this.username, this.pass);
+            nv = new BLL_NhanVien(this.username, this.pass);
+            thongkedocgia = new BLL_ThongKeDocGia(this.username, this.pass);
+            thongkesach = new BLL_ThongKeSach(this.username, this.pass);
+            InitializeComponent();
+            btnQuanLySach_Click(null, null);
+
+        }
+
         public form_ThuThu()
         {
             InitializeComponent();
             btnQuanLySach_Click(null, null);
-        }
-        public form_ThuThu(string username, string pass)
-        {
-            InitializeComponent();
-            btnQuanLySach_Click(null, null);
-            this.username = username;
-            this.pass = pass;
         }
         public void loadDocGia()
         {
@@ -208,7 +219,7 @@ namespace QuanLyThuVien
             DateTime _ngaydk = Convert.ToDateTime(ngaydk);
             DTO_DocGia docgia = new DTO_DocGia(_id, ho, ten, _ngaysinh, gioitinh, cmnd, diachi, sdt, email, _ngaydk, _sothe, _anhDg);
 
-            formChiTietDocGia formChiTietDocGia = new formChiTietDocGia();
+            formChiTietDocGia formChiTietDocGia = new formChiTietDocGia(username,pass);
             formChiTietDocGia.loadThongTinChiTietDG(docgia);
 
             /*Form formChiTietDocGia = new formChiTietDocGia();
@@ -319,7 +330,7 @@ namespace QuanLyThuVien
         private void btnThemDocGia_Click(object sender, EventArgs e)
         {
             string err = "Lỗi khi thêm !";
-            BLL_DocGia bLL_DocGia = new BLL_DocGia();
+            BLL_DocGia bLL_DocGia = new BLL_DocGia(this.username, this.pass);
             try
             {
                 string ho = txtHoDG.Text;
@@ -330,7 +341,7 @@ namespace QuanLyThuVien
                 string diachi = txtDiaChiDG.Text;
                 string sdt = txtSDTDG.Text;
                 string email = txtEmailDG.Text;
-                string ngaydk = txtNgayDangKyDG.Text;
+                DateTime ngaydangky = DateTime.Now;
                 byte[] anhdg = ConvertImageToBytes(picAnhDG.Image);
 
                 // kiem tra thong tin nhap 
@@ -339,7 +350,7 @@ namespace QuanLyThuVien
                     MessageBox.Show("Vui lòng nhập thông tin giới tính chỉ bao gồm Nam hoặc Nữ !");
                     return;
                 }
-                if (ho == "" || ten == "" || ngaysinh == "" || cmnd == "" || diachi == "" || email == "" || ngaydk == "")
+                if (ho == "" || ten == "" || ngaysinh == "" || cmnd == "" || diachi == "" || email == "")
                 {
                     MessageBox.Show("Vui lòng nhập đủ thông tin !");
                     return;
@@ -350,12 +361,11 @@ namespace QuanLyThuVien
                     return;
                 }
                 DateTime _ngaysinh = Convert.ToDateTime(ngaysinh);
-                DateTime _ngaydk = Convert.ToDateTime(ngaydk);
                 //DateTime _ngaysinh = Convert.ToDateTime(ngaysinh);
 
                 DTO_DocGia DTO = new DTO_DocGia();
                 DTO_DocGia docgia = new DTO_DocGia();
-                docgia = DTO.DTO_ThemDocGia(ho, ten, _ngaysinh, gioitinh, cmnd, diachi, sdt, email, _ngaydk, anhdg);
+                docgia = DTO.DTO_ThemDocGia(ho, ten, _ngaysinh, gioitinh, cmnd, diachi, sdt, email, ngaydangky, anhdg);
                 if (bLL_DocGia.themDocGia(ref err, docgia))
                 {
                     MessageBox.Show("Đăng ký Độc Giả Thành Công!!!" + err);
@@ -749,7 +759,7 @@ namespace QuanLyThuVien
         private void btnThemSach_Click(object sender, EventArgs e)
         {
             string err = "Lỗi khi thêm !";
-            BLL_DauSach bLL_DauSach = new BLL_DauSach();
+            BLL_DauSach bLL_DauSach = new BLL_DauSach(username,pass);
             try
             {
                 string tensach = this.txtThemTenSach.Text;
@@ -815,7 +825,7 @@ namespace QuanLyThuVien
         private void btnLuuDauSach_Click(object sender, EventArgs e)
         {
             string err = "Lỗi khi sửa !";
-            BLL_DauSach bLL_DauSach = new BLL_DauSach();
+            BLL_DauSach bLL_DauSach = new BLL_DauSach(this.username, this.pass);
             try
             {
                 int r = dagDanhSachDauSach.CurrentCell.RowIndex;
@@ -868,7 +878,7 @@ namespace QuanLyThuVien
                 int _idDauSach = Convert.ToInt32(idDauSach);
 
                 string err = "Lỗi khi xóa !";
-                BLL_DauSach bLL_DauSach = new BLL_DauSach();
+                BLL_DauSach bLL_DauSach = new BLL_DauSach(this.username, this.pass);
                 try
                 {
                     if (bLL_DauSach.xoaDauSach(ref err, _idDauSach))

@@ -26,7 +26,7 @@ namespace QuanLyThuVien
             string pass = txtPASS.Text.ToString();
             user user = new user(name,pass);
 
-            BLL_DangNhap check = new BLL_DangNhap();
+            BLL_DangNhap check = new BLL_DangNhap(name, pass);
             string kt = check.dangNhap(user);
 
             if (kt == "docgia")

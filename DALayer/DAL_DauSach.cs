@@ -13,9 +13,9 @@ namespace DALayer
     {
         DBConnect db;
 
-        public DAL_DauSach()
+        public DAL_DauSach(string username, string pass)
         {
-            db = new DBConnect();
+            db = new DBConnect(username,pass);
         }
         public DataSet getDauSach()
         {

@@ -12,7 +12,11 @@ namespace DALayer
 {
     public class DAL_DocGiaMuonSach
     {
-        DBConnect conn = new DBConnect();
+        DBConnect conn;
+        public DAL_DocGiaMuonSach(string username, string pass)
+        {
+            conn = new DBConnect(username, pass);
+        }
         public DataSet getDocGiaMuonSach()
         {
             return conn.ExecuteQueryDataset("select * from view_DocGiaMuonSach", CommandType.Text, null);

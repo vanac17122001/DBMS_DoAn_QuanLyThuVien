@@ -13,9 +13,9 @@ namespace DALayer
     {
         DBConnect db;
 
-        public DAL_DocGia()
+        public DAL_DocGia(string username, string pass)
         {
-            db = new DBConnect();
+            db = new DBConnect(username, pass);
         }
         public DataSet getDocGia()
         {
@@ -42,7 +42,6 @@ namespace DALayer
                 new SqlParameter { ParameterName = "@diaChi", Value = DTO.Diachi },
                 new SqlParameter { ParameterName = "@soDT", Value = DTO.Sdt },
                 new SqlParameter { ParameterName = "@email", Value = DTO.Email},
-                new SqlParameter { ParameterName = "@ngayDK", Value = DTO.Ngaydk },
                 new SqlParameter { ParameterName = "@anhDG", Value = DTO.AnhDG }
                 );
         }

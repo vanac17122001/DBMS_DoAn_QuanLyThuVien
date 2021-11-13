@@ -13,14 +13,21 @@ namespace QuanLyThuVien
 {
     public partial class formChiTietDocGia : Form
     {
-        BLL_DocGia BLL_DocGia = new BLL_DocGia();
-        public formChiTietDocGia()
+        BLL_DocGia BLL_DocGia;
+        private string username;
+        private string pass;
+        public formChiTietDocGia(string username, string pass)
         {
+            this.username = username;
+            this.pass = pass;
+            BLL_DocGia = new BLL_DocGia(username, pass);
             InitializeComponent();
+            
         }
+
         public void loadThongTinChiTietDG(DTO_DocGia docgia)
         {
-            form_ThuThu form_ThuThu = new form_ThuThu();
+            form_ThuThu form_ThuThu = new form_ThuThu(username, pass);
             /*Form formChiTietDocGia = new formChiTietDocGia();
             formChiTietDocGia.ShowDialog();*/
             //InitializeComponent();

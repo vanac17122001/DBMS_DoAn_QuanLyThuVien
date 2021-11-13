@@ -11,7 +11,13 @@ namespace BLLayer
 {
     public class BLL_TraSach
     {
-        DAL_TraSach TraSach = new DAL_TraSach();
+        DAL_TraSach TraSach;
+
+        public BLL_TraSach(string username, string pass)
+        {
+            TraSach = new DAL_TraSach(username, pass);
+        }
+
         public DataSet getTraSach()
         {
             return TraSach.getTraSach();

@@ -11,9 +11,14 @@ namespace DALayer
 {
     public class DAL_DangNhap
     {
-        DBConnect db = new DBConnect();
-        public string DangNhap(user a)
+        DBConnect db;
+        public DAL_DangNhap(string username, string pass)
         {
+            db = new DBConnect(username, pass);
+        }
+
+        public string DangNhap(user a)
+         {
             try { 
                 DataSet ds = new DataSet();
                 ds = db.ExecuteQueryDataset("select * from fun_dangnhap(@username,@pass)", 
