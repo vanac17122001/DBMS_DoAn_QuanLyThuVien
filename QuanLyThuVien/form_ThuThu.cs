@@ -106,6 +106,13 @@ namespace QuanLyThuVien
             txtThuThu_SDTNhanVien.Text = ds.Tables[0].Rows[0][7].ToString();
             txtThuThu_EmailNhanVien.Text = ds.Tables[0].Rows[0][8].ToString();
             txtThuThu_NgayLamNhanVien.Text = ds.Tables[0].Rows[0][9].ToString();
+
+            Byte[] _anhNV = null;
+            if (!(ds.Tables[0].Rows[0][10] == DBNull.Value))
+            {
+                _anhNV = (Byte[])ds.Tables[0].Rows[0][10];
+                picNhanVien.Image = ConvertByteArrayToImage(_anhNV);
+            }
         }
         private void btnThongTinThuThu_Click(object sender, EventArgs e)
         {
@@ -127,6 +134,9 @@ namespace QuanLyThuVien
             txtThuThu_SDTNhanVien.Enabled = false;
             txtThuThu_EmailNhanVien.Enabled = false;
             txtThuThu_NgayLamNhanVien.Enabled = false;
+            btnThuThu_LuuNhanVien.Enabled = false;
+            btnThuThu_SuaNhanVien.Enabled = true;
+            btnThuThu_SuaAnhNhanVien.Enabled = true;
         }
 
         private void btnThongKeBaoCao_Click(object sender, EventArgs e)
@@ -365,12 +375,14 @@ namespace QuanLyThuVien
                 DateTime _ngaysinh = Convert.ToDateTime(ngaysinh);
                 //DateTime _ngaysinh = Convert.ToDateTime(ngaysinh);
 
+                DateTime _ngaydk = DateTime.Now;
+
                 DTO_DocGia DTO = new DTO_DocGia();
                 DTO_DocGia docgia = new DTO_DocGia();
                 docgia = DTO.DTO_ThemDocGia(ho, ten, _ngaysinh, gioitinh, cmnd, diachi, sdt, email, ngaydangky, anhdg);
                 if (bLL_DocGia.themDocGia(ref err, docgia))
                 {
-                    MessageBox.Show("Đăng ký Độc Giả Thành Công!!!" + err);
+                    MessageBox.Show("Đăng ký Độc Giả Thành Công!!!");
                 }
                 else
                 {
@@ -668,6 +680,8 @@ namespace QuanLyThuVien
             txtThuThu_SDTNhanVien.Enabled = true;
             txtThuThu_EmailNhanVien.Enabled = true;
             txtThuThu_NgayLamNhanVien.Enabled = true;
+            btnThuThu_LuuNhanVien.Enabled = true;
+            btnThuThu_SuaNhanVien.Enabled = false;
 
             f = "sua";
 
@@ -689,6 +703,7 @@ namespace QuanLyThuVien
                     dtonv.SoDT = txtThuThu_SDTNhanVien.Text.ToString();
                     dtonv.Email = txtThuThu_EmailNhanVien.Text.ToString();
                     dtonv.NgayBatDau = Convert.ToDateTime(txtThuThu_NgayLamNhanVien.Text);
+                    dtonv.AnhNhanVien = ConvertImageToBytes(picNhanVien.Image);
 
                     if (nv.suaNhanVien("", dtonv))
                         MessageBox.Show("Sửa thành công");
@@ -711,6 +726,9 @@ namespace QuanLyThuVien
             txtThuThu_SDTNhanVien.Enabled = false;
             txtThuThu_EmailNhanVien.Enabled = false;
             txtThuThu_NgayLamNhanVien.Enabled = false;
+            btnThuThu_SuaAnhNhanVien.Enabled = true;
+            btnThuThu_SuaNhanVien.Enabled = true;
+            btnThuThu_LuuNhanVien.Enabled = false;
 
             /*private void picRefeshDocGia_Click(object sender, EventArgs e)
             {
@@ -962,7 +980,7 @@ namespace QuanLyThuVien
             }
             else if (tuychon.Text == "Độc giả mượn sách")
             {
-                loadDocGiaMuonSach();
+                loadDocGiaMuonSach1();
 
             }
             else if (tuychon.Text == "Độc giả trả trễ")
