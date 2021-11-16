@@ -107,7 +107,7 @@ namespace QuanLyThuVien
             this.txtNamXuatBan.Text = namsb;
             this.txtViTri.Text = vitri;
 
-            form_ThuThu form_ThuThu = new form_ThuThu();
+            form_ThuThu form_ThuThu = new form_ThuThu(this._username,this._pass);
 
             if (!(dagDanhSachDauSach.Rows[r].Cells[8].Value == DBNull.Value))
             {

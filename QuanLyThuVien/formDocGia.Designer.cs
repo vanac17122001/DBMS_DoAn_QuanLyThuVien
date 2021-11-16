@@ -60,6 +60,10 @@ namespace QuanLyThuVien
             this.dagDanhSachDauSach = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.txtHanTra = new System.Windows.Forms.TextBox();
+            this.txtTenSach = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
             this.txtNgayMuon = new System.Windows.Forms.TextBox();
             this.label58 = new System.Windows.Forms.Label();
@@ -70,8 +74,15 @@ namespace QuanLyThuVien
             this.label55 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.dagSachDocGiaDaMuon = new System.Windows.Forms.DataGridView();
+            this.MuonId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SachID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ngay_Muon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenSach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSoThe = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.txtNgayLamThe = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtSDT = new System.Windows.Forms.TextBox();
@@ -90,17 +101,6 @@ namespace QuanLyThuVien
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.txtSoThe = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtTenSach = new System.Windows.Forms.TextBox();
-            this.txtHanTra = new System.Windows.Forms.TextBox();
-            this.MuonId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SachID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ngay_Muon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HanTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenSach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcDocGia.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grbChiTietDauSach.SuspendLayout();
@@ -194,6 +194,7 @@ namespace QuanLyThuVien
             this.pibDauSach.Location = new System.Drawing.Point(243, 343);
             this.pibDauSach.Name = "pibDauSach";
             this.pibDauSach.Size = new System.Drawing.Size(191, 114);
+            this.pibDauSach.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pibDauSach.TabIndex = 15;
             this.pibDauSach.TabStop = false;
             // 
@@ -445,6 +446,40 @@ namespace QuanLyThuVien
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Chi Tiết";
             // 
+            // txtHanTra
+            // 
+            this.txtHanTra.Location = new System.Drawing.Point(234, 433);
+            this.txtHanTra.Name = "txtHanTra";
+            this.txtHanTra.Size = new System.Drawing.Size(354, 30);
+            this.txtHanTra.TabIndex = 25;
+            // 
+            // txtTenSach
+            // 
+            this.txtTenSach.Location = new System.Drawing.Point(234, 355);
+            this.txtTenSach.Name = "txtTenSach";
+            this.txtTenSach.Size = new System.Drawing.Size(354, 30);
+            this.txtTenSach.TabIndex = 24;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(34, 436);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(87, 23);
+            this.label21.TabIndex = 23;
+            this.label21.Text = "Hạn trả :";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(34, 362);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(96, 23);
+            this.label20.TabIndex = 22;
+            this.label20.Text = "Tên sách :";
+            // 
             // label60
             // 
             this.label60.AutoSize = true;
@@ -540,6 +575,50 @@ namespace QuanLyThuVien
             this.dagSachDocGiaDaMuon.TabIndex = 21;
             this.dagSachDocGiaDaMuon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dagSachDocGiaDaMuon_CellClick);
             // 
+            // MuonId
+            // 
+            this.MuonId.DataPropertyName = "idMuon";
+            this.MuonId.HeaderText = "ID Mượn";
+            this.MuonId.MinimumWidth = 6;
+            this.MuonId.Name = "MuonId";
+            this.MuonId.ReadOnly = true;
+            this.MuonId.Width = 125;
+            // 
+            // SachID
+            // 
+            this.SachID.DataPropertyName = "idSach";
+            this.SachID.HeaderText = "ID Sách";
+            this.SachID.MinimumWidth = 6;
+            this.SachID.Name = "SachID";
+            this.SachID.ReadOnly = true;
+            this.SachID.Width = 125;
+            // 
+            // Ngay_Muon
+            // 
+            this.Ngay_Muon.DataPropertyName = "ngayMuon";
+            this.Ngay_Muon.HeaderText = "Ngày Mượn";
+            this.Ngay_Muon.MinimumWidth = 6;
+            this.Ngay_Muon.Name = "Ngay_Muon";
+            this.Ngay_Muon.ReadOnly = true;
+            this.Ngay_Muon.Width = 125;
+            // 
+            // HanTra
+            // 
+            this.HanTra.DataPropertyName = "hanTra";
+            this.HanTra.HeaderText = "Hạn Trả :";
+            this.HanTra.MinimumWidth = 6;
+            this.HanTra.Name = "HanTra";
+            this.HanTra.Width = 125;
+            // 
+            // tenSach
+            // 
+            this.tenSach.DataPropertyName = "tenSach";
+            this.tenSach.HeaderText = "Tên sách :";
+            this.tenSach.MinimumWidth = 6;
+            this.tenSach.Name = "tenSach";
+            this.tenSach.ReadOnly = true;
+            this.tenSach.Width = 125;
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panel1);
@@ -580,6 +659,22 @@ namespace QuanLyThuVien
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1168, 596);
             this.panel1.TabIndex = 1;
+            // 
+            // txtSoThe
+            // 
+            this.txtSoThe.Location = new System.Drawing.Point(406, 542);
+            this.txtSoThe.Name = "txtSoThe";
+            this.txtSoThe.Size = new System.Drawing.Size(453, 30);
+            this.txtSoThe.TabIndex = 23;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(260, 545);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(75, 23);
+            this.label19.TabIndex = 22;
+            this.label19.Text = "Số thẻ :";
             // 
             // txtNgayLamThe
             // 
@@ -727,100 +822,6 @@ namespace QuanLyThuVien
             this.label9.Size = new System.Drawing.Size(98, 23);
             this.label9.TabIndex = 0;
             this.label9.Text = "Hình ảnh :";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(260, 545);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(75, 23);
-            this.label19.TabIndex = 22;
-            this.label19.Text = "Số thẻ :";
-            // 
-            // txtSoThe
-            // 
-            this.txtSoThe.Location = new System.Drawing.Point(406, 542);
-            this.txtSoThe.Name = "txtSoThe";
-            this.txtSoThe.Size = new System.Drawing.Size(453, 30);
-            this.txtSoThe.TabIndex = 23;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(34, 362);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(96, 23);
-            this.label20.TabIndex = 22;
-            this.label20.Text = "Tên sách :";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(34, 436);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(87, 23);
-            this.label21.TabIndex = 23;
-            this.label21.Text = "Hạn trả :";
-            // 
-            // txtTenSach
-            // 
-            this.txtTenSach.Location = new System.Drawing.Point(234, 355);
-            this.txtTenSach.Name = "txtTenSach";
-            this.txtTenSach.Size = new System.Drawing.Size(354, 30);
-            this.txtTenSach.TabIndex = 24;
-            // 
-            // txtHanTra
-            // 
-            this.txtHanTra.Location = new System.Drawing.Point(234, 433);
-            this.txtHanTra.Name = "txtHanTra";
-            this.txtHanTra.Size = new System.Drawing.Size(354, 30);
-            this.txtHanTra.TabIndex = 25;
-            // 
-            // MuonId
-            // 
-            this.MuonId.DataPropertyName = "idMuon";
-            this.MuonId.HeaderText = "ID Mượn";
-            this.MuonId.MinimumWidth = 6;
-            this.MuonId.Name = "MuonId";
-            this.MuonId.ReadOnly = true;
-            this.MuonId.Width = 125;
-            // 
-            // SachID
-            // 
-            this.SachID.DataPropertyName = "idSach";
-            this.SachID.HeaderText = "ID Sách";
-            this.SachID.MinimumWidth = 6;
-            this.SachID.Name = "SachID";
-            this.SachID.ReadOnly = true;
-            this.SachID.Width = 125;
-            // 
-            // Ngay_Muon
-            // 
-            this.Ngay_Muon.DataPropertyName = "ngayMuon";
-            this.Ngay_Muon.HeaderText = "Ngày Mượn";
-            this.Ngay_Muon.MinimumWidth = 6;
-            this.Ngay_Muon.Name = "Ngay_Muon";
-            this.Ngay_Muon.ReadOnly = true;
-            this.Ngay_Muon.Width = 125;
-            // 
-            // HanTra
-            // 
-            this.HanTra.DataPropertyName = "hanTra";
-            this.HanTra.HeaderText = "Hạn Trả :";
-            this.HanTra.MinimumWidth = 6;
-            this.HanTra.Name = "HanTra";
-            this.HanTra.Width = 125;
-            // 
-            // tenSach
-            // 
-            this.tenSach.DataPropertyName = "tenSach";
-            this.tenSach.HeaderText = "Tên sách :";
-            this.tenSach.MinimumWidth = 6;
-            this.tenSach.Name = "tenSach";
-            this.tenSach.ReadOnly = true;
-            this.tenSach.Width = 125;
             // 
             // formDocGia
             // 
