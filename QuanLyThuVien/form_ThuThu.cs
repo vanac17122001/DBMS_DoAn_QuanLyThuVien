@@ -134,9 +134,9 @@ namespace QuanLyThuVien
             txtThuThu_SDTNhanVien.Enabled = false;
             txtThuThu_EmailNhanVien.Enabled = false;
             txtThuThu_NgayLamNhanVien.Enabled = false;
-            btnThuThu_LuuNhanVien.Enabled = false;
+            /*btnThuThu_LuuNhanVien.Enabled = false;
             btnThuThu_SuaNhanVien.Enabled = true;
-            btnThuThu_SuaAnhNhanVien.Enabled = true;
+            btnThuThu_SuaAnhNhanVien.Enabled = true;*/
         }
 
         private void btnThongKeBaoCao_Click(object sender, EventArgs e)
@@ -680,66 +680,13 @@ namespace QuanLyThuVien
             txtThuThu_SDTNhanVien.Enabled = true;
             txtThuThu_EmailNhanVien.Enabled = true;
             txtThuThu_NgayLamNhanVien.Enabled = true;
-            btnThuThu_LuuNhanVien.Enabled = true;
-            btnThuThu_SuaNhanVien.Enabled = false;
+           /* btnThuThu_LuuNhanVien.Enabled = true;
+            btnThuThu_SuaNhanVien.Enabled = false;*/
 
             f = "sua";
 
         }
 
-        private void btnThuThu_LuuNhanVien_Click(object sender, EventArgs e)
-        {
-            DTO_NhanVien dtonv = new DTO_NhanVien();
-            try
-            {
-                if (f == "sua")
-                {
-                    dtonv.IdNhanVien = Convert.ToInt32(txtThuThu_IdNhanVien.Text);
-                    dtonv.Ho = txtThuThu_HoNhanVien.Text.ToString();
-                    dtonv.Ten = txtThuThu_TenNhanVien.Text.ToString();
-                    dtonv.NgaySinh = Convert.ToDateTime(txtThuThu_NgaySinhNhanVien.Text);
-                    dtonv.CMND = txtThuThu_CMNDNhanVien.Text.ToString();
-                    dtonv.DiaChi = txtThuThu_DiaChiNhanVien.Text.ToString();
-                    dtonv.SoDT = txtThuThu_SDTNhanVien.Text.ToString();
-                    dtonv.Email = txtThuThu_EmailNhanVien.Text.ToString();
-                    dtonv.NgayBatDau = Convert.ToDateTime(txtThuThu_NgayLamNhanVien.Text);
-                    dtonv.AnhNhanVien = ConvertImageToBytes(picNhanVien.Image);
-
-                    if (nv.suaNhanVien("", dtonv))
-                        MessageBox.Show("Sửa thành công");
-                    else MessageBox.Show("Lỗi truy vấn");
-
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Lỗi không thực hiện được");
-            }
-            loadNhanVien(this.username, this.pass);
-            f = "";
-            txtThuThu_IdNhanVien.Enabled = false;
-            txtThuThu_HoNhanVien.Enabled = false;
-            txtThuThu_TenNhanVien.Enabled = false;
-            txtThuThu_NgaySinhNhanVien.Enabled = false;
-            txtThuThu_CMNDNhanVien.Enabled = false;
-            txtThuThu_DiaChiNhanVien.Enabled = false;
-            txtThuThu_SDTNhanVien.Enabled = false;
-            txtThuThu_EmailNhanVien.Enabled = false;
-            txtThuThu_NgayLamNhanVien.Enabled = false;
-            btnThuThu_SuaAnhNhanVien.Enabled = true;
-            btnThuThu_SuaNhanVien.Enabled = true;
-            btnThuThu_LuuNhanVien.Enabled = false;
-
-            /*private void picRefeshDocGia_Click(object sender, EventArgs e)
-            {
-                loadDocGia();
-            }
-
-            private void picRefeshDauSach_Click(object sender, EventArgs e)
-            {
-                loadDauSach();
-            }*/
-        }
 
         private void dvgDocGiaMuonSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -840,6 +787,7 @@ namespace QuanLyThuVien
             this.txtTenDauSach.Enabled = true;
             this.txtSoLuongDauSach.Enabled = true;
             this.txtViTriDauSach.Enabled = true;
+            this.btnLuuDauSach.Enabled = true;
         }
 
         private void btnLuuDauSach_Click(object sender, EventArgs e)
@@ -885,6 +833,9 @@ namespace QuanLyThuVien
                 MessageBox.Show("Lỗi");
                 throw ex;
             }
+            this.btnSuaDauSach.Enabled = true;
+            this.btnXoaDauSach.Enabled = true;
+            this.btnLuuDauSach.Enabled = false;
         }
 
         private void btnXoaDauSach_Click(object sender, EventArgs e)
@@ -1077,13 +1028,13 @@ namespace QuanLyThuVien
 
         private void tcThongKeBaoCao_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tcThongKeBaoCao.SelectedIndex == 2)
+            if (tcThongKeBaoCao.SelectedIndex == 1)
             {
                 tienphat();
                 maxPhat();
                 loadDanhSachPhatTien();
             }
-            if (tcThongKeBaoCao.SelectedIndex == 1)
+            if (tcThongKeBaoCao.SelectedIndex == 2)
             {
                 loadSachDaMuon();
                 loadSachChuaMuon();
@@ -1091,7 +1042,12 @@ namespace QuanLyThuVien
             }
         }
 
-        private void btnXuatExcel_Click(object sender, EventArgs e)
+        private void pic_reloadDauSach_Click(object sender, EventArgs e)
+        {
+            loadDauSach();
+        }
+        // Chức năng xuất file Excel 
+        private void btnXuatFileExcel_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Title = "Export Excel";
@@ -1108,6 +1064,9 @@ namespace QuanLyThuVien
                     MessageBox.Show("Xuât thất bại" + ex.Message);
                 }
             }
+            application.Columns.AutoFit();
+            application.ActiveWorkbook.SaveCopyAs(path);
+            application.ActiveWorkbook.Saved = true;
         }
         public void ExportExcelDocGia(string path)
         {
@@ -1127,11 +1086,6 @@ namespace QuanLyThuVien
             application.Columns.AutoFit();
             application.ActiveWorkbook.SaveCopyAs(path);
             application.ActiveWorkbook.Saved = true;
-        }
-
-        private void pic_reloadDauSach_Click(object sender, EventArgs e)
-        {
-            loadDauSach();
         }
     }
 }

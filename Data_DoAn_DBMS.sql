@@ -567,7 +567,7 @@ as
 	from DocGia,PhieuPhat,MuonSach ,TraSach
 		where DocGia.soThe=MuonSach.soThe and MuonSach.idMuon=TraSach.idMuon and TraSach.idTraSach=PhieuPhat.idTraSach
 
--- tạo một function tìm ra đọc giả nợ tiền nhiều nhất.
+-- tạo một function thống kê tất cả tiền phạt của độc giả.
 go
 create function fun_phatđg()
 returns table
@@ -575,6 +575,7 @@ as
  return select idDocGia,sum(soTienPhat) as tongNo from fun_danhsachphattien() 
 	group by idDocGia
 go
+-- tạo một pro tìm ra đọc giả nợ tiền nhiều nhất.
 create proc proc_maxphat
 as
 	select max(tongNo)from  fun_phatđg()
