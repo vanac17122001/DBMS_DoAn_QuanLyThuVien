@@ -38,8 +38,6 @@ namespace QuanLyThuVien
         }
         public formAdmin()
         {
-            this.username = "0122335555";
-            this.pass = "0122335555";
             nv = new BLL_NhanVien(this.username, this.pass);
             ad = new BLL_Admin(username, pass);
             InitializeComponent();
@@ -113,7 +111,7 @@ namespace QuanLyThuVien
         private void btnQuanLyNhanVien_Click(object sender, EventArgs e)
         {
             loadNhanVien();
-            tcQuanLyNhanVien.Size = new Size(965, 661);
+            tcQuanLyNhanVien.Size = new Size(965, 630);
             tcQuanLyNhanVien.Location = new System.Drawing.Point(208, 12);
             tcQuanLyNhanVien.Visible = true;
             gbThongTinAdmin.Visible = false;
@@ -134,7 +132,7 @@ namespace QuanLyThuVien
             txtEmailAdmin.Enabled = false;
             txtGioiTinhAdmin.Enabled = false;
 
-            gbThongTinAdmin.Size = new Size(965, 661);
+            gbThongTinAdmin.Size = new Size(965, 630);
             gbThongTinAdmin.Location = new System.Drawing.Point(208, 12);
             gbThongTinAdmin.Visible = true;
             tcQuanLyNhanVien.Visible = false;
@@ -280,6 +278,14 @@ namespace QuanLyThuVien
                     picAdmin.Image = Image.FromFile(ofd.FileName);
                 }
             }
+        }
+
+        private void picLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            formDangNhap formDangNhap = new formDangNhap();
+            formDangNhap.ShowDialog();
+            this.Close();
         }
     }
 }

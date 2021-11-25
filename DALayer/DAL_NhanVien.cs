@@ -84,7 +84,7 @@ namespace DALayer
         }
         public bool xoaNhanVien(string err , int id)
         {
-            return conn.MyExecuteNonQuery("delete from NhanVien where idNhanVien = @id", CommandType.Text, ref err, new SqlParameter("@id",id));
+            return conn.MyExecuteNonQuery("delete from TaiKhoan where id = @id", CommandType.Text, ref err, new SqlParameter("@id",id));
         }
     }
 }

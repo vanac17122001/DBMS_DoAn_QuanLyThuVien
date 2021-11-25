@@ -810,7 +810,6 @@ go
 insert into TraSach values
 (1004,'2021-1-5',102)
 go
-select * from TaiKhoan
 ----------
 -- function tìm nhân viên gần đúng theo tên nhân viên
 go
@@ -870,10 +869,10 @@ begin
 	SET @t = N'ALTER SERVER ROLE [sysadmin] ADD MEMBER' + QUOTENAME(@username)
 	EXEC(@t)
 end
+go
 -- thêm dữ liệu vào bảng Quản trị
 insert into QuanTri values
 (N'Trần',N'Văn Duy','2001-1-1',N'Nam','215530901',N'Hoài Nhơn - Bình Định','012345678','tranvanduy@gmail.com',null)
 go
 insert into QuanTri values
 (N'Trần',N'Văn Hào','2001-2-1',N'Nam','215530701',N'Hoài Nhơn - Bình Phước','876543210','caovanhao@gmail.com',null)
-select * from taikhoan

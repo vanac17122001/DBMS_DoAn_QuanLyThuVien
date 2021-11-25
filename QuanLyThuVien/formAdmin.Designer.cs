@@ -34,7 +34,6 @@ namespace QuanLyThuVien
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.tcQuanLyNhanVien = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.picRefeshDocGia = new System.Windows.Forms.PictureBox();
             this.btnXemChiTietNhanVien = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.rabTimKiemNhanVienTheoSDT = new System.Windows.Forms.RadioButton();
@@ -109,11 +108,11 @@ namespace QuanLyThuVien
             this.label13 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.picLogOut = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.tcQuanLyNhanVien.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picRefeshDocGia)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachNhanVien)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -126,6 +125,7 @@ namespace QuanLyThuVien
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAdmin)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox5
@@ -157,36 +157,26 @@ namespace QuanLyThuVien
             this.tcQuanLyNhanVien.Controls.Add(this.tabPage1);
             this.tcQuanLyNhanVien.Controls.Add(this.tabPage2);
             this.tcQuanLyNhanVien.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tcQuanLyNhanVien.Location = new System.Drawing.Point(1157, 93);
+            this.tcQuanLyNhanVien.Location = new System.Drawing.Point(229, 12);
             this.tcQuanLyNhanVien.Name = "tcQuanLyNhanVien";
             this.tcQuanLyNhanVien.SelectedIndex = 0;
-            this.tcQuanLyNhanVien.Size = new System.Drawing.Size(156, 19);
+            this.tcQuanLyNhanVien.Size = new System.Drawing.Size(939, 566);
             this.tcQuanLyNhanVien.TabIndex = 28;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.picRefeshDocGia);
+            this.tabPage1.Controls.Add(this.picLogOut);
             this.tabPage1.Controls.Add(this.btnXemChiTietNhanVien);
             this.tabPage1.Controls.Add(this.groupBox5);
             this.tabPage1.Controls.Add(this.label26);
             this.tabPage1.Controls.Add(this.dgvDanhSachNhanVien);
-            this.tabPage1.Location = new System.Drawing.Point(4, 31);
+            this.tabPage1.Location = new System.Drawing.Point(4, 32);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(148, 0);
+            this.tabPage1.Size = new System.Drawing.Size(931, 530);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Thông tin nhân viên";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // picRefeshDocGia
-            // 
-            this.picRefeshDocGia.Image = ((System.Drawing.Image)(resources.GetObject("picRefeshDocGia.Image")));
-            this.picRefeshDocGia.Location = new System.Drawing.Point(805, 86);
-            this.picRefeshDocGia.Name = "picRefeshDocGia";
-            this.picRefeshDocGia.Size = new System.Drawing.Size(100, 70);
-            this.picRefeshDocGia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picRefeshDocGia.TabIndex = 16;
-            this.picRefeshDocGia.TabStop = false;
             // 
             // btnXemChiTietNhanVien
             // 
@@ -221,7 +211,7 @@ namespace QuanLyThuVien
             this.rabTimKiemNhanVienTheoSDT.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rabTimKiemNhanVienTheoSDT.Location = new System.Drawing.Point(144, 66);
             this.rabTimKiemNhanVienTheoSDT.Name = "rabTimKiemNhanVienTheoSDT";
-            this.rabTimKiemNhanVienTheoSDT.Size = new System.Drawing.Size(136, 27);
+            this.rabTimKiemNhanVienTheoSDT.Size = new System.Drawing.Size(139, 27);
             this.rabTimKiemNhanVienTheoSDT.TabIndex = 7;
             this.rabTimKiemNhanVienTheoSDT.TabStop = true;
             this.rabTimKiemNhanVienTheoSDT.Text = "Số điện thoại";
@@ -276,7 +266,7 @@ namespace QuanLyThuVien
             this.rabTimKiemNhanVienTheoTen.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rabTimKiemNhanVienTheoTen.Location = new System.Drawing.Point(144, 28);
             this.rabTimKiemNhanVienTheoTen.Name = "rabTimKiemNhanVienTheoTen";
-            this.rabTimKiemNhanVienTheoTen.Size = new System.Drawing.Size(144, 27);
+            this.rabTimKiemNhanVienTheoTen.Size = new System.Drawing.Size(147, 27);
             this.rabTimKiemNhanVienTheoTen.TabIndex = 5;
             this.rabTimKiemNhanVienTheoTen.TabStop = true;
             this.rabTimKiemNhanVienTheoTen.Text = "Tên nhân viên";
@@ -417,10 +407,10 @@ namespace QuanLyThuVien
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 31);
+            this.tabPage2.Location = new System.Drawing.Point(4, 32);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(148, 0);
+            this.tabPage2.Size = new System.Drawing.Size(148, 71);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Thêm nhân viên";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -664,7 +654,7 @@ namespace QuanLyThuVien
             this.groupBox1.ForeColor = System.Drawing.Color.Blue;
             this.groupBox1.Location = new System.Drawing.Point(1, 104);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(190, 611);
+            this.groupBox1.Size = new System.Drawing.Size(222, 524);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chức năng";
@@ -676,7 +666,7 @@ namespace QuanLyThuVien
             this.btnThongTinAdmin.Image = ((System.Drawing.Image)(resources.GetObject("btnThongTinAdmin.Image")));
             this.btnThongTinAdmin.Location = new System.Drawing.Point(11, 204);
             this.btnThongTinAdmin.Name = "btnThongTinAdmin";
-            this.btnThongTinAdmin.Size = new System.Drawing.Size(153, 95);
+            this.btnThongTinAdmin.Size = new System.Drawing.Size(155, 104);
             this.btnThongTinAdmin.TabIndex = 4;
             this.btnThongTinAdmin.UseVisualStyleBackColor = false;
             this.btnThongTinAdmin.Click += new System.EventHandler(this.btnThongTinAdmin_Click);
@@ -687,7 +677,7 @@ namespace QuanLyThuVien
             this.btnQuanLyNhanVien.Image = ((System.Drawing.Image)(resources.GetObject("btnQuanLyNhanVien.Image")));
             this.btnQuanLyNhanVien.Location = new System.Drawing.Point(11, 58);
             this.btnQuanLyNhanVien.Name = "btnQuanLyNhanVien";
-            this.btnQuanLyNhanVien.Size = new System.Drawing.Size(153, 99);
+            this.btnQuanLyNhanVien.Size = new System.Drawing.Size(155, 104);
             this.btnQuanLyNhanVien.TabIndex = 2;
             this.btnQuanLyNhanVien.UseVisualStyleBackColor = false;
             this.btnQuanLyNhanVien.Click += new System.EventHandler(this.btnQuanLyNhanVien_Click);
@@ -696,9 +686,9 @@ namespace QuanLyThuVien
             // 
             this.gbThongTinAdmin.Controls.Add(this.panel1);
             this.gbThongTinAdmin.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbThongTinAdmin.Location = new System.Drawing.Point(211, 12);
+            this.gbThongTinAdmin.Location = new System.Drawing.Point(1201, 308);
             this.gbThongTinAdmin.Name = "gbThongTinAdmin";
-            this.gbThongTinAdmin.Size = new System.Drawing.Size(940, 663);
+            this.gbThongTinAdmin.Size = new System.Drawing.Size(128, 74);
             this.gbThongTinAdmin.TabIndex = 34;
             this.gbThongTinAdmin.TabStop = false;
             this.gbThongTinAdmin.Text = "Thông tin Admin";
@@ -810,6 +800,7 @@ namespace QuanLyThuVien
             this.picAdmin.Location = new System.Drawing.Point(368, 25);
             this.picAdmin.Name = "picAdmin";
             this.picAdmin.Size = new System.Drawing.Size(219, 133);
+            this.picAdmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picAdmin.TabIndex = 11;
             this.picAdmin.TabStop = false;
             // 
@@ -941,16 +932,30 @@ namespace QuanLyThuVien
             this.label9.TabIndex = 0;
             this.label9.Text = "Hình ảnh :";
             // 
+            // picLogOut
+            // 
+            this.picLogOut.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.picLogOut.Image = ((System.Drawing.Image)(resources.GetObject("picLogOut.Image")));
+            this.picLogOut.InitialImage = null;
+            this.picLogOut.Location = new System.Drawing.Point(854, 6);
+            this.picLogOut.Name = "picLogOut";
+            this.picLogOut.Size = new System.Drawing.Size(71, 64);
+            this.picLogOut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLogOut.TabIndex = 35;
+            this.picLogOut.TabStop = false;
+            this.picLogOut.Click += new System.EventHandler(this.picLogOut_Click);
+            // 
             // formAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1251, 677);
+            this.ClientSize = new System.Drawing.Size(1257, 640);
             this.Controls.Add(this.gbThongTinAdmin);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.tcQuanLyNhanVien);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formAdmin";
             this.Text = "formAdmin";
             this.Load += new System.EventHandler(this.formAdmin_Load_1);
@@ -959,7 +964,6 @@ namespace QuanLyThuVien
             this.tcQuanLyNhanVien.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picRefeshDocGia)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachNhanVien)).EndInit();
@@ -975,6 +979,7 @@ namespace QuanLyThuVien
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAdmin)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -985,7 +990,6 @@ namespace QuanLyThuVien
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.TabControl tcQuanLyNhanVien;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.PictureBox picRefeshDocGia;
         private System.Windows.Forms.Button btnXemChiTietNhanVien;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btnTimKiemNhanVien;
@@ -1060,5 +1064,6 @@ namespace QuanLyThuVien
         private System.Windows.Forms.Button btnQuanLyNhanVien_Huy;
         private System.Windows.Forms.TextBox txtGioiTinhAdmin;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox picLogOut;
     }
 }

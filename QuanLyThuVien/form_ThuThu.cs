@@ -1064,9 +1064,9 @@ namespace QuanLyThuVien
                     MessageBox.Show("Xuât thất bại" + ex.Message);
                 }
             }
-            application.Columns.AutoFit();
+/*            application.Columns.AutoFit();
             application.ActiveWorkbook.SaveCopyAs(path);
-            application.ActiveWorkbook.Saved = true;
+            application.ActiveWorkbook.Saved = true;*/
         }
         public void ExportExcelDocGia(string path)
         {
@@ -1086,6 +1086,14 @@ namespace QuanLyThuVien
             application.Columns.AutoFit();
             application.ActiveWorkbook.SaveCopyAs(path);
             application.ActiveWorkbook.Saved = true;
+        }
+
+        private void picLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            formDangNhap formDangNhap = new formDangNhap();
+            formDangNhap.ShowDialog();
+            this.Close();
         }
     }
 }

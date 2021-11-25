@@ -197,5 +197,13 @@ namespace QuanLyThuVien
             this.txtHanTra.Enabled = false;
             this.txtTenSach.Enabled = false;
         }
+
+        private void picLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            formDangNhap formDangNhap = new formDangNhap();
+            formDangNhap.ShowDialog();
+            this.Close();
+        }
     }
 }
