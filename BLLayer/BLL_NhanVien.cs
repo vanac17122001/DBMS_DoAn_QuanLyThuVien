@@ -22,10 +22,33 @@ namespace BLLayer
         {
             return nv.getNhanVien(username,pass);
         }
-
+        public DataSet getNhanVien()
+        {
+            return nv.getNhanVien();
+        }
+        public DataSet getNhanVien(int id)
+        {
+            return nv.getNhanVien(id);
+        }
         public bool suaNhanVien(string err, DTO_NhanVien a)
         {
             return nv.suaNhanVien(err, a);
+        }
+        public DataSet timNhanVienTheoTen(string ten)
+        {
+            return nv.timNhanVienTheoTen(ten);
+        }
+        public DataSet timNhanVienTheoSDT(string sdt)
+        {
+            return nv.timNhanVienTheoSDT(sdt);
+        }
+        public bool themNhanVien(string err, DTO_NhanVien a)
+        {
+            return nv.themNhanVien(err, a);
+        }
+        public bool xoaNhanVien(string err, int id)
+        {
+            return nv.xoaNhanVien(err, id);
         }
     }
 }

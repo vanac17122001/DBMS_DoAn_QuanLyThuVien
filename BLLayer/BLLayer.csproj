@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL_Admin.cs" />
     <Compile Include="BLL_DangNhap.cs" />
     <Compile Include="BLL_DauSach.cs" />
     <Compile Include="BLL_DocGia.cs" />

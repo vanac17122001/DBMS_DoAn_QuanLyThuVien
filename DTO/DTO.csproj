@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DTO_Admin.cs" />
     <Compile Include="DTO_DocGia.cs" />
     <Compile Include="DTO_DocGiaMuonSach.cs" />
     <Compile Include="DTO_MuonSach.cs" />

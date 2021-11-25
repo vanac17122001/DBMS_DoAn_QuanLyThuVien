@@ -17,7 +17,7 @@ namespace DALayer
         }
         public DataSet getallDocGia()
         {
-            return db.ExecuteQueryDataset("select * from DocGia;", CommandType.Text, null);
+            return db.ExecuteQueryDataset("select idDocGia,ho,ten,ngaySinh,gioiTinh,CMND,diaChi,soDT,email,ngayDK,soThe from DocGia;", CommandType.Text, null);
         }
         public DataSet getDocGiaMuonSach1()
         {

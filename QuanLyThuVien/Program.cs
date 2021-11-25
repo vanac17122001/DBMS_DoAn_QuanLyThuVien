@@ -20,6 +20,7 @@ namespace QuanLyThuVien
             //Application.Run(new formDocGia());
             //Application.Run(new form_ThuThu());
             Application.Run(new formDangNhap());
+            //Application.Run(new formAdmin());
         }
     }
 }

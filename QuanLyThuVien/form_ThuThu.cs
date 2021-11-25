@@ -11,6 +11,8 @@ using System.Data.SqlClient;
 using DTO;
 using BLLayer;
 using System.IO;
+using OfficeOpenXml;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace QuanLyThuVien
 {
@@ -1069,6 +1071,44 @@ namespace QuanLyThuVien
                 loadSachChuaMuon();
                 sachMuonNhieuNhat();
             }
+        }
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "Export Excel";
+            saveFileDialog.Filter = "Excel (*.xlsx)|*.xlsx|Excel 2003 (*.xls)|*.xls";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    ExportExcelDocGia(saveFileDialog.FileName);
+                    MessageBox.Show("Thành công");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Xuât thất bại" + ex.Message);
+                }
+            }
+        }
+        public void ExportExcelDocGia(string path)
+        {
+            Excel.Application application = new Excel.Application();
+            application.Application.Workbooks.Add(Type.Missing);
+            for (int i = 0; i < dagthongKeDocGia.Columns.Count; i++)
+            {
+                application.Cells[1, i + 1] = dagthongKeDocGia.Columns[i].HeaderText;
+            }
+            for (int i = 0; i < dagthongKeDocGia.Rows.Count; i++)
+            {
+                for (int j = 0; j < dagthongKeDocGia.Columns.Count; j++)
+                {
+                    application.Cells[i + 2, j + 1] = dagthongKeDocGia.Rows[i].Cells[j].Value;
+                }
+            }
+            application.Columns.AutoFit();
+            application.ActiveWorkbook.SaveCopyAs(path);
+            application.ActiveWorkbook.Saved = true;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace DALayer
         public DBConnect(string username, string pass)
         {
             string ConnStr = "Data Source=" + "localhost" + ";Initial Catalog="
-                        + "Database_DBMS" + ";Persist Security Info=True;User ID=" + username + ";Password=" + pass; 
+                        + "Database_CNPM" + ";Persist Security Info=True;User ID=" + username + ";Password=" + pass; 
             conn = new SqlConnection(ConnStr);
             comm = conn.CreateCommand();
         }

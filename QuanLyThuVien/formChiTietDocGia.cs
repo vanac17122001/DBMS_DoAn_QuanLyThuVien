@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DTO;
 using BLLayer;
+using System.IO;
+
 namespace QuanLyThuVien
 {
     public partial class formChiTietDocGia : Form
@@ -106,9 +108,6 @@ namespace QuanLyThuVien
 
         private void btnLuuDocGia_Click(object sender, EventArgs e)
         {
-            form_ThuThu form_ThuThu = new form_ThuThu();
-            
-
             string idDocGia = txtIdDG.Text;
             int _idDocGia = int.Parse(idDocGia);
             string ho = txtHoDG.Text;
@@ -129,7 +128,7 @@ namespace QuanLyThuVien
             string sothe = txtSoThe.Text;
             int _sothe = int.Parse(sothe);
 
-            byte[] anhdg = form_ThuThu.ConvertImageToBytes(picAnhDG.Image);
+            byte[] anhdg = ConvertImageToBytes(picAnhDG.Image);
 
             DTO_DocGia DTO = new DTO_DocGia(_idDocGia, ho, ten, _ngaysinh, gioitinh, cmnd,
             diachi, sdt, email, _ngaydk, _sothe, anhdg);
@@ -175,6 +174,22 @@ namespace QuanLyThuVien
                 MessageBox.Show("Xóa không Thành Công\n Lỗi Dữ Liệu!!!");
             }
             this.Close();
+        }
+        public byte[] ConvertImageToBytes(Image img)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                return ms.ToArray();
+            }
+        }
+        // Chuyen kieu byte sang Image
+        public Image ConvertByteArrayToImage(byte[] data)
+        {
+            using (MemoryStream ms = new MemoryStream(data))
+            {
+                return Image.FromStream(ms);
+            }
         }
     }
 }
