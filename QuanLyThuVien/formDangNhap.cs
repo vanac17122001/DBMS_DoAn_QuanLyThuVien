@@ -45,17 +45,21 @@ namespace QuanLyThuVien
                     formThuThu.ShowDialog();
                     this.Close();
                 }
-                if(kt =="admin")
-                {
-                    Form formAdmin = new formAdmin(name, pass);
-                    this.Hide();
-                    formAdmin.ShowDialog();
-                    this.Close();
-                }
                 else
                 {
-                    MessageBox.Show("User hoặc pass không đúng !");
+                    if (kt == "admin")
+                    {
+                        Form formAdmin = new formAdmin(name, pass);
+                        this.Hide();
+                        formAdmin.ShowDialog();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("User hoặc pass không đúng !");
+                    }
                 }
+              
             }
 
            

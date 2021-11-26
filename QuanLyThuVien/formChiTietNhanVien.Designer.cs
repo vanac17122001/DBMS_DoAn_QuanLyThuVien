@@ -30,6 +30,7 @@ namespace QuanLyThuVien
         private void InitializeComponent()
         {
             System.Windows.Forms.Label label24;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formChiTietNhanVien));
             this.btnChonHinhNV = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSuaNV = new System.Windows.Forms.Button();
@@ -373,9 +374,10 @@ namespace QuanLyThuVien
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(985, 509);
             this.Controls.Add(this.groupBox4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formChiTietNhanVien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "formChiTietNhanVien";
+            this.Text = "Chi Tiết Nhân Viên";
             this.Load += new System.EventHandler(this.formChiTietNhanVien_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picAnhNV)).EndInit();

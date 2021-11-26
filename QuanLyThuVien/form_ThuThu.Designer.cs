@@ -334,8 +334,6 @@ namespace QuanLyThuVien
             this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.txtmaxphat = new System.Windows.Forms.TextBox();
-            this.button24 = new System.Windows.Forms.Button();
             this.txtTienPhat = new System.Windows.Forms.TextBox();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.label96 = new System.Windows.Forms.Label();
@@ -360,15 +358,6 @@ namespace QuanLyThuVien
             this.button17 = new System.Windows.Forms.Button();
             this.label77 = new System.Windows.Forms.Label();
             this.dagDanhSachPhatTien = new System.Windows.Forms.DataGridView();
-            this.idDocGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ho = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CMND = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.txtSachMuonNhieuNhat = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -453,6 +442,24 @@ namespace QuanLyThuVien
             this.label125 = new System.Windows.Forms.Label();
             this.label126 = new System.Windows.Forms.Label();
             this.picLogOut = new System.Windows.Forms.PictureBox();
+            this.idDocGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ho = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CMND = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.dt1 = new System.Windows.Forms.DateTimePicker();
+            this.dt2 = new System.Windows.Forms.DateTimePicker();
+            this.btnThongKeTienPhatTheoThoiGian = new System.Windows.Forms.Button();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txtTienPhatNgayTra = new System.Windows.Forms.TextBox();
+            this.btnXuatFileTienPhat = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.tcThongTinSach.SuspendLayout();
             this.tbThongTinSach.SuspendLayout();
@@ -519,6 +526,8 @@ namespace QuanLyThuVien
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).BeginInit();
+            this.groupBox17.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -1663,7 +1672,7 @@ namespace QuanLyThuVien
             // 
             this.gbThongTinThuThu.Controls.Add(this.panel1);
             this.gbThongTinThuThu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbThongTinThuThu.Location = new System.Drawing.Point(1345, 600);
+            this.gbThongTinThuThu.Location = new System.Drawing.Point(1345, 522);
             this.gbThongTinThuThu.Name = "gbThongTinThuThu";
             this.gbThongTinThuThu.Size = new System.Drawing.Size(253, 86);
             this.gbThongTinThuThu.TabIndex = 1;
@@ -1867,10 +1876,10 @@ namespace QuanLyThuVien
             this.tcQuanLyMuonTra.Controls.Add(this.tabPage6);
             this.tcQuanLyMuonTra.Controls.Add(this.tabPage7);
             this.tcQuanLyMuonTra.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tcQuanLyMuonTra.Location = new System.Drawing.Point(222, 13);
+            this.tcQuanLyMuonTra.Location = new System.Drawing.Point(1345, 452);
             this.tcQuanLyMuonTra.Name = "tcQuanLyMuonTra";
             this.tcQuanLyMuonTra.SelectedIndex = 0;
-            this.tcQuanLyMuonTra.Size = new System.Drawing.Size(1034, 691);
+            this.tcQuanLyMuonTra.Size = new System.Drawing.Size(157, 60);
             this.tcQuanLyMuonTra.TabIndex = 3;
             // 
             // tabPage5
@@ -1882,7 +1891,7 @@ namespace QuanLyThuVien
             this.tabPage5.Location = new System.Drawing.Point(4, 32);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1026, 655);
+            this.tabPage5.Size = new System.Drawing.Size(149, 24);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "Thẻ Mượn Sách";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -2211,7 +2220,7 @@ namespace QuanLyThuVien
             this.tabPage6.Location = new System.Drawing.Point(4, 32);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1010, 655);
+            this.tabPage6.Size = new System.Drawing.Size(1026, 655);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "Thẻ Trả Sách";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -2482,7 +2491,7 @@ namespace QuanLyThuVien
             this.tabPage7.Location = new System.Drawing.Point(4, 32);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(1010, 655);
+            this.tabPage7.Size = new System.Drawing.Size(1026, 655);
             this.tabPage7.TabIndex = 2;
             this.tabPage7.Text = "Độc Giả Mượn Sách";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -2967,10 +2976,10 @@ namespace QuanLyThuVien
             this.tcThongKeBaoCao.Controls.Add(this.tabPage8);
             this.tcThongKeBaoCao.Controls.Add(this.tabPage4);
             this.tcThongKeBaoCao.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tcThongKeBaoCao.Location = new System.Drawing.Point(1341, 314);
+            this.tcThongKeBaoCao.Location = new System.Drawing.Point(222, 25);
             this.tcThongKeBaoCao.Name = "tcThongKeBaoCao";
             this.tcThongKeBaoCao.SelectedIndex = 0;
-            this.tcThongKeBaoCao.Size = new System.Drawing.Size(180, 97);
+            this.tcThongKeBaoCao.Size = new System.Drawing.Size(1045, 675);
             this.tcThongKeBaoCao.TabIndex = 28;
             this.tcThongKeBaoCao.SelectedIndexChanged += new System.EventHandler(this.tcThongKeBaoCao_SelectedIndexChanged);
             // 
@@ -2983,7 +2992,7 @@ namespace QuanLyThuVien
             this.tabPage3.Location = new System.Drawing.Point(4, 32);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(172, 61);
+            this.tabPage3.Size = new System.Drawing.Size(1037, 639);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Thống kê ĐG";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -3636,8 +3645,7 @@ namespace QuanLyThuVien
             // 
             // tabPage8
             // 
-            this.tabPage8.Controls.Add(this.txtmaxphat);
-            this.tabPage8.Controls.Add(this.button24);
+            this.tabPage8.Controls.Add(this.groupBox17);
             this.tabPage8.Controls.Add(this.txtTienPhat);
             this.tabPage8.Controls.Add(this.groupBox15);
             this.tabPage8.Controls.Add(this.button17);
@@ -3646,31 +3654,10 @@ namespace QuanLyThuVien
             this.tabPage8.Location = new System.Drawing.Point(4, 32);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(172, 61);
+            this.tabPage8.Size = new System.Drawing.Size(1037, 639);
             this.tabPage8.TabIndex = 2;
             this.tabPage8.Text = "Thống Kê Tiền Phạt";
             this.tabPage8.UseVisualStyleBackColor = true;
-            // 
-            // txtmaxphat
-            // 
-            this.txtmaxphat.Location = new System.Drawing.Point(682, 569);
-            this.txtmaxphat.Multiline = true;
-            this.txtmaxphat.Name = "txtmaxphat";
-            this.txtmaxphat.Size = new System.Drawing.Size(136, 38);
-            this.txtmaxphat.TabIndex = 44;
-            this.txtmaxphat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button24
-            // 
-            this.button24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.button24.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button24.ForeColor = System.Drawing.Color.White;
-            this.button24.Location = new System.Drawing.Point(501, 569);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(175, 38);
-            this.button24.TabIndex = 43;
-            this.button24.Text = "Tiền phạt cao nhất";
-            this.button24.UseVisualStyleBackColor = false;
             // 
             // txtTienPhat
             // 
@@ -3683,6 +3670,8 @@ namespace QuanLyThuVien
             // 
             // groupBox15
             // 
+            this.groupBox15.Controls.Add(this.txtTienPhatNgayTra);
+            this.groupBox15.Controls.Add(this.label32);
             this.groupBox15.Controls.Add(this.label96);
             this.groupBox15.Controls.Add(this.txttienPhattp);
             this.groupBox15.Controls.Add(this.txtSoNgayTretp);
@@ -3702,9 +3691,9 @@ namespace QuanLyThuVien
             this.groupBox15.Controls.Add(this.label105);
             this.groupBox15.Controls.Add(this.label106);
             this.groupBox15.Controls.Add(this.label107);
-            this.groupBox15.Location = new System.Drawing.Point(515, 116);
+            this.groupBox15.Location = new System.Drawing.Point(574, 152);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(421, 433);
+            this.groupBox15.Size = new System.Drawing.Size(400, 477);
             this.groupBox15.TabIndex = 42;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Chi Tiết";
@@ -3721,63 +3710,63 @@ namespace QuanLyThuVien
             // 
             // txttienPhattp
             // 
-            this.txttienPhattp.Location = new System.Drawing.Point(164, 395);
+            this.txttienPhattp.Location = new System.Drawing.Point(128, 398);
             this.txttienPhattp.Name = "txttienPhattp";
             this.txttienPhattp.Size = new System.Drawing.Size(251, 30);
             this.txttienPhattp.TabIndex = 55;
             // 
             // txtSoNgayTretp
             // 
-            this.txtSoNgayTretp.Location = new System.Drawing.Point(164, 356);
+            this.txtSoNgayTretp.Location = new System.Drawing.Point(128, 356);
             this.txtSoNgayTretp.Name = "txtSoNgayTretp";
             this.txtSoNgayTretp.Size = new System.Drawing.Size(251, 30);
             this.txtSoNgayTretp.TabIndex = 54;
             // 
             // txtSoThetp
             // 
-            this.txtSoThetp.Location = new System.Drawing.Point(164, 310);
+            this.txtSoThetp.Location = new System.Drawing.Point(128, 311);
             this.txtSoThetp.Name = "txtSoThetp";
             this.txtSoThetp.Size = new System.Drawing.Size(251, 30);
             this.txtSoThetp.TabIndex = 53;
             // 
             // txtCMNDtp
             // 
-            this.txtCMNDtp.Location = new System.Drawing.Point(164, 259);
+            this.txtCMNDtp.Location = new System.Drawing.Point(128, 261);
             this.txtCMNDtp.Name = "txtCMNDtp";
             this.txtCMNDtp.Size = new System.Drawing.Size(251, 30);
             this.txtCMNDtp.TabIndex = 52;
             // 
             // txtGioiTinhtp
             // 
-            this.txtGioiTinhtp.Location = new System.Drawing.Point(164, 215);
+            this.txtGioiTinhtp.Location = new System.Drawing.Point(128, 215);
             this.txtGioiTinhtp.Name = "txtGioiTinhtp";
             this.txtGioiTinhtp.Size = new System.Drawing.Size(251, 30);
             this.txtGioiTinhtp.TabIndex = 51;
             // 
             // txtNgaysinhtp
             // 
-            this.txtNgaysinhtp.Location = new System.Drawing.Point(164, 167);
+            this.txtNgaysinhtp.Location = new System.Drawing.Point(128, 168);
             this.txtNgaysinhtp.Name = "txtNgaysinhtp";
             this.txtNgaysinhtp.Size = new System.Drawing.Size(251, 30);
             this.txtNgaysinhtp.TabIndex = 50;
             // 
             // txtTentp
             // 
-            this.txtTentp.Location = new System.Drawing.Point(164, 121);
+            this.txtTentp.Location = new System.Drawing.Point(128, 123);
             this.txtTentp.Name = "txtTentp";
             this.txtTentp.Size = new System.Drawing.Size(251, 30);
             this.txtTentp.TabIndex = 49;
             // 
             // txtHotp
             // 
-            this.txtHotp.Location = new System.Drawing.Point(164, 75);
+            this.txtHotp.Location = new System.Drawing.Point(128, 72);
             this.txtHotp.Name = "txtHotp";
             this.txtHotp.Size = new System.Drawing.Size(251, 30);
             this.txtHotp.TabIndex = 48;
             // 
             // txtIDtp
             // 
-            this.txtIDtp.Location = new System.Drawing.Point(164, 29);
+            this.txtIDtp.Location = new System.Drawing.Point(128, 26);
             this.txtIDtp.Name = "txtIDtp";
             this.txtIDtp.Size = new System.Drawing.Size(251, 30);
             this.txtIDtp.TabIndex = 47;
@@ -3899,6 +3888,7 @@ namespace QuanLyThuVien
             this.dagDanhSachPhatTien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dagDanhSachPhatTien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDocGia,
+            this.Column10,
             this.ho,
             this.ten,
             this.ngaySinh,
@@ -3907,85 +3897,13 @@ namespace QuanLyThuVien
             this.Column7,
             this.Column8,
             this.Column1});
-            this.dagDanhSachPhatTien.Location = new System.Drawing.Point(6, 119);
+            this.dagDanhSachPhatTien.Location = new System.Drawing.Point(6, 179);
             this.dagDanhSachPhatTien.Name = "dagDanhSachPhatTien";
             this.dagDanhSachPhatTien.RowHeadersWidth = 51;
             this.dagDanhSachPhatTien.RowTemplate.Height = 24;
-            this.dagDanhSachPhatTien.Size = new System.Drawing.Size(487, 430);
+            this.dagDanhSachPhatTien.Size = new System.Drawing.Size(562, 370);
             this.dagDanhSachPhatTien.TabIndex = 0;
             this.dagDanhSachPhatTien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dagDanhSachPhatTien_CellClick);
-            // 
-            // idDocGia
-            // 
-            this.idDocGia.DataPropertyName = "idDocGia";
-            this.idDocGia.HeaderText = "ID Độc Giả";
-            this.idDocGia.MinimumWidth = 6;
-            this.idDocGia.Name = "idDocGia";
-            this.idDocGia.Width = 140;
-            // 
-            // ho
-            // 
-            this.ho.DataPropertyName = "ho";
-            this.ho.HeaderText = "Họ";
-            this.ho.MinimumWidth = 6;
-            this.ho.Name = "ho";
-            this.ho.Width = 125;
-            // 
-            // ten
-            // 
-            this.ten.DataPropertyName = "ten";
-            this.ten.HeaderText = "Tên";
-            this.ten.MinimumWidth = 6;
-            this.ten.Name = "ten";
-            this.ten.Width = 125;
-            // 
-            // ngaySinh
-            // 
-            this.ngaySinh.DataPropertyName = "ngaySinh";
-            this.ngaySinh.HeaderText = "Ngày Sinh";
-            this.ngaySinh.MinimumWidth = 6;
-            this.ngaySinh.Name = "ngaySinh";
-            this.ngaySinh.Width = 125;
-            // 
-            // gioiTinh
-            // 
-            this.gioiTinh.DataPropertyName = "gioiTinh";
-            this.gioiTinh.HeaderText = "Giới Tính";
-            this.gioiTinh.MinimumWidth = 6;
-            this.gioiTinh.Name = "gioiTinh";
-            this.gioiTinh.Width = 125;
-            // 
-            // CMND
-            // 
-            this.CMND.DataPropertyName = "CMND";
-            this.CMND.HeaderText = "CMND";
-            this.CMND.MinimumWidth = 6;
-            this.CMND.Name = "CMND";
-            this.CMND.Width = 125;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "soThe";
-            this.Column7.HeaderText = "Số thẻ";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 125;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "soNgayQuaHan";
-            this.Column8.HeaderText = "Số ngày trễ";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 125;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "soTienPhat";
-            this.Column1.HeaderText = "Tiền Phạt";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 125;
             // 
             // tabPage4
             // 
@@ -3998,7 +3916,7 @@ namespace QuanLyThuVien
             this.tabPage4.Location = new System.Drawing.Point(4, 32);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(172, 61);
+            this.tabPage4.Size = new System.Drawing.Size(1037, 639);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Thống Kê Sách";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -4791,7 +4709,7 @@ namespace QuanLyThuVien
             this.picLogOut.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.picLogOut.Image = ((System.Drawing.Image)(resources.GetObject("picLogOut.Image")));
             this.picLogOut.InitialImage = null;
-            this.picLogOut.Location = new System.Drawing.Point(1262, 18);
+            this.picLogOut.Location = new System.Drawing.Point(20, 5);
             this.picLogOut.Name = "picLogOut";
             this.picLogOut.Size = new System.Drawing.Size(71, 64);
             this.picLogOut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -4799,12 +4717,175 @@ namespace QuanLyThuVien
             this.picLogOut.TabStop = false;
             this.picLogOut.Click += new System.EventHandler(this.picLogOut_Click);
             // 
+            // idDocGia
+            // 
+            this.idDocGia.DataPropertyName = "idDocGia";
+            this.idDocGia.HeaderText = "ID Độc Giả";
+            this.idDocGia.MinimumWidth = 6;
+            this.idDocGia.Name = "idDocGia";
+            this.idDocGia.Width = 140;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "ngayTra";
+            this.Column10.HeaderText = "Ngày Trả";
+            this.Column10.MinimumWidth = 6;
+            this.Column10.Name = "Column10";
+            this.Column10.Width = 125;
+            // 
+            // ho
+            // 
+            this.ho.DataPropertyName = "ho";
+            this.ho.HeaderText = "Họ";
+            this.ho.MinimumWidth = 6;
+            this.ho.Name = "ho";
+            this.ho.Width = 125;
+            // 
+            // ten
+            // 
+            this.ten.DataPropertyName = "ten";
+            this.ten.HeaderText = "Tên";
+            this.ten.MinimumWidth = 6;
+            this.ten.Name = "ten";
+            this.ten.Width = 125;
+            // 
+            // ngaySinh
+            // 
+            this.ngaySinh.DataPropertyName = "ngaySinh";
+            this.ngaySinh.HeaderText = "Ngày Sinh";
+            this.ngaySinh.MinimumWidth = 6;
+            this.ngaySinh.Name = "ngaySinh";
+            this.ngaySinh.Width = 125;
+            // 
+            // gioiTinh
+            // 
+            this.gioiTinh.DataPropertyName = "gioiTinh";
+            this.gioiTinh.HeaderText = "Giới Tính";
+            this.gioiTinh.MinimumWidth = 6;
+            this.gioiTinh.Name = "gioiTinh";
+            this.gioiTinh.Width = 125;
+            // 
+            // CMND
+            // 
+            this.CMND.DataPropertyName = "CMND";
+            this.CMND.HeaderText = "CMND";
+            this.CMND.MinimumWidth = 6;
+            this.CMND.Name = "CMND";
+            this.CMND.Width = 125;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "soThe";
+            this.Column7.HeaderText = "Số thẻ";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 125;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "soNgayQuaHan";
+            this.Column8.HeaderText = "Số ngày trễ";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
+            this.Column8.Width = 125;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "soTienPhat";
+            this.Column1.HeaderText = "Tiền Phạt";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 125;
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.btnXuatFileTienPhat);
+            this.groupBox17.Controls.Add(this.btnThongKeTienPhatTheoThoiGian);
+            this.groupBox17.Controls.Add(this.dt2);
+            this.groupBox17.Controls.Add(this.dt1);
+            this.groupBox17.Location = new System.Drawing.Point(6, 87);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(562, 88);
+            this.groupBox17.TabIndex = 45;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "Thời gian";
+            // 
+            // dt1
+            // 
+            this.dt1.CustomFormat = "yyyy-MM-dd";
+            this.dt1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dt1.Location = new System.Drawing.Point(6, 35);
+            this.dt1.Name = "dt1";
+            this.dt1.Size = new System.Drawing.Size(149, 30);
+            this.dt1.TabIndex = 0;
+            // 
+            // dt2
+            // 
+            this.dt2.CustomFormat = "yyyy-MM-dd";
+            this.dt2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dt2.Location = new System.Drawing.Point(180, 35);
+            this.dt2.Name = "dt2";
+            this.dt2.Size = new System.Drawing.Size(149, 30);
+            this.dt2.TabIndex = 1;
+            // 
+            // btnThongKeTienPhatTheoThoiGian
+            // 
+            this.btnThongKeTienPhatTheoThoiGian.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnThongKeTienPhatTheoThoiGian.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongKeTienPhatTheoThoiGian.ForeColor = System.Drawing.Color.White;
+            this.btnThongKeTienPhatTheoThoiGian.Location = new System.Drawing.Point(347, 29);
+            this.btnThongKeTienPhatTheoThoiGian.Name = "btnThongKeTienPhatTheoThoiGian";
+            this.btnThongKeTienPhatTheoThoiGian.Size = new System.Drawing.Size(96, 36);
+            this.btnThongKeTienPhatTheoThoiGian.TabIndex = 46;
+            this.btnThongKeTienPhatTheoThoiGian.Text = "Thống kê";
+            this.btnThongKeTienPhatTheoThoiGian.UseVisualStyleBackColor = false;
+            this.btnThongKeTienPhatTheoThoiGian.Click += new System.EventHandler(this.btnThongKeTienPhatTheoThoiGian_Click);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(14, 444);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(96, 23);
+            this.label32.TabIndex = 59;
+            this.label32.Text = "Ngày trả :";
+            // 
+            // txtTienPhatNgayTra
+            // 
+            this.txtTienPhatNgayTra.Location = new System.Drawing.Point(128, 437);
+            this.txtTienPhatNgayTra.Name = "txtTienPhatNgayTra";
+            this.txtTienPhatNgayTra.Size = new System.Drawing.Size(251, 30);
+            this.txtTienPhatNgayTra.TabIndex = 60;
+            // 
+            // btnXuatFileTienPhat
+            // 
+            this.btnXuatFileTienPhat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnXuatFileTienPhat.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXuatFileTienPhat.ForeColor = System.Drawing.Color.White;
+            this.btnXuatFileTienPhat.Location = new System.Drawing.Point(445, 29);
+            this.btnXuatFileTienPhat.Name = "btnXuatFileTienPhat";
+            this.btnXuatFileTienPhat.Size = new System.Drawing.Size(96, 36);
+            this.btnXuatFileTienPhat.TabIndex = 47;
+            this.btnXuatFileTienPhat.Text = "Xuất File";
+            this.btnXuatFileTienPhat.UseVisualStyleBackColor = false;
+            this.btnXuatFileTienPhat.Click += new System.EventHandler(this.btnXuatFileTienPhat_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.picLogOut);
+            this.panel2.Location = new System.Drawing.Point(1273, 614);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(105, 77);
+            this.panel2.TabIndex = 37;
+            // 
             // form_ThuThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1388, 712);
-            this.Controls.Add(this.picLogOut);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.tcThongKeBaoCao);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
@@ -4911,6 +4992,8 @@ namespace QuanLyThuVien
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).EndInit();
+            this.groupBox17.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -5208,8 +5291,6 @@ namespace QuanLyThuVien
         private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.Label label76;
         private System.Windows.Forms.TabPage tabPage8;
-        private System.Windows.Forms.TextBox txtmaxphat;
-        private System.Windows.Forms.Button button24;
         private System.Windows.Forms.TextBox txtTienPhat;
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.Label label96;
@@ -5234,15 +5315,6 @@ namespace QuanLyThuVien
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Label label77;
         private System.Windows.Forms.DataGridView dagDanhSachPhatTien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDocGia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ho;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ten;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ngaySinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gioiTinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CMND;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TextBox txtSachMuonNhieuNhat;
         private System.Windows.Forms.Button button6;
@@ -5341,6 +5413,24 @@ namespace QuanLyThuVien
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
         private System.Windows.Forms.PictureBox picLogOut;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDocGia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ho;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ten;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngaySinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gioiTinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CMND;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.GroupBox groupBox17;
+        private System.Windows.Forms.Button btnThongKeTienPhatTheoThoiGian;
+        private System.Windows.Forms.DateTimePicker dt2;
+        private System.Windows.Forms.DateTimePicker dt1;
+        private System.Windows.Forms.TextBox txtTienPhatNgayTra;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Button btnXuatFileTienPhat;
+        private System.Windows.Forms.Panel panel2;
         //private System.Windows.Forms.PictureBox picRefeshDocGia;
         //private System.Windows.Forms.PictureBox picRefeshDauSach;
     }

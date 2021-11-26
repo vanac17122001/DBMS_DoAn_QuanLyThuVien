@@ -42,6 +42,14 @@ namespace BLLayer
         {
             return dg.getmaxPhat();
         }
+        public DataSet getthongtin(string from, string to)
+        {
+            return dg.getthongtin(from, to);
+        }
+        public DataSet gettongphattheongay(string from, string to)
+        {
+            return dg.gettongphattheongay(from, to);
+        }
     }
 
 }

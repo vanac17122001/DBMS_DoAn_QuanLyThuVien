@@ -34,6 +34,7 @@ namespace QuanLyThuVien
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.tcQuanLyNhanVien = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.picLogOut = new System.Windows.Forms.PictureBox();
             this.btnXemChiTietNhanVien = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.rabTimKiemNhanVienTheoSDT = new System.Windows.Forms.RadioButton();
@@ -108,11 +109,12 @@ namespace QuanLyThuVien
             this.label13 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.picLogOut = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.tcQuanLyNhanVien.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachNhanVien)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -125,7 +127,7 @@ namespace QuanLyThuVien
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAdmin)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox5
@@ -165,7 +167,7 @@ namespace QuanLyThuVien
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.picLogOut);
+            this.tabPage1.Controls.Add(this.panel3);
             this.tabPage1.Controls.Add(this.btnXemChiTietNhanVien);
             this.tabPage1.Controls.Add(this.groupBox5);
             this.tabPage1.Controls.Add(this.label26);
@@ -177,6 +179,19 @@ namespace QuanLyThuVien
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Thông tin nhân viên";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // picLogOut
+            // 
+            this.picLogOut.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.picLogOut.Image = ((System.Drawing.Image)(resources.GetObject("picLogOut.Image")));
+            this.picLogOut.InitialImage = null;
+            this.picLogOut.Location = new System.Drawing.Point(17, 13);
+            this.picLogOut.Name = "picLogOut";
+            this.picLogOut.Size = new System.Drawing.Size(71, 64);
+            this.picLogOut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLogOut.TabIndex = 35;
+            this.picLogOut.TabStop = false;
+            this.picLogOut.Click += new System.EventHandler(this.picLogOut_Click);
             // 
             // btnXemChiTietNhanVien
             // 
@@ -410,7 +425,7 @@ namespace QuanLyThuVien
             this.tabPage2.Location = new System.Drawing.Point(4, 32);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(148, 71);
+            this.tabPage2.Size = new System.Drawing.Size(931, 530);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Thêm nhân viên";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -423,7 +438,7 @@ namespace QuanLyThuVien
             this.groupBox4.ForeColor = System.Drawing.Color.RoyalBlue;
             this.groupBox4.Location = new System.Drawing.Point(7, 19);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(920, 579);
+            this.groupBox4.Size = new System.Drawing.Size(920, 581);
             this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Nhập thông tin nhân viên";
@@ -452,7 +467,7 @@ namespace QuanLyThuVien
             this.panel5.Controls.Add(this.picAnhNV);
             this.panel5.Location = new System.Drawing.Point(6, 34);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(908, 451);
+            this.panel5.Size = new System.Drawing.Size(908, 445);
             this.panel5.TabIndex = 29;
             // 
             // label40
@@ -932,18 +947,14 @@ namespace QuanLyThuVien
             this.label9.TabIndex = 0;
             this.label9.Text = "Hình ảnh :";
             // 
-            // picLogOut
+            // panel3
             // 
-            this.picLogOut.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.picLogOut.Image = ((System.Drawing.Image)(resources.GetObject("picLogOut.Image")));
-            this.picLogOut.InitialImage = null;
-            this.picLogOut.Location = new System.Drawing.Point(854, 6);
-            this.picLogOut.Name = "picLogOut";
-            this.picLogOut.Size = new System.Drawing.Size(71, 64);
-            this.picLogOut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picLogOut.TabIndex = 35;
-            this.picLogOut.TabStop = false;
-            this.picLogOut.Click += new System.EventHandler(this.picLogOut_Click);
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.picLogOut);
+            this.panel3.Location = new System.Drawing.Point(819, 6);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(106, 93);
+            this.panel3.TabIndex = 36;
             // 
             // formAdmin
             // 
@@ -957,13 +968,14 @@ namespace QuanLyThuVien
             this.Controls.Add(this.tcQuanLyNhanVien);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formAdmin";
-            this.Text = "formAdmin";
+            this.Text = "Quản Trị";
             this.Load += new System.EventHandler(this.formAdmin_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.tcQuanLyNhanVien.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachNhanVien)).EndInit();
@@ -979,7 +991,7 @@ namespace QuanLyThuVien
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAdmin)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1065,5 +1077,6 @@ namespace QuanLyThuVien
         private System.Windows.Forms.TextBox txtGioiTinhAdmin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox picLogOut;
+        private System.Windows.Forms.Panel panel3;
     }
 }

@@ -169,7 +169,7 @@ namespace QuanLyThuVien
             gbThongTinThuThu.Visible = false;
             tcThongKeBaoCao.Visible = false;
             tcQuanLyDocGia.Visible = false;
-            tcThongTinSach.Size = new Size(965, 661);
+            tcThongTinSach.Size = new Size(975, 670);
             tcThongTinSach.Location = new System.Drawing.Point(252, 38);
             loadDauSach();
             tcThongTinSach.Visible = true;
@@ -894,11 +894,6 @@ namespace QuanLyThuVien
             ds = thongkedocgia.getTongphat();
             this.txtTienPhat.Text = ds.Tables[0].Rows[0][0].ToString();
         }
-        public void maxPhat()
-        {
-            ds = thongkedocgia.getmaxPhat();
-            this.txtmaxphat.Text = ds.Tables[0].Rows[0][0].ToString();
-        }
         public void loadDanhSachPhatTien()
         {
             ds = thongkedocgia.getDanhSachPhat();
@@ -980,6 +975,7 @@ namespace QuanLyThuVien
             string soThe = dagDanhSachPhatTien.Rows[r].Cells[6].Value.ToString();
             string soNgayTre = dagDanhSachPhatTien.Rows[r].Cells[7].Value.ToString();
             string soTienPhat = dagDanhSachPhatTien.Rows[r].Cells[8].Value.ToString();
+            string ngayTra = dagDanhSachPhatTien.Rows[r].Cells[9].Value.ToString();
 
             txtIDtp.Text = id;
             txtHotp.Text = Ho;
@@ -990,6 +986,7 @@ namespace QuanLyThuVien
             txtSoThetp.Text = soThe;
             txttienPhattp.Text = soTienPhat;
             txtSoNgayTretp.Text = soNgayTre;
+            txtTienPhatNgayTra.Text = ngayTra;
         }
 
         private void dagThongKeSachChuaMuon_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1031,7 +1028,6 @@ namespace QuanLyThuVien
             if (tcThongKeBaoCao.SelectedIndex == 1)
             {
                 tienphat();
-                maxPhat();
                 loadDanhSachPhatTien();
             }
             if (tcThongKeBaoCao.SelectedIndex == 2)
@@ -1094,6 +1090,50 @@ namespace QuanLyThuVien
             formDangNhap formDangNhap = new formDangNhap();
             formDangNhap.ShowDialog();
             this.Close();
+        }
+
+        private void btnThongKeTienPhatTheoThoiGian_Click(object sender, EventArgs e)
+        {
+            dagDanhSachPhatTien.DataSource = thongkedocgia.getthongtin(dt1.Text, dt2.Text).Tables[0];
+            this.txtTienPhat.Text = thongkedocgia.gettongphattheongay(dt1.Text, dt2.Text).Tables[0].Rows[0][0].ToString();
+        }
+
+        private void btnXuatFileTienPhat_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "Export Excel";
+            saveFileDialog.Filter = "Excel (*.xlsx)|*.xlsx|Excel 2003 (*.xls)|*.xls";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    ExportExcelDanhSachTienPhat(saveFileDialog.FileName);
+                    MessageBox.Show("Thành công");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Xuât thất bại" + ex.Message);
+                }
+            }
+        }
+        public void ExportExcelDanhSachTienPhat(string path)
+        {
+            Excel.Application application = new Excel.Application();
+            application.Application.Workbooks.Add(Type.Missing);
+            for (int i = 0; i < dagDanhSachPhatTien.Columns.Count; i++)
+            {
+                application.Cells[1, i + 1] = dagDanhSachPhatTien.Columns[i].HeaderText;
+            }
+            for (int i = 0; i < dagDanhSachPhatTien.Rows.Count; i++)
+            {
+                for (int j = 0; j < dagDanhSachPhatTien.Columns.Count; j++)
+                {
+                    application.Cells[i + 2, j + 1] = dagDanhSachPhatTien.Rows[i].Cells[j].Value;
+                }
+            }
+            application.Columns.AutoFit();
+            application.ActiveWorkbook.SaveCopyAs(path);
+            application.ActiveWorkbook.Saved = true;
         }
     }
 }

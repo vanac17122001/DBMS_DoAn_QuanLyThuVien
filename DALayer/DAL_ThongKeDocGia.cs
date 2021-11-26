@@ -39,5 +39,13 @@ namespace DALayer
         {
             return db.ExecuteQueryDataset("proc_maxphat", CommandType.StoredProcedure, null);
         }
+        public DataSet getthongtin(string from, string to)
+        {
+            return db.ExecuteQueryDataset("select * from fun_danhsachphattien() where ngayTra >= '" + from + "' and ngayTra <='" + to + "'", CommandType.Text, null);
+        }
+        public DataSet gettongphattheongay(string from, string to)
+        {
+            return db.ExecuteQueryDataset("select sum(soTienPhat) from fun_danhsachphattien() where ngayTra >= '" + from + "' and ngayTra <='" + to + "'", CommandType.Text, null);
+        }
     }
 }

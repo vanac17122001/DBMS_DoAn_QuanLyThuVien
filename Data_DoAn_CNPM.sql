@@ -576,7 +576,7 @@ as
  create function fun_danhsachphattien ()
  returns table
  as
-  return select idDocGia,ho,ten,ngaySinh,gioiTinh,CMND, DocGia.soThe,soNgayQuaHan,soTienPhat 
+  return select idDocGia,ho,ten,ngaySinh,gioiTinh,CMND, DocGia.soThe,soNgayQuaHan,soTienPhat,ngayTra 
 	from DocGia,PhieuPhat,MuonSach ,TraSach
 		where DocGia.soThe=MuonSach.soThe and MuonSach.idMuon=TraSach.idMuon and TraSach.idTraSach=PhieuPhat.idTraSach
 

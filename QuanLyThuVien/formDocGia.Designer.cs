@@ -32,6 +32,7 @@ namespace QuanLyThuVien
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formDocGia));
             this.tcDocGia = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.picLogOut = new System.Windows.Forms.PictureBox();
             this.grbChiTietDauSach = new System.Windows.Forms.GroupBox();
             this.txtSoLuongMuon = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -101,9 +102,10 @@ namespace QuanLyThuVien
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.picLogOut = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.tcDocGia.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).BeginInit();
             this.grbChiTietDauSach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pibDauSach)).BeginInit();
             this.grbTimKiemDauSach.SuspendLayout();
@@ -115,7 +117,7 @@ namespace QuanLyThuVien
             this.tabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAnhDG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcDocGia
@@ -134,7 +136,7 @@ namespace QuanLyThuVien
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.picLogOut);
+            this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Controls.Add(this.grbChiTietDauSach);
             this.tabPage1.Controls.Add(this.grbTimKiemDauSach);
             this.tabPage1.Controls.Add(this.lbDanhSachDauSach);
@@ -148,6 +150,19 @@ namespace QuanLyThuVien
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tìm kiếm sách";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // picLogOut
+            // 
+            this.picLogOut.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.picLogOut.Image = ((System.Drawing.Image)(resources.GetObject("picLogOut.Image")));
+            this.picLogOut.InitialImage = null;
+            this.picLogOut.Location = new System.Drawing.Point(17, 17);
+            this.picLogOut.Name = "picLogOut";
+            this.picLogOut.Size = new System.Drawing.Size(71, 64);
+            this.picLogOut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLogOut.TabIndex = 36;
+            this.picLogOut.TabStop = false;
+            this.picLogOut.Click += new System.EventHandler(this.picLogOut_Click);
             // 
             // grbChiTietDauSach
             // 
@@ -423,7 +438,7 @@ namespace QuanLyThuVien
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(1235, 637);
+            this.tabPage2.Size = new System.Drawing.Size(1331, 637);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Sách đã mượn";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -629,7 +644,7 @@ namespace QuanLyThuVien
             this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage3.Size = new System.Drawing.Size(1235, 637);
+            this.tabPage3.Size = new System.Drawing.Size(1331, 637);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Thông tin người dùng";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -826,18 +841,14 @@ namespace QuanLyThuVien
             this.label9.TabIndex = 0;
             this.label9.Text = "Hình ảnh :";
             // 
-            // picLogOut
+            // panel2
             // 
-            this.picLogOut.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.picLogOut.Image = ((System.Drawing.Image)(resources.GetObject("picLogOut.Image")));
-            this.picLogOut.InitialImage = null;
-            this.picLogOut.Location = new System.Drawing.Point(1232, 16);
-            this.picLogOut.Name = "picLogOut";
-            this.picLogOut.Size = new System.Drawing.Size(71, 64);
-            this.picLogOut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picLogOut.TabIndex = 36;
-            this.picLogOut.TabStop = false;
-            this.picLogOut.Click += new System.EventHandler(this.picLogOut_Click);
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.picLogOut);
+            this.panel2.Location = new System.Drawing.Point(1218, 519);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(106, 93);
+            this.panel2.TabIndex = 37;
             // 
             // formDocGia
             // 
@@ -855,6 +866,7 @@ namespace QuanLyThuVien
             this.tcDocGia.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).EndInit();
             this.grbChiTietDauSach.ResumeLayout(false);
             this.grbChiTietDauSach.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pibDauSach)).EndInit();
@@ -871,7 +883,7 @@ namespace QuanLyThuVien
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAnhDG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -950,5 +962,6 @@ namespace QuanLyThuVien
         private System.Windows.Forms.DataGridViewTextBoxColumn HanTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenSach;
         private System.Windows.Forms.PictureBox picLogOut;
+        private System.Windows.Forms.Panel panel2;
     }
 }
