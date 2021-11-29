@@ -27,5 +27,11 @@ namespace DALayer
         {
             return db.ExecuteQueryDataset("proc_sachmuonnhiunhat", CommandType.StoredProcedure, null);
         }
+        public DataSet getSoLuongSachTheoTheLoai()
+        {
+            return db.ExecuteQueryDataset("select sum(soLuong) as 'SoLuong',tenTheLoai from DauSach " +
+                                    "inner join TheLoaiSach on DauSach.idTheLoai=TheLoaiSach.idTheLoai " +"group by(tenTheLoai)", 
+                CommandType.Text, null);
+        }
     }
 }

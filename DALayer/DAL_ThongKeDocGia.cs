@@ -45,7 +45,7 @@ namespace DALayer
         }
         public DataSet gettongphattheongay(string from, string to)
         {
-            return db.ExecuteQueryDataset("select sum(soTienPhat) from fun_danhsachphattien() where ngayTra >= '" + from + "' and ngayTra <='" + to + "'", CommandType.Text, null);
+            return db.ExecuteQueryDataset("select sum(soTienPhat) as 'TongTienPhat' from fun_danhsachphattien() where ngayTra >= '" + from + "' and ngayTra <='" + to + "'", CommandType.Text, null);
         }
     }
 }

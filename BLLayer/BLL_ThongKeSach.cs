@@ -30,5 +30,9 @@ namespace BLLayer
         {
             return dg.getSachMuonNhieuNhat();
         }
+        public DataSet getSoLuongSachTheoTheLoai()
+        {
+            return dg.getSoLuongSachTheoTheLoai();
+        }
     }
 }

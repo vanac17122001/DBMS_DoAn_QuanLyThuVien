@@ -1036,6 +1036,15 @@ namespace QuanLyThuVien
                 loadSachChuaMuon();
                 sachMuonNhieuNhat();
             }
+            if (tcThongKeBaoCao.SelectedIndex == 3)
+            {
+                chartTongTienPhat.Visible = false;
+                //btnBieuDoTongTienPhat_Click(null, null);
+            }
+            if (tcThongKeBaoCao.SelectedIndex == 4)
+            {
+              chartThongKeSach.Visible = false;
+            }
         }
 
         private void pic_reloadDauSach_Click(object sender, EventArgs e)
@@ -1134,6 +1143,38 @@ namespace QuanLyThuVien
             application.Columns.AutoFit();
             application.ActiveWorkbook.SaveCopyAs(path);
             application.ActiveWorkbook.Saved = true;
+        }
+
+        private void btnBieuDoTongTienPhat_Click(object sender, EventArgs e)
+        {
+            chartTongTienPhat.Visible = true;
+            String tongtienphat = thongkedocgia.gettongphattheongay(dtTongTienPhat1.Text, dtTongTienPhat2.Text).Tables[0].Rows[0][0].ToString();
+            chartTongTienPhat.Series["TongTienPhat"].Points.Clear();
+            chartTongTienPhat.Series["TongTienPhat"].Points.AddXY("Tổng tiền phạt", tongtienphat);
+            chartTongTienPhat.Series.First().Label = "#VALY";
+
+            //chartTongTienPhat.DataSource = thongkedocgia.gettongphattheongay(dtTongTienPhat1.Text, dtTongTienPhat2.Text);
+            //chartTongTienPhat.Series["TongTienPhat"].YValueMembers = "TongTienPhat";
+            //chartTongTienPhat.Titles.Add("Salary Chart");
+        }
+
+        private void btnThongKeSach_Click(object sender, EventArgs e)
+        {
+            chartThongKeSach.Visible = true;
+            if (comboBoxTuyChonThongKeSach.Text=="Số Lượng Sách Theo Thể Loại")
+            {
+                chartThongKeSach.Series["SachTheoTheLoai"].Points.Clear();
+                chartThongKeSach.Titles.Clear();
+                DataSet ds = thongkesach.getSoLuongSachTheoTheLoai();
+                chartThongKeSach.DataSource = ds;
+                 
+                chartThongKeSach.Series["SachTheoTheLoai"].XValueMember = "tenTheLoai";
+                
+                chartThongKeSach.Series["SachTheoTheLoai"].YValueMembers = "SoLuong";
+                chartThongKeSach.Titles.Add("Số Lượng Sách Theo Thể Loại");
+                chartThongKeSach.Series.First().Label = "#VALY";
+                chartThongKeSach.Legends[0].Enabled = false;
+            }
         }
     }
 }
