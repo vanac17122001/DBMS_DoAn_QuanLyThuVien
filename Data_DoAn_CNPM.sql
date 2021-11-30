@@ -795,6 +795,25 @@ go
 insert into MuonSach values
 (911,303,102,'2020-6-5','2020-07-15')
 go
+--Mới thêm
+insert into MuonSach values 
+(1042,300,100,'2020-02-1','2020-04-01')
+go
+insert into MuonSach values 
+(1043,300,100,'2020-2-1','2020-04-01')
+go
+insert into MuonSach values 
+(1044,301,100,'2020-2-1','2020-04-01')
+go
+insert into MuonSach values 
+(1112,302,100,'2020-2-1','2020-04-01')
+go
+insert into MuonSach values 
+(1113,300,100,'2020-2-1','2020-04-01')
+go
+insert into MuonSach values 
+(1114,302,100,'2020-2-1','2020-04-01')
+go
 insert into TraSach values
 (1000,'2021-1-1',100)
 go
@@ -809,6 +828,24 @@ insert into TraSach values
 go
 insert into TraSach values
 (1004,'2021-1-5',102)
+go
+insert into MuonSach values 
+(1200,305,100,'2020-2-1','2020-04-01')
+go
+insert into MuonSach values 
+(1201,304,100,'2020-2-1','2020-04-01')
+go
+insert into MuonSach values 
+(1202,303,100,'2020-2-1','2020-04-01')
+go
+insert into MuonSach values 
+(1301,302,100,'2020-2-1','2020-04-01')
+go
+insert into MuonSach values 
+(1302,303,100,'2020-2-1','2020-04-01')
+go
+insert into MuonSach values 
+(1303,302,100,'2020-2-1','2020-04-01')
 go
 ----------
 -- function tìm nhân viên gần đúng theo tên nhân viên
@@ -876,3 +913,13 @@ insert into QuanTri values
 go
 insert into QuanTri values
 (N'Trần',N'Văn Hào','2001-2-1',N'Nam','215530701',N'Hoài Nhơn - Bình Phước','876543210','caovanhao@gmail.com',null)
+
+-- Thống kê sách mượn theo thể loại theo thời gian
+create function fn_SachMuonTheoLoai (@time1 date, @time2 date)  
+RETURNS tableas
+	return (select COUNT(MuonSach.idSach) as 'SoLuong',TheLoaiSach.tenTheLoai from MuonSach inner join Sach on MuonSach.idSach=Sach.idSach
+						inner join DauSach on Sach.idDauSach=DauSach.idDauSach
+						inner join TheLoaiSach on DauSach.idTheLoai=TheLoaiSach.idTheLoai
+		where MuonSach.ngayMuon >= @time1 and MuonSach.ngayMuon <=@time2
+		group by (TheLoaiSach.tenTheLoai))
+go

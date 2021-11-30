@@ -473,14 +473,14 @@ namespace QuanLyThuVien
             this.dtTongTienPhat2 = new System.Windows.Forms.DateTimePicker();
             this.dtTongTienPhat1 = new System.Windows.Forms.DateTimePicker();
             this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.chartThongKeSach = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.dtThongKeSach2 = new System.Windows.Forms.DateTimePicker();
+            this.dtThongKeSach1 = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxTuyChonThongKeSach = new System.Windows.Forms.ComboBox();
             this.btnThongKeSach = new System.Windows.Forms.Button();
             this.picLogOut = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.comboBoxTuyChonThongKeSach = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.chartThongKeSach = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1.SuspendLayout();
             this.tcThongTinSach.SuspendLayout();
             this.tbThongTinSach.SuspendLayout();
@@ -551,10 +551,10 @@ namespace QuanLyThuVien
             ((System.ComponentModel.ISupportInitialize)(this.chartTongTienPhat)).BeginInit();
             this.groupBox18.SuspendLayout();
             this.tabPage10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartThongKeSach)).BeginInit();
             this.groupBox19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartThongKeSach)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -4974,10 +4974,26 @@ namespace QuanLyThuVien
             this.tabPage10.Text = "Số Lượng Sách";
             this.tabPage10.UseVisualStyleBackColor = true;
             // 
+            // chartThongKeSach
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chartThongKeSach.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartThongKeSach.Legends.Add(legend2);
+            this.chartThongKeSach.Location = new System.Drawing.Point(21, 179);
+            this.chartThongKeSach.Name = "chartThongKeSach";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "SachTheoTheLoai";
+            this.chartThongKeSach.Series.Add(series2);
+            this.chartThongKeSach.Size = new System.Drawing.Size(928, 448);
+            this.chartThongKeSach.TabIndex = 1;
+            this.chartThongKeSach.Text = "chart1";
+            // 
             // groupBox19
             // 
-            this.groupBox19.Controls.Add(this.dateTimePicker2);
-            this.groupBox19.Controls.Add(this.dateTimePicker1);
+            this.groupBox19.Controls.Add(this.dtThongKeSach2);
+            this.groupBox19.Controls.Add(this.dtThongKeSach1);
             this.groupBox19.Controls.Add(this.comboBoxTuyChonThongKeSach);
             this.groupBox19.Controls.Add(this.btnThongKeSach);
             this.groupBox19.Location = new System.Drawing.Point(21, 24);
@@ -4986,6 +5002,36 @@ namespace QuanLyThuVien
             this.groupBox19.TabIndex = 0;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Chức năng";
+            // 
+            // dtThongKeSach2
+            // 
+            this.dtThongKeSach2.CustomFormat = "yyyy-MM-dd";
+            this.dtThongKeSach2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtThongKeSach2.Location = new System.Drawing.Point(162, 82);
+            this.dtThongKeSach2.Name = "dtThongKeSach2";
+            this.dtThongKeSach2.Size = new System.Drawing.Size(149, 30);
+            this.dtThongKeSach2.TabIndex = 48;
+            // 
+            // dtThongKeSach1
+            // 
+            this.dtThongKeSach1.CustomFormat = "yyyy-MM-dd";
+            this.dtThongKeSach1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtThongKeSach1.Location = new System.Drawing.Point(7, 82);
+            this.dtThongKeSach1.Name = "dtThongKeSach1";
+            this.dtThongKeSach1.Size = new System.Drawing.Size(149, 30);
+            this.dtThongKeSach1.TabIndex = 1;
+            // 
+            // comboBoxTuyChonThongKeSach
+            // 
+            this.comboBoxTuyChonThongKeSach.FormattingEnabled = true;
+            this.comboBoxTuyChonThongKeSach.Items.AddRange(new object[] {
+            "Số Lượng Sách Theo Thể Loại",
+            "Sách Đã Mượn Theo Thời Gian"});
+            this.comboBoxTuyChonThongKeSach.Location = new System.Drawing.Point(7, 30);
+            this.comboBoxTuyChonThongKeSach.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxTuyChonThongKeSach.Name = "comboBoxTuyChonThongKeSach";
+            this.comboBoxTuyChonThongKeSach.Size = new System.Drawing.Size(304, 31);
+            this.comboBoxTuyChonThongKeSach.TabIndex = 41;
             // 
             // btnThongKeSach
             // 
@@ -5021,52 +5067,6 @@ namespace QuanLyThuVien
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(105, 77);
             this.panel2.TabIndex = 37;
-            // 
-            // comboBoxTuyChonThongKeSach
-            // 
-            this.comboBoxTuyChonThongKeSach.FormattingEnabled = true;
-            this.comboBoxTuyChonThongKeSach.Items.AddRange(new object[] {
-            "Số Lượng Sách Theo Thể Loại",
-            "Sách Đã Mượn Theo Thời Gian"});
-            this.comboBoxTuyChonThongKeSach.Location = new System.Drawing.Point(7, 30);
-            this.comboBoxTuyChonThongKeSach.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBoxTuyChonThongKeSach.Name = "comboBoxTuyChonThongKeSach";
-            this.comboBoxTuyChonThongKeSach.Size = new System.Drawing.Size(304, 31);
-            this.comboBoxTuyChonThongKeSach.TabIndex = 41;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(7, 82);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(149, 30);
-            this.dateTimePicker1.TabIndex = 1;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(162, 82);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(149, 30);
-            this.dateTimePicker2.TabIndex = 48;
-            // 
-            // chartThongKeSach
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chartThongKeSach.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartThongKeSach.Legends.Add(legend2);
-            this.chartThongKeSach.Location = new System.Drawing.Point(21, 179);
-            this.chartThongKeSach.Name = "chartThongKeSach";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "SachTheoTheLoai";
-            this.chartThongKeSach.Series.Add(series2);
-            this.chartThongKeSach.Size = new System.Drawing.Size(928, 448);
-            this.chartThongKeSach.TabIndex = 1;
-            this.chartThongKeSach.Text = "chart1";
             // 
             // form_ThuThu
             // 
@@ -5184,10 +5184,10 @@ namespace QuanLyThuVien
             ((System.ComponentModel.ISupportInitialize)(this.chartTongTienPhat)).EndInit();
             this.groupBox18.ResumeLayout(false);
             this.tabPage10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartThongKeSach)).EndInit();
             this.groupBox19.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chartThongKeSach)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -5634,8 +5634,8 @@ namespace QuanLyThuVien
         private System.Windows.Forms.TabPage tabPage10;
         private System.Windows.Forms.GroupBox groupBox19;
         private System.Windows.Forms.Button btnThongKeSach;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtThongKeSach2;
+        private System.Windows.Forms.DateTimePicker dtThongKeSach1;
         private System.Windows.Forms.ComboBox comboBoxTuyChonThongKeSach;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartThongKeSach;
         //private System.Windows.Forms.PictureBox picRefeshDocGia;

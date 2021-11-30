@@ -34,5 +34,9 @@ namespace BLLayer
         {
             return dg.getSoLuongSachTheoTheLoai();
         }
+        public DataSet getSachMuonTheTheoLoai(String a, String b)
+        {
+            return dg.getSachMuonTheoTheLoai(a,b);
+        }
     }
 }

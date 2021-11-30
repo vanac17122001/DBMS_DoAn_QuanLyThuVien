@@ -13,6 +13,7 @@ using BLLayer;
 using System.IO;
 using OfficeOpenXml;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace QuanLyThuVien
 {
@@ -1172,8 +1173,35 @@ namespace QuanLyThuVien
                 
                 chartThongKeSach.Series["SachTheoTheLoai"].YValueMembers = "SoLuong";
                 chartThongKeSach.Titles.Add("Số Lượng Sách Theo Thể Loại");
+                chartThongKeSach.Series[0].ChartType = SeriesChartType.Column;
                 chartThongKeSach.Series.First().Label = "#VALY";
                 chartThongKeSach.Legends[0].Enabled = false;
+            }
+            if (comboBoxTuyChonThongKeSach.Text == "Sách Đã Mượn Theo Thời Gian")
+            {
+                
+                //chartThongKeSach.Legends.Clear();
+                chartThongKeSach.Series["SachTheoTheLoai"].Points.Clear();
+                chartThongKeSach.Titles.Clear();
+                DataSet ds = thongkesach.getSachMuonTheTheoLoai(dtThongKeSach1.Text, dtThongKeSach2.Text);
+                chartThongKeSach.DataSource = ds;
+
+                chartThongKeSach.Series["SachTheoTheLoai"].XValueMember = "tenTheLoai";
+
+                chartThongKeSach.Series["SachTheoTheLoai"].YValueMembers = "SoLuong";
+
+                Title yourTitle = new Title("                                          Số Lượng Sách Theo Thể Loại", Docking.Top, new Font("Verdana", 12), Color.Black);
+                chartThongKeSach.Titles.Add(yourTitle);
+                //chartThongKeSach.Titles.Add("Số Lượng Sách Theo Thể Loại");
+                chartThongKeSach.Titles[0].Alignment = ContentAlignment.TopLeft;
+                chartThongKeSach.Series.First().Label = "#VALY";
+                //chartThongKeSach.Series.First().Legend = "#VALX";
+                chartThongKeSach.Series["SachTheoTheLoai"].ChartType = SeriesChartType.Pie;
+                chartThongKeSach.Series["SachTheoTheLoai"].Label = "#PERCENT";
+                //chartThongKeSach.Series["SachTheoTheLoai"].ResetIsVisibleInLegend();
+                chartThongKeSach.Series["SachTheoTheLoai"].LegendText = "#VALX";
+                //chartThongKeSach.Legends[0].Position.Auto = false;
+                //chartThongKeSach.Legends[0].Position = new ElementPosition(10, 10, 10, 10);
             }
         }
     }
