@@ -13,6 +13,9 @@ using BLLayer;
 using System.IO;
 using OfficeOpenXml;
 using Excel = Microsoft.Office.Interop.Excel;
+using iTextSharp.text.pdf;
+
+
 
 namespace QuanLyThuVien
 {
@@ -332,11 +335,6 @@ namespace QuanLyThuVien
             {
                 return Image.FromStream(ms);
             }
-        }
-
-        private void form_ThuThu_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btnThemDocGia_Click(object sender, EventArgs e)
@@ -963,31 +961,7 @@ namespace QuanLyThuVien
             txtCMND.Text = CMND;
         }
 
-        private void dagDanhSachPhatTien_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int r = dagDanhSachPhatTien.CurrentCell.RowIndex;
-            string id = dagDanhSachPhatTien.Rows[r].Cells[0].Value.ToString();
-            string Ho = dagDanhSachPhatTien.Rows[r].Cells[1].Value.ToString();
-            string Ten = dagDanhSachPhatTien.Rows[r].Cells[2].Value.ToString();
-            string ngaysinh = dagDanhSachPhatTien.Rows[r].Cells[3].Value.ToString();
-            string gioiTinh = dagDanhSachPhatTien.Rows[r].Cells[4].Value.ToString();
-            string CMND = dagDanhSachPhatTien.Rows[r].Cells[5].Value.ToString();
-            string soThe = dagDanhSachPhatTien.Rows[r].Cells[6].Value.ToString();
-            string soNgayTre = dagDanhSachPhatTien.Rows[r].Cells[7].Value.ToString();
-            string soTienPhat = dagDanhSachPhatTien.Rows[r].Cells[8].Value.ToString();
-            string ngayTra = dagDanhSachPhatTien.Rows[r].Cells[9].Value.ToString();
-
-            txtIDtp.Text = id;
-            txtHotp.Text = Ho;
-            txtTentp.Text = Ten;
-            txtNgaysinhtp.Text = ngaysinh;
-            txtGioiTinhtp.Text = gioiTinh;
-            txtCMNDtp.Text = CMND;
-            txtSoThetp.Text = soThe;
-            txttienPhattp.Text = soTienPhat;
-            txtSoNgayTretp.Text = soNgayTre;
-            txtTienPhatNgayTra.Text = ngayTra;
-        }
+       
 
         private void dagThongKeSachChuaMuon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1096,6 +1070,8 @@ namespace QuanLyThuVien
         {
             dagDanhSachPhatTien.DataSource = thongkedocgia.getthongtin(dt1.Text, dt2.Text).Tables[0];
             this.txtTienPhat.Text = thongkedocgia.gettongphattheongay(dt1.Text, dt2.Text).Tables[0].Rows[0][0].ToString();
+            int year = dt1.Value.Year;
+            Console.WriteLine(year);
         }
 
         private void btnXuatFileTienPhat_Click(object sender, EventArgs e)
@@ -1134,6 +1110,100 @@ namespace QuanLyThuVien
             application.Columns.AutoFit();
             application.ActiveWorkbook.SaveCopyAs(path);
             application.ActiveWorkbook.Saved = true;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            chartThongKeTien.Series["Tháng"].Points.Clear();
+            string TienT12 = thongkedocgia.getTienThang12(dt3.Text).Tables[0].Rows[0][0].ToString();
+            string TienT1 = thongkedocgia.getTienThang1(dt3.Text).Tables[0].Rows[0][0].ToString();
+            string TienT2 = thongkedocgia.getTienThang2(dt3.Text).Tables[0].Rows[0][0].ToString();
+            string TienT3 = thongkedocgia.getTienThang3(dt3.Text).Tables[0].Rows[0][0].ToString();
+            string TienT4 = thongkedocgia.getTienThang4(dt3.Text).Tables[0].Rows[0][0].ToString();
+            string TienT5 = thongkedocgia.getTienThang5(dt3.Text).Tables[0].Rows[0][0].ToString();
+            string TienT6 = thongkedocgia.getTienThang6(dt3.Text).Tables[0].Rows[0][0].ToString();
+            string TienT7 = thongkedocgia.getTienThang7(dt3.Text).Tables[0].Rows[0][0].ToString();
+            string TienT8 = thongkedocgia.getTienThang8(dt3.Text).Tables[0].Rows[0][0].ToString();
+            string TienT9 = thongkedocgia.getTienThang9(dt3.Text).Tables[0].Rows[0][0].ToString();
+            string TienT10 = thongkedocgia.getTienThang10(dt3.Text).Tables[0].Rows[0][0].ToString();
+            string TienT11 = thongkedocgia.getTienThang11(dt3.Text).Tables[0].Rows[0][0].ToString();
+            chartThongKeTien.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+            chartThongKeTien.Series["Tháng"].Points.AddXY("Tháng 1", TienT1);
+            chartThongKeTien.Series["Tháng"].Points.AddXY("Tháng 2", TienT2);
+            chartThongKeTien.Series["Tháng"].Points.AddXY("Tháng 3", TienT3);
+            chartThongKeTien.Series["Tháng"].Points.AddXY("Tháng 4", TienT4);
+            chartThongKeTien.Series["Tháng"].Points.AddXY("Tháng 5", TienT5);
+            chartThongKeTien.Series["Tháng"].Points.AddXY("Tháng 6", TienT6);
+            chartThongKeTien.Series["Tháng"].Points.AddXY("Tháng 7", TienT7);
+            chartThongKeTien.Series["Tháng"].Points.AddXY("Tháng 8", TienT8);
+            chartThongKeTien.Series["Tháng"].Points.AddXY("Tháng 9", TienT9);
+            chartThongKeTien.Series["Tháng"].Points.AddXY("Tháng 10", TienT10);
+            chartThongKeTien.Series["Tháng"].Points.AddXY("Tháng 11", TienT11);
+            chartThongKeTien.Series["Tháng"].Points.AddXY("Tháng 12", TienT12);
+            chartThongKeTien.Series.First().Label = "#VALY";
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter="PDF file|*.pdf", ValidateNames= true})
+            {
+                if (sfd.ShowDialog()== DialogResult.OK)
+                {
+                    iTextSharp.text.Document doc = new iTextSharp.text.Document(iTextSharp.text.PageSize.A4.Rotate());
+                    
+                    try
+                    {
+
+                        PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
+                        doc.Open();
+                        string x = "id độc giả";
+                        doc.Add(new iTextSharp.text.Paragraph("ID Độc giả"));
+                        doc.Add(new iTextSharp.text.Paragraph(txtTen.Text));
+                        doc.Add(new iTextSharp.text.Paragraph(x));
+                        System.Console.WriteLine("văn");
+                        MessageBox.Show("Dữ liệu Export thành công!!!", "Info");
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message,"Message", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        doc.Close();
+                    }
+                }    
+            }    
+        }
+
+        private void dagDanhSachPhatTien_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int r = dagDanhSachPhatTien.CurrentCell.RowIndex;
+            string id = dagDanhSachPhatTien.Rows[r].Cells[0].Value.ToString();
+            string Ho = dagDanhSachPhatTien.Rows[r].Cells[1].Value.ToString();
+            string Ten = dagDanhSachPhatTien.Rows[r].Cells[2].Value.ToString();
+            string ngaysinh = dagDanhSachPhatTien.Rows[r].Cells[3].Value.ToString();
+            string gioiTinh = dagDanhSachPhatTien.Rows[r].Cells[4].Value.ToString();
+            string CMND = dagDanhSachPhatTien.Rows[r].Cells[5].Value.ToString();
+            string soThe = dagDanhSachPhatTien.Rows[r].Cells[6].Value.ToString();
+            string soNgayTre = dagDanhSachPhatTien.Rows[r].Cells[7].Value.ToString();
+            string soTienPhat = dagDanhSachPhatTien.Rows[r].Cells[8].Value.ToString();
+            string ngayTra = dagDanhSachPhatTien.Rows[r].Cells[11].Value.ToString();
+
+            txtIDtp.Text = id;
+            txtHotp.Text = Ho;
+            txtTentp.Text = Ten;
+            txtNgaysinhtp.Text = ngaysinh;
+            txtGioiTinhtp.Text = gioiTinh;
+            txtCMNDtp.Text = CMND;
+            txtSoThetp.Text = soThe;
+            txttienPhattp.Text = soTienPhat;
+            txtSoNgayTretp.Text = soNgayTre;
+            txtTienPhatNgayTra.Text = ngayTra;
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
         }
     }
 }

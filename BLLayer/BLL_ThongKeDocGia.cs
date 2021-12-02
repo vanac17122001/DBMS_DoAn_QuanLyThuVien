@@ -50,6 +50,55 @@ namespace BLLayer
         {
             return dg.gettongphattheongay(from, to);
         }
+        public DataSet getTienThang12 (string year)
+        {
+            return dg.getTienThang12(year);
+        }
+        public DataSet getTienThang1(string year)
+        {
+            return dg.getTienThang1(year);
+        }
+        public DataSet getTienThang2(string year)
+        {
+            return dg.getTienThang2(year);
+        }
+        public DataSet getTienThang3(string year)
+        {
+            return dg.getTienThang3(year);
+        }
+        public DataSet getTienThang4(string year)
+        {
+            return dg.getTienThang4(year);
+        }
+        public DataSet getTienThang5(string year)
+        {
+            return dg.getTienThang5(year);
+        }
+        public DataSet getTienThang6(string year)
+        {
+            return dg.getTienThang6(year);
+        }
+        public DataSet getTienThang7(string year)
+        {
+            return dg.getTienThang7(year);
+        }
+        public DataSet getTienThang8(string year)
+        {
+            return dg.getTienThang8(year);
+        }
+        public DataSet getTienThang9(string year)
+        {
+            return dg.getTienThang9(year);
+        }
+        public DataSet getTienThang10(string year)
+        {
+            return dg.getTienThang10(year);
+        }
+        public DataSet getTienThang11(string year)
+        {
+            return dg.getTienThang11(year);
+        }
+
     }
 
 }

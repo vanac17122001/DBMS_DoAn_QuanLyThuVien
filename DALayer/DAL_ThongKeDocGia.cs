@@ -47,5 +47,53 @@ namespace DALayer
         {
             return db.ExecuteQueryDataset("select sum(soTienPhat) from fun_danhsachphattien() where ngayTra >= '" + from + "' and ngayTra <='" + to + "'", CommandType.Text, null);
         }
+        public DataSet getTienThang12 (string year)
+        {
+            return db.ExecuteQueryDataset("select sum(soTienPhat)  from fun_danhsachphattien() where (month(ngayTra)='12') and (YEAR(ngayTra)='" + year + "');", CommandType.Text, null);
+        }
+        public DataSet getTienThang1(string year)
+        {
+            return db.ExecuteQueryDataset("select sum(soTienPhat)  from fun_danhsachphattien() where (month(ngayTra)='1') and (YEAR(ngayTra)='" + year + "');", CommandType.Text, null);
+        }
+        public DataSet getTienThang2(string year)
+        {
+            return db.ExecuteQueryDataset("select sum(soTienPhat)  from fun_danhsachphattien() where (month(ngayTra)='2') and (YEAR(ngayTra)='" + year + "');", CommandType.Text, null);
+        }
+        public DataSet getTienThang3(string year)
+        {
+            return db.ExecuteQueryDataset("select sum(soTienPhat)  from fun_danhsachphattien() where (month(ngayTra)='3') and (YEAR(ngayTra)='" + year + "');", CommandType.Text, null);
+        }
+        public DataSet getTienThang4(string year)
+        {
+            return db.ExecuteQueryDataset("select sum(soTienPhat)  from fun_danhsachphattien() where (month(ngayTra)='4') and (YEAR(ngayTra)='" + year + "');", CommandType.Text, null);
+        }
+        public DataSet getTienThang5(string year)
+        {
+            return db.ExecuteQueryDataset("select sum(soTienPhat)  from fun_danhsachphattien() where (month(ngayTra)='5') and (YEAR(ngayTra)='" + year + "');", CommandType.Text, null);
+        }
+        public DataSet getTienThang6(string year)
+        {
+            return db.ExecuteQueryDataset("select sum(soTienPhat)  from fun_danhsachphattien() where (month(ngayTra)='6') and (YEAR(ngayTra)='" + year + "');", CommandType.Text, null);
+        }
+        public DataSet getTienThang7(string year)
+        {
+            return db.ExecuteQueryDataset("select sum(soTienPhat)  from fun_danhsachphattien() where (month(ngayTra)='7') and (YEAR(ngayTra)='" + year + "');", CommandType.Text, null);
+        }
+        public DataSet getTienThang8(string year)
+        {
+            return db.ExecuteQueryDataset("select sum(soTienPhat)  from fun_danhsachphattien() where (month(ngayTra)='8') and (YEAR(ngayTra)='" + year + "');", CommandType.Text, null);
+        }
+        public DataSet getTienThang9(string year)
+        {
+            return db.ExecuteQueryDataset("select sum(soTienPhat)  from fun_danhsachphattien() where (month(ngayTra)='9') and (YEAR(ngayTra)='" + year + "');", CommandType.Text, null);
+        }
+        public DataSet getTienThang10(string year)
+        {
+            return db.ExecuteQueryDataset("select sum(soTienPhat)  from fun_danhsachphattien() where (month(ngayTra)='10') and (YEAR(ngayTra)='" + year + "');", CommandType.Text, null);
+        }
+        public DataSet getTienThang11(string year)
+        {
+            return db.ExecuteQueryDataset("select sum(soTienPhat)  from fun_danhsachphattien() where (month(ngayTra)='11') and (YEAR(ngayTra)='" + year + "');", CommandType.Text, null);
+        }
     }
 }

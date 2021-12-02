@@ -876,3 +876,6 @@ insert into QuanTri values
 go
 insert into QuanTri values
 (N'Trần',N'Văn Hào','2001-2-1',N'Nam','215530701',N'Hoài Nhơn - Bình Phước','876543210','caovanhao@gmail.com',null)
+
+
+select* from TaiKhoan
