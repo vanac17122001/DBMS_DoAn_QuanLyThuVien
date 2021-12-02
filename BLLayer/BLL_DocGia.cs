@@ -48,5 +48,25 @@ namespace BLLayer
         {
             return dg.TimDocGiaTheoUsernamePass(ref err, username, pass);
         }
+        public bool muonSach(ref string err,string idDauSach, string soThe)
+        {
+            return dg.muonSach(ref err, idDauSach, soThe);
+        }
+        public DataSet sachChuaTra(ref string err, string username, string pass)
+        {
+            return dg.sachChuaTra(ref err, username, pass);
+        }
+        public DataSet sachDaTra(ref string err, string username, string pass)
+        {
+            return dg.sachDaTra(ref err, username, pass);
+        }
+        public bool traSach(ref string err, string idMuon)
+        {
+            return dg.traSach(ref err, idMuon);
+        }
+        public bool traSach(ref string err, string idmuon, int idnhanvien)
+        {
+            return dg.traSach(ref err, idmuon, idnhanvien);
+        }
     }
 }

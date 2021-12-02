@@ -72,5 +72,40 @@ namespace DALayer
             return db.ExecuteQueryDataset("select * from fu_ThongTinDocGiaDangNhap(@username,@pass);",
                 CommandType.Text, new SqlParameter("@username", username), new SqlParameter("@pass", pass));
         }
+        public bool muonSach(ref string err, string idDauSach, string sothe)
+        {
+            return db.MyExecuteNonQuery("proc_docGiaMuonSach", CommandType.StoredProcedure, ref err,
+                new SqlParameter { ParameterName = "@idDauSach", Value = idDauSach },
+                new SqlParameter { ParameterName = "@soThe", Value = sothe });
+        }
+        public DataSet sachChuaTra(ref string err, string username, string pass)
+        {
+            return db.ExecuteQueryDataset("select * from fu_sachChuaTra(@username,@pass);",
+                CommandType.Text, new SqlParameter("@username", username), new SqlParameter("@pass", pass));
+        }
+        public DataSet sachDaTra(ref string err, string username, string pass)
+        {
+            return db.ExecuteQueryDataset("select * from fu_sachDaTra(@username,@pass);",
+                CommandType.Text, new SqlParameter("@username", username), new SqlParameter("@pass", pass));
+        }
+        public bool traSach(ref string err, string idMuon)
+        {
+            SqlParameter[] par =
+            {
+                    new SqlParameter("@idmuonsach", idMuon),
+            };
+            return db.MyExecuteNonQuery("exec proc_traSach @idmuonsach",
+                CommandType.Text, ref err, par);
+        }
+        public bool traSach(ref string err, string idmuon, int idnhanvien)
+        {
+            SqlParameter[] par =
+            {
+                    new SqlParameter("@idmuonsach", idmuon),
+                    new SqlParameter("@idnhanvien", idnhanvien)
+            };
+            return db.MyExecuteNonQuery("exec proc_themTraSach @idmuonsach, @idnhanvien",
+                CommandType.Text, ref err, par);
+        }
     }
 }

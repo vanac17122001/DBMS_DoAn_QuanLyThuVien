@@ -98,7 +98,7 @@ namespace QuanLyThuVien
         }
         public void loadDocGiaMuonSach()
         {
-            ds = dgmuon.getDocGiaMuonSach();
+            ds = thongkedocgia.getDocGiaChuaTraSach();
             dgvMuonTra_DocGiaMuonSachDocGia.DataSource = ds.Tables[0];
         }
         public void loadNhanVien(string username, string pass)
@@ -205,6 +205,17 @@ namespace QuanLyThuVien
             txtMuonTra_IdSachMuonSach.Enabled = false;
             txtMuonTra_TheDocGia.Enabled = false;
             loadDocGiaMuonSach();
+
+            this.txtMuonTra_TenDocGiaDG.Enabled = false;
+            this.txtMuonTra_hoDocGiaDG.Enabled = false;
+            this.txtMuonTra_ngaySinhDocGiaDG.Enabled = false;
+            this.txtMuonTra_gioiTinhDocGiaDG.Enabled = false;
+            this.txtMuonTra_CMNDDocGiaDG.Enabled = false;
+            this.txtMuonTra_diaChiDocGiaDG.Enabled = false;
+            this.txtMuonTra_SoDTDocGiaDG.Enabled = false;
+            this.txtMuonTra_emailDocGiaDG.Enabled = false;
+            this.txtMuonTra_ngayDKDocGiaDG.Enabled = false;
+            this.txtMuonTra_soTheDocGiaDG.Enabled = false;
         }
 
         private void btnXemChiTietDocGia_Click(object sender, EventArgs e)
@@ -454,7 +465,7 @@ namespace QuanLyThuVien
         private void btnMuonTra_ThemMuonSach_Click(object sender, EventArgs e)
         {
             txtMuonTra_IdMuonSach.Enabled = false;
-            txtMuonTra_IdNhanVien.Enabled = true;
+            txtMuonTra_IdNhanVien.Enabled = false;
             txtMuonTra_NgayMuon.Enabled = false;
             txtMuonTra_IdSachMuonSach.Enabled = true;
             txtMuonTra_HanTra.Enabled = false;
@@ -474,7 +485,6 @@ namespace QuanLyThuVien
             txtMuonTra_HanTra.Enabled = false;
             this.btnMuonTra_SuaMuonSach.Enabled = true;
             this.btnMuonTra_XoaMuonSach.Enabled = true;
-            this.btnMuonTra_ThemMuonSach.Enabled = true;
             f = "";
             loadMuonSach();
         }
@@ -485,18 +495,20 @@ namespace QuanLyThuVien
             {
                 if (f == "them")
                 {
+                    ds = nv.getNhanVien(username, pass);
                     int thedocgia = Convert.ToInt32(txtMuonTra_TheDocGia.Text);
                     int idsach = Convert.ToInt32(txtMuonTra_IdSachMuonSach.Text);
-                    int idnhanvien = Convert.ToInt32(txtMuonTra_IdNhanVien.Text);
+                    int idnhanvien = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
                     DTO_MuonSach dtomuonsach = new DTO_MuonSach(idsach, thedocgia, idnhanvien);
                     muon.themMuonSach("", dtomuonsach);
                     MessageBox.Show("Thêm thành công");
                 }
                 else if (f == "sua")
                 {
+                    ds = nv.getNhanVien(username, pass);
                     int thedocgia = Convert.ToInt32(txtMuonTra_TheDocGia.Text);
                     int idsach = Convert.ToInt32(txtMuonTra_IdSachMuonSach.Text);
-                    int idnhanvien = Convert.ToInt32(txtMuonTra_IdNhanVien.Text);
+                    int idnhanvien = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
                     int idmuon = Convert.ToInt32(txtMuonTra_IdMuonSach.Text);
                     DateTime ngaymuon = Convert.ToDateTime(txtMuonTra_NgayMuon.Text);
                     DateTime hantra = Convert.ToDateTime(txtMuonTra_HanTra.Text);
@@ -521,7 +533,6 @@ namespace QuanLyThuVien
             txtMuonTra_IdSachMuonSach.Enabled = true;
             txtMuonTra_HanTra.Enabled = true;
             txtMuonTra_TheDocGia.Enabled = true;
-            this.btnMuonTra_ThemMuonSach.Enabled = false;
             btnMuonTra_XoaMuonSach.Enabled = false;
             f = "sua";
         }
@@ -553,7 +564,7 @@ namespace QuanLyThuVien
         {
             txtMuonTra_IdMuonTraSach.Enabled = true;
             txtMuonTra_NgayTraTraSach.Enabled = false;
-            txtMuonTra_IdNhanVienTraSach.Enabled = true;
+            txtMuonTra_IdNhanVienTraSach.Enabled = false;
             this.btnMuonTra_SuaMuonTra.Enabled = false;
             this.btnMuonTra_XoaMuonTra.Enabled = false;
             f = "them";
@@ -575,7 +586,6 @@ namespace QuanLyThuVien
             txtMuonTra_IdMuonTraSach.Enabled = false;
             txtMuonTra_NgayTraTraSach.Enabled = false;
             txtMuonTra_IdNhanVienTraSach.Enabled = false;
-            this.btnMuonTra_ThemTraSach.Enabled = true;
             this.btnMuonTra_SuaMuonTra.Enabled = true;
             this.btnMuonTra_XoaMuonTra.Enabled = true;
             f = "";
@@ -588,7 +598,6 @@ namespace QuanLyThuVien
             txtMuonTra_NgayTraTraSach.Enabled = true;
             txtMuonTra_IdNhanVienTraSach.Enabled = true;
             this.btnMuonTra_XoaMuonTra.Enabled = false;
-            this.btnMuonTra_ThemTraSach.Enabled = false;
             f = "sua";
         }
 
@@ -598,8 +607,9 @@ namespace QuanLyThuVien
             {
                 if (f == "them")
                 {
+                    ds = nv.getNhanVien(username, pass);
+                    int idnhanvien = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
                     int idmuon = Convert.ToInt32(txtMuonTra_IdMuonTraSach.Text);
-                    int idnhanvien = Convert.ToInt32(txtMuonTra_IdNhanVienTraSach.Text);
                     DTO_TraSach dtotrasach = new DTO_TraSach(idmuon, idnhanvien);
                     if (tra.themTraSach("", dtotrasach))
                         MessageBox.Show("Thêm thành công");
@@ -607,9 +617,10 @@ namespace QuanLyThuVien
                 }
                 else if (f == "sua")
                 {
+                    ds = nv.getNhanVien(username, pass);
                     int idmuon = Convert.ToInt32(txtMuonTra_IdMuonTraSach.Text);
                     int idtra = Convert.ToInt32(txtMuonTra_IdTraTraSach.Text);
-                    int idnhanvien = Convert.ToInt32(txtMuonTra_IdNhanVienTraSach.Text);
+                    int idnhanvien = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
                     DateTime ngaytra = Convert.ToDateTime(txtMuonTra_NgayTraTraSach.Text);
                     DTO_TraSach dtotrasach = new DTO_TraSach(idtra, idmuon, ngaytra, idnhanvien);
                     if (tra.suaTraSach("", dtotrasach))
@@ -653,20 +664,23 @@ namespace QuanLyThuVien
         {
             int r = dgvMuonTra_DocGiaMuonSachDocGia.CurrentCell.RowIndex;
             // Chuyển thông tin lên panel 
-            this.txtMuonTra_TenDocGiaDocGia.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[1].Value.ToString();
-            this.txtMuonTra_IdMuonDocGia.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[0].Value.ToString();
-            this.txtMuonTra_IdSachDocGia.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[2].Value.ToString();
-            this.txtMuonTra_IdNhanVienMuonGiaDocGia.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[4].Value.ToString();
-            this.txtMuonTra_NgayMuonGiaDocGia.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[5].Value.ToString();
-            this.txtMuonTra_NgayTraGiaDocGia.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[6].Value.ToString();
-            this.txtMuonTra_NgayTraDocGia.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[7].Value.ToString();
-            this.txtMuonTra_IdNhanVienTraDocGia.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[8].Value.ToString();
+            this.txtMuonTra_TenDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[2].Value.ToString();
+            this.txtMuonTra_hoDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[1].Value.ToString();
+            this.txtMuonTra_ngaySinhDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[3].Value.ToString();
+            this.txtMuonTra_gioiTinhDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[4].Value.ToString();
+            this.txtMuonTra_CMNDDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[5].Value.ToString();
+            this.txtMuonTra_diaChiDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[6].Value.ToString();
+            this.txtMuonTra_SoDTDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[7].Value.ToString();
+            this.txtMuonTra_emailDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[8].Value.ToString();
+            this.txtMuonTra_ngayDKDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[9].Value.ToString();
+            this.txtMuonTra_soTheDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[10].Value.ToString();
+
         }
 
         private void btnMuonTra_TimDocGia_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(txtMuonTra_IdDocGiaDocGia.Text);
-            ds = dgmuon.timDocGiaMuonSach(id);
+            string ten = txtMuonTra_IdDocGiaDocGia.Text.ToString();
+            ds = dgmuon.timDocGiaMuonSachTheoTen(ten);
             dgvMuonTra_DocGiaMuonSachDocGia.DataSource = ds.Tables[0];
         }
 
@@ -968,6 +982,7 @@ namespace QuanLyThuVien
             txtNgayLap.Text = ngayLap;
             txtSoThe.Text = soThe;
             txtCMND.Text = CMND;
+
         }
 
         //private void dagDanhSachPhatTien_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1330,6 +1345,24 @@ namespace QuanLyThuVien
             txttienPhattp.Text = soTienPhat;
             txtSoNgayTretp.Text = soNgayTre;
             txtTienPhatNgayTra.Text = ngayTra;
+        }
+
+        private void tcQuanLyMuonTra_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnChiTietSachMuon_Click(object sender, EventArgs e)
+        {
+            ds = nv.getNhanVien(username, pass);
+            string tennhanvien = ds.Tables[0].Rows[0][1].ToString() +" "+ ds.Tables[0].Rows[0][2].ToString();
+            string sdt = txtMuonTra_SoDTDocGiaDG.Text.ToString();
+            int idnhanvien = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
+            if (sdt !="")
+            {
+                formChiTietSachMuon chitiet = new formChiTietSachMuon(sdt, idnhanvien, tennhanvien);
+                chitiet.ShowDialog();
+            }
         }
     }
 }

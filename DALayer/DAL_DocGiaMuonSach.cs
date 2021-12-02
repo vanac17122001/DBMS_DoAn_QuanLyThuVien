@@ -26,5 +26,11 @@ namespace DALayer
             return conn.ExecuteQueryDataset("select * from view_DocGiaMuonSach where idDocGia = @id", CommandType.Text,
                 new SqlParameter("@id", id));
         }
+        public DataSet timDocGiaMuonSachTheoTen(string ten)
+        {
+            return conn.ExecuteQueryDataset("select  DISTINCT * from fun_docGiaDangMuonSach() " +
+                "where (select concat(ho,' ',ten)) like '%'+@ten+'%'", CommandType.Text,
+                new SqlParameter("@ten", ten));
+        }
     }
 }

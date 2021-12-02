@@ -98,6 +98,10 @@ namespace BLLayer
         {
             return dg.getTienThang11(year);
         }
+        public DataSet getDocGiaChuaTraSach()
+        {
+            return dg.getDocGiaChuaTraSach();
+        }
     }
 
 }

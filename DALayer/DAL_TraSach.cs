@@ -42,7 +42,8 @@ namespace DALayer
                     new SqlParameter("@idnhanvien", Tra.IdNhanVien),
                     new SqlParameter("@idtra", Tra.IdTraSach)
             };
-            return conn.MyExecuteNonQuery("update TraSach set idMuon = @idmuon, ngayTra = @ngaytra, idNhanVien = @idnhanvien" +"where idTraSach=@idtra",
+            return conn.MyExecuteNonQuery("update TraSach set idMuon = @idmuon, ngayTra = @ngaytra, idNhanVien = @idnhanvien" 
+                +" where idTraSach=@idtra",
                 CommandType.Text, ref err, par);
         }
         public bool xoaTraSach(string err, int id)
