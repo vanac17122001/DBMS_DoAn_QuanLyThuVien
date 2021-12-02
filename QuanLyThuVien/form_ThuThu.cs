@@ -14,6 +14,12 @@ using System.IO;
 using OfficeOpenXml;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Windows.Forms.DataVisualization.Charting;
+//using iTextSharp.text.pdf;
+
+using Syncfusion.Pdf;
+using Syncfusion.Pdf.Graphics;
+using System.Drawing;
+using Syncfusion.Pdf.Grid;
 
 namespace QuanLyThuVien
 {
@@ -1046,6 +1052,10 @@ namespace QuanLyThuVien
             {
               chartThongKeSach.Visible = false;
             }
+            if (tcThongKeBaoCao.SelectedIndex == 5)
+            {
+                chartSachDaMuonTheoTheLoai.Visible = false;
+            }
         }
 
         private void pic_reloadDauSach_Click(object sender, EventArgs e)
@@ -1070,9 +1080,6 @@ namespace QuanLyThuVien
                     MessageBox.Show("Xuât thất bại" + ex.Message);
                 }
             }
-/*            application.Columns.AutoFit();
-            application.ActiveWorkbook.SaveCopyAs(path);
-            application.ActiveWorkbook.Saved = true;*/
         }
         public void ExportExcelDocGia(string path)
         {
@@ -1153,18 +1160,12 @@ namespace QuanLyThuVien
             chartTongTienPhat.Series["TongTienPhat"].Points.Clear();
             chartTongTienPhat.Series["TongTienPhat"].Points.AddXY("Tổng tiền phạt", tongtienphat);
             chartTongTienPhat.Series.First().Label = "#VALY";
-
-            //chartTongTienPhat.DataSource = thongkedocgia.gettongphattheongay(dtTongTienPhat1.Text, dtTongTienPhat2.Text);
-            //chartTongTienPhat.Series["TongTienPhat"].YValueMembers = "TongTienPhat";
-            //chartTongTienPhat.Titles.Add("Salary Chart");
         }
 
         private void btnThongKeSach_Click(object sender, EventArgs e)
         {
             chartThongKeSach.Visible = true;
-            if (comboBoxTuyChonThongKeSach.Text=="Số Lượng Sách Theo Thể Loại")
-            {
-                chartThongKeSach.Series["SachTheoTheLoai"].Points.Clear();
+            chartThongKeSach.Series["SachTheoTheLoai"].Points.Clear();
                 chartThongKeSach.Titles.Clear();
                 DataSet ds = thongkesach.getSoLuongSachTheoTheLoai();
                 chartThongKeSach.DataSource = ds;
@@ -1176,33 +1177,98 @@ namespace QuanLyThuVien
                 chartThongKeSach.Series[0].ChartType = SeriesChartType.Column;
                 chartThongKeSach.Series.First().Label = "#VALY";
                 chartThongKeSach.Legends[0].Enabled = false;
-            }
-            if (comboBoxTuyChonThongKeSach.Text == "Sách Đã Mượn Theo Thời Gian")
+        }
+
+        private void btnThongKeSachDaMuon_Click(object sender, EventArgs e)
+        {
+            if (radBieuDoTronSachDaMuon.Checked==true)
             {
-                
-                //chartThongKeSach.Legends.Clear();
-                chartThongKeSach.Series["SachTheoTheLoai"].Points.Clear();
-                chartThongKeSach.Titles.Clear();
-                DataSet ds = thongkesach.getSachMuonTheTheoLoai(dtThongKeSach1.Text, dtThongKeSach2.Text);
-                chartThongKeSach.DataSource = ds;
+                chartThongKeSach.Legends[0].Enabled = true;
+                chartSachDaMuonTheoTheLoai.Visible = true;
+                chartSachDaMuonTheoTheLoai.Series["SachDaMuonTheoTheLoai"].Points.Clear();
+                chartSachDaMuonTheoTheLoai.Titles.Clear();
+                DataSet ds = thongkesach.getSachMuonTheTheoLoai(dtSachDaMuon1.Text, dtSachDaMuon2.Text);
+                chartSachDaMuonTheoTheLoai.DataSource = ds;
 
-                chartThongKeSach.Series["SachTheoTheLoai"].XValueMember = "tenTheLoai";
+                chartSachDaMuonTheoTheLoai.Series["SachDaMuonTheoTheLoai"].XValueMember = "tenTheLoai";
 
-                chartThongKeSach.Series["SachTheoTheLoai"].YValueMembers = "SoLuong";
+                chartSachDaMuonTheoTheLoai.Series["SachDaMuonTheoTheLoai"].YValueMembers = "SoLuong";
 
-                Title yourTitle = new Title("                                          Số Lượng Sách Theo Thể Loại", Docking.Top, new Font("Verdana", 12), Color.Black);
-                chartThongKeSach.Titles.Add(yourTitle);
-                //chartThongKeSach.Titles.Add("Số Lượng Sách Theo Thể Loại");
-                chartThongKeSach.Titles[0].Alignment = ContentAlignment.TopLeft;
-                chartThongKeSach.Series.First().Label = "#VALY";
-                //chartThongKeSach.Series.First().Legend = "#VALX";
-                chartThongKeSach.Series["SachTheoTheLoai"].ChartType = SeriesChartType.Pie;
-                chartThongKeSach.Series["SachTheoTheLoai"].Label = "#PERCENT";
-                //chartThongKeSach.Series["SachTheoTheLoai"].ResetIsVisibleInLegend();
-                chartThongKeSach.Series["SachTheoTheLoai"].LegendText = "#VALX";
-                //chartThongKeSach.Legends[0].Position.Auto = false;
-                //chartThongKeSach.Legends[0].Position = new ElementPosition(10, 10, 10, 10);
+                Title yourTitle = new Title("                                      Số Lượng Sách Được Mượn Theo Thể Loại", Docking.Top, new Font("Verdana", 12), Color.Black);
+                chartSachDaMuonTheoTheLoai.Titles.Add(yourTitle);
+                chartSachDaMuonTheoTheLoai.Titles[0].Alignment = ContentAlignment.TopLeft;
+                chartSachDaMuonTheoTheLoai.Series.First().Label = "#VALY";
+                chartSachDaMuonTheoTheLoai.Series["SachDaMuonTheoTheLoai"].ChartType = SeriesChartType.Pie;
+                chartSachDaMuonTheoTheLoai.Series["SachDaMuonTheoTheLoai"].Label = "#PERCENT";
+                chartSachDaMuonTheoTheLoai.Series["SachDaMuonTheoTheLoai"].LegendText = "#VALX";
+            } else
+            {
+                chartSachDaMuonTheoTheLoai.Visible = true;
+                chartSachDaMuonTheoTheLoai.Series["SachDaMuonTheoTheLoai"].Points.Clear();
+                chartSachDaMuonTheoTheLoai.Titles.Clear();
+                DataSet ds = thongkesach.getSachMuonTheTheoLoai(dtSachDaMuon1.Text, dtSachDaMuon2.Text);
+                chartSachDaMuonTheoTheLoai.DataSource = ds;
+
+                chartSachDaMuonTheoTheLoai.Series["SachDaMuonTheoTheLoai"].XValueMember = "tenTheLoai";
+
+                chartSachDaMuonTheoTheLoai.Series["SachDaMuonTheoTheLoai"].YValueMembers = "SoLuong";
+
+                Title yourTitle = new Title("                                       Số Lượng Sách Được Mượn Theo Thể Loại", Docking.Top, new Font("Verdana", 12), Color.Black);
+                chartSachDaMuonTheoTheLoai.Titles.Add(yourTitle);
+                chartSachDaMuonTheoTheLoai.Titles[0].Alignment = ContentAlignment.TopLeft;
+                chartSachDaMuonTheoTheLoai.Series.First().Label = "#VALY";
+                chartSachDaMuonTheoTheLoai.Series["SachDaMuonTheoTheLoai"].ChartType = SeriesChartType.Column;
             }
+        }
+
+        private void btnXuatPhieuPhat_Click(object sender, EventArgs e)
+        {
+
+            //Create a new PDF document
+            PdfDocument document = new PdfDocument();
+            //Add a page to the document
+            PdfPage page = document.Pages.Add();
+            //Create PDF graphics for the page
+            PdfGraphics graphics = page.Graphics;
+            //Use the font installed in the machine
+            PdfTrueTypeFont font = new PdfTrueTypeFont(new Font("Microsoft Sans Serif", 14), true);
+            //Draw the UTF-8 text
+            string ho = "\n Họ :"+txtHotp.Text.ToString();
+            string tienphat = "Số tiền :"+txttienPhattp.Text.ToString();
+            string ten = "Tên :"+ txtTentp.Text.ToString();
+            string sothe = "Số thẻ : "+ txtSoThetp.Text.ToString();
+            string songaytre = "Số ngày trễ : " + txtSoNgayTretp.Text.ToString();
+
+            string noidung = "\t \t \t \t \t \t PHIẾU PHẠT TRỄ HẸN TRẢ SÁCH " +
+                            "\n"+ ho +"\n" + ten + "\n" + tienphat + "\n"
+                            + sothe +"\n" +songaytre+"\n";
+
+            graphics.DrawString(noidung, font, PdfBrushes.Blue, new PointF(0, 0));
+            PdfPen pen = new PdfPen(Color.Red);
+            graphics.DrawLine(pen, 0, 0, 400, 0);
+            graphics.DrawLine(pen, 0, 0, 0, 200);
+            graphics.DrawLine(pen, 400, 0, 400, 200);
+            graphics.DrawLine(pen, 0, 200, 400, 200);
+            graphics.DrawString("--------------------------------------------------------------------------------------", 
+                            font, PdfBrushes.Black, new PointF(0, 10));
+            //graphics.DrawPdfTemplate(grbChiTietDauSach, 100, 100);
+            //Initialize PdfSolidBrush for drawing the rectangle
+            PdfSolidBrush brush = new PdfSolidBrush(Color.LightBlue);
+
+            //Set the bounds for rectangle
+            RectangleF bounds = new RectangleF(0, 0, 400, 17);
+
+            //Set the page Transparency
+            page.Graphics.Save();
+            page.Graphics.SetTransparency(1, 1, PdfBlendMode.Multiply);
+
+            //Draw the rectangle on the PDF document
+            page.Graphics.DrawRectangle(brush, bounds);
+
+            string tenfile = txtTentp.Text.ToString() + "phieuphat.pdf";
+            document.Save(tenfile);
+            document.Close(true);
+            System.Diagnostics.Process.Start(tenfile);
         }
     }
 }

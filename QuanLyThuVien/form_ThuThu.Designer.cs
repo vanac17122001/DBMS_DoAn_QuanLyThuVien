@@ -38,6 +38,9 @@ namespace QuanLyThuVien
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnQuanLyPhieuMuon = new System.Windows.Forms.Button();
             this.btnThongTinThuThu = new System.Windows.Forms.Button();
@@ -343,6 +346,7 @@ namespace QuanLyThuVien
             this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.btnXuatPhieuPhat = new System.Windows.Forms.Button();
             this.btnXuatFileTienPhat = new System.Windows.Forms.Button();
             this.btnThongKeTienPhatTheoThoiGian = new System.Windows.Forms.Button();
             this.dt2 = new System.Windows.Forms.DateTimePicker();
@@ -475,10 +479,15 @@ namespace QuanLyThuVien
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.chartThongKeSach = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.dtThongKeSach2 = new System.Windows.Forms.DateTimePicker();
-            this.dtThongKeSach1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBoxTuyChonThongKeSach = new System.Windows.Forms.ComboBox();
             this.btnThongKeSach = new System.Windows.Forms.Button();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.radBieuDoCotSachDaMuon = new System.Windows.Forms.RadioButton();
+            this.radBieuDoTronSachDaMuon = new System.Windows.Forms.RadioButton();
+            this.dtSachDaMuon2 = new System.Windows.Forms.DateTimePicker();
+            this.dtSachDaMuon1 = new System.Windows.Forms.DateTimePicker();
+            this.btnThongKeSachDaMuon = new System.Windows.Forms.Button();
+            this.chartSachDaMuonTheoTheLoai = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.picLogOut = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
@@ -553,6 +562,9 @@ namespace QuanLyThuVien
             this.tabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartThongKeSach)).BeginInit();
             this.groupBox19.SuspendLayout();
+            this.tabPage11.SuspendLayout();
+            this.groupBox20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSachDaMuonTheoTheLoai)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -3004,6 +3016,7 @@ namespace QuanLyThuVien
             this.tcThongKeBaoCao.Controls.Add(this.tabPage4);
             this.tcThongKeBaoCao.Controls.Add(this.tabPage9);
             this.tcThongKeBaoCao.Controls.Add(this.tabPage10);
+            this.tcThongKeBaoCao.Controls.Add(this.tabPage11);
             this.tcThongKeBaoCao.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tcThongKeBaoCao.Location = new System.Drawing.Point(222, 25);
             this.tcThongKeBaoCao.Name = "tcThongKeBaoCao";
@@ -3690,23 +3703,37 @@ namespace QuanLyThuVien
             // 
             // groupBox17
             // 
+            this.groupBox17.Controls.Add(this.btnXuatPhieuPhat);
             this.groupBox17.Controls.Add(this.btnXuatFileTienPhat);
             this.groupBox17.Controls.Add(this.btnThongKeTienPhatTheoThoiGian);
             this.groupBox17.Controls.Add(this.dt2);
             this.groupBox17.Controls.Add(this.dt1);
-            this.groupBox17.Location = new System.Drawing.Point(6, 87);
+            this.groupBox17.Location = new System.Drawing.Point(6, 64);
             this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(562, 88);
+            this.groupBox17.Size = new System.Drawing.Size(725, 88);
             this.groupBox17.TabIndex = 45;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Thời gian";
+            // 
+            // btnXuatPhieuPhat
+            // 
+            this.btnXuatPhieuPhat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnXuatPhieuPhat.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXuatPhieuPhat.ForeColor = System.Drawing.Color.White;
+            this.btnXuatPhieuPhat.Location = new System.Drawing.Point(568, 17);
+            this.btnXuatPhieuPhat.Name = "btnXuatPhieuPhat";
+            this.btnXuatPhieuPhat.Size = new System.Drawing.Size(138, 61);
+            this.btnXuatPhieuPhat.TabIndex = 48;
+            this.btnXuatPhieuPhat.Text = "Xuất Phiếu Phạt";
+            this.btnXuatPhieuPhat.UseVisualStyleBackColor = false;
+            this.btnXuatPhieuPhat.Click += new System.EventHandler(this.btnXuatPhieuPhat_Click);
             // 
             // btnXuatFileTienPhat
             // 
             this.btnXuatFileTienPhat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnXuatFileTienPhat.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXuatFileTienPhat.ForeColor = System.Drawing.Color.White;
-            this.btnXuatFileTienPhat.Location = new System.Drawing.Point(445, 29);
+            this.btnXuatFileTienPhat.Location = new System.Drawing.Point(460, 29);
             this.btnXuatFileTienPhat.Name = "btnXuatFileTienPhat";
             this.btnXuatFileTienPhat.Size = new System.Drawing.Size(96, 36);
             this.btnXuatFileTienPhat.TabIndex = 47;
@@ -3777,9 +3804,9 @@ namespace QuanLyThuVien
             this.groupBox15.Controls.Add(this.label105);
             this.groupBox15.Controls.Add(this.label106);
             this.groupBox15.Controls.Add(this.label107);
-            this.groupBox15.Location = new System.Drawing.Point(574, 152);
+            this.groupBox15.Location = new System.Drawing.Point(574, 156);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(400, 477);
+            this.groupBox15.Size = new System.Drawing.Size(400, 471);
             this.groupBox15.TabIndex = 42;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Chi Tiết";
@@ -4992,59 +5019,121 @@ namespace QuanLyThuVien
             // 
             // groupBox19
             // 
-            this.groupBox19.Controls.Add(this.dtThongKeSach2);
-            this.groupBox19.Controls.Add(this.dtThongKeSach1);
-            this.groupBox19.Controls.Add(this.comboBoxTuyChonThongKeSach);
             this.groupBox19.Controls.Add(this.btnThongKeSach);
             this.groupBox19.Location = new System.Drawing.Point(21, 24);
             this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(443, 134);
+            this.groupBox19.Size = new System.Drawing.Size(153, 93);
             this.groupBox19.TabIndex = 0;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Chức năng";
-            // 
-            // dtThongKeSach2
-            // 
-            this.dtThongKeSach2.CustomFormat = "yyyy-MM-dd";
-            this.dtThongKeSach2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtThongKeSach2.Location = new System.Drawing.Point(162, 82);
-            this.dtThongKeSach2.Name = "dtThongKeSach2";
-            this.dtThongKeSach2.Size = new System.Drawing.Size(149, 30);
-            this.dtThongKeSach2.TabIndex = 48;
-            // 
-            // dtThongKeSach1
-            // 
-            this.dtThongKeSach1.CustomFormat = "yyyy-MM-dd";
-            this.dtThongKeSach1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtThongKeSach1.Location = new System.Drawing.Point(7, 82);
-            this.dtThongKeSach1.Name = "dtThongKeSach1";
-            this.dtThongKeSach1.Size = new System.Drawing.Size(149, 30);
-            this.dtThongKeSach1.TabIndex = 1;
-            // 
-            // comboBoxTuyChonThongKeSach
-            // 
-            this.comboBoxTuyChonThongKeSach.FormattingEnabled = true;
-            this.comboBoxTuyChonThongKeSach.Items.AddRange(new object[] {
-            "Số Lượng Sách Theo Thể Loại",
-            "Sách Đã Mượn Theo Thời Gian"});
-            this.comboBoxTuyChonThongKeSach.Location = new System.Drawing.Point(7, 30);
-            this.comboBoxTuyChonThongKeSach.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBoxTuyChonThongKeSach.Name = "comboBoxTuyChonThongKeSach";
-            this.comboBoxTuyChonThongKeSach.Size = new System.Drawing.Size(304, 31);
-            this.comboBoxTuyChonThongKeSach.TabIndex = 41;
             // 
             // btnThongKeSach
             // 
             this.btnThongKeSach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnThongKeSach.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThongKeSach.ForeColor = System.Drawing.Color.White;
-            this.btnThongKeSach.Location = new System.Drawing.Point(337, 30);
+            this.btnThongKeSach.Location = new System.Drawing.Point(6, 41);
             this.btnThongKeSach.Name = "btnThongKeSach";
             this.btnThongKeSach.Size = new System.Drawing.Size(96, 36);
             this.btnThongKeSach.TabIndex = 47;
             this.btnThongKeSach.Text = "Thống kê";
             this.btnThongKeSach.UseVisualStyleBackColor = false;
             this.btnThongKeSach.Click += new System.EventHandler(this.btnThongKeSach_Click);
+            // 
+            // tabPage11
+            // 
+            this.tabPage11.Controls.Add(this.groupBox20);
+            this.tabPage11.Controls.Add(this.chartSachDaMuonTheoTheLoai);
+            this.tabPage11.Location = new System.Drawing.Point(4, 32);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(1037, 639);
+            this.tabPage11.TabIndex = 6;
+            this.tabPage11.Text = "Sách Đã Mượn";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.Controls.Add(this.radBieuDoCotSachDaMuon);
+            this.groupBox20.Controls.Add(this.radBieuDoTronSachDaMuon);
+            this.groupBox20.Controls.Add(this.dtSachDaMuon2);
+            this.groupBox20.Controls.Add(this.dtSachDaMuon1);
+            this.groupBox20.Controls.Add(this.btnThongKeSachDaMuon);
+            this.groupBox20.Location = new System.Drawing.Point(6, 6);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(460, 152);
+            this.groupBox20.TabIndex = 3;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "Chức năng";
+            // 
+            // radBieuDoCotSachDaMuon
+            // 
+            this.radBieuDoCotSachDaMuon.AutoSize = true;
+            this.radBieuDoCotSachDaMuon.Location = new System.Drawing.Point(178, 42);
+            this.radBieuDoCotSachDaMuon.Name = "radBieuDoCotSachDaMuon";
+            this.radBieuDoCotSachDaMuon.Size = new System.Drawing.Size(113, 27);
+            this.radBieuDoCotSachDaMuon.TabIndex = 50;
+            this.radBieuDoCotSachDaMuon.TabStop = true;
+            this.radBieuDoCotSachDaMuon.Text = "Số Lượng";
+            this.radBieuDoCotSachDaMuon.UseVisualStyleBackColor = true;
+            // 
+            // radBieuDoTronSachDaMuon
+            // 
+            this.radBieuDoTronSachDaMuon.AutoSize = true;
+            this.radBieuDoTronSachDaMuon.Location = new System.Drawing.Point(15, 42);
+            this.radBieuDoTronSachDaMuon.Name = "radBieuDoTronSachDaMuon";
+            this.radBieuDoTronSachDaMuon.Size = new System.Drawing.Size(123, 27);
+            this.radBieuDoTronSachDaMuon.TabIndex = 49;
+            this.radBieuDoTronSachDaMuon.TabStop = true;
+            this.radBieuDoTronSachDaMuon.Text = "Phần Trăm";
+            this.radBieuDoTronSachDaMuon.UseVisualStyleBackColor = true;
+            // 
+            // dtSachDaMuon2
+            // 
+            this.dtSachDaMuon2.CustomFormat = "yyyy-MM-dd";
+            this.dtSachDaMuon2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtSachDaMuon2.Location = new System.Drawing.Point(170, 108);
+            this.dtSachDaMuon2.Name = "dtSachDaMuon2";
+            this.dtSachDaMuon2.Size = new System.Drawing.Size(149, 30);
+            this.dtSachDaMuon2.TabIndex = 48;
+            // 
+            // dtSachDaMuon1
+            // 
+            this.dtSachDaMuon1.CustomFormat = "yyyy-MM-dd";
+            this.dtSachDaMuon1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtSachDaMuon1.Location = new System.Drawing.Point(15, 108);
+            this.dtSachDaMuon1.Name = "dtSachDaMuon1";
+            this.dtSachDaMuon1.Size = new System.Drawing.Size(149, 30);
+            this.dtSachDaMuon1.TabIndex = 1;
+            // 
+            // btnThongKeSachDaMuon
+            // 
+            this.btnThongKeSachDaMuon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnThongKeSachDaMuon.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongKeSachDaMuon.ForeColor = System.Drawing.Color.White;
+            this.btnThongKeSachDaMuon.Location = new System.Drawing.Point(325, 104);
+            this.btnThongKeSachDaMuon.Name = "btnThongKeSachDaMuon";
+            this.btnThongKeSachDaMuon.Size = new System.Drawing.Size(96, 36);
+            this.btnThongKeSachDaMuon.TabIndex = 47;
+            this.btnThongKeSachDaMuon.Text = "Thống kê";
+            this.btnThongKeSachDaMuon.UseVisualStyleBackColor = false;
+            this.btnThongKeSachDaMuon.Click += new System.EventHandler(this.btnThongKeSachDaMuon_Click);
+            // 
+            // chartSachDaMuonTheoTheLoai
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chartSachDaMuonTheoTheLoai.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartSachDaMuonTheoTheLoai.Legends.Add(legend3);
+            this.chartSachDaMuonTheoTheLoai.Location = new System.Drawing.Point(60, 164);
+            this.chartSachDaMuonTheoTheLoai.Name = "chartSachDaMuonTheoTheLoai";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "SachDaMuonTheoTheLoai";
+            this.chartSachDaMuonTheoTheLoai.Series.Add(series3);
+            this.chartSachDaMuonTheoTheLoai.Size = new System.Drawing.Size(928, 448);
+            this.chartSachDaMuonTheoTheLoai.TabIndex = 2;
+            this.chartSachDaMuonTheoTheLoai.Text = "chart1";
             // 
             // picLogOut
             // 
@@ -5186,6 +5275,10 @@ namespace QuanLyThuVien
             this.tabPage10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartThongKeSach)).EndInit();
             this.groupBox19.ResumeLayout(false);
+            this.tabPage11.ResumeLayout(false);
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox20.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSachDaMuonTheoTheLoai)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -5634,10 +5727,16 @@ namespace QuanLyThuVien
         private System.Windows.Forms.TabPage tabPage10;
         private System.Windows.Forms.GroupBox groupBox19;
         private System.Windows.Forms.Button btnThongKeSach;
-        private System.Windows.Forms.DateTimePicker dtThongKeSach2;
-        private System.Windows.Forms.DateTimePicker dtThongKeSach1;
-        private System.Windows.Forms.ComboBox comboBoxTuyChonThongKeSach;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartThongKeSach;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.GroupBox groupBox20;
+        private System.Windows.Forms.DateTimePicker dtSachDaMuon2;
+        private System.Windows.Forms.DateTimePicker dtSachDaMuon1;
+        private System.Windows.Forms.Button btnThongKeSachDaMuon;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartSachDaMuonTheoTheLoai;
+        private System.Windows.Forms.RadioButton radBieuDoCotSachDaMuon;
+        private System.Windows.Forms.RadioButton radBieuDoTronSachDaMuon;
+        private System.Windows.Forms.Button btnXuatPhieuPhat;
         //private System.Windows.Forms.PictureBox picRefeshDocGia;
         //private System.Windows.Forms.PictureBox picRefeshDauSach;
     }
