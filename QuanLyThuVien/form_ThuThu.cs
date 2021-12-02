@@ -970,31 +970,31 @@ namespace QuanLyThuVien
             txtCMND.Text = CMND;
         }
 
-        private void dagDanhSachPhatTien_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int r = dagDanhSachPhatTien.CurrentCell.RowIndex;
-            string id = dagDanhSachPhatTien.Rows[r].Cells[0].Value.ToString();
-            string Ho = dagDanhSachPhatTien.Rows[r].Cells[1].Value.ToString();
-            string Ten = dagDanhSachPhatTien.Rows[r].Cells[2].Value.ToString();
-            string ngaysinh = dagDanhSachPhatTien.Rows[r].Cells[3].Value.ToString();
-            string gioiTinh = dagDanhSachPhatTien.Rows[r].Cells[4].Value.ToString();
-            string CMND = dagDanhSachPhatTien.Rows[r].Cells[5].Value.ToString();
-            string soThe = dagDanhSachPhatTien.Rows[r].Cells[6].Value.ToString();
-            string soNgayTre = dagDanhSachPhatTien.Rows[r].Cells[7].Value.ToString();
-            string soTienPhat = dagDanhSachPhatTien.Rows[r].Cells[8].Value.ToString();
-            string ngayTra = dagDanhSachPhatTien.Rows[r].Cells[9].Value.ToString();
+        //private void dagDanhSachPhatTien_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    int r = dagDanhSachPhatTien.CurrentCell.RowIndex;
+        //    string id = dagDanhSachPhatTien.Rows[r].Cells[0].Value.ToString();
+        //    string Ho = dagDanhSachPhatTien.Rows[r].Cells[1].Value.ToString();
+        //    string Ten = dagDanhSachPhatTien.Rows[r].Cells[2].Value.ToString();
+        //    string ngaysinh = dagDanhSachPhatTien.Rows[r].Cells[3].Value.ToString();
+        //    string gioiTinh = dagDanhSachPhatTien.Rows[r].Cells[4].Value.ToString();
+        //    string CMND = dagDanhSachPhatTien.Rows[r].Cells[5].Value.ToString();
+        //    string soThe = dagDanhSachPhatTien.Rows[r].Cells[6].Value.ToString();
+        //    string soNgayTre = dagDanhSachPhatTien.Rows[r].Cells[7].Value.ToString();
+        //    string soTienPhat = dagDanhSachPhatTien.Rows[r].Cells[8].Value.ToString();
+        //    string ngayTra = dagDanhSachPhatTien.Rows[r].Cells[9].Value.ToString();
 
-            txtIDtp.Text = id;
-            txtHotp.Text = Ho;
-            txtTentp.Text = Ten;
-            txtNgaysinhtp.Text = ngaysinh;
-            txtGioiTinhtp.Text = gioiTinh;
-            txtCMNDtp.Text = CMND;
-            txtSoThetp.Text = soThe;
-            txttienPhattp.Text = soTienPhat;
-            txtSoNgayTretp.Text = soNgayTre;
-            txtTienPhatNgayTra.Text = ngayTra;
-        }
+        //    txtIDtp.Text = id;
+        //    txtHotp.Text = Ho;
+        //    txtTentp.Text = Ten;
+        //    txtNgaysinhtp.Text = ngaysinh;
+        //    txtGioiTinhtp.Text = gioiTinh;
+        //    txtCMNDtp.Text = CMND;
+        //    txtSoThetp.Text = soThe;
+        //    txttienPhattp.Text = soTienPhat;
+        //    txtSoNgayTretp.Text = soNgayTre;
+        //    txtTienPhatNgayTra.Text = ngayTra;
+        //}
 
         private void dagThongKeSachChuaMuon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1306,9 +1306,30 @@ namespace QuanLyThuVien
             System.Diagnostics.Process.Start(tenfile);
         }
 
-        private void dagDanhSachPhatTien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dagDanhSachPhatTien_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            int r = dagDanhSachPhatTien.CurrentCell.RowIndex;
+            string id = dagDanhSachPhatTien.Rows[r].Cells[0].Value.ToString();
+            string Ho = dagDanhSachPhatTien.Rows[r].Cells[1].Value.ToString();
+            string Ten = dagDanhSachPhatTien.Rows[r].Cells[2].Value.ToString();
+            string ngaysinh = dagDanhSachPhatTien.Rows[r].Cells[3].Value.ToString();
+            string gioiTinh = dagDanhSachPhatTien.Rows[r].Cells[4].Value.ToString();
+            string CMND = dagDanhSachPhatTien.Rows[r].Cells[5].Value.ToString();
+            string soThe = dagDanhSachPhatTien.Rows[r].Cells[6].Value.ToString();
+            string soNgayTre = dagDanhSachPhatTien.Rows[r].Cells[7].Value.ToString();
+            string soTienPhat = dagDanhSachPhatTien.Rows[r].Cells[8].Value.ToString();
+            string ngayTra = dagDanhSachPhatTien.Rows[r].Cells[9].Value.ToString();
 
+            txtIDtp.Text = id;
+            txtHotp.Text = Ho;
+            txtTentp.Text = Ten;
+            txtNgaysinhtp.Text = ngaysinh;
+            txtGioiTinhtp.Text = gioiTinh;
+            txtCMNDtp.Text = CMND;
+            txtSoThetp.Text = soThe;
+            txttienPhattp.Text = soTienPhat;
+            txtSoNgayTretp.Text = soNgayTre;
+            txtTienPhatNgayTra.Text = ngayTra;
         }
     }
 }

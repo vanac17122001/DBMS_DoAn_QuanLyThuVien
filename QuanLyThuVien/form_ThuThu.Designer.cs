@@ -345,6 +345,21 @@ namespace QuanLyThuVien
             this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.dagDanhSachPhatTien = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.btnXuatPhieuPhat = new System.Windows.Forms.Button();
             this.btnXuatFileTienPhat = new System.Windows.Forms.Button();
@@ -482,21 +497,6 @@ namespace QuanLyThuVien
             this.chartSachDaMuonTheoTheLoai = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.picLogOut = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dagDanhSachPhatTien = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.tcThongTinSach.SuspendLayout();
             this.tbThongTinSach.SuspendLayout();
@@ -548,6 +548,7 @@ namespace QuanLyThuVien
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dagthongKeDocGia)).BeginInit();
             this.tabPage8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dagDanhSachPhatTien)).BeginInit();
             this.groupBox17.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -573,7 +574,6 @@ namespace QuanLyThuVien
             ((System.ComponentModel.ISupportInitialize)(this.chartSachDaMuonTheoTheLoai)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dagDanhSachPhatTien)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -3708,6 +3708,144 @@ namespace QuanLyThuVien
             this.tabPage8.Text = "Thống Kê Tiền Phạt";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
+            // dagDanhSachPhatTien
+            // 
+            this.dagDanhSachPhatTien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dagDanhSachPhatTien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column7,
+            this.Column8,
+            this.Column10,
+            this.Column11,
+            this.Column12,
+            this.Column13,
+            this.Column14,
+            this.Column15,
+            this.Column16,
+            this.Column17,
+            this.Column18,
+            this.Column19,
+            this.Column20});
+            this.dagDanhSachPhatTien.Location = new System.Drawing.Point(6, 164);
+            this.dagDanhSachPhatTien.Name = "dagDanhSachPhatTien";
+            this.dagDanhSachPhatTien.RowHeadersWidth = 51;
+            this.dagDanhSachPhatTien.RowTemplate.Height = 24;
+            this.dagDanhSachPhatTien.Size = new System.Drawing.Size(562, 385);
+            this.dagDanhSachPhatTien.TabIndex = 47;
+            this.dagDanhSachPhatTien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dagDanhSachPhatTien_CellClick_1);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "idDocGia";
+            this.Column1.HeaderText = "ID độc giả";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 125;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "ho";
+            this.Column7.HeaderText = "Họ";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 125;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "ten";
+            this.Column8.HeaderText = "Tên";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
+            this.Column8.Width = 125;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "ngaySinh";
+            this.Column10.HeaderText = "Ngày sinh";
+            this.Column10.MinimumWidth = 6;
+            this.Column10.Name = "Column10";
+            this.Column10.Width = 125;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "gioiTinh";
+            this.Column11.HeaderText = "Giới tính";
+            this.Column11.MinimumWidth = 6;
+            this.Column11.Name = "Column11";
+            this.Column11.Width = 125;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "CMND";
+            this.Column12.HeaderText = "CMND";
+            this.Column12.MinimumWidth = 6;
+            this.Column12.Name = "Column12";
+            this.Column12.Width = 125;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "soThe";
+            this.Column13.HeaderText = "Số thẻ";
+            this.Column13.MinimumWidth = 6;
+            this.Column13.Name = "Column13";
+            this.Column13.Width = 125;
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "soNgayQuaHan";
+            this.Column14.HeaderText = "Số ngày trễ";
+            this.Column14.MinimumWidth = 6;
+            this.Column14.Name = "Column14";
+            this.Column14.Width = 125;
+            // 
+            // Column15
+            // 
+            this.Column15.DataPropertyName = "soTienPhat";
+            this.Column15.HeaderText = "Tiền phạt";
+            this.Column15.MinimumWidth = 6;
+            this.Column15.Name = "Column15";
+            this.Column15.Width = 125;
+            // 
+            // Column16
+            // 
+            this.Column16.DataPropertyName = "tenSach";
+            this.Column16.HeaderText = "Tên sách";
+            this.Column16.MinimumWidth = 6;
+            this.Column16.Name = "Column16";
+            this.Column16.Width = 125;
+            // 
+            // Column17
+            // 
+            this.Column17.DataPropertyName = "tenTheLoai";
+            this.Column17.HeaderText = "Thể loại";
+            this.Column17.MinimumWidth = 6;
+            this.Column17.Name = "Column17";
+            this.Column17.Width = 125;
+            // 
+            // Column18
+            // 
+            this.Column18.DataPropertyName = "ngayTra";
+            this.Column18.HeaderText = "Ngày trả";
+            this.Column18.MinimumWidth = 6;
+            this.Column18.Name = "Column18";
+            this.Column18.Width = 125;
+            // 
+            // Column19
+            // 
+            this.Column19.DataPropertyName = "ngayMuon";
+            this.Column19.HeaderText = "Ngày mượn";
+            this.Column19.MinimumWidth = 6;
+            this.Column19.Name = "Column19";
+            this.Column19.Width = 125;
+            // 
+            // Column20
+            // 
+            this.Column20.DataPropertyName = "hanTra";
+            this.Column20.HeaderText = "Hạn trả";
+            this.Column20.MinimumWidth = 6;
+            this.Column20.Name = "Column20";
+            this.Column20.Width = 125;
+            // 
             // groupBox17
             // 
             this.groupBox17.Controls.Add(this.btnXuatPhieuPhat);
@@ -5096,143 +5234,6 @@ namespace QuanLyThuVien
             this.panel2.Size = new System.Drawing.Size(105, 77);
             this.panel2.TabIndex = 37;
             // 
-            // dagDanhSachPhatTien
-            // 
-            this.dagDanhSachPhatTien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dagDanhSachPhatTien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column7,
-            this.Column8,
-            this.Column10,
-            this.Column11,
-            this.Column12,
-            this.Column13,
-            this.Column14,
-            this.Column15,
-            this.Column16,
-            this.Column17,
-            this.Column18,
-            this.Column19,
-            this.Column20});
-            this.dagDanhSachPhatTien.Location = new System.Drawing.Point(6, 164);
-            this.dagDanhSachPhatTien.Name = "dagDanhSachPhatTien";
-            this.dagDanhSachPhatTien.RowHeadersWidth = 51;
-            this.dagDanhSachPhatTien.RowTemplate.Height = 24;
-            this.dagDanhSachPhatTien.Size = new System.Drawing.Size(562, 385);
-            this.dagDanhSachPhatTien.TabIndex = 47;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "idDocGia";
-            this.Column1.HeaderText = "ID độc giả";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 125;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "ho";
-            this.Column7.HeaderText = "Họ";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 125;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "ten";
-            this.Column8.HeaderText = "Tên";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 125;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "ngaySinh";
-            this.Column10.HeaderText = "Ngày sinh";
-            this.Column10.MinimumWidth = 6;
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 125;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "gioiTinh";
-            this.Column11.HeaderText = "Giới tính";
-            this.Column11.MinimumWidth = 6;
-            this.Column11.Name = "Column11";
-            this.Column11.Width = 125;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "CMND";
-            this.Column12.HeaderText = "CMND";
-            this.Column12.MinimumWidth = 6;
-            this.Column12.Name = "Column12";
-            this.Column12.Width = 125;
-            // 
-            // Column13
-            // 
-            this.Column13.DataPropertyName = "soThe";
-            this.Column13.HeaderText = "Số thẻ";
-            this.Column13.MinimumWidth = 6;
-            this.Column13.Name = "Column13";
-            this.Column13.Width = 125;
-            // 
-            // Column14
-            // 
-            this.Column14.DataPropertyName = "soNgayQuaHan";
-            this.Column14.HeaderText = "Số ngày trễ";
-            this.Column14.MinimumWidth = 6;
-            this.Column14.Name = "Column14";
-            this.Column14.Width = 125;
-            // 
-            // Column15
-            // 
-            this.Column15.DataPropertyName = "soTienPhat";
-            this.Column15.HeaderText = "Tiền phạt";
-            this.Column15.MinimumWidth = 6;
-            this.Column15.Name = "Column15";
-            this.Column15.Width = 125;
-            // 
-            // Column16
-            // 
-            this.Column16.DataPropertyName = "tenSach";
-            this.Column16.HeaderText = "Tên sách";
-            this.Column16.MinimumWidth = 6;
-            this.Column16.Name = "Column16";
-            this.Column16.Width = 125;
-            // 
-            // Column17
-            // 
-            this.Column17.DataPropertyName = "tenTheLoai";
-            this.Column17.HeaderText = "Thể loại";
-            this.Column17.MinimumWidth = 6;
-            this.Column17.Name = "Column17";
-            this.Column17.Width = 125;
-            // 
-            // Column18
-            // 
-            this.Column18.DataPropertyName = "ngayTra";
-            this.Column18.HeaderText = "Ngày trả";
-            this.Column18.MinimumWidth = 6;
-            this.Column18.Name = "Column18";
-            this.Column18.Width = 125;
-            // 
-            // Column19
-            // 
-            this.Column19.DataPropertyName = "ngayMuon";
-            this.Column19.HeaderText = "Ngày mượn";
-            this.Column19.MinimumWidth = 6;
-            this.Column19.Name = "Column19";
-            this.Column19.Width = 125;
-            // 
-            // Column20
-            // 
-            this.Column20.DataPropertyName = "hanTra";
-            this.Column20.HeaderText = "Hạn trả";
-            this.Column20.MinimumWidth = 6;
-            this.Column20.Name = "Column20";
-            this.Column20.Width = 125;
-            // 
             // form_ThuThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -5325,6 +5326,7 @@ namespace QuanLyThuVien
             ((System.ComponentModel.ISupportInitialize)(this.dagthongKeDocGia)).EndInit();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dagDanhSachPhatTien)).EndInit();
             this.groupBox17.ResumeLayout(false);
             this.groupBox15.ResumeLayout(false);
             this.groupBox15.PerformLayout();
@@ -5357,7 +5359,6 @@ namespace QuanLyThuVien
             ((System.ComponentModel.ISupportInitialize)(this.chartSachDaMuonTheoTheLoai)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dagDanhSachPhatTien)).EndInit();
             this.ResumeLayout(false);
 
         }

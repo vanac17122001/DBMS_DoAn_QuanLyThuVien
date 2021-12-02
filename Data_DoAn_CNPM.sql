@@ -576,10 +576,15 @@ as
  create function fun_danhsachphattien ()
  returns table
  as
-  return select idDocGia,ho,ten,ngaySinh,gioiTinh,CMND, DocGia.soThe,soNgayQuaHan,soTienPhat,ngayTra 
-	from DocGia,PhieuPhat,MuonSach ,TraSach
-		where DocGia.soThe=MuonSach.soThe and MuonSach.idMuon=TraSach.idMuon and TraSach.idTraSach=PhieuPhat.idTraSach
-
+  return select idDocGia,ho,ten,ngaySinh,gioiTinh,CMND, 
+			DocGia.soThe,soNgayQuaHan,soTienPhat,tenSach,
+			tenTheLoai, ngayTra, hanTra, ngayMuon
+	from DocGia,PhieuPhat,MuonSach ,TraSach,Sach,DauSach,TheLoaiSach
+		where DocGia.soThe=MuonSach.soThe and MuonSach.idMuon=TraSach.idMuon 
+				and TraSach.idTraSach=PhieuPhat.idTraSach 
+				and Sach.idDauSach=DauSach.idDauSach 
+				and TheLoaiSach.idTheLoai=DauSach.idTheLoai 
+				and MuonSach.idSach= Sach.idSach
 -- tạo một function tìm ra đọc giả nợ tiền nhiều nhất.
 go
 create function fun_phatđg()
@@ -613,9 +618,8 @@ as
 go
 create proc proc_sachmuonnhiunhat
 as 
-	 select max(tenSach) as a from fun_sacmuonnhieunhat()
+	 select * from fun_sacmuonnhieunhat() ORDER BY soLuong DESC
 go
-
 -- Xem thông tin các sách mà độc giả đã mượn
 CREATE FUNCTION fu_ThongTinMuonSachCuaDocGia (@username varchar(50), @pass varchar(20))
 returns table as
@@ -916,7 +920,8 @@ insert into QuanTri values
 
 -- Thống kê sách mượn theo thể loại theo thời gian
 create function fn_SachMuonTheoLoai (@time1 date, @time2 date)  
-RETURNS tableas
+RETURNS table
+as
 	return (select COUNT(MuonSach.idSach) as 'SoLuong',TheLoaiSach.tenTheLoai from MuonSach inner join Sach on MuonSach.idSach=Sach.idSach
 						inner join DauSach on Sach.idDauSach=DauSach.idDauSach
 						inner join TheLoaiSach on DauSach.idTheLoai=TheLoaiSach.idTheLoai
