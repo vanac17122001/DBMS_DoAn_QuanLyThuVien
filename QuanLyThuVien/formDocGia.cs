@@ -19,7 +19,7 @@ namespace QuanLyThuVien
         DataSet ds = new DataSet();
         public string _username;
         public string _pass;
-
+        private int rowindex;
         public formDocGia(string username, string password)
         {
             _username = username;
@@ -53,6 +53,14 @@ namespace QuanLyThuVien
             this.txtNamXuatBan.Enabled = false;
             this.txtViTri.Enabled = false;
 
+            this.txtIdSach_SachDaMuon.Enabled = false;
+            this.txtNgayMuon_SachDaMuon.Enabled = false;
+            this.txtHanTra_SachDaMuon.Enabled = false;
+            this.txtTenSach_SachDaMuon.Enabled = false;
+            this.txtSoNgayTre_SachDaMuon.Enabled = false;
+            this.txtTacGia_SachDaMuon.Enabled = false;
+            this.txtNgayTra_SachDaMuon.Enabled = false;
+            this.txtTienPhat_SachDaMuon.Enabled = false;
             loadSachDocGia();
         }
 
@@ -90,6 +98,7 @@ namespace QuanLyThuVien
         private void dagDanhSachDauSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int r = dagDanhSachDauSach.CurrentCell.RowIndex;
+            this.rowindex = r;
 
             string tensach = dagDanhSachDauSach.Rows[r].Cells[1].Value.ToString();
             string tentg = dagDanhSachDauSach.Rows[r].Cells[2].Value.ToString();
@@ -175,28 +184,31 @@ namespace QuanLyThuVien
                 if (tcDocGia.SelectedIndex == 1)
                 {
                     DataSet thongtinsachdocgiadamuon = new DataSet();
-                    thongtinsachdocgiadamuon = BLL_SachDocGiaDaMuon.getThingTinSachDaMuon(_username, _pass);
+                    thongtinsachdocgiadamuon = BLL_DocGia.sachChuaTra(ref err, _username, _pass);
+                    DataSet sachdatra = new DataSet();
+                    sachdatra = BLL_DocGia.sachDaTra(ref err, _username, _pass);
                     dagSachDocGiaDaMuon.DataSource = thongtinsachdocgiadamuon.Tables[0];
+                    dagSachDaTra.DataSource = sachdatra.Tables[0];
                 }
             }
         }
 
-        private void dagSachDocGiaDaMuon_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int r = dagSachDocGiaDaMuon.CurrentCell.RowIndex;
+        //private void dagSachDocGiaDaMuon_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    int r = dagSachDocGiaDaMuon.CurrentCell.RowIndex;
 
-            this.txtIdMuon.Text = dagSachDocGiaDaMuon.Rows[r].Cells[0].Value.ToString();
-            this.txtIdSach.Text = dagSachDocGiaDaMuon.Rows[r].Cells[1].Value.ToString();
-            this.txtNgayMuon.Text = dagSachDocGiaDaMuon.Rows[r].Cells[2].Value.ToString();
-            this.txtHanTra.Text = dagSachDocGiaDaMuon.Rows[r].Cells[3].Value.ToString();
-            this.txtTenSach.Text = dagSachDocGiaDaMuon.Rows[r].Cells[4].Value.ToString();
+        //    this.txtIdMuon.Text = dagSachDocGiaDaMuon.Rows[r].Cells[0].Value.ToString();
+        //    this.txtIdSach.Text = dagSachDocGiaDaMuon.Rows[r].Cells[1].Value.ToString();
+        //    this.txtNgayMuon.Text = dagSachDocGiaDaMuon.Rows[r].Cells[2].Value.ToString();
+        //    this.txtHanTra.Text = dagSachDocGiaDaMuon.Rows[r].Cells[3].Value.ToString();
+        //    this.txtTenSach.Text = dagSachDocGiaDaMuon.Rows[r].Cells[4].Value.ToString();
 
-            this.txtIdMuon.Enabled = false;
-            this.txtIdSach.Enabled = false;
-            this.txtNgayMuon.Enabled = false;
-            this.txtHanTra.Enabled = false;
-            this.txtTenSach.Enabled = false;
-        }
+        //    this.txtIdMuon.Enabled = false;
+        //    this.txtIdSach.Enabled = false;
+        //    this.txtNgayMuon.Enabled = false;
+        //    this.txtHanTra.Enabled = false;
+        //    this.txtTenSach.Enabled = false;
+        //}
 
         private void picLogOut_Click(object sender, EventArgs e)
         {
@@ -204,6 +216,95 @@ namespace QuanLyThuVien
             formDangNhap formDangNhap = new formDangNhap();
             formDangNhap.ShowDialog();
             this.Close();
+        }
+
+        private void btnMuonSach_Click(object sender, EventArgs e)
+        {
+            //lấy số thẻ của độc giar
+            string err = "Lõi load dữ liệu";
+            DataSet thongtindocgia = new DataSet();
+            thongtindocgia = BLL_DocGia.timDocGiaTheoUsernamePass(ref err, _username, _pass);
+            string sothe = thongtindocgia.Tables[0].Rows[0][8].ToString();
+
+            //lấy id đầu sách
+            string iddausach = dagDanhSachDauSach.Rows[rowindex].Cells[0].Value.ToString();
+
+            //Thêm vào bảng mượn sách
+            try
+            {
+                if (BLL_DocGia.muonSach(ref err, iddausach, sothe))
+                {
+                    MessageBox.Show("Mượn thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Không mượn được");
+                }
+            }
+            catch
+            {
+                MessageBox.Show(err);
+            }
+        }
+
+        private void dagSachDocGiaDaMuon_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            this.txtTenSach_SachDaMuon.Clear();
+            this.txtTacGia_SachDaMuon.Clear();
+            this.txtNgayMuon_SachDaMuon.Clear();
+            this.txtHanTra_SachDaMuon.Clear();
+            this.txtNgayTra_SachDaMuon.Clear();
+            this.txtIdSach_SachDaMuon.Clear();
+
+            int r = dagSachDocGiaDaMuon.CurrentCell.RowIndex;
+            this.rowindex = r;
+
+            this.txtTenSach_SachDaMuon.Text = dagSachDocGiaDaMuon.Rows[r].Cells[0].Value.ToString();
+            this.txtTacGia_SachDaMuon.Text = dagSachDocGiaDaMuon.Rows[r].Cells[1].Value.ToString();
+            this.txtNgayMuon_SachDaMuon.Text = dagSachDocGiaDaMuon.Rows[r].Cells[2].Value.ToString();
+            this.txtHanTra_SachDaMuon.Text = dagSachDocGiaDaMuon.Rows[r].Cells[3].Value.ToString();
+            this.txtSoNgayTre_SachDaMuon.Text = dagSachDocGiaDaMuon.Rows[r].Cells[4].Value.ToString();
+            this.txtIdSach_SachDaMuon.Text = dagSachDocGiaDaMuon.Rows[r].Cells[7].Value.ToString();
+            try
+            {
+                if (Convert.ToInt32(dagSachDocGiaDaMuon.Rows[r].Cells[4].Value) <= 0)
+                {
+                    this.txtSoNgayTre_SachDaMuon.Text = "0";
+                }
+            }
+            catch
+            {
+
+            }
+            try
+            {
+                this.txtTienPhat_SachDaMuon.Text = (Convert.ToInt32(txtSoNgayTre_SachDaMuon.Text) * 5000).ToString();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void dagSachDaTra_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.txtTenSach_SachDaMuon.Clear();
+            this.txtTacGia_SachDaMuon.Clear();
+            this.txtNgayMuon_SachDaMuon.Clear();
+            this.txtHanTra_SachDaMuon.Clear();
+            this.txtNgayTra_SachDaMuon.Clear();
+            this.txtIdSach_SachDaMuon.Clear();
+            this.txtTienPhat_SachDaMuon.Clear();
+            this.txtSoNgayTre_SachDaMuon.Clear();
+
+            int r = dagSachDaTra.CurrentCell.RowIndex;
+
+            this.txtTenSach_SachDaMuon.Text = dagSachDaTra.Rows[r].Cells[0].Value.ToString();
+            this.txtTacGia_SachDaMuon.Text = dagSachDaTra.Rows[r].Cells[1].Value.ToString();
+            this.txtNgayMuon_SachDaMuon.Text = dagSachDaTra.Rows[r].Cells[2].Value.ToString();
+            this.txtHanTra_SachDaMuon.Text = dagSachDaTra.Rows[r].Cells[3].Value.ToString();
+            this.txtNgayTra_SachDaMuon.Text = dagSachDaTra.Rows[r].Cells[4].Value.ToString();
+            this.txtIdSach_SachDaMuon.Text = dagSachDaTra.Rows[r].Cells[7].Value.ToString();
         }
     }
 }

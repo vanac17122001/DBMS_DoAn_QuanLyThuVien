@@ -98,7 +98,7 @@ namespace QuanLyThuVien
         }
         public void loadDocGiaMuonSach()
         {
-            ds = dgmuon.getDocGiaMuonSach();
+            ds = thongkedocgia.getDocGiaChuaTraSach();
             dgvMuonTra_DocGiaMuonSachDocGia.DataSource = ds.Tables[0];
         }
         public void loadNhanVien(string username, string pass)
@@ -205,6 +205,17 @@ namespace QuanLyThuVien
             txtMuonTra_IdSachMuonSach.Enabled = false;
             txtMuonTra_TheDocGia.Enabled = false;
             loadDocGiaMuonSach();
+
+            this.txtMuonTra_TenDocGiaDG.Enabled = false;
+            this.txtMuonTra_hoDocGiaDG.Enabled = false;
+            this.txtMuonTra_ngaySinhDocGiaDG.Enabled = false;
+            this.txtMuonTra_gioiTinhDocGiaDG.Enabled = false;
+            this.txtMuonTra_CMNDDocGiaDG.Enabled = false;
+            this.txtMuonTra_diaChiDocGiaDG.Enabled = false;
+            this.txtMuonTra_SoDTDocGiaDG.Enabled = false;
+            this.txtMuonTra_emailDocGiaDG.Enabled = false;
+            this.txtMuonTra_ngayDKDocGiaDG.Enabled = false;
+            this.txtMuonTra_soTheDocGiaDG.Enabled = false;
         }
 
         private void btnXemChiTietDocGia_Click(object sender, EventArgs e)
@@ -474,7 +485,7 @@ namespace QuanLyThuVien
             txtMuonTra_HanTra.Enabled = false;
             this.btnMuonTra_SuaMuonSach.Enabled = true;
             this.btnMuonTra_XoaMuonSach.Enabled = true;
-            this.btnMuonTra_ThemMuonSach.Enabled = true;
+            //this.btnMuonTra_ThemMuonSach.Enabled = true;
             f = "";
             loadMuonSach();
         }
@@ -521,7 +532,7 @@ namespace QuanLyThuVien
             txtMuonTra_IdSachMuonSach.Enabled = true;
             txtMuonTra_HanTra.Enabled = true;
             txtMuonTra_TheDocGia.Enabled = true;
-            this.btnMuonTra_ThemMuonSach.Enabled = false;
+            //this.btnMuonTra_ThemMuonSach.Enabled = false;
             btnMuonTra_XoaMuonSach.Enabled = false;
             f = "sua";
         }
@@ -575,7 +586,7 @@ namespace QuanLyThuVien
             txtMuonTra_IdMuonTraSach.Enabled = false;
             txtMuonTra_NgayTraTraSach.Enabled = false;
             txtMuonTra_IdNhanVienTraSach.Enabled = false;
-            this.btnMuonTra_ThemTraSach.Enabled = true;
+            //this.btnMuonTra_ThemTraSach.Enabled = true;
             this.btnMuonTra_SuaMuonTra.Enabled = true;
             this.btnMuonTra_XoaMuonTra.Enabled = true;
             f = "";
@@ -588,7 +599,7 @@ namespace QuanLyThuVien
             txtMuonTra_NgayTraTraSach.Enabled = true;
             txtMuonTra_IdNhanVienTraSach.Enabled = true;
             this.btnMuonTra_XoaMuonTra.Enabled = false;
-            this.btnMuonTra_ThemTraSach.Enabled = false;
+            //this.btnMuonTra_ThemTraSach.Enabled = false;
             f = "sua";
         }
 
@@ -649,19 +660,6 @@ namespace QuanLyThuVien
 
         // Xử lý phần đôc giả mượn sách của quản lý mượn trả
 
-        private void dgvMuonTra_DocGiaMuonSachDocGia_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int r = dgvMuonTra_DocGiaMuonSachDocGia.CurrentCell.RowIndex;
-            // Chuyển thông tin lên panel 
-            this.txtMuonTra_TenDocGiaDocGia.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[1].Value.ToString();
-            this.txtMuonTra_IdMuonDocGia.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[0].Value.ToString();
-            this.txtMuonTra_IdSachDocGia.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[2].Value.ToString();
-            this.txtMuonTra_IdNhanVienMuonGiaDocGia.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[4].Value.ToString();
-            this.txtMuonTra_NgayMuonGiaDocGia.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[5].Value.ToString();
-            this.txtMuonTra_NgayTraGiaDocGia.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[6].Value.ToString();
-            this.txtMuonTra_NgayTraDocGia.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[7].Value.ToString();
-            this.txtMuonTra_IdNhanVienTraDocGia.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[8].Value.ToString();
-        }
 
         private void btnMuonTra_TimDocGia_Click(object sender, EventArgs e)
         {
@@ -1330,6 +1328,47 @@ namespace QuanLyThuVien
             txttienPhattp.Text = soTienPhat;
             txtSoNgayTretp.Text = soNgayTre;
             txtTienPhatNgayTra.Text = ngayTra;
+        }
+
+        private void dgvMuonTra_DocGiaMuonSachDocGia_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int r = dgvMuonTra_DocGiaMuonSachDocGia.CurrentCell.RowIndex;
+            // Chuyển thông tin lên panel 
+            this.txtMuonTra_TenDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[2].Value.ToString();
+            this.txtMuonTra_hoDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[1].Value.ToString();
+            this.txtMuonTra_ngaySinhDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[3].Value.ToString();
+            this.txtMuonTra_gioiTinhDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[4].Value.ToString();
+            this.txtMuonTra_CMNDDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[5].Value.ToString();
+            this.txtMuonTra_diaChiDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[6].Value.ToString();
+            this.txtMuonTra_SoDTDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[7].Value.ToString();
+            this.txtMuonTra_emailDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[8].Value.ToString();
+            this.txtMuonTra_ngayDKDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[9].Value.ToString();
+            this.txtMuonTra_soTheDocGiaDG.Text = dgvMuonTra_DocGiaMuonSachDocGia.Rows[r].Cells[10].Value.ToString();
+        }
+
+        private void btnMuonTra_TimDocGia_Click_1(object sender, EventArgs e)
+        {
+            string ten = txtMuonTra_IdDocGiaDocGia.Text.ToString();
+            ds = dgmuon.timDocGiaMuonSachTheoTen(ten);
+            dgvMuonTra_DocGiaMuonSachDocGia.DataSource = ds.Tables[0];
+        }
+
+        private void btnMuonTra_HuyDocGia_Click_1(object sender, EventArgs e)
+        {
+            loadDocGiaMuonSach();
+        }
+
+        private void btnChiTietSachMuon_Click(object sender, EventArgs e)
+        {
+            ds = nv.getNhanVien(username, pass);
+            string tennhanvien = ds.Tables[0].Rows[0][1].ToString() + " " + ds.Tables[0].Rows[0][2].ToString();
+            string sdt = txtMuonTra_SoDTDocGiaDG.Text.ToString();
+            int idnhanvien = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
+            if (sdt != "")
+            {
+                formChiTietSachMuon chitiet = new formChiTietSachMuon(sdt, idnhanvien, tennhanvien);
+                chitiet.ShowDialog();
+            }
         }
     }
 }

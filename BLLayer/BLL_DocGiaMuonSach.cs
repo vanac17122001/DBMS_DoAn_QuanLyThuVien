@@ -24,5 +24,9 @@ namespace BLLayer
         {
             return dg.timDocGiaMuonSach( id);
         }
+        public DataSet timDocGiaMuonSachTheoTen(string ten)
+        {
+            return dg.timDocGiaMuonSachTheoTen(ten);
+        }
     }
 }

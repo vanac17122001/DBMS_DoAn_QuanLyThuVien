@@ -96,5 +96,9 @@ namespace DALayer
         {
             return db.ExecuteQueryDataset("select sum(soTienPhat)  from fun_danhsachphattien() where (month(ngayTra)='11') and (YEAR(ngayTra)='" + year + "');", CommandType.Text, null);
         }
+        public DataSet getDocGiaChuaTraSach()
+        {
+            return db.ExecuteQueryDataset("select DISTINCT * from fun_docGiaDangMuonSach()", CommandType.Text, null);
+        }
     }
 }

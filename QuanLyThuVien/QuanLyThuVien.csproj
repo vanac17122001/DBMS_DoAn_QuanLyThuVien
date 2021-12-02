@@ -126,6 +126,12 @@
     <Compile Include="formChiTietNhanVien.Designer.cs">
       <DependentUpon>formChiTietNhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="formChiTietSachMuon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formChiTietSachMuon.Designer.cs">
+      <DependentUpon>formChiTietSachMuon.cs</DependentUpon>
+    </Compile>
     <Compile Include="formDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formChiTietNhanVien.resx">
       <DependentUpon>formChiTietNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formChiTietSachMuon.resx">
+      <DependentUpon>formChiTietSachMuon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formDangNhap.resx">
       <DependentUpon>formDangNhap.cs</DependentUpon>
@@ -209,6 +218,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\head.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

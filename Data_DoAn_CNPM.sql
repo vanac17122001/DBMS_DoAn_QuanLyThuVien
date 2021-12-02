@@ -182,8 +182,8 @@ create trigger trig_InserttoPhieuPhat on TraSach
 after insert 
 as 
 begin
-declare @x date = (select hanTra from MuonSach,inserted,TraSach where MuonSach.idMuon=TraSach.idMuon and TraSach.idMuon=inserted.idMuon)
-declare @y date =( select TraSach.ngayTra from TraSach,inserted where TraSach.ngayTra=inserted.ngayTra )
+declare @x date = (select top(1) hanTra from MuonSach,inserted,TraSach where MuonSach.idMuon=TraSach.idMuon and TraSach.idMuon=inserted.idMuon)
+declare @y date = getdate()
 	if ((select datediff(day,@x,@y)) >0)
 	begin
 	insert into PhieuPhat(idTraSach, idNhanVien)
@@ -664,6 +664,16 @@ begin
 	EXEC(@t)
 	SET @t = N'Grant select on ' + 'InforOfBook ' + ' to ' + QUOTENAME(@username)
 	EXEC(@t)
+	SET @t = N'Grant select on ' + 'fu_sachDaTra ' + ' to ' + QUOTENAME(@username)
+	EXEC(@t)
+	SET @t = N'Grant select on ' + 'fu_sachChuaTra ' + ' to ' + QUOTENAME(@username)
+	EXEC(@t)
+	SET @t = N'Grant exec on ' + 'proc_docGiaMuonSach ' + ' to ' + QUOTENAME(@username)
+	EXEC(@t)
+	SET @t = N'Grant exec on ' + 'proc_traSach ' + ' to ' + QUOTENAME(@username)
+	EXEC(@t)
+	SET @t = N'Grant exec on ' + 'proc_themTraSach ' + ' to ' + QUOTENAME(@username)
+	EXEC(@t)
 end
 go
 
@@ -691,6 +701,71 @@ as
 return select idDocGia,ho,ten,ngaySinh,gioiTinh,CMND,diaChi,soDT,email,ngayDK,DocGia.soThe from DocGia,MuonSach where DocGia.soThe=MuonSach.soThe
 go
 
+-- Thống kê sách mượn theo thể loại theo thời gian
+create function fn_SachMuonTheoLoai (@time1 date, @time2 date)  
+RETURNS table
+as
+	return (select COUNT(MuonSach.idSach) as 'SoLuong',TheLoaiSach.tenTheLoai from MuonSach inner join Sach on MuonSach.idSach=Sach.idSach
+						inner join DauSach on Sach.idDauSach=DauSach.idDauSach
+						inner join TheLoaiSach on DauSach.idTheLoai=TheLoaiSach.idTheLoai
+		where MuonSach.ngayMuon >= @time1 and MuonSach.ngayMuon <=@time2
+		group by (TheLoaiSach.tenTheLoai))
+go
+-- proc thêm mượn sách cho độc giả
+create procedure proc_docGiaMuonSach (@idDauSach int, @soThe int)
+as
+begin
+	declare @ngayMuon date =  getdate()
+	declare @hanTra date = dateadd(month,4,@ngayMuon)
+	declare @idSach int
+	select top(1) @idSach =  idSach from Sach where idDauSach = @idDauSach and trangThai = N'Chưa mượn'
+	insert into MuonSach values (@idSach, @soThe, null, @ngayMuon, @hanTra)
+end
+go
+-- proc thêm trả sách
+create procedure proc_traSach (@idMuon int)
+as
+begin
+	declare @ngayTra date =  getdate()
+	insert into TraSach values (@idMuon, @ngayTra, null)
+end
+go
+-- Xem thông tin các sách mà độc giả đã mượn và đã trả
+CREATE FUNCTION fu_sachDaTra (@username varchar(50), @pass varchar(20))
+returns table as
+return select tenSach,TacGia.butDanh,ngayMuon, hanTra, ngayTra,MuonSach.idMuon, idTraSach, Sach.idSach  from 
+	TaiKhoan inner join DocGia on TaiKhoan.id=DocGia.idDocGia
+	inner join MuonSach on DocGia.soThe=MuonSach.soThe
+	inner join Sach on Sach.idSach=MuonSach.idSach
+	inner join DauSach on Sach.idDauSach=DauSach.idDauSach
+	inner join TacGia on tacgia.idTacGia = DauSach.idTacGia
+	inner join TraSach on TraSach.idMuon = MuonSach.idMuon
+	where TaiKhoan.userName=@username and TaiKhoan.pass=@pass
+go
+-- Tạo function tìm những độc giả đang mượn sách
+create function fun_docGiaDangMuonSach()
+returns table
+as
+return 
+	select idDocGia,ho,ten,ngaySinh,gioiTinh,CMND,diaChi,soDT,email,ngayDK,DocGia.soThe 
+	from DocGia inner join MuonSach on DocGia.soThe = MuonSach.soThe
+		left join TraSach on TraSach.idMuon = MuonSach.idMuon
+		where idTraSach is null
+go
+-- Xem thông tin các sách mà độc giả đã mượn nhưng chưa trả
+CREATE FUNCTION fu_sachChuaTra (@username varchar(50), @pass varchar(20))
+returns table as
+return
+	select tenSach,TacGia.butDanh,ngayMuon, hanTra,datediff(day,hanTra, CAST(GETDATE() as DATE)) as soNgayTre,MuonSach.idMuon, idTraSach, Sach.idSach  from 
+		TaiKhoan inner join DocGia on TaiKhoan.id=DocGia.idDocGia
+		inner join MuonSach on DocGia.soThe=MuonSach.soThe
+		inner join Sach on Sach.idSach=MuonSach.idSach
+		inner join DauSach on Sach.idDauSach=DauSach.idDauSach
+		inner join TacGia on tacgia.idTacGia = DauSach.idTacGia
+		left join TraSach on TraSach.idMuon = MuonSach.idMuon
+		where TaiKhoan.userName=@username and TaiKhoan.pass=@pass
+		and idTraSach is null
+go
 -- Thêm dữ liệu 
 use Database_CNPM
 go
@@ -917,14 +992,4 @@ insert into QuanTri values
 go
 insert into QuanTri values
 (N'Trần',N'Văn Hào','2001-2-1',N'Nam','215530701',N'Hoài Nhơn - Bình Phước','876543210','caovanhao@gmail.com',null)
-
--- Thống kê sách mượn theo thể loại theo thời gian
-create function fn_SachMuonTheoLoai (@time1 date, @time2 date)  
-RETURNS table
-as
-	return (select COUNT(MuonSach.idSach) as 'SoLuong',TheLoaiSach.tenTheLoai from MuonSach inner join Sach on MuonSach.idSach=Sach.idSach
-						inner join DauSach on Sach.idDauSach=DauSach.idDauSach
-						inner join TheLoaiSach on DauSach.idTheLoai=TheLoaiSach.idTheLoai
-		where MuonSach.ngayMuon >= @time1 and MuonSach.ngayMuon <=@time2
-		group by (TheLoaiSach.tenTheLoai))
 go
