@@ -1156,10 +1156,45 @@ namespace QuanLyThuVien
         private void btnBieuDoTongTienPhat_Click(object sender, EventArgs e)
         {
             chartTongTienPhat.Visible = true;
-            String tongtienphat = thongkedocgia.gettongphattheongay(dtTongTienPhat1.Text, dtTongTienPhat2.Text).Tables[0].Rows[0][0].ToString();
-            chartTongTienPhat.Series["TongTienPhat"].Points.Clear();
-            chartTongTienPhat.Series["TongTienPhat"].Points.AddXY("Tổng tiền phạt", tongtienphat);
-            chartTongTienPhat.Series.First().Label = "#VALY";
+            if (radTuyChonTimeTienPhat.Checked==true)
+            {
+                String tongtienphat = thongkedocgia.gettongphattheongay(dtTongTienPhat1.Text, dtTongTienPhat2.Text).Tables[0].Rows[0][0].ToString();
+                chartTongTienPhat.Series["TongTienPhat"].Points.Clear();
+                chartTongTienPhat.Series["TongTienPhat"].Points.AddXY("Tổng tiền phạt", tongtienphat);
+                chartTongTienPhat.Series.First().Label = "#VALY";
+            } else
+            {
+                if (radTienPhatTheoNam.Checked == true)
+                {
+                    chartTongTienPhat.Series["TongTienPhat"].Points.Clear();
+                    string TienT12 = thongkedocgia.getTienThang12(dtTienPhat3.Text).Tables[0].Rows[0][0].ToString();
+                    string TienT1 = thongkedocgia.getTienThang1(dtTienPhat3.Text).Tables[0].Rows[0][0].ToString();
+                    string TienT2 = thongkedocgia.getTienThang2(dtTienPhat3.Text).Tables[0].Rows[0][0].ToString();
+                    string TienT3 = thongkedocgia.getTienThang3(dtTienPhat3.Text).Tables[0].Rows[0][0].ToString();
+                    string TienT4 = thongkedocgia.getTienThang4(dtTienPhat3.Text).Tables[0].Rows[0][0].ToString();
+                    string TienT5 = thongkedocgia.getTienThang5(dtTienPhat3.Text).Tables[0].Rows[0][0].ToString();
+                    string TienT6 = thongkedocgia.getTienThang6(dtTienPhat3.Text).Tables[0].Rows[0][0].ToString();
+                    string TienT7 = thongkedocgia.getTienThang7(dtTienPhat3.Text).Tables[0].Rows[0][0].ToString();
+                    string TienT8 = thongkedocgia.getTienThang8(dtTienPhat3.Text).Tables[0].Rows[0][0].ToString();
+                    string TienT9 = thongkedocgia.getTienThang9(dtTienPhat3.Text).Tables[0].Rows[0][0].ToString();
+                    string TienT10 = thongkedocgia.getTienThang10(dtTienPhat3.Text).Tables[0].Rows[0][0].ToString();
+                    string TienT11 = thongkedocgia.getTienThang11(dtTienPhat3.Text).Tables[0].Rows[0][0].ToString();
+                    chartTongTienPhat.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+                    chartTongTienPhat.Series["TongTienPhat"].Points.AddXY("Tháng 1", TienT1);
+                    chartTongTienPhat.Series["TongTienPhat"].Points.AddXY("Tháng 2", TienT2);
+                    chartTongTienPhat.Series["TongTienPhat"].Points.AddXY("Tháng 3", TienT3);
+                    chartTongTienPhat.Series["TongTienPhat"].Points.AddXY("Tháng 4", TienT4);
+                    chartTongTienPhat.Series["TongTienPhat"].Points.AddXY("Tháng 5", TienT5);
+                    chartTongTienPhat.Series["TongTienPhat"].Points.AddXY("Tháng 6", TienT6);
+                    chartTongTienPhat.Series["TongTienPhat"].Points.AddXY("Tháng 7", TienT7);
+                    chartTongTienPhat.Series["TongTienPhat"].Points.AddXY("Tháng 8", TienT8);
+                    chartTongTienPhat.Series["TongTienPhat"].Points.AddXY("Tháng 9", TienT9);
+                    chartTongTienPhat.Series["TongTienPhat"].Points.AddXY("Tháng 10", TienT10);
+                    chartTongTienPhat.Series["TongTienPhat"].Points.AddXY("Tháng 11", TienT11);
+                    chartTongTienPhat.Series["TongTienPhat"].Points.AddXY("Tháng 12", TienT12);
+                    chartTongTienPhat.Series.First().Label = "#VALY";
+                }
+            }    
         }
 
         private void btnThongKeSach_Click(object sender, EventArgs e)
@@ -1269,6 +1304,11 @@ namespace QuanLyThuVien
             document.Save(tenfile);
             document.Close(true);
             System.Diagnostics.Process.Start(tenfile);
+        }
+
+        private void dagDanhSachPhatTien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
