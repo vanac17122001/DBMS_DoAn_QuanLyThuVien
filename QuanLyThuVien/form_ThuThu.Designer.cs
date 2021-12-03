@@ -30,17 +30,17 @@ namespace QuanLyThuVien
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_ThuThu));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title9 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title10 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend15 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnQuanLyPhieuMuon = new System.Windows.Forms.Button();
             this.btnThongTinThuThu = new System.Windows.Forms.Button();
@@ -367,7 +367,6 @@ namespace QuanLyThuVien
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.btnXuatPhieuPhat = new System.Windows.Forms.Button();
             this.btnXuatFileTienPhat = new System.Windows.Forms.Button();
             this.btnThongKeTienPhatTheoThoiGian = new System.Windows.Forms.Button();
             this.dt2 = new System.Windows.Forms.DateTimePicker();
@@ -659,11 +658,12 @@ namespace QuanLyThuVien
             this.tcThongTinSach.Controls.Add(this.tbThongTinSach);
             this.tcThongTinSach.Controls.Add(this.tpThemSach);
             this.tcThongTinSach.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tcThongTinSach.Location = new System.Drawing.Point(1341, 45);
+            this.tcThongTinSach.Location = new System.Drawing.Point(1334, 34);
             this.tcThongTinSach.Name = "tcThongTinSach";
             this.tcThongTinSach.SelectedIndex = 0;
-            this.tcThongTinSach.Size = new System.Drawing.Size(227, 81);
+            this.tcThongTinSach.Size = new System.Drawing.Size(165, 90);
             this.tcThongTinSach.TabIndex = 1;
+            this.tcThongTinSach.SelectedIndexChanged += new System.EventHandler(this.tcThongTinSach_SelectedIndexChanged);
             // 
             // tbThongTinSach
             // 
@@ -677,7 +677,7 @@ namespace QuanLyThuVien
             this.tbThongTinSach.Location = new System.Drawing.Point(4, 32);
             this.tbThongTinSach.Name = "tbThongTinSach";
             this.tbThongTinSach.Padding = new System.Windows.Forms.Padding(3);
-            this.tbThongTinSach.Size = new System.Drawing.Size(219, 45);
+            this.tbThongTinSach.Size = new System.Drawing.Size(157, 54);
             this.tbThongTinSach.TabIndex = 0;
             this.tbThongTinSach.Text = "Thông Tin Sách";
             this.tbThongTinSach.UseVisualStyleBackColor = true;
@@ -995,7 +995,7 @@ namespace QuanLyThuVien
             this.tpThemSach.Location = new System.Drawing.Point(4, 32);
             this.tpThemSach.Name = "tpThemSach";
             this.tpThemSach.Padding = new System.Windows.Forms.Padding(3);
-            this.tpThemSach.Size = new System.Drawing.Size(219, 45);
+            this.tpThemSach.Size = new System.Drawing.Size(157, 54);
             this.tpThemSach.TabIndex = 1;
             this.tpThemSach.Text = "Thêm Sách Mới";
             this.tpThemSach.UseVisualStyleBackColor = true;
@@ -1224,10 +1224,10 @@ namespace QuanLyThuVien
             this.tcQuanLyDocGia.Controls.Add(this.tabPage1);
             this.tcQuanLyDocGia.Controls.Add(this.tabPage2);
             this.tcQuanLyDocGia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tcQuanLyDocGia.Location = new System.Drawing.Point(1341, 163);
+            this.tcQuanLyDocGia.Location = new System.Drawing.Point(222, 36);
             this.tcQuanLyDocGia.Name = "tcQuanLyDocGia";
             this.tcQuanLyDocGia.SelectedIndex = 0;
-            this.tcQuanLyDocGia.Size = new System.Drawing.Size(273, 127);
+            this.tcQuanLyDocGia.Size = new System.Drawing.Size(1045, 668);
             this.tcQuanLyDocGia.TabIndex = 0;
             // 
             // tabPage1
@@ -1240,7 +1240,7 @@ namespace QuanLyThuVien
             this.tabPage1.Location = new System.Drawing.Point(4, 32);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(265, 91);
+            this.tabPage1.Size = new System.Drawing.Size(1037, 632);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Thông tin độc giả";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1484,7 +1484,7 @@ namespace QuanLyThuVien
             this.tabPage2.Location = new System.Drawing.Point(4, 32);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(265, 91);
+            this.tabPage2.Size = new System.Drawing.Size(1037, 632);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Thêm độc giả";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1928,10 +1928,10 @@ namespace QuanLyThuVien
             this.tcQuanLyMuonTra.Controls.Add(this.tabPage6);
             this.tcQuanLyMuonTra.Controls.Add(this.tabPage7);
             this.tcQuanLyMuonTra.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tcQuanLyMuonTra.Location = new System.Drawing.Point(222, 12);
+            this.tcQuanLyMuonTra.Location = new System.Drawing.Point(1345, 423);
             this.tcQuanLyMuonTra.Name = "tcQuanLyMuonTra";
             this.tcQuanLyMuonTra.SelectedIndex = 0;
-            this.tcQuanLyMuonTra.Size = new System.Drawing.Size(1028, 692);
+            this.tcQuanLyMuonTra.Size = new System.Drawing.Size(235, 83);
             this.tcQuanLyMuonTra.TabIndex = 3;
             // 
             // tabPage5
@@ -1943,7 +1943,7 @@ namespace QuanLyThuVien
             this.tabPage5.Location = new System.Drawing.Point(4, 32);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1020, 656);
+            this.tabPage5.Size = new System.Drawing.Size(227, 47);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "Thẻ Mượn Sách";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -2258,7 +2258,7 @@ namespace QuanLyThuVien
             this.tabPage6.Location = new System.Drawing.Point(4, 32);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1020, 656);
+            this.tabPage6.Size = new System.Drawing.Size(227, 47);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "Thẻ Trả Sách";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -2515,7 +2515,7 @@ namespace QuanLyThuVien
             this.tabPage7.Location = new System.Drawing.Point(4, 32);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(1020, 656);
+            this.tabPage7.Size = new System.Drawing.Size(227, 47);
             this.tabPage7.TabIndex = 2;
             this.tabPage7.Text = "Độc Giả Mượn Sách";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -3073,10 +3073,10 @@ namespace QuanLyThuVien
             this.tcThongKeBaoCao.Controls.Add(this.tabPage10);
             this.tcThongKeBaoCao.Controls.Add(this.tabPage11);
             this.tcThongKeBaoCao.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tcThongKeBaoCao.Location = new System.Drawing.Point(1341, 345);
+            this.tcThongKeBaoCao.Location = new System.Drawing.Point(1341, 306);
             this.tcThongKeBaoCao.Name = "tcThongKeBaoCao";
             this.tcThongKeBaoCao.SelectedIndex = 0;
-            this.tcThongKeBaoCao.Size = new System.Drawing.Size(186, 64);
+            this.tcThongKeBaoCao.Size = new System.Drawing.Size(206, 111);
             this.tcThongKeBaoCao.TabIndex = 28;
             this.tcThongKeBaoCao.SelectedIndexChanged += new System.EventHandler(this.tcThongKeBaoCao_SelectedIndexChanged);
             // 
@@ -3089,7 +3089,7 @@ namespace QuanLyThuVien
             this.tabPage3.Location = new System.Drawing.Point(4, 32);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(178, 28);
+            this.tabPage3.Size = new System.Drawing.Size(1057, 656);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Thống kê ĐG";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -3751,7 +3751,7 @@ namespace QuanLyThuVien
             this.tabPage8.Location = new System.Drawing.Point(4, 32);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(178, 28);
+            this.tabPage8.Size = new System.Drawing.Size(198, 75);
             this.tabPage8.TabIndex = 2;
             this.tabPage8.Text = "Thống Kê Tiền Phạt";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -3896,30 +3896,16 @@ namespace QuanLyThuVien
             // 
             // groupBox17
             // 
-            this.groupBox17.Controls.Add(this.btnXuatPhieuPhat);
             this.groupBox17.Controls.Add(this.btnXuatFileTienPhat);
             this.groupBox17.Controls.Add(this.btnThongKeTienPhatTheoThoiGian);
             this.groupBox17.Controls.Add(this.dt2);
             this.groupBox17.Controls.Add(this.dt1);
             this.groupBox17.Location = new System.Drawing.Point(6, 64);
             this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(725, 88);
+            this.groupBox17.Size = new System.Drawing.Size(562, 88);
             this.groupBox17.TabIndex = 45;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Thời gian";
-            // 
-            // btnXuatPhieuPhat
-            // 
-            this.btnXuatPhieuPhat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnXuatPhieuPhat.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXuatPhieuPhat.ForeColor = System.Drawing.Color.White;
-            this.btnXuatPhieuPhat.Location = new System.Drawing.Point(568, 17);
-            this.btnXuatPhieuPhat.Name = "btnXuatPhieuPhat";
-            this.btnXuatPhieuPhat.Size = new System.Drawing.Size(138, 61);
-            this.btnXuatPhieuPhat.TabIndex = 48;
-            this.btnXuatPhieuPhat.Text = "Xuất Phiếu Phạt";
-            this.btnXuatPhieuPhat.UseVisualStyleBackColor = false;
-            this.btnXuatPhieuPhat.Click += new System.EventHandler(this.btnXuatPhieuPhat_Click);
             // 
             // btnXuatFileTienPhat
             // 
@@ -4217,7 +4203,7 @@ namespace QuanLyThuVien
             this.tabPage4.Location = new System.Drawing.Point(4, 32);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(178, 28);
+            this.tabPage4.Size = new System.Drawing.Size(1057, 656);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Thống Kê Sách";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -5012,30 +4998,30 @@ namespace QuanLyThuVien
             this.tabPage9.Location = new System.Drawing.Point(4, 32);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(178, 28);
+            this.tabPage9.Size = new System.Drawing.Size(1057, 656);
             this.tabPage9.TabIndex = 4;
             this.tabPage9.Text = "Tiền Phạt";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
             // chartTongTienPhat
             // 
-            chartArea13.Name = "ChartArea1";
-            this.chartTongTienPhat.ChartAreas.Add(chartArea13);
-            legend13.Name = "Legend1";
-            this.chartTongTienPhat.Legends.Add(legend13);
+            chartArea4.Name = "ChartArea1";
+            this.chartTongTienPhat.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartTongTienPhat.Legends.Add(legend4);
             this.chartTongTienPhat.Location = new System.Drawing.Point(39, 146);
             this.chartTongTienPhat.Name = "chartTongTienPhat";
-            series13.ChartArea = "ChartArea1";
-            series13.Legend = "Legend1";
-            series13.Name = "TongTienPhat";
-            this.chartTongTienPhat.Series.Add(series13);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "TongTienPhat";
+            this.chartTongTienPhat.Series.Add(series4);
             this.chartTongTienPhat.Size = new System.Drawing.Size(940, 456);
             this.chartTongTienPhat.TabIndex = 47;
             this.chartTongTienPhat.Text = "chartTongTienPhat";
-            title9.Name = "Title1";
-            title10.Name = "Tổng Tiền Phạt Theo Thời Gian";
-            this.chartTongTienPhat.Titles.Add(title9);
-            this.chartTongTienPhat.Titles.Add(title10);
+            title3.Name = "Title1";
+            title4.Name = "Tổng Tiền Phạt Theo Thời Gian";
+            this.chartTongTienPhat.Titles.Add(title3);
+            this.chartTongTienPhat.Titles.Add(title4);
             // 
             // groupBox18
             // 
@@ -5121,23 +5107,23 @@ namespace QuanLyThuVien
             this.tabPage10.Location = new System.Drawing.Point(4, 32);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(178, 28);
+            this.tabPage10.Size = new System.Drawing.Size(1057, 656);
             this.tabPage10.TabIndex = 5;
             this.tabPage10.Text = "Số Lượng Sách";
             this.tabPage10.UseVisualStyleBackColor = true;
             // 
             // chartThongKeSach
             // 
-            chartArea14.Name = "ChartArea1";
-            this.chartThongKeSach.ChartAreas.Add(chartArea14);
-            legend14.Name = "Legend1";
-            this.chartThongKeSach.Legends.Add(legend14);
+            chartArea5.Name = "ChartArea1";
+            this.chartThongKeSach.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartThongKeSach.Legends.Add(legend5);
             this.chartThongKeSach.Location = new System.Drawing.Point(21, 179);
             this.chartThongKeSach.Name = "chartThongKeSach";
-            series14.ChartArea = "ChartArea1";
-            series14.Legend = "Legend1";
-            series14.Name = "SachTheoTheLoai";
-            this.chartThongKeSach.Series.Add(series14);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "SachTheoTheLoai";
+            this.chartThongKeSach.Series.Add(series5);
             this.chartThongKeSach.Size = new System.Drawing.Size(928, 448);
             this.chartThongKeSach.TabIndex = 1;
             this.chartThongKeSach.Text = "chart1";
@@ -5172,7 +5158,7 @@ namespace QuanLyThuVien
             this.tabPage11.Location = new System.Drawing.Point(4, 32);
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage11.Size = new System.Drawing.Size(178, 28);
+            this.tabPage11.Size = new System.Drawing.Size(1057, 656);
             this.tabPage11.TabIndex = 6;
             this.tabPage11.Text = "Sách Đã Mượn";
             this.tabPage11.UseVisualStyleBackColor = true;
@@ -5246,16 +5232,16 @@ namespace QuanLyThuVien
             // 
             // chartSachDaMuonTheoTheLoai
             // 
-            chartArea15.Name = "ChartArea1";
-            this.chartSachDaMuonTheoTheLoai.ChartAreas.Add(chartArea15);
-            legend15.Name = "Legend1";
-            this.chartSachDaMuonTheoTheLoai.Legends.Add(legend15);
+            chartArea6.Name = "ChartArea1";
+            this.chartSachDaMuonTheoTheLoai.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chartSachDaMuonTheoTheLoai.Legends.Add(legend6);
             this.chartSachDaMuonTheoTheLoai.Location = new System.Drawing.Point(60, 164);
             this.chartSachDaMuonTheoTheLoai.Name = "chartSachDaMuonTheoTheLoai";
-            series15.ChartArea = "ChartArea1";
-            series15.Legend = "Legend1";
-            series15.Name = "SachDaMuonTheoTheLoai";
-            this.chartSachDaMuonTheoTheLoai.Series.Add(series15);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "SachDaMuonTheoTheLoai";
+            this.chartSachDaMuonTheoTheLoai.Series.Add(series6);
             this.chartSachDaMuonTheoTheLoai.Size = new System.Drawing.Size(928, 448);
             this.chartSachDaMuonTheoTheLoai.TabIndex = 2;
             this.chartSachDaMuonTheoTheLoai.Text = "chart1";
@@ -5817,7 +5803,6 @@ namespace QuanLyThuVien
         private System.Windows.Forms.DataVisualization.Charting.Chart chartSachDaMuonTheoTheLoai;
         private System.Windows.Forms.RadioButton radBieuDoCotSachDaMuon;
         private System.Windows.Forms.RadioButton radBieuDoTronSachDaMuon;
-        private System.Windows.Forms.Button btnXuatPhieuPhat;
         private System.Windows.Forms.DateTimePicker dtTienPhat3;
         private System.Windows.Forms.RadioButton radTuyChonTimeTienPhat;
         private System.Windows.Forms.RadioButton radTienPhatTheoNam;

@@ -448,7 +448,7 @@ go
 create function fu_timTenDocGia(@ten nvarchar(10))
 returns table
 as
-	return select * from dbo.InforOfUser where (select concat( dbo.InforOfUser.ho,' ',dbo.InforOfUser.ten)) like '%'+@ten+'%'
+	return select * from DocGia where (select concat(DocGia.ho,' ',DocGia.ten)) like '%'+@ten+'%'
 go
 
 
@@ -457,7 +457,7 @@ go
 create function fu_timTheDocGia(@id int)
 returns table
 as
-	return select * from dbo.InforOfUser where dbo.InforOfUser.soThe = @id
+	return select * from DocGia where DocGia.soThe = @id
 go
 -- function kiểm tra đăng nhập
 create function fun_dangnhap(@user nvarchar(50), @pass int)

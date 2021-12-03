@@ -1254,56 +1254,6 @@ namespace QuanLyThuVien
             }
         }
 
-        private void btnXuatPhieuPhat_Click(object sender, EventArgs e)
-        {
-
-            //Create a new PDF document
-            PdfDocument document = new PdfDocument();
-            //Add a page to the document
-            PdfPage page = document.Pages.Add();
-            //Create PDF graphics for the page
-            PdfGraphics graphics = page.Graphics;
-            //Use the font installed in the machine
-            PdfTrueTypeFont font = new PdfTrueTypeFont(new Font("Microsoft Sans Serif", 14), true);
-            //Draw the UTF-8 text
-            string ho = "\n Họ :"+txtHotp.Text.ToString();
-            string tienphat = "Số tiền :"+txttienPhattp.Text.ToString();
-            string ten = "Tên :"+ txtTentp.Text.ToString();
-            string sothe = "Số thẻ : "+ txtSoThetp.Text.ToString();
-            string songaytre = "Số ngày trễ : " + txtSoNgayTretp.Text.ToString();
-
-            string noidung = "\t \t \t \t \t \t PHIẾU PHẠT TRỄ HẸN TRẢ SÁCH " +
-                            "\n"+ ho +"\n" + ten + "\n" + tienphat + "\n"
-                            + sothe +"\n" +songaytre+"\n";
-
-            graphics.DrawString(noidung, font, PdfBrushes.Blue, new PointF(0, 0));
-            PdfPen pen = new PdfPen(Color.Red);
-            graphics.DrawLine(pen, 0, 0, 400, 0);
-            graphics.DrawLine(pen, 0, 0, 0, 200);
-            graphics.DrawLine(pen, 400, 0, 400, 200);
-            graphics.DrawLine(pen, 0, 200, 400, 200);
-            graphics.DrawString("--------------------------------------------------------------------------------------", 
-                            font, PdfBrushes.Black, new PointF(0, 10));
-            //graphics.DrawPdfTemplate(grbChiTietDauSach, 100, 100);
-            //Initialize PdfSolidBrush for drawing the rectangle
-            PdfSolidBrush brush = new PdfSolidBrush(Color.LightBlue);
-
-            //Set the bounds for rectangle
-            RectangleF bounds = new RectangleF(0, 0, 400, 17);
-
-            //Set the page Transparency
-            page.Graphics.Save();
-            page.Graphics.SetTransparency(1, 1, PdfBlendMode.Multiply);
-
-            //Draw the rectangle on the PDF document
-            page.Graphics.DrawRectangle(brush, bounds);
-
-            string tenfile = txtTentp.Text.ToString() + "phieuphat.pdf";
-            document.Save(tenfile);
-            document.Close(true);
-            System.Diagnostics.Process.Start(tenfile);
-        }
-
         private void dagDanhSachPhatTien_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             int r = dagDanhSachPhatTien.CurrentCell.RowIndex;
@@ -1368,6 +1318,14 @@ namespace QuanLyThuVien
             {
                 formChiTietSachMuon chitiet = new formChiTietSachMuon(sdt, idnhanvien, tennhanvien);
                 chitiet.ShowDialog();
+            }
+        }
+
+        private void tcThongTinSach_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tcThongTinSach.SelectedIndex == 1)
+            {
+                txtThemTenNhaXuatBan.Enabled = true;
             }
         }
     }
